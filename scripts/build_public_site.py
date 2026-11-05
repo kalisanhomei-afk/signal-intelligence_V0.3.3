@@ -15,6 +15,7 @@ FILES={
     "source-console.html":"source-console.html",
     "data/feed.json":"data/feed.json",             # dated, manually curated 2026-11-05 snapshot
     "data/live_items.json":"data/discovered.json", # ONLY pre-reviewed official/CC0 descriptive metadata
+    "data/intelligence.json":"data/intelligence.json", # AI title annotations never verified content
     "data/v032_candidates.json":"data/v032_candidates.json",
     "data/v032_live_probe.json":"data/v032_live_probe.json",
 }
@@ -50,6 +51,20 @@ def build(output,source_root=BASE,*,strict=False):
     for item in live.get('items',[]):
         if item.get('summary') is not None or item.get('source_id') not in ('fed-monetary','bea-news','arxiv-ai','arxiv-robotics'):
             raise RuntimeError('Unsafe metadata: unknown source or article content in export')
+    # Triage can only annotate public, approved source metadata; no unverifiable source injection.
+    triage=json.loads((output/'data/intelligence.json').read_text(encoding='utf-8'))
+    if triage.get('meta',{}).get('rights_scope')!='descriptive_public_metadata_only':
+        raise RuntimeError('Unsafe triage scope')
+    by_id={item['id']:item for item in live.get('items',[])}
+    for x in triage.get('items',[]):
+        source=by_id.get(x.get('id'))
+        if (not source or source.get('url')!=x.get('url')
+                or x.get('source_id')!=source.get('source_id')
+                or x.get('verification_status')!='待人工核對'
+                or x.get('independent_confirmation') is not False
+                or x.get('review_required') is not True
+                or x.get('analysis_mode') not in ('rules_only','ai_title_only')):
+            raise RuntimeError('Unsafe triage record')
     published=sorted(str(p.relative_to(output)) for p in output.rglob('*') if p.is_file())
     print('Public site files:',json.dumps(published,ensure_ascii=False))
     return published

@@ -63,6 +63,8 @@ with tempfile.TemporaryDirectory() as d:
     for file in ['feed.json','v032_candidates.json','v032_live_probe.json']:
         (copyroot/'data'/file).write_bytes((P/'data'/file).read_bytes())
     atomic_json(copyroot/'data/live_items.json',partial)
+    from intelligence_v040 import prepare
+    atomic_json(copyroot/'data/intelligence.json',prepare(partial,{},enabled=False,api_key=None))
     rebuilt=build(root/'_site',source_root=copyroot)
     assert len(json.loads((root/'_site/data/discovered.json').read_text())['items'])==4
     bad=copy.deepcopy(partial)

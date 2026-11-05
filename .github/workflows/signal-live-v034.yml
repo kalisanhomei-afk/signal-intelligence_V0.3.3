@@ -1,4 +1,4 @@
-name: SIGNAL V0.3.4 live update and Pages
+name: SIGNAL V0.4.0 metadata + cautious triage + Pages
 
 on:
   workflow_dispatch:
@@ -34,14 +34,21 @@ jobs:
           python scripts/test_v032.py
           python scripts/test_v033.py
           python scripts/test_v034.py
+          python scripts/test_v040.py
       - name: Collect only rights-reviewed public descriptive metadata
         run: python scripts/collect_v034.py --output data/live_items.json
+      - name: Assemble bounded intelligence review queue (optional AI)
+        env:
+          SIGNAL_AI_ENABLED: ${{ vars.SIGNAL_AI_ENABLED }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.SIGNAL_AI_MODEL }}
+        run: python scripts/intelligence_v040.py --max-ai 6
       - name: Save compact public history on main
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/live_items.json
+          git add data/live_items.json data/intelligence.json
           if ! git diff --cached --quiet; then
             git commit -m "data: refresh reviewed metadata [skip ci]"
             git push origin HEAD:main
@@ -55,8 +62,10 @@ jobs:
       - name: Upload metadata report for audit
         uses: actions/upload-artifact@v4
         with:
-          name: signal-v034-metadata
-          path: data/live_items.json
+          name: signal-v040-metadata-and-triage
+          path: |
+            data/live_items.json
+            data/intelligence.json
           retention-days: 14
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4

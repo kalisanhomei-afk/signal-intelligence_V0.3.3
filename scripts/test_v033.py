@@ -21,8 +21,7 @@ with tempfile.TemporaryDirectory() as t:
     assert all(x['source_id'] in ('fed-monetary','bea-news','arxiv-ai','arxiv-robotics') and x.get('summary') is None for x in disc['items'])
     assert '來源接入' in (dest/'source-console.html').read_text(encoding='utf-8')
 wf=(BASE/'.github/workflows/signal-preflight-pages.yml').read_text(encoding='utf-8')
-assert 'SIGNAL_ENABLE_PROBE_SCHEDULE' in wf
-assert "github.event_name == 'workflow_dispatch'" in wf
-assert 'actions/deploy-pages@v4' in wf
-assert 'path: _site' in wf
+assert 'workflow_dispatch' in wf
+assert 'actions/deploy-pages' not in wf  # retired workflow never overrides live V0.4
+assert 'schedule:' not in wf and 'push:' not in wf
 print('PASS V0.3.3 compatibility: public allowlist, reviewed metadata only, source registry remains private')

@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#0b0b10">
-<title>視界 SIGNAL · 個人情報系統 V0.3.4</title>
+<title>視界 SIGNAL · 個人情報系統 V0.4.0</title>
 <style>
 :root{--black:#0b0b10;--paper:#ece6da;--gold:#c29b40;--golddeep:#8b6b2e;--white:#fff;--text:#26231f;--muted:#827b6f;--line:#ded8cb;--ivory:#faf8f4;--radius:17px;--shadow:0 18px 55px rgba(27,24,18,.055)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:var(--ivory);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft JhengHei",sans-serif;font-size:14px;line-height:1.68}button,input,select{font:inherit}button{cursor:pointer}a{color:var(--golddeep)}.serif{font-family:Georgia,"Noto Serif TC","PMingLiU",serif}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
@@ -18,6 +18,7 @@
 @media(max-width:1200px){.main{padding:0 26px 70px}.grid{grid-template-columns:minmax(0,1fr) 285px}.story{padding:17px}.riskgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:930px){.layout{display:block}.sidebar{display:none}.main{padding:0 21px 100px}.mobile-header{display:flex;justify-content:space-between;align-items:center;background:var(--black);color:#eee1c7;height:57px;padding:0 21px;position:sticky;top:0;z-index:9}.mobile-header strong{font-family:Georgia,serif;letter-spacing:.15em}.mobile-header span{font-size:10px;color:#bea66e}.mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:10;background:#0b0b10;justify-content:space-around;border-top:1px solid #74603c;padding:7px 4px calc(9px + env(safe-area-inset-bottom))}.mobile-nav button{border:0;background:none;color:#a99a7e;display:grid;gap:2px;justify-items:center;font-size:10px;padding:3px 4px;min-width:56px}.mobile-nav button.active{color:#f0d18d}.mobile-nav svg{width:19px;height:19px}.topbar{height:47px}.head{padding:24px 0 15px}.grid{grid-template-columns:minmax(0,1fr)}.side-col{display:grid;grid-template-columns:1fr 1fr;gap:15px}.side-col .sidepanel,.side-col .insight{margin:0}.week-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.main{padding:0 15px 103px}.topbar{height:45px}.topbar .status span:nth-child(1){display:none}.topbar .crumb{font-size:10px}.snapshot{padding:4px 8px}.head{align-items:flex-start;flex-direction:column;gap:9px}.head h1{font-size:32px}.hero{display:block;min-height:0}.hero-left{padding:24px 24px 25px;min-height:250px}.hero h2{font-size:29px}.hero-art{height:7px}.hero-art:before,.hero-art:after,.hero-art strong{display:none}.story-grid{grid-template-columns:1fr}.filters{gap:6px}.search{flex:1 1 100%;margin:6px 0 0}.side-col{grid-template-columns:1fr}.week-grid{grid-template-columns:1fr}.riskgrid{grid-template-columns:1fr 1fr}.riskcol{padding:13px}.event-full{grid-template-columns:52px minmax(0,1fr);gap:11px;padding:14px}.event-full .right{grid-column:2;text-align:left;display:flex;gap:7px}.event-full .day{padding-right:8px}.portfolio-note{grid-template-columns:1fr}.dialog{padding:24px 19px}.dialog h2{font-size:21px}.sectiontitle h2{font-size:16px}}
+@media(max-width:460px){.mobile-nav{overflow-x:auto;justify-content:flex-start;scrollbar-width:none}.mobile-nav button{flex:0 0 51px;min-width:51px}}
 </style>
 </head>
 <body>
@@ -27,7 +28,7 @@
 <div class="brand"><small>PERSONAL INTELLIGENCE</small><strong>SIGNAL</strong><em>視界｜個人情報研究所</em></div>
 <div class="side-heading">INTELLIGENCE DESK</div>
 <nav id="deskNav"></nav><div class="side-spacer"></div>
-<div class="side-note"><b>設計理念 · Beyond the feed</b><p>不追逐大量資訊，而是辨識真正重要的變化；同時保留不在既有興趣內的探索訊號。</p></div><div class="side-bottom">V0.3 · 公開來源發現引擎 · 2026.11.05</div>
+<div class="side-note"><b>設計理念 · Beyond the feed</b><p>不追逐大量資訊，而是辨識真正重要的變化；同時保留不在既有興趣內的探索訊號。</p></div><div class="side-bottom">V0.4 · 標題級情報初篩 · 2026.11.05</div>
 </aside>
 <main class="main">
 <div class="topbar"><div class="crumb">SIGNAL / <span id="crumb">TODAY'S BRIEF</span></div><div class="status"><span><i class="dot"></i>編輯精選為靜態樣本</span><span class="snapshot" id="feedSyncStatus">新發現尚未同步</span></div></div>
@@ -37,7 +38,7 @@
 <div class="grid"><div>
 <div class="sectiontitle"><h2><span class="tiny">SELECTED INTELLIGENCE</span>值得關注的資訊</h2><span class="hint" id="storycount"></span></div>
 <div class="filters" id="storyFilters"></div><div class="story-grid" id="storyGrid"></div><div id="moreStories" style="text-align:center;margin:17px 0 0"></div>
-<div class="footnote">以上為「可追溯來源的近期待選情報」，不是自動同步的今日快訊；所有事件與原始消息日期可在詳情查看。重要性分數屬編輯測試值，不是市場預測。</div><div class="sectiontitle"><h2><span class="tiny">NEWLY DISCOVERED · TO BE VERIFIED</span>新發現／待審資訊</h2><span class="hint">來源標題，不代表事實已驗證</span></div><div class="card" id="autoFeed" style="padding:17px"><div class="empty">尚未取得自動蒐集資料；可從「新發現」查看資料來源健康度。</div></div>
+<div class="footnote">以上為「可追溯來源的近期待選情報」，不是自動同步的今日快訊；所有事件與原始消息日期可在詳情查看。重要性分數屬編輯測試值，不是市場預測。</div><div class="sectiontitle"><h2><span class="tiny">NEWLY DISCOVERED · TO BE VERIFIED</span>新發現／待審資訊</h2><span class="hint">來源標題，不代表事實已驗證</span></div><div class="card" id="autoFeed" style="padding:17px"><div class="empty">尚未取得自動蒐集資料；可從「新發現」查看資料來源健康度。</div></div><div style="margin:12px 0 0"><button class="btn dark" data-page="triage">查看跨來源情報初篩（待審，不代表查證）→</button></div>
 </div><div class="side-col"><div class="card sidepanel"><div class="sectiontitle" style="margin:0 0 3px"><h2><span class="tiny">UPCOMING EVENTS</span>未來重大事件</h2></div><div id="upcoming"></div><button class="btn plain" style="width:100%" data-page="events">查看完整行事曆 →</button></div>
 <div class="insight"><div class="eyebrow">ANTI-ECHO CHAMBER</div><h3 class="serif">今天的盲點探索</h3><p>不要只追蹤 AI 與金融。從工程設計、資安與能源系統等較少出現在財經頭條的技術訊號，尋找被忽略的跨領域影響。</p><div class="mini-line"></div><div id="blindSpot"></div></div></div></div>
 </section>
@@ -52,6 +53,15 @@
 <div class="card health-panel" id="sourceHealth"><div class="empty">尚無來源檢測紀錄。</div></div>
 <div class="footnote"><a class="btn dark" href="./source-console.html">查看首批 10 條候選來源與審核進度 →</a>　來源接入狀態與採集健康度不同；候選資料不能當作正式新聞。</div>
 <div class="footnote">採集器只讀取公開 RSS/Atom 的標題與連結，不會為原文生成事實摘要。研究論文為預印本時不代表已經同儕審查；社群消息也不是獨立證據。資料時間採台灣時區，無發布時間者標為「日期未提供」。</div>
+</section>
+<section id="page-triage" class="page">
+<div class="head"><div><div class="eyebrow">SIGNAL · EVIDENCE-BOUNDED TRIAGE</div><h1 class="serif">情報初篩<span style="color:var(--golddeep)">.</span></h1><p>來源優先、可追溯、把未知留在未知。先挑選研究候選，再進行人工或跨來源查證。</p></div><div class="headtools"><button class="btn" data-page="discover">查看原始標題 ↗</button></div></div>
+<div class="feedstate" id="triageStatus">尚未執行情報初篩；不會以假資料代替 AI 結果。</div>
+<div class="discover-kpis" id="triageKpis"></div>
+<div class="card" style="padding:16px 18px;margin:16px 0;background:#faf7ef"><b style="color:var(--golddeep)">品質與覆蓋限制</b><p id="triageCoverage" style="margin:6px 0;color:#746956;font-size:12px;line-height:1.8">目前未載入分析資料。</p></div>
+<div class="sectiontitle"><h2><span class="tiny">REVIEW QUEUE · NOT VERIFIED NEWS</span>待審情報候選</h2><span class="hint">「優先檢視」不是全球重要性或投資評級</span></div>
+<div class="discovery-grid" id="triageList"><div class="empty">目前沒有分析資料。</div></div>
+<div class="footnote">此模組不抓全文、不推斷已獲同儕審查、不提供價格預測。AI 標題解讀必須以人工查核原文及獨立資料來源後，才能提升為正式情報。</div>
 </section>
 <section id="page-weekly" class="page"><div class="head"><div><div class="eyebrow">EDITORIAL SYNTHESIS</div><h1 class="serif">本週觀察<span style="color:var(--golddeep)">.</span></h1><p>用「變化的關聯」整理資訊，不重複貼上七天的新聞。</p></div></div>
 <div class="feedstate">本頁為本期人工編輯之跨事件分析樣本；尚未上線自動每週研究報告。</div><div class="week-grid">
@@ -74,13 +84,14 @@
 <script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id), safe=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-const icons={discover:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4M8 11h6M11 8v6"/></svg>',today:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11.5 12 4l9 7.5V21H3v-9.5Z"/><path d="M9 21v-7h6v7"/></svg>',weekly:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h16v16H4zM4 9h16M9 4v16M14 13h4M14 17h4"/></svg>',events:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 2v6M17 2v6M3 10h18"/></svg>',markets:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 19h18M5 15l4-5 4 3 6-8"/><path d="M16 5h3v3"/></svg>',follow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h14v17l-7-5-7 5z"/></svg>'};
-const NAV=[['today','今日情報','TODAY\'S BRIEF'],['discover','新發現','SOURCE DISCOVERY'],['weekly','本週觀察','WEEKLY REVIEW'],['events','重大事件','EVENT CALENDAR'],['markets','投資研究','MARKET RESEARCH'],['follow','我的追蹤','MY TRACKING']];
+const icons={triage:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 4h18v16H3zM7 9h10M7 13h6M7 17h5"/></svg>',discover:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4M8 11h6M11 8v6"/></svg>',today:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11.5 12 4l9 7.5V21H3v-9.5Z"/><path d="M9 21v-7h6v7"/></svg>',weekly:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h16v16H4zM4 9h16M9 4v16M14 13h4M14 17h4"/></svg>',events:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 2v6M17 2v6M3 10h18"/></svg>',markets:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 19h18M5 15l4-5 4 3 6-8"/><path d="M16 5h3v3"/></svg>',follow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h14v17l-7-5-7 5z"/></svg>'};
+const NAV=[['today','今日情報','TODAY\'S BRIEF'],['discover','新發現','SOURCE DISCOVERY'],['triage','情報初篩','REVIEW QUEUE'],['weekly','本週觀察','WEEKLY REVIEW'],['events','重大事件','EVENT CALENDAR'],['markets','投資研究','MARKET RESEARCH'],['follow','我的追蹤','MY TRACKING']];
 const SNAPSHOT='2026-11-05';
 const LOCAL_DATE=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 const twDate=raw=>{if(!raw)return '日期未提供';let v=new Date(raw);return Number.isNaN(v.getTime())?'日期未提供':new Intl.DateTimeFormat('zh-TW',{timeZone:'Asia/Taipei',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(v)+'（台灣）'};
 const safeHref=url=>{try{let u=new URL(url);return ['https:','http:'].includes(u.protocol)?safe(url):'#'}catch{return '#'}};
 let DISCOVERY={meta:{},items:[],sources:[]};
+let TRIAGE={meta:{},items:[]};
 let FEED=JSON.parse($('seed').textContent);let STORIES=FEED.stories,EVENTS=FEED.events;
 let prefs={};try{prefs=JSON.parse(localStorage.getItem('signal-v02-prefs')||'{}')}catch{};
 const state={page:'today',category:'全部',keyword:'',days:7,track:'saved',showAll:false,discoveryCategory:'全部',discoveryKeyword:'',discoveryLimit:48};
@@ -98,7 +109,7 @@ function fullEvent(e){const d=dateKey(e).slice(-2);return `<article class="card 
 function events(){const selected=EVENTS.filter(e=>eventDays(e)>=0&&eventDays(e)<state.days).sort((a,b)=>a.start.localeCompare(b.start));$('eventsList').innerHTML=selected.length?selected.map(fullEvent).join(''):'<div class="empty">該時段沒有收錄的重大事件。</div>';$('eventRanges').querySelectorAll('[data-days]').forEach(b=>b.classList.toggle('active',Number(b.dataset.days)===state.days));}
 function weekly(){const list=EVENTS.filter(e=>eventDays(e)>=0&&eventDays(e)<=7).sort((a,b)=>a.start.localeCompare(b.start));$('weeklyEvents').innerHTML=list.map(fullEvent).join('')||'<div class="empty">本週無收錄的重要事件。</div>'}
 function tracking(){document.querySelectorAll('[data-track]').forEach(b=>b.classList.toggle('active',b.dataset.track===state.track));const rows=STORIES.filter(a=>saved(a.id)[state.track]);$('trackList').innerHTML=rows.length?rows.map(a=>`<div class="track-row"><div><span class="tag">${sc(a.category)}</span><h3>${sc(a.title)}</h3><p>${sc(a.date)} · ${sc(a.source)}</p></div><button class="btn" data-story="${a.id}">閱讀</button></div>`).join(''):'<div class="track-empty">目前沒有內容。可在情報卡片中收藏，或進入詳情將主題加入追蹤。</div>'}
-function render(){if(state.page==='today')today();if(state.page==='discover')discover();if(state.page==='events')events();if(state.page==='weekly')weekly();if(state.page==='follow')tracking();}
+function render(){if(state.page==='today')today();if(state.page==='discover')discover();if(state.page==='triage')renderTriage();if(state.page==='events')events();if(state.page==='weekly')weekly();if(state.page==='follow')tracking();}
 function showStory(id){const a=STORIES.find(x=>x.id===id);if(!a)return;const p=saved(id);$('dialog').innerHTML=`<button class="x" data-close aria-label="關閉">×</button><div class="eyebrow">${sc(a.category)} / ${sc(a.signal)} / ${sc(a.date)}</div><h2 class="serif">${sc(a.title)}</h2><p class="lead">${sc(a.source)} · 原始出處可追溯 · 本文為簡短編輯整理與分析</p><div class="detail-section"><b>已知事實</b><p>${sc(a.summary)}</p></div><div class="detail-section"><b>為什麼值得關注？（分析推論）</b><p>${sc(a.why)}</p></div><div class="detail-section"><b>後續應驗證什麼？</b><p>${sc(a.watch)}</p></div><div class="detail-section"><b>不確定性與反面考量</b><p>${sc(a.caveat)}</p></div><div class="detail-section"><b>判斷資訊</b><p>編輯重要性 ${a.importance}/100 · 個人關聯度 ${a.relevance}/100 · ${a.explore?'跨領域探索候選':'核心領域'}<br>關聯資產標籤：${sc((a.markets||[]).join('、'))}（不代表交易建議）</p></div><div class="detail-section"><b>原始來源</b><p><a href="${sc(a.url)}" target="_blank" rel="noopener noreferrer">${sc(a.source)} ↗</a></p></div><div class="actions"><button class="btn gold" data-flag="follow" data-id="${a.id}">${p.follow?'✓ 已追蹤':'＋ 追蹤此主題'}</button><button class="btn" data-flag="saved" data-id="${a.id}">${p.saved?'★ 已收藏':'☆ 收藏'}</button><button class="btn" data-flag="read" data-id="${a.id}">${p.read?'✓ 已閱讀':'標記已閱讀'}</button></div>`;openModal();}
 function showEvent(id){const e=EVENTS.find(x=>x.id===id);if(!e)return;$('dialog').innerHTML=`<button class="x" data-close aria-label="關閉">×</button><div class="eyebrow">EVENT INTELLIGENCE / ${sc(e.category)}</div><h2 class="serif">${sc(e.title)}</h2><p class="lead">${sc(e.display)}（台灣時間）· ${sc(e.status)}</p><div class="detail-section"><b>提前觀察的重點</b><p>${sc(e.watch)}</p></div><div class="detail-section"><b>來源與時間驗證</b><p>來源：<a target="_blank" rel="noopener noreferrer" href="${sc(e.url)}">${sc(e.source)} ↗</a><br>核對基準：2026-11-05；若正式日期有修改，後續應以官方為準。</p></div><div class="detail-section"><b>事後結果</b><p>目前尚未發生。正式版需要事件公布後由官方資料更新「預期與實際」差異；原型不會假造結果。</p></div><div class="actions"><button class="btn gold" data-ics="${e.id}">下載 .ics 行事曆（提前一天提醒）</button></div>`;openModal();}
 function openModal(){$('overlay').classList.add('show');document.body.style.overflow='hidden';$('dialog').scrollTop=0}function closeModal(){$('overlay').classList.remove('show');document.body.style.overflow=''}
@@ -170,7 +181,25 @@ async function loadDiscovery(){
 }
 
 
-navRender();render();loadGenerated();loadDiscovery();
+
+function renderTriage(){
+ const m=TRIAGE.meta||{},arr=TRIAGE.items||[];
+ const st=$('triageStatus');if(!m.version){st.textContent='尚未取得初篩資料。可先完成 GitHub Actions 的 V0.4 更新；缺少 API 金鑰不會偽造分析。';}
+ else {const ai=m.ai_status==='active'?`AI 標題分析已配置 · 成功 ${m.ai_successes_this_run||0} / 嘗試 ${m.ai_calls_this_run||0} 筆${(m.ai_failures_this_run||0)>0?` · 失敗代碼 ${sc((m.ai_error_codes||[]).join(', '))}`:''}`:(m.ai_status==='missing_api_key'?'未設定 AI 金鑰 · 只有規則初篩':'AI 未啟用 · 只有規則初篩');st.textContent=`${ai}｜初篩生成 ${twDate(m.generated_at)}｜採集來源最近成功 ${twDate(m.source_last_success_at)}${!recentEnough(m.source_last_success_at)?' · ⚠ 來源上次成功已超過48小時':''}。所有內容仍待查證。`;}
+ const pubs=Object.keys(m.publisher_counts||{}).length;
+ $('triageKpis').innerHTML=`<div class="card discover-kpi"><small>待審候選</small><strong>${arr.length}</strong><span>不能視為重大事件數</span></div><div class="card discover-kpi"><small>獨立發布機構</small><strong>${pubs}</strong><span>來源數≠證據數</span></div><div class="card discover-kpi"><small>AI 標題註記</small><strong>${arr.filter(x=>x.analysis_mode==='ai_title_only').length}</strong><span>非全文摘要／非查證</span></div>`;
+ $('triageCoverage').textContent=m.coverage_warning||'目前資料不足，未涵蓋所有政治、科技與財經議題。';
+ $('triageList').innerHTML=arr.length?arr.map(x=>{const ai=x.analysis_mode==='ai_title_only';return `<article class="card discovered-card"><header><span class="tag pale">${sc(x.category)} · ${sc(x.triage_priority)}</span><span class="sourcebadge">${ai?'AI 標題推敲':'規則初篩'}</span></header><h3>${sc(ai?x.zh_title:x.title)}</h3>${ai?`<p style="font-size:11px;color:#887c6a">原文標題：${sc(x.title)}</p>`:''}<p><b style="color:#876c36">來源：</b>${sc(x.source)} · ${twDate(x.published_at)}</p>${ai?`<p><b>可能值得追蹤：</b>${sc(x.monitor_reason)}</p><p><b>應查核：</b>${sc(x.verification_question)}</p><p style="color:#8a7862"><b>尚未知：</b>${sc(x.ambiguity_note)}</p>`:'<p>尚未啟用 AI 註記；目前無法根據標題推斷事件影響，請開啟原文評估。</p>'}<footer><span class="unreviewed">${sc(x.evidence_scope||'只有標題')} · 無獨立佐證</span><a class="btn" href="${safeHref(x.url)}" target="_blank" rel="noopener noreferrer">原文 ↗</a></footer></article>`}).join(''):'<div class="empty">沒有初篩候選。請檢查資料蒐集更新是否成功。</div>';
+}
+async function loadTriage(){
+ if(!/^https?:$/.test(location.protocol)){renderTriage();return;}
+ try{const r=await fetch('./data/intelligence.json?fresh='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
+ const obj=await r.json();if(!Array.isArray(obj.items)||obj.meta?.rights_scope!=='descriptive_public_metadata_only')throw Error('bad intelligence');
+ TRIAGE=obj;}catch(e){TRIAGE={meta:{},items:[]};console.warn('intelligence data unavailable',e);}
+ renderTriage();
+}
+
+navRender();render();loadGenerated();loadDiscovery();loadTriage();
 })();
 </script>
 </body></html>

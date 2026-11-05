@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "version": "0.4.0",
+    "generated_at": "2026-11-05T11:34:01+00:00",
+    "source_last_success_at": null,
+    "source_status": "not_run",
+    "mode": "rules_only",
+    "analysis_request": "disabled",
+    "ai_status": "off",
+    "ai_calls_this_run": 0,
+    "ai_failures_this_run": 0,
+    "cached_ai_annotations": 0,
+    "candidate_count": 0,
+    "input_count": 0,
+    "publisher_counts": {},
+    "coverage_warning": "來源僅 Fed、BEA、arXiv 等官方／研究資料，未涵蓋全球政治、產業新聞及其他地域；不能視為完整每日情報。",
+    "missing_domains": [
+      "政治",
+      "產業",
+      "能源",
+      "社會"
+    ],
+    "explanation": "此頁為初篩候選。排序屬可解釋的規則，不代表全球重要程度；AI 只看標題，不是全文摘要，也沒有獨立交叉查證。",
+    "rights_scope": "descriptive_public_metadata_only"
+  },
+  "items": []
+}
