@@ -55,9 +55,14 @@ def build(output,source_root=BASE,*,strict=False):
     live=json.loads((output/'data/discovered.json').read_text(encoding='utf-8'))
     if live.get('meta',{}).get('rights_scope')!='descriptive_public_metadata_only':
         raise RuntimeError('Unsafe metadata: rights scope not approved')
+    # Revalidate source-id + publisher pair against the exact, reviewed feed allowlist.
+    from collect_v034 import checked_sources
+    config=json.loads((source_root/'data/v034_sources.json').read_text(encoding='utf-8')) if (source_root/'data/v034_sources.json').is_file() else json.loads((BASE/'data/v034_sources.json').read_text(encoding='utf-8'))
+    approved={s['id']:s['publisher_id'] for s in checked_sources(config)}
     for item in live.get('items',[]):
-        if item.get('summary') is not None or item.get('source_id') not in ('fed-monetary','bea-news','arxiv-ai','arxiv-robotics'):
-            raise RuntimeError('Unsafe metadata: unknown source or article content in export')
+        if (item.get('summary') is not None or item.get('source_id') not in approved
+            or item.get('publisher_id')!=approved.get(item.get('source_id'))):
+            raise RuntimeError('Unsafe metadata: unapproved source/publisher or article content in export')
     # Triage can only annotate public, approved source metadata; no unverifiable source injection.
     triage=json.loads((output/'data/intelligence.json').read_text(encoding='utf-8'))
     if triage.get('meta',{}).get('rights_scope')!='descriptive_public_metadata_only':
@@ -161,6 +166,15 @@ def build(output,source_root=BASE,*,strict=False):
     elif strict:
         raise FileNotFoundError('Missing V0.4.3 coverage audit; production deployment blocked')
 
+    # V0.4.4 probationary input checks: only status/counts, never candidate headlines.
+    probe_path=source_root/'data/source_expansion_v044.json'
+    if probe_path.is_file():
+        report=json.loads(probe_path.read_text(encoding='utf-8'))
+        from source_expansion_v044 import check_report
+        check_report(report)
+        shutil.copyfile(probe_path,output/'data/source_expansion_v044.json')
+    elif strict:
+        raise FileNotFoundError('V0.4.4 candidate probe report required')
     published=sorted(str(p.relative_to(output)) for p in output.rglob('*') if p.is_file())
     print('Public site files:',json.dumps(published,ensure_ascii=False))
     return published

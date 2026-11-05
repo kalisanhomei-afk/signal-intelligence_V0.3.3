@@ -22,8 +22,8 @@ DIMENSIONS=(
  ('ai_preprint','AI／機器人研究預印本',('arxiv',)),
  ('world_politics','全球政治與外交事件',()),
  ('industry','企業／產業與商業模式',()),
- ('engineering','工程產品／量產與技術商業化',()),
- ('energy','能源與商品市場',()),
+ ('engineering','工程產品／量產與技術商業化',('nasa',)),
+ ('energy','能源與商品市場',('eia',)),
  ('taiwan','台灣本地經濟／政治／科技',()),
  ('japan','日本經濟／產業／政策',()),
  ('brazil','巴西經濟／產業／政策',()),
@@ -141,7 +141,7 @@ def build(live, evidence, channels, benchmark, *,now=None):
       'verified_claims':0,'independently_confirmed_claims':0,'independent_corrob_evidence_items':0,
       'note':'僅診斷已接入資料來源的領域覆蓋與候選資料；不能量測全球重要新聞遺漏率或宣稱任何主張已驗證。',
       'anti_echo_warning':'多個 RSS 頻道若來自同一發布機構，不等於多個獨立證據。',
-      'source_limitations':['目前只有美國官方財經與 arXiv 預印本來源','全球政治、企業/產業、台日巴等缺少正式採集來源','不能用 AI 推論補齊未蒐集消息']
+      'source_limitations':['配置已新增 EIA/NASA 官方 RSS，但須依本次來源狀態確認實際讀取成功','全球政治、獨立產業分析及台日巴仍缺少正式採集來源','不能用 AI 推論補齊未蒐集消息']
      },'dimensions':status,'publisher_activity':latest_by_pub,
      'benchmark_candidates':manual,
      'next_actions':[

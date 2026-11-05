@@ -1,4 +1,4 @@
-name: SIGNAL V0.4.3 source coverage audit + Pages
+name: SIGNAL V0.4.4 official source expansion + Pages
 
 on:
   workflow_dispatch:
@@ -38,8 +38,11 @@ jobs:
           python scripts/test_v041.py
           python scripts/test_v042.py
           python scripts/test_v043.py
+          python scripts/test_v044.py
       - name: Collect only rights-reviewed public descriptive metadata
         run: python scripts/collect_v034.py --output data/live_items.json
+      - name: Probe newly evaluated public feeds and probe-only endpoints (never republish held content)
+        run: python scripts/source_expansion_v044.py
       - name: Assemble bounded intelligence review queue (optional AI)
         env:
           SIGNAL_AI_ENABLED: ${{ vars.SIGNAL_AI_ENABLED }}
@@ -57,7 +60,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/live_items.json data/intelligence.json data/evidence_audit.json data/evidence_enriched.json data/source_quality_v043.json
+          git add data/live_items.json data/intelligence.json data/evidence_audit.json data/evidence_enriched.json data/source_quality_v043.json data/source_expansion_v044.json
           if ! git diff --cached --quiet; then
             git commit -m "data: refresh reviewed metadata [skip ci]"
             git push origin HEAD:main
@@ -72,16 +75,19 @@ jobs:
         run: python scripts/v042_summary.py --evidence data/evidence_enriched.json --append "$GITHUB_STEP_SUMMARY"
       - name: Publish source-coverage limitations and missing benchmark warning
         run: python scripts/v043_summary.py --input data/source_quality_v043.json --append "$GITHUB_STEP_SUMMARY"
+      - name: Publish admission and license gate report
+        run: python scripts/v044_summary.py
       - name: Upload metadata report for audit
         uses: actions/upload-artifact@v4
         with:
-          name: signal-v043-evidence-and-source-coverage-audit
+          name: signal-v044-source-expansion-rights-gates
           path: |
             data/live_items.json
             data/intelligence.json
             data/evidence_audit.json
             data/evidence_enriched.json
             data/source_quality_v043.json
+            data/source_expansion_v044.json
           retention-days: 14
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4

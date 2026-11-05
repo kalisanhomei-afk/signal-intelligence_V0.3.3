@@ -23,6 +23,8 @@ EXPECTED = {
     'bea-news': ('bea', 'apps.bea.gov', 'https://apps.bea.gov/rss/rss.xml'),
     'arxiv-ai': ('arxiv', 'rss.arxiv.org', 'https://rss.arxiv.org/rss/cs.AI'),
     'arxiv-robotics': ('arxiv', 'rss.arxiv.org', 'https://rss.arxiv.org/rss/cs.RO'),
+    'eia-energy': ('eia', 'www.eia.gov', 'https://www.eia.gov/rss/todayinenergy.xml'),
+    'nasa-news': ('nasa', 'www.nasa.gov', 'https://www.nasa.gov/feed/'),
 }
 
 
@@ -152,6 +154,9 @@ def collect(sources, previous, loader, *, now=None, ttl_days=45, limit=420, paus
             cleaned.append(item)
     cleaned.sort(key=lambda x:(x.get('published_at') or x.get('first_seen_at') or '', x['id']),reverse=True)
     cleaned = cleaned[:limit]
+    # Important: count only *retained* first-seen records. Older RSS items beyond
+    # the 45-day window may recur in each poll; they are not new intelligence.
+    new_count = sum(x['id'] not in old_by_id for x in cleaned)
     meta = previous.get('meta',{})
     return {
         'meta': {

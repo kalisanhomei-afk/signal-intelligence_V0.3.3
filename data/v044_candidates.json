@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.4.4",
+  "meaning": "TECHNICAL PROBE IS NOT RIGHTS CLEARANCE OR TRUST CERTIFICATION",
+  "reviewed_at": "2026-11-05",
+  "candidates": [
+    {
+      "id": "eia-energy",
+      "publisher_id": "eia",
+      "name": "EIA Today in Energy",
+      "feed_url": "https://www.eia.gov/rss/todayinenergy.xml",
+      "reference_url": "https://www.eia.gov/tools/rssfeeds/",
+      "rights_url": "https://www.eia.gov/TODAYINENERGY/about.php",
+      "rights_status": "approved_metadata_trial",
+      "publish_status": "trial_active",
+      "reason": "EIA 明示未註明著作權者原則上公有領域；正式只存標題/日期/連結、避免第三方內容。",
+      "category": "能源"
+    },
+    {
+      "id": "nasa-news",
+      "publisher_id": "nasa",
+      "name": "NASA News",
+      "feed_url": "https://www.nasa.gov/feed/",
+      "reference_url": "https://www.nasa.gov/rss-feeds/",
+      "rights_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "rights_status": "approved_metadata_trial",
+      "publish_status": "trial_active",
+      "reason": "NASA 公開資訊可用於不暗示背書的資訊用途；只存標題/日期/連結，不存可能第三方擁有權利的影像。",
+      "category": "科技"
+    },
+    {
+      "id": "boj-news",
+      "publisher_id": "boj",
+      "name": "Bank of Japan What's New",
+      "feed_url": "https://www.boj.or.jp/en/rss/whatsnew.xml",
+      "reference_url": "https://www.boj.or.jp/en/tips.htm",
+      "rights_url": "https://www.boj.or.jp/en/about/copyright.htm",
+      "rights_status": "hold_commercial_permission",
+      "publish_status": "probe_only",
+      "reason": "官方允許部分非商業重製，但商用需申請；此次僅測試技術，不發布任何摘要或標題。",
+      "category": "財經"
+    },
+    {
+      "id": "ecb-press",
+      "publisher_id": "ecb",
+      "name": "ECB Press",
+      "feed_url": "https://www.ecb.europa.eu/rss/press.html",
+      "reference_url": "https://www.ecb.europa.eu/home/html/rss.en.html",
+      "rights_url": "https://www.ecb.europa.eu/services/using-our-site/disclaimer/html/index.en.html",
+      "rights_status": "hold_rights_review",
+      "publish_status": "probe_only",
+      "reason": "官方提供 RSS，仍需確認再利用限制與允許的資料欄位；不可僅憑 RSS 存在視為可重製。",
+      "category": "財經"
+    },
+    {
+      "id": "twse-news",
+      "publisher_id": "twse",
+      "name": "TWSE News RSS",
+      "feed_url": "",
+      "reference_url": "https://www.twse.com.tw/zh/terms/rss.html",
+      "rights_url": "https://www.twse.com.tw/zh/terms/rss.html",
+      "rights_status": "hold_reading_only",
+      "publish_status": "manual_review_only",
+      "reason": "證交所明示 RSS 僅供使用者閱讀，新聞內容權利屬權利人；不得自動公開鏡像或摘要。",
+      "category": "台灣"
+    }
+  ]
+}

@@ -9,8 +9,8 @@ from refresh import parse_xml
 from build_public_site import build
 P=Path(__file__).resolve().parents[1]
 S=checked_sources(json.loads((P/'data/v034_sources.json').read_text(encoding='utf-8')))
-assert len(S)==4 and len({s['publisher_id'] for s in S})==3
-assert len({s['url'] for s in S})==4
+assert len(S)==6 and len({s['publisher_id'] for s in S})==5
+assert len({s['url'] for s in S})==6
 assert all(s['status']=='metadata_only' and s['evidence_url'].startswith('https://') for s in S)
 for edit in (lambda a:a.append(dict(a[0],id='bbc-world')),
              lambda a:a[0].update(url='https://www.federalreserve.gov/unreviewed.xml'),
@@ -28,20 +28,20 @@ xml=lambda i: (f'<rss version="2.0"><channel><title>TEST</title><item><title>TES
 loader=lambda s:parse_xml(xml(s['id']),s)
 old={'meta':{},'items':[],'sources':[]}
 first=collect(S,old,loader,now=moment,pause=lambda n:None)
-assert first['meta']['successful_sources']==4
-assert first['meta']['new_items_in_run']==4
-assert len(first['items'])==4
+assert first['meta']['successful_sources']==6
+assert first['meta']['new_items_in_run']==6
+assert len(first['items'])==6
 assert all(x.get('summary') is None and x['title'].startswith('TEST ONLY') for x in first['items'])
 assert all('utm_' not in x['url'] for x in first['items'])
 second=collect(S,first,loader,now=moment+dt.timedelta(hours=12),pause=lambda n:None)
 assert second['meta']['new_items_in_run']==0
 assert first['items'][0]['first_seen_at']==second['items'][0]['first_seen_at']
 partial=collect(S,second,lambda s:(_ for _ in ()).throw(OSError('test 403')) if s['id']=='bea-news' else loader(s),now=moment+dt.timedelta(days=1),pause=lambda n:None)
-assert partial['meta']['successful_sources']==3 and partial['meta']['status']=='partial'
-assert len(partial['items'])==4
+assert partial['meta']['successful_sources']==5 and partial['meta']['status']=='partial'
+assert len(partial['items'])==6
 assert any(s['source_id']=='bea-news' and not s['ok'] for s in partial['sources'])
 all_fail=collect(S,partial,lambda s:(_ for _ in ()).throw(ConnectionError('test offline')),now=moment+dt.timedelta(days=2),pause=lambda n:None)
-assert all_fail['meta']['status']=='unavailable' and len(all_fail['items'])==4
+assert all_fail['meta']['status']=='unavailable' and len(all_fail['items'])==6
 assert all_fail['meta']['last_success_at']==partial['meta']['last_success_at']
 expired=collect(S,all_fail,lambda s:(_ for _ in ()).throw(ConnectionError('test offline')),now=moment+dt.timedelta(days=47),pause=lambda n:None)
 assert len(expired['items'])==0
@@ -59,7 +59,7 @@ with tempfile.TemporaryDirectory() as d:
     assert public['meta']['mode']=='official_metadata'
     assert public['meta']['rights_scope']=='descriptive_public_metadata_only'
     assert public['items']==orig['items'], 'Published metadata must match the approved live history'
-    assert all(x['source_id'] in ('fed-monetary','bea-news','arxiv-ai','arxiv-robotics')
+    assert all(x['source_id'] in ('fed-monetary','bea-news','arxiv-ai','arxiv-robotics','eia-energy','nasa-news')
                and x.get('summary') is None for x in public['items'])
     # Building a site after a real collection must publish only reviewed metadata.
     copyroot=root/'testproject'
@@ -75,7 +75,7 @@ with tempfile.TemporaryDirectory() as d:
     from evidence_v041 import build as build_evidence
     atomic_json(copyroot/'data/evidence_audit.json',build_evidence(partial,tri))
     rebuilt=build(root/'_site',source_root=copyroot)
-    assert len(json.loads((root/'_site/data/discovered.json').read_text())['items'])==4
+    assert len(json.loads((root/'_site/data/discovered.json').read_text())['items'])==6
     bad=copy.deepcopy(partial)
     bad['items'][0]['source_id']='unreviewed-media'
     atomic_json(copyroot/'data/live_items.json',bad)

@@ -28,7 +28,7 @@
 <div class="brand"><small>PERSONAL INTELLIGENCE</small><strong>SIGNAL</strong><em>視界｜個人情報研究所</em></div>
 <div class="side-heading">INTELLIGENCE DESK</div>
 <nav id="deskNav"></nav><div class="side-spacer"></div>
-<div class="side-note"><b>設計理念 · Beyond the feed</b><p>不追逐大量資訊，而是辨識真正重要的變化；同時保留不在既有興趣內的探索訊號。</p></div><div class="side-bottom">V0.4.3 · 來源盲區與證據 · 2026.11.05</div>
+<div class="side-note"><b>設計理念 · Beyond the feed</b><p>不追逐大量資訊，而是辨識真正重要的變化；同時保留不在既有興趣內的探索訊號。</p></div><div class="side-bottom">V0.4.4 · 來源品質與覆蓋 · 2026.11.05</div>
 </aside>
 <main class="main">
 <div class="topbar"><div class="crumb">SIGNAL / <span id="crumb">TODAY'S BRIEF</span></div><div class="status"><span><i class="dot"></i>編輯精選為靜態樣本</span><span class="snapshot" id="feedSyncStatus">新發現尚未同步</span></div></div>
@@ -73,6 +73,9 @@
 <div class="feedstate" id="qualityStatus">尚未產生來源覆蓋診斷；未建立人工基準前，不顯示重大消息遺漏率。</div>
 <div class="discover-kpis" id="qualityKpis"></div>
 <div class="card" id="qualityDomains" style="padding:18px 20px;background:#fffdf9;margin-bottom:26px"><div class="empty">需先執行 V0.4.3 來源診斷。</div></div>
+<div class="sectiontitle"><h2><span class="tiny">RIGHTS-GATED SOURCE INTAKE / V0.4.4</span>優質來源擴充與授權狀態</h2><span class="hint">技術可讀 ≠ 內容可轉載</span></div>
+<div class="feedstate" id="v044Status">等待首次新來源連線檢測；保留原本來源與歷史資料。</div>
+<div class="card" id="v044Sources" style="padding:18px 20px;background:#fffdf9;margin-bottom:26px"><div class="empty">尚無新來源技術檢測結果。</div></div>
 <div class="sectiontitle"><h2><span class="tiny">AUDIT QUEUE · NO CERTIFICATION</span>需要查證的內容</h2><span class="hint">此處顯示缺口，不是可信度或全球重要性排名</span></div>
 <div class="discovery-grid" id="evidenceList"><div class="empty">尚無證據稽核結果。</div></div>
 <div class="footnote">資料頁面不儲存第三方全文、沒有驗證過新聞敘述，也不能證明論文已通過同儕審查。來源數量不等於支持同一主張的獨立證據數。</div>
@@ -263,6 +266,19 @@ async function loadQuality(){
  }catch(e){QUALITY={meta:{},dimensions:[]};console.warn('coverage diagnostics unavailable',e);}
  renderQuality();
 }
+async function loadExpansion(){
+  if(!/^https?:$/.test(location.protocol))return;
+  try{
+    const r=await fetch('./data/source_expansion_v044.json?fresh='+Date.now(),{cache:'no-store'});
+    if(!r.ok)throw Error('not yet published');
+    const d=await r.json(),m=d.meta||{},items=d.sources||[];
+    if(m.version!=='0.4.4'||m.status!=='source_probing_not_news_verification'||m.event_recall!==null||m.verified_claims!==0||items.length!==5)throw Error('not an approved probe report');
+    $('v044Status').textContent='來源候選 5 家：2 家官方描述性元資料試運行、2 家僅測試端點、1 家保留人工權利審查。技術可讀不代表獨立查證。';
+    const states={trial_active:'公開元資料試運行',probe_only:'只測連線／禁止轉載',manual_review_only:'人工審查／不連線'};
+    const tests={reachable_parsed:'已解析 RSS',unavailable:'未連通',not_attempted:'未執行'};
+    $('v044Sources').innerHTML=items.map(x=>`<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;padding:12px 0;border-bottom:1px solid #ede4d4;font-size:12px"><div><b>${sc(x.name)}</b><div style="color:#8a7e6a;font-size:11px">${sc(states[x.stage]||x.stage)} · ${sc(x.rights_status)}</div></div><span style="color:${x.test_state==='reachable_parsed'?'#4d806b':'#a16d42'}">${sc(tests[x.test_state]||'未驗證')} · ${x.readable_entries==null?'—':Number(x.readable_entries)} 筆</span></div>`).join('')+`<p style="font-size:11px;line-height:1.8;color:#81725c;margin:12px 0 0">本模組只展示來源進入門檻，不代表完成世界重大事件篩選或查證；未授權來源不會公開其標題與摘要。</p>`;
+  }catch(e){console.warn('V0.4.4 rights-gated report missing or invalid',e);}
+}
 async function loadTriage(){
  if(!/^https?:$/.test(location.protocol)){renderTriage();return;}
  try{const r=await fetch('./data/intelligence.json?fresh='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
@@ -271,7 +287,7 @@ async function loadTriage(){
  renderTriage();
 }
 
-navRender();render();loadGenerated();loadDiscovery();loadTriage();loadEvidence();loadQuality();
+navRender();render();loadGenerated();loadDiscovery();loadTriage();loadEvidence();loadQuality();loadExpansion();
 })();
 </script>
 </body></html>

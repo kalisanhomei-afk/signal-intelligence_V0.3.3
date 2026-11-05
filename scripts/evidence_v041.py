@@ -16,10 +16,14 @@ PUBLISHERS={
          'questions':['是否核對原始聲明／會議紀錄全文？','是否區分決策日期、發布時間與市場預期？','是否有獨立報導確認關鍵細節？']},
  'bea': {'host':'bea.gov','role':'第一手統計機構','evidence_kind':'官方統計發布元資料',
          'questions':['是否核對官方表格、統計期間與數值？','是首次估計還是修正值？是否有後續更正？','有沒有可信的獨立解讀及不同假設？']},
+ 'eia': {'host':'eia.gov','role':'第一手能源統計機構','evidence_kind':'能源統計與分析機構公開標題元資料',
+         'questions':['是否核對 EIA 正式統計來源、期間與單位？','是實際數據還是預測／情境？','有無其他機構或市場資料交叉驗證？']},
+ 'nasa': {'host':'nasa.gov','role':'第一手航太科研機構','evidence_kind':'航太與技術機構公開消息標題元資料',
+         'questions':['是否核對 NASA 原始新聞及任務紀錄？','是研究、測試、實際部署或商業化？','相關成果有無獨立測試或第三方研究？']},
  'arxiv': {'host':'arxiv.org','role':'研究預印本儲存平台','evidence_kind':'未確認同儕審查之預印本元資料',
          'questions':['是否閱讀摘要或論文、確認研究方法與樣本？','是否已通過同儕審查或有獨立重現結果？','有沒有實際部署、效能基準及限制證據？']},
 }
-SOURCE_TO_PUB={'fed-monetary':'fed','bea-news':'bea','arxiv-ai':'arxiv','arxiv-robotics':'arxiv'}
+SOURCE_TO_PUB={'fed-monetary':'fed','bea-news':'bea','arxiv-ai':'arxiv','arxiv-robotics':'arxiv','eia-energy':'eia','nasa-news':'nasa'}
 
 def load(path,default):
     path=Path(path)
@@ -74,7 +78,7 @@ def build(articles,triage,*,now=None):
        'excluded_count':len(triage.get('items',[]))-len(out),'publisher_count':len(publishers),
        'publishers':publishers,'verified_claims':0,'independently_confirmed_claims':0,
        'read_bodies':0,'importance_assessments':0,
-       'coverage_warning':'來源只涵蓋 Fed、BEA 與 arXiv；重大政治、產業、其他國家／地域及多觀點尚未完整覆蓋。',
+       'coverage_warning':'來源配置新增 EIA 與 NASA，實際可用性依當次採集狀態；重大政治、產業、其他國家與獨立佐證仍不足。',
        'note':'M0 = 只有標題與來源元資料。資料進入審核清單不等於已證實、不等於全球重要性、不構成投資判斷。',
        'risk_flags':['來源覆蓋不足','未閱讀全文','缺乏獨立佐證','研究預印本未確認同儕審查']
      },'items':out}
