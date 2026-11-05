@@ -53,9 +53,15 @@ with tempfile.TemporaryDirectory() as d:
     assert 'data/discovered.json' in out
     assert 'data/v034_sources.json' not in out and 'data/source_registry.json' not in out
     public=json.loads((target/'data/discovered.json').read_text(encoding='utf-8'))
-    assert public['items']==[] and public['meta']['mode']=='official_metadata'
-    # Building a site after a real collection must publish only reviewed metadata.
+    # A production repository already contains live records from earlier runs.
+    # The public site must preserve the approved snapshot; it must NOT be empty.
     orig=json.loads((P/'data/live_items.json').read_text(encoding='utf-8'))
+    assert public['meta']['mode']=='official_metadata'
+    assert public['meta']['rights_scope']=='descriptive_public_metadata_only'
+    assert public['items']==orig['items'], 'Published metadata must match the approved live history'
+    assert all(x['source_id'] in ('fed-monetary','bea-news','arxiv-ai','arxiv-robotics')
+               and x.get('summary') is None for x in public['items'])
+    # Building a site after a real collection must publish only reviewed metadata.
     copyroot=root/'testproject'
     (copyroot/'data').mkdir(parents=True)
     for file in ['index.html','source-console.html']:
