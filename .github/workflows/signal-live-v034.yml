@@ -1,4 +1,4 @@
-name: SIGNAL V0.4.1 evidence gaps + cautious triage + Pages
+name: SIGNAL V0.4.2 primary metadata evidence + Pages
 
 on:
   workflow_dispatch:
@@ -36,6 +36,7 @@ jobs:
           python scripts/test_v034.py
           python scripts/test_v040.py
           python scripts/test_v041.py
+          python scripts/test_v042.py
       - name: Collect only rights-reviewed public descriptive metadata
         run: python scripts/collect_v034.py --output data/live_items.json
       - name: Assemble bounded intelligence review queue (optional AI)
@@ -46,12 +47,14 @@ jobs:
         run: python scripts/intelligence_v040.py --max-ai 6
       - name: Generate M0 evidence provenance and verification-gap ledger
         run: python scripts/evidence_v041.py
+      - name: Enrich at most 8 arXiv author abstracts through official metadata API (not independently verified)
+        run: python scripts/evidence_v042.py --max-new 8
       - name: Save compact public history on main
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/live_items.json data/intelligence.json data/evidence_audit.json
+          git add data/live_items.json data/intelligence.json data/evidence_audit.json data/evidence_enriched.json
           if ! git diff --cached --quiet; then
             git commit -m "data: refresh reviewed metadata [skip ci]"
             git push origin HEAD:main
@@ -62,14 +65,17 @@ jobs:
         run: python scripts/build_public_site.py --output _site
       - name: Publish collection summary
         run: python scripts/v034_summary.py --input data/live_items.json --output "$GITHUB_STEP_SUMMARY"
+      - name: Publish evidence-enrichment status (M1 is author metadata, never verification)
+        run: python scripts/v042_summary.py --evidence data/evidence_enriched.json --append "$GITHUB_STEP_SUMMARY"
       - name: Upload metadata report for audit
         uses: actions/upload-artifact@v4
         with:
-          name: signal-v041-provenance-and-triage
+          name: signal-v042-evidence-metadata-audit
           path: |
             data/live_items.json
             data/intelligence.json
             data/evidence_audit.json
+            data/evidence_enriched.json
           retention-days: 14
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4

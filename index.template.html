@@ -28,7 +28,7 @@
 <div class="brand"><small>PERSONAL INTELLIGENCE</small><strong>SIGNAL</strong><em>視界｜個人情報研究所</em></div>
 <div class="side-heading">INTELLIGENCE DESK</div>
 <nav id="deskNav"></nav><div class="side-spacer"></div>
-<div class="side-note"><b>設計理念 · Beyond the feed</b><p>不追逐大量資訊，而是辨識真正重要的變化；同時保留不在既有興趣內的探索訊號。</p></div><div class="side-bottom">V0.4.1 · 證據缺口清單 · 2026.11.05</div>
+<div class="side-note"><b>設計理念 · Beyond the feed</b><p>不追逐大量資訊，而是辨識真正重要的變化；同時保留不在既有興趣內的探索訊號。</p></div><div class="side-bottom">V0.4.2 · 作者摘要元資料 · 2026.11.05</div>
 </aside>
 <main class="main">
 <div class="topbar"><div class="crumb">SIGNAL / <span id="crumb">TODAY'S BRIEF</span></div><div class="status"><span><i class="dot"></i>編輯精選為靜態樣本</span><span class="snapshot" id="feedSyncStatus">新發現尚未同步</span></div></div>
@@ -65,10 +65,10 @@
 <div class="footnote">此模組不抓全文、不推斷已獲同儕審查、不提供價格預測。AI 標題解讀必須以人工查核原文及獨立資料來源後，才能提升為正式情報。</div>
 </section>
 <section id="page-evidence" class="page">
-<div class="head"><div><div class="eyebrow">SIGNAL · EVIDENCE & GAPS / V0.4.1</div><h1 class="serif">證據檢核<span style="color:var(--golddeep)">.</span></h1><p>資訊來源可追溯，不等於主張已查證。每則待審候選都應有明確的驗證缺口。</p></div><div class="headtools"><button class="btn" data-page="triage">返回情報初篩 →</button></div></div>
+<div class="head"><div><div class="eyebrow">SIGNAL · PRIMARY EVIDENCE / V0.4.2</div><h1 class="serif">證據檢核<span style="color:var(--golddeep)">.</span></h1><p>除來源追溯外，嘗試核對官方研究摘要元資料。作者摘要不等於獨立驗證，資料仍待審查。</p></div><div class="headtools"><button class="btn" data-page="triage">返回情報初篩 →</button></div></div>
 <div class="feedstate" id="evidenceStatus">尚未載入證據稽核資料；不會以 AI 推論冒充查證。</div>
 <div class="discover-kpis" id="evidenceKpis"></div>
-<div class="card" style="padding:20px;background:#faf7ef;margin:16px 0 24px"><b style="color:var(--golddeep)">目前只能說什麼？</b><p id="evidenceLimit" style="font-size:12px;color:#756956;line-height:1.9">只保有來源、標題和日期；尚未核對主張內容。</p><p style="font-size:11px;color:#887c6a">M0：標題元資料　→　M1：讀取並核對原始內容　→　M2：找到具實質獨立性的資料　→　人工審核後才可採納。後三個步驟目前尚未啟用。</p></div>
+<div class="card" style="padding:20px;background:#faf7ef;margin:16px 0 24px"><b style="color:var(--golddeep)">目前只能說什麼？</b><p id="evidenceLimit" style="font-size:12px;color:#756956;line-height:1.9">只保有來源、標題和日期；尚未核對主張內容。</p><p style="font-size:11px;color:#887c6a">M0：僅標題元資料　→　M0A：取得 arXiv 作者摘要元資料（仍未查證）　→　M1：核對原始文件內容（尚未啟用）　→　M2：取得獨立佐證（尚未啟用）。</p></div>
 <div class="sectiontitle"><h2><span class="tiny">AUDIT QUEUE · NO CERTIFICATION</span>需要查證的內容</h2><span class="hint">此處顯示缺口，不是可信度或全球重要性排名</span></div>
 <div class="discovery-grid" id="evidenceList"><div class="empty">尚無證據稽核結果。</div></div>
 <div class="footnote">資料頁面不儲存第三方全文、沒有驗證過新聞敘述，也不能證明論文已通過同儕審查。來源數量不等於支持同一主張的獨立證據數。</div>
@@ -204,17 +204,31 @@ function renderTriage(){
 }
 function renderEvidence(){
  const m=EVIDENCE.meta||{},items=EVIDENCE.items||[];
- const ready=m.status==='metadata_gap_audit_only';
- $('evidenceStatus').textContent=ready?`已建立可追溯的元資料缺口清單 · ${twDate(m.generated_at)}。未取得全文或獨立查核證據。${(m.excluded_count||0)>0?' ⚠ 有 '+Number(m.excluded_count)+' 筆候選未通過來源綁定，未納入證據清單。':''}`:'尚未產生 V0.4.1 的證據缺口清單，請先部署新的 GitHub 工作流程。';
- $('evidenceKpis').innerHTML=`<div class="card discover-kpi"><small>待查標題</small><strong>${items.length}</strong><span>只有來源元資料</span></div><div class="card discover-kpi"><small>發布機構</small><strong>${Number(m.publisher_count||0)}</strong><span>不是獨立佐證數</span></div><div class="card discover-kpi"><small>已驗證主張</small><strong>0</strong><span>目前不提供驗證通過標示</span></div>`;
- $('evidenceLimit').textContent=m.coverage_warning||'缺少可核對的獨立佐證及原始內容。';
- $('evidenceList').innerHTML=items.length?items.map(it=>`<article class="card discovered-card"><header><span class="tag pale">${sc(it.category||'其他')} · ${sc(it.evidence_level)}</span><span class="sourcebadge">${sc(it.verification_status)}</span></header><h3>${sc(it.title)}</h3><p>${sc(it.source_role)} · ${twDate(it.published_at)}</p><p><b style="color:#80642e">已取得：</b>${sc(it.reading_scope)}<br><b style="color:#80642e">性質：</b>${sc(it.evidence_kind)}</p><div style="font-size:12px;color:#625747;line-height:1.8"><b>下一步必須核對</b><ol style="margin:7px 0 10px;padding-left:18px">${(it.questions||[]).map(q=>`<li>${sc(q)}</li>`).join('')}</ol></div><footer><span class="unreviewed">未讀全文 · 無獨立確認 · 未評估重要性</span><a class="btn" href="${safeHref(it.url)}" rel="noopener noreferrer" target="_blank">原始出處 ↗</a></footer></article>`).join(''):'<div class="empty">目前沒有證據審核候選。未顯示任何已驗證新聞。</div>';
+ const isNew=m.status==='primary_metadata_enrichment_only';
+ const ready=isNew||m.status==='metadata_gap_audit_only';
+ const nM0A=items.filter(x=>x.evidence_level==='M0A').length;
+ $('evidenceStatus').textContent=ready?`證據層級 ${isNew?'V0.4.2':'V0.4.1'} · ${twDate(m.generated_at)}；${isNew?'已有 '+nM0A+' 項作者摘要元資料；':'僅來源標題；'} 目前仍無獨立驗證、論文全文或全球重要性評估。${m.api_errors?.length?' ⚠ arXiv API 出現 '+m.api_errors.length+' 項讀取問題，未冒用舊資料。':''}`:'尚未產生可追溯證據清單。';
+ $('evidenceKpis').innerHTML=`<div class="card discover-kpi"><small>待查候選</small><strong>${items.length}</strong><span>不是經證實的重大事件</span></div><div class="card discover-kpi"><small>M0A 作者摘要元資料</small><strong>${nM0A}</strong><span>非獨立驗證／未讀論文全文</span></div><div class="card discover-kpi"><small>已驗證主張</small><strong>0</strong><span>目前禁止自動認證</span></div>`;
+ $('evidenceLimit').textContent=m.coverage_warning||'資料來源尚少，缺少獨立佐證與跨領域覆蓋。';
+ $('evidenceList').innerHTML=items.length?items.map(it=>{
+ const level=it.evidence_level==='M0A';
+ const abstract=level&&it.author_abstract?`<details style="margin:12px 0;padding:12px 14px;border:1px solid #e1d7c5;border-radius:10px;background:#faf7f1"><summary style="cursor:pointer;color:#83672c;font-size:12px;font-weight:700">查看作者摘要元資料（英文；非查證結論）</summary><p style="font-size:12px;line-height:1.85;white-space:pre-wrap;color:#4a453b">${sc(it.author_abstract)}</p><small style="color:#97876d">來源：arXiv 官方 API · ${twDate(it.metadata_retrieved_at)} · 作者自述、預印本可能未經同儕審查</small></details>`:'';
+ return `<article class="card discovered-card"><header><span class="tag pale">${sc(it.category||'其他')} · ${sc(it.evidence_level)}</span><span class="sourcebadge">${sc(it.verification_status)}</span></header><h3>${sc(it.title)}</h3><p>${sc(it.source_role)} · ${twDate(it.published_at)}</p><p><b style="color:#80642e">已取得：</b>${sc(it.reading_scope)}<br><b style="color:#80642e">性質：</b>${sc(it.evidence_kind)}</p>${abstract}<div style="font-size:12px;color:#625747;line-height:1.8"><b>下一步必須核對</b><ol style="margin:7px 0 10px;padding-left:18px">${(it.questions||[]).map(q=>`<li>${sc(q)}</li>`).join('')}</ol></div><footer><span class="unreviewed">${level?'作者摘要已取得 · ':''}未讀全文 · 無獨立確認 · 未評估重要性</span><a class="btn" href="${safeHref(it.url)}" rel="noopener noreferrer" target="_blank">原始出處 ↗</a></footer></article>`;
+ }).join(''):'<div class="empty">沒有證據審核候選。未顯示任何已驗證新聞。</div>';
 }
 async function loadEvidence(){
  if(!/^https?:$/.test(location.protocol)){renderEvidence();return;}
- try{const r=await fetch('./data/evidence_audit.json?fresh='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
- const d=await r.json();if(!Array.isArray(d.items)||d.meta?.rights_scope!=='descriptive_public_metadata_only'||Number(d.meta?.verified_claims||0)!==0)throw Error('Invalid evidence ledger');
- EVIDENCE=d;}catch(e){EVIDENCE={meta:{},items:[]};console.warn('evidence unavailable',e)}
+ let loaded=false;
+ for(const file of ['evidence_enriched.json','evidence_audit.json']){
+   try{
+     const r=await fetch('./data/'+file+'?fresh='+Date.now(),{cache:'no-store'});
+     if(!r.ok)throw Error('HTTP '+r.status);
+     const d=await r.json();
+     if(!Array.isArray(d.items)||d.meta?.rights_scope!=='descriptive_public_metadata_only'||Number(d.meta?.verified_claims||0)!==0||Number(d.meta?.independently_confirmed_claims||0)!==0)throw Error('Invalid evidence');
+     EVIDENCE=d;loaded=true;break;
+   }catch(e){console.warn('evidence source unavailable '+file,e);}
+ }
+ if(!loaded)EVIDENCE={meta:{},items:[]};
  renderEvidence();
 }
 async function loadTriage(){

@@ -39,6 +39,12 @@ def build(output,source_root=BASE,*,strict=False):
         target=output/target_file
         target.parent.mkdir(parents=True,exist_ok=True)
         shutil.copyfile(origin,target)
+    # V0.4.2 optional during legacy unit tests, mandatory in actual strict deployment.
+    extra=source_root/'data/evidence_enriched.json'
+    if extra.is_file():
+        shutil.copyfile(extra,output/'data/evidence_enriched.json')
+    elif strict:
+        raise FileNotFoundError('V0.4.2 enrichment evidence is required for deployment')
     (output/'.nojekyll').write_text('',encoding='utf-8')
     # A public website MUST NOT contain personal research logs, audited license records,
     # scraped article text, private watchlists, or financial positions.
@@ -82,6 +88,47 @@ def build(output,source_root=BASE,*,strict=False):
                 or e.get('body_read') is not False
                 or e.get('importance_assessed') is not False):
             raise RuntimeError('Evidence review status lacks a valid basis')
+    augmented_path=output/'data/evidence_enriched.json'
+    if augmented_path.is_file():
+        aug=json.loads(augmented_path.read_text(encoding='utf-8'))
+        am=aug.get('meta',{})
+        if (am.get('rights_scope')!='descriptive_public_metadata_only'
+                or am.get('status')!='primary_metadata_enrichment_only'
+                or any(am.get(k)!=0 for k in ('verified_claims','independently_confirmed_claims',
+                                               'read_bodies','importance_assessments'))):
+            raise RuntimeError('Enrichment metadata falsely claims verification')
+        m0_by_id={x['id']:x for x in evidence.get('items',[])}
+        if len(aug.get('items',[]))!=len(m0_by_id):
+            raise RuntimeError('Enrichment and evidence count mismatch')
+        from urllib.parse import urlsplit
+        seen=set()
+        for a in aug['items']:
+            parent=m0_by_id.get(a.get('id'))
+            if (not parent or a['id'] in seen or any(a.get(k)!=parent.get(k)
+                for k in ('fingerprint','url','title','publisher_id','source_id','published_at'))):
+                raise RuntimeError('Enrichment provenance mismatch')
+            seen.add(a['id'])
+            if (a.get('verification_status')!='未查證'
+                or a.get('body_read') is not False
+                or a.get('original_document_verified') is not False
+                or a.get('peer_review_confirmed') is not False
+                or a.get('importance_assessed') is not False
+                or a.get('independent_confirmation_count')!=0):
+                raise RuntimeError('Enrichment elevated unsupported claims')
+            if a.get('evidence_level')=='M0A':
+                from evidence_v042 import paper_id, MAX_ABSTRACT
+                if (a.get('publisher_id')!='arxiv' or not paper_id(a.get('url'))
+                    or paper_id(a.get('metadata_record_url'))!=paper_id(a.get('url'))
+                    or a.get('metadata_title_match') is not True
+                    or a.get('metadata_read') is not True
+                    or not isinstance(a.get('author_abstract'),str)
+                    or not (0<len(a['author_abstract'])<=MAX_ABSTRACT)):
+                    raise RuntimeError('M0A is not authenticated author metadata')
+            elif a.get('evidence_level')=='M0':
+                if a.get('author_abstract') is not None or a.get('metadata_read') is not False:
+                    raise RuntimeError('M0 improperly contains extended text')
+            else:
+                raise RuntimeError('Unknown or unsupported evidence level')
     published=sorted(str(p.relative_to(output)) for p in output.rglob('*') if p.is_file())
     print('Public site files:',json.dumps(published,ensure_ascii=False))
     return published
