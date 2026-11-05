@@ -16,6 +16,7 @@ FILES={
     "data/feed.json":"data/feed.json",             # dated, manually curated 2026-11-05 snapshot
     "data/live_items.json":"data/discovered.json", # ONLY pre-reviewed official/CC0 descriptive metadata
     "data/intelligence.json":"data/intelligence.json", # AI title annotations never verified content
+    "data/evidence_audit.json":"data/evidence_audit.json", # M0 provenance/gap report only
     "data/v032_candidates.json":"data/v032_candidates.json",
     "data/v032_live_probe.json":"data/v032_live_probe.json",
 }
@@ -65,6 +66,22 @@ def build(output,source_root=BASE,*,strict=False):
                 or x.get('review_required') is not True
                 or x.get('analysis_mode') not in ('rules_only','ai_title_only')):
             raise RuntimeError('Unsafe triage record')
+    evidence=json.loads((output/'data/evidence_audit.json').read_text(encoding='utf-8'))
+    em=evidence.get('meta',{})
+    if (em.get('rights_scope')!='descriptive_public_metadata_only'
+            or em.get('verified_claims')!=0 or em.get('independently_confirmed_claims')!=0
+            or em.get('importance_assessments')!=0):
+        raise RuntimeError('Evidence data improperly promoted to verified facts')
+    triage_by_id={x['id']:x for x in triage.get('items',[])}
+    for e in evidence.get('items',[]):
+        parent=triage_by_id.get(e.get('id'))
+        if not parent or any(e.get(k)!=parent.get(k) for k in ('url','source_id','publisher_id','title')):
+            raise RuntimeError('Evidence traceability mismatch')
+        if (e.get('evidence_level')!='M0' or e.get('verification_status')!='未查證'
+                or e.get('independent_confirmation_count')!=0
+                or e.get('body_read') is not False
+                or e.get('importance_assessed') is not False):
+            raise RuntimeError('Evidence review status lacks a valid basis')
     published=sorted(str(p.relative_to(output)) for p in output.rglob('*') if p.is_file())
     print('Public site files:',json.dumps(published,ensure_ascii=False))
     return published

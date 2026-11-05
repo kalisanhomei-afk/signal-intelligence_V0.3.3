@@ -70,7 +70,10 @@ with tempfile.TemporaryDirectory() as d:
         (copyroot/'data'/file).write_bytes((P/'data'/file).read_bytes())
     atomic_json(copyroot/'data/live_items.json',partial)
     from intelligence_v040 import prepare
-    atomic_json(copyroot/'data/intelligence.json',prepare(partial,{},enabled=False,api_key=None))
+    tri=prepare(partial,{},enabled=False,api_key=None)
+    atomic_json(copyroot/'data/intelligence.json',tri)
+    from evidence_v041 import build as build_evidence
+    atomic_json(copyroot/'data/evidence_audit.json',build_evidence(partial,tri))
     rebuilt=build(root/'_site',source_root=copyroot)
     assert len(json.loads((root/'_site/data/discovered.json').read_text())['items'])==4
     bad=copy.deepcopy(partial)

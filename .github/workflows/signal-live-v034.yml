@@ -1,4 +1,4 @@
-name: SIGNAL V0.4.0 metadata + cautious triage + Pages
+name: SIGNAL V0.4.1 evidence gaps + cautious triage + Pages
 
 on:
   workflow_dispatch:
@@ -35,6 +35,7 @@ jobs:
           python scripts/test_v033.py
           python scripts/test_v034.py
           python scripts/test_v040.py
+          python scripts/test_v041.py
       - name: Collect only rights-reviewed public descriptive metadata
         run: python scripts/collect_v034.py --output data/live_items.json
       - name: Assemble bounded intelligence review queue (optional AI)
@@ -43,12 +44,14 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.SIGNAL_AI_MODEL }}
         run: python scripts/intelligence_v040.py --max-ai 6
+      - name: Generate M0 evidence provenance and verification-gap ledger
+        run: python scripts/evidence_v041.py
       - name: Save compact public history on main
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/live_items.json data/intelligence.json
+          git add data/live_items.json data/intelligence.json data/evidence_audit.json
           if ! git diff --cached --quiet; then
             git commit -m "data: refresh reviewed metadata [skip ci]"
             git push origin HEAD:main
@@ -62,10 +65,11 @@ jobs:
       - name: Upload metadata report for audit
         uses: actions/upload-artifact@v4
         with:
-          name: signal-v040-metadata-and-triage
+          name: signal-v041-provenance-and-triage
           path: |
             data/live_items.json
             data/intelligence.json
+            data/evidence_audit.json
           retention-days: 14
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
