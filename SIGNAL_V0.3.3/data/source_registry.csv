@@ -1,0 +1,38 @@
+﻿publisher_id,publisher,layer,role,region,topics,value,independence_and_verification_risk,access_route,license_note,priority,activation,permission_status,reference_reviewed,reference_url
+fed,Federal Reserve,第一手/官方,政策與會議/數據,美國,利率；流動性；貨幣政策,可追溯政策聲明及預定發布日,官方政策聲明非市場共識、需對照市場數據,官方RSS,RSS可閱讀；再審自動保存與使用條款,P0,candidate,待逐項核對,True,https://www.federalreserve.gov/feeds/feeds.htm
+bls,U.S. Bureau of Labor Statistics,第一手/官方,經濟數據與日程,美國,CPI；就業；PPI,統計公布日期及數值第一手,資料可能修訂；注意季節調整,官方RSS與日程,確認再利用條款與API頻率,P0,candidate,待逐項核對,False,https://www.bls.gov/schedule/
+bea,U.S. Bureau of Economic Analysis,第一手/官方,GDP/PCE原始資料,美國,GDP；PCE；個人所得,可取得資料及發布時點,初估與修訂版需保留 vintage,官方API（申請ID）,需註冊 UserID 及核對條款,P0,candidate,待逐項核對,True,https://apps.bea.gov/API/docs/
+sec,SEC EDGAR,第一手/揭露,美股公司公告與財報,美國,財報；8-K；10-K；XBRL,公司申報時間與結構化數據,企業申報不代表觀點獨立；需檢查更正,官方JSON API,無需API Key，需遵守公平存取,P0,candidate,待逐項核對,True,https://www.sec.gov/search-filings/edgar-application-programming-interfaces
+twse,臺灣證券交易所／公開資訊觀測站,第一手/揭露,台股公告、營收、財報,台灣,台股；財報；重大訊息,台灣公司公開揭露及官方開放資料,公司公告與獨立查核不同；上櫃來源另核對,官方 OpenAPI／MOPS,OpenAPI 實際端點及資料授權逐項確認,P0,candidate,待逐項核對,True,https://openapi.twse.com.tw/
+cbc-tw,中央銀行（中華民國臺灣）,第一手/官方,利率/匯率/政策公告,台灣,利率；外匯；央行,台灣貨幣政策第一手,政策與市場預期須分開,官網公告,待核對機器可讀方式與條款,P0,candidate,待逐項核對,False,https://www.cbc.gov.tw/
+ecb,European Central Bank,第一手/官方,歐元貨幣政策,歐洲,歐元；利率；政策,歐洲利率與記者會第一手,應區分聲明與預期,官方公告／資料API,逐端點確認授權,P0,candidate,待逐項核對,False,https://www.ecb.europa.eu/
+boj,Bank of Japan,第一手/官方,日本貨幣政策,日本,日圓；利率；政策,日本利率與展望報告,政策文件翻譯與時間點需核對,官方公告,機器存取未驗證,P0,candidate,待逐項核對,False,https://www.boj.or.jp/en/
+bis,Bank for International Settlements,第一手/官方,跨國銀行與金融統計,國際,金融體系；信貸；資本流動,跨境金融統計及研究,官方研究仍含分析判斷，統計遵守資料政策,官方SDMX API,授權/衍生使用限制需查,P1,candidate,待逐項核對,True,https://www.bis.org/about/legal/permitted-use-statistics
+imf,International Monetary Fund,第一手/官方,全球經濟資料與報告,國際,WEO；景氣；公共財政,比較國際成長與政策假設,全球預測非確定事實,官網／資料平台,個別資料集授權需核對,P1,candidate,待逐項核對,False,https://www.imf.org/
+iea,International Energy Agency,第一手/研究,能源與技術展望,國際,電力；電池；石油；天然氣,能源供需與技術投資研究,部分預測高度依賴情境假設,官網、報告、授權資料,衍生模型及商業再利用可能要額外同意,P0,candidate,待逐項核對,True,https://www.iea.org/help-centre/usage-and-rights
+eia,U.S. Energy Information Administration,第一手/官方,美國能源數據,美國,能源；庫存；電價,能源供需和庫存時間序列,留意統計修訂及計量單位,官方開放資料,核對頻率和資料授權,P1,candidate,待逐項核對,False,https://www.eia.gov/opendata/
+bcb,Banco Central do Brasil,第一手/官方,巴西貨幣政策與總體,巴西,巴西利率；匯率；信用,巴西貨幣政策與統計,制度和葡文術語需正確解釋,官方資料入口,API/再利用政策待核,P1,candidate,待逐項核對,False,https://www.bcb.gov.br/
+ibge,IBGE,第一手/官方,巴西統計,巴西,巴西通膨；GDP；人口,巴西物價、人口與經濟統計,不同基準年度口徑需核對,官方資料入口,API/再利用政策待核,P1,candidate,待逐項核對,False,https://www.ibge.gov.br/
+oecd,OECD,第一手/研究,國際比較指標,國際,生產率；勞動；教育,長期結構變化比較,跨國統計定義差異,官方資料平台,資料授權逐系列核對,P1,candidate,待逐項核對,False,https://www.oecd.org/
+reuters,Reuters,新聞/編採,重大國際事件與交叉核對,全球,政治；金融；企業,全球原始採訪與編採守則,可能轉載與同源；授權通常需商談,網站/授權服務,不要把一般閱讀權視為全文API授權,P0,candidate,待逐項核對,True,https://reutersagency.com/about/our-trust-principles/
+ap,Associated Press,新聞/編採,獨立報導與事實核對,全球,政治；社會；國際,公開新聞倫理與更正標準,注意通稿二次轉載與原始採訪來源,網站/新聞授權,自動化授權需另核,P0,candidate,待逐項核對,True,https://www.ap.org/about/news-values-and-principles/
+bbc,BBC News,新聞/編採,世界新聞與地區補充,全球,政治；科技；經濟,廣泛新聞涵蓋及專業編輯,目前 4 feed = 1 個發布主體,公開 RSS,逐頻道核對再利用條款,P1,candidate,待逐項核對,False,https://www.bbc.com/news
+ft,Financial Times,新聞/專業財經,財經與企業深度分析,全球,金融；企業；政策,適合解釋市場和政策的影響,訂閱和出版商立場不代表結論已核實,訂閱/授權,全文機器化/轉載需商務核准,P0,candidate,待逐項核對,False,https://www.ft.com/
+bloomberg,Bloomberg,新聞/專業財經,市場與企業報導,全球,金融；產業；股債,市場即時性與企業研究,專有數據、報價與新聞授權分離,付費/企業授權,未取得可自動存取的內容授權,P1,candidate,待逐項核對,False,https://www.bloomberg.com/
+nikkei,Nikkei Asia,新聞/區域財經,亞洲製造供應鏈,亞洲,製造；半導體；貿易,亞洲產業與企業現場報導,區域偏重；應與台灣/當地資料互證,訂閱,需單獨釐清自動化權利,P1,candidate,待逐項核對,False,https://asia.nikkei.com/
+economist,The Economist,新聞/分析,長期政經結構研判,全球,國際政治；經濟；社會,強在評論、框架與長期趨勢,具有分析立場；評論不可當原始事實,訂閱,一般訂閱不等於內容重製許可,P1,candidate,待逐項核對,False,https://www.economist.com/
+nature,Nature,科學/同行評審+新聞,研究與科學報導,國際,生物；材料；科學政策,論文與獨立新聞雙通道,新聞不是 peer review；文章類型需標註,期刊/新聞/訂閱,每篇文章授權依出版社規定,P0,candidate,待逐項核對,True,https://www.nature.com/nature/editorial-policies/peer-review
+science-aaas,Science (AAAS),科學/同行評審+新聞,重要科學研究,國際,科學；生物；物理,跨領域研究與科學政策,需區分論文、新聞與評論,期刊/訂閱,API與全文授權待審,P1,candidate,待逐項核對,False,https://www.science.org/
+ieee-spectrum,IEEE Spectrum,科技/專業編採,工程技術與應用,國際,電子；機器人；製造,深入工程與商業化可能性,部分贊助內容須明顯區隔,網站/訂閱,自動蒐集許可仍待查,P0,candidate,待逐項核對,True,https://spectrum.ieee.org/about
+mit-tr,MIT Technology Review,科技/編採,技術與社會商業影響,國際,AI；能源；生技,技術背景與產業意義,技術預測與已驗證成果須分開,網站/訂閱,自動蒐集與授權待審,P0,candidate,待逐項核對,False,https://www.technologyreview.com/
+quanta,Quanta Magazine,科學/獨立編採,基礎科學早期進展,國際,數學；理論電腦；物理,補足新聞市場較少報導的基礎研究,基礎研究不等於短期商業機會,公開網站,使用權及重製授權待核,P0,candidate,待逐項核對,True,https://www.quantamagazine.org/about/
+arxiv,arXiv,研究/預印本,前沿論文發現,國際,AI；機器人；資訊科學,極早發現新研究,審核不等於同行評審；結果尚未獨立重現,官方 RSS/Atom,遵守 API 使用條款；不可批量重發全文,P0,candidate,待逐項核對,True,https://github.com/arXiv/arxiv-docs/blob/develop/source/help/moderation/index.md
+acm,ACM Digital Library,研究/學術出版,資訊與軟體研究,國際,計算；軟體；人機互動,資訊科學學術成果,可能依出版物不同審稿機制,資料庫/授權,付費及API/全文授權待審,P2,candidate,待逐項核對,False,https://dl.acm.org/
+nasa-jpl,NASA Jet Propulsion Laboratory,第一手/研究,太空工程與科學,美國,太空；機器人；工程,太空任務與研究第一手,研究機構發布與獨立評核不同,公開 RSS,逐項核對機器取得條款,P2,candidate,待逐項核對,False,https://www.jpl.nasa.gov/
+github,GitHub,技術社群/平台,開源專案早期訊號,全球,開源；AI Coding；軟體,可看代碼/版本/Issue/活躍度,stars 與銷售或安全無直接對應,官方REST API,API有限流；不可擷取私有資料,P0,candidate,待逐項核對,True,https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api
+hn,Hacker News,技術社群/平台,開發者新觀察,全球,開發者；新創；AI,迅速發現新技術與討論,投票熱度與技術驗證無關,官方RSS,原文來源與評論須分層,P1,candidate,待逐項核對,False,https://news.ycombinator.com/rss
+producthunt,Product Hunt,產品社群/平台,新產品發布,全球,新創；軟體；AI工具,能發現尚未媒體化的工具,用戶評分可受行銷影響；商業使用 API 受限,官方 GraphQL API,API 明示不得預設用於商業用途,P1,candidate,待逐項核對,True,https://api.producthunt.com/v2/docs
+techcrunch,TechCrunch,新聞/科技新創,募資與產品發布,全球,新創；VC；新產品,早期商業新聞和人物追蹤,募資宣傳可能早於業務驗證,網站/訂閱,RSS/授權另查,P1,candidate,待逐項核對,False,https://techcrunch.com/
+semianalysis,SemiAnalysis,產業研究/專業,AI運算與半導體供應鏈,全球,AI基建；半導體；資料中心,專注硬體成本及產業預期,模型假設、利益與估值需分開,訂閱研究,禁止視訂閱為自動轉載權,P1,candidate,待逐項核對,False,https://semianalysis.com/
+trendforce,TrendForce,產業研究/專業,半導體與能源產業,亞洲/全球,DRAM；半導體；能源,產能、價格及供需研究,估計非實績；方法及資料日期需保留,網站/付費研究,深度數據另談授權,P1,candidate,待逐項核對,False,https://www.trendforce.com/
+pitchbook,PitchBook,產業資料/商業,新創融資與企業資料,全球,VC；私募；公司,早期投融資與資本流向,融資資料可能不完整且使用受限,企業付費授權,尚無授權，不自動介接,P2,candidate,待逐項核對,False,https://pitchbook.com/

@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "version": "0.3",
+    "generated_at": null,
+    "last_attempt_at": null,
+    "last_success_at": null,
+    "successful_sources": 0,
+    "source_count": 10,
+    "all_sources_healthy": false,
+    "new_items_in_run": 0,
+    "item_count": 0,
+    "retention_days": 45,
+    "note": "尚未在可連線環境啟動 RSS 更新；未審標題不得當作可信情報。"
+  },
+  "items": [],
+  "sources": []
+}

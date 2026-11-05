@@ -1,0 +1,40 @@
+{
+  "schema_version": "0.3.1",
+  "mode": "pilot",
+  "publisher_candidates": 37,
+  "active_feed_channels": 10,
+  "independent_active_publishers": 6,
+  "publisher_coverage_by_layer": {
+    "第一手": 16,
+    "新聞": 8,
+    "科學": 3,
+    "科技": 2,
+    "研究": 2,
+    "技術社群": 2,
+    "產品社群": 1,
+    "產業研究": 2,
+    "產業資料": 1
+  },
+  "candidate_by_priority": {
+    "P0": 18,
+    "P1": 16,
+    "P2": 3
+  },
+  "sources_requiring_review": 10,
+  "errors": [],
+  "warnings": [
+    "fed-monetary: pilot only; automated-use terms and live test not yet cleared",
+    "bls-latest: pilot only; automated-use terms and live test not yet cleared",
+    "bbc-world: pilot only; automated-use terms and live test not yet cleared",
+    "bbc-business: pilot only; automated-use terms and live test not yet cleared",
+    "bbc-technology: pilot only; automated-use terms and live test not yet cleared",
+    "bbc-science: pilot only; automated-use terms and live test not yet cleared",
+    "hn-signal: pilot only; automated-use terms and live test not yet cleared",
+    "arxiv-ai: pilot only; automated-use terms and live test not yet cleared",
+    "arxiv-robotics: pilot only; automated-use terms and live test not yet cleared",
+    "nasa-jpl: pilot only; automated-use terms and live test not yet cleared",
+    "bbc: 4 feeds but only ONE publisher; do not count as independent corroboration"
+  ],
+  "approved_for_production": false,
+  "checked_at": "2026-11-05T08:13:01+00:00"
+}

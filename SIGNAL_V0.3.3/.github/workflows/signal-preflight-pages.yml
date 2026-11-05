@@ -1,0 +1,69 @@
+name: SIGNAL V0.3.3 preflight and Pages
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  schedule:
+    # UTC 00:27/12:27 = 台灣時間 08:27/20:27; default disabled by variable gate
+    - cron: '27 0,12 * * *'
+concurrency:
+  group: signal-pages-preflight
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  build:
+    if: github.event_name != 'schedule' || vars.SIGNAL_ENABLE_PROBE_SCHEDULE == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check offline contracts
+        run: |
+          python scripts/test_pipeline.py
+          python scripts/test_governance.py
+          python scripts/test_v032.py
+          python scripts/test_v033.py
+      - name: Live preflight (manual and explicitly enabled schedules only)
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+        shell: bash
+        run: |
+          set +e
+          python scripts/probe_sources.py --output data/v032_live_probe.json
+          EXIT=$?
+          echo "Probe exit code: $EXIT (a source may fail; failure is reported, never hidden)"
+          exit 0
+      - name: Generate public, allowlisted site
+        run: python scripts/build_public_site.py --output _site
+      - name: Write human-readable preflight summary
+        shell: bash
+        run: |
+          python scripts/summary_probe.py --input data/v032_live_probe.json --output "$GITHUB_STEP_SUMMARY"
+      - name: Save actual probe JSON for auditing
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-live-probe-v033
+          path: data/v032_live_probe.json
+          retention-days: 14
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload public site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

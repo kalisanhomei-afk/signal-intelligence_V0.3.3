@@ -1,0 +1,30 @@
+{
+  "schema_version": "0.1-presearch",
+  "status": "設計契約；無真實行情或預測",
+  "goals": {
+    "horizons_in_trading_sessions": [15, 30, 63],
+    "primary_targets": [
+      "return_distribution",
+      "probability_positive_total_return",
+      "probability_exceed_benchmark",
+      "downside_quantile_10pct"
+    ],
+    "assets": ["TW_equities", "US_equities", "index_ETF", "government_bonds", "corporate_bonds", "commodities", "futures", "FX"],
+    "mode": "研究情境；不可直接使用情報重要性分數作為交易機率"
+  },
+  "entity_contracts": {
+    "asset": ["asset_id", "asset_class", "region", "exchange", "currency", "trading_calendar", "identifier", "contract_rules", "source_license"],
+    "market_observation": ["asset_id", "session_date", "known_at_utc", "open", "high", "low", "close", "volume", "adjustment_factor", "source_revision"],
+    "event_asset_link": ["event_id", "asset_id", "relation", "confidence", "rationale", "tagged_at_utc", "review_status"],
+    "study": ["study_id", "asset_universe_as_of", "cutoff_utc", "feature_data_cutoff_utc", "train_start", "train_end", "test_start", "test_end", "benchmark", "model_version", "cost_assumptions"],
+    "research_forecast": ["study_id", "asset_id", "issued_at_utc", "horizon_sessions", "p_positive", "p_beat_benchmark", "return_p10", "return_p50", "return_p90", "calibration_status", "validation_version"]
+  },
+  "constraints": [
+    "forecast.timestamp must be after all published input data timestamps",
+    "no leakage of future index constituents, restated fundamentals or revised economic vintages",
+    "separate bond total returns from yields, continuous futures from tradable rolled contracts",
+    "all backtests must include realized net returns, costs, slippage and drawdown",
+    "present model to users only after out-of-sample tests exceed prespecified baselines"
+  ],
+  "example_forecasts": []
+}

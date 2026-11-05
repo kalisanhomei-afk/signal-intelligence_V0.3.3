@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Test Atom</title>
+<entry><title>TEST ONLY — invented robot demonstration</title><link href="https://example.org/robot/1?fbclid=foo" rel="alternate"/><published>2026-11-05T07:20:00Z</published></entry>
+<entry><title>TEST ONLY — another invented research</title><link href="https://example.org/robot/2"/><updated>2026-11-04T16:30:00Z</updated></entry>
+</feed>
