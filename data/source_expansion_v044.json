@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "version": "0.4.4",
+    "status": "source_probing_not_news_verification",
+    "rights_scope": "descriptive_public_metadata_only",
+    "generated_at": "2026-11-05T15:04:35+00:00",
+    "candidate_publishers": 5,
+    "trial_active_sources": 2,
+    "probe_only_sources": 2,
+    "rights_held_sources": 3,
+    "source_connection_successes": 4,
+    "event_recall": null,
+    "verified_claims": 0,
+    "importance_scores_created": 0,
+    "note": "新增來源技術探測不保留未授權標題、摘要或全文。狀態正常不表示取得內容重製授權或已獨立證實。"
+  },
+  "sources": [
+    {
+      "id": "eia-energy",
+      "publisher_id": "eia",
+      "name": "EIA Today in Energy",
+      "category": "能源",
+      "stage": "trial_active",
+      "rights_status": "approved_metadata_trial",
+      "test_state": "reachable_parsed",
+      "readable_entries": 8,
+      "error": null,
+      "review_reference": "https://www.eia.gov/TODAYINENERGY/about.php",
+      "public_content_republished": false,
+      "independent_confirmation": false
+    },
+    {
+      "id": "nasa-news",
+      "publisher_id": "nasa",
+      "name": "NASA News",
+      "category": "科技",
+      "stage": "trial_active",
+      "rights_status": "approved_metadata_trial",
+      "test_state": "reachable_parsed",
+      "readable_entries": 8,
+      "error": null,
+      "review_reference": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "public_content_republished": false,
+      "independent_confirmation": false
+    },
+    {
+      "id": "boj-news",
+      "publisher_id": "boj",
+      "name": "Bank of Japan What's New",
+      "category": "財經",
+      "stage": "probe_only",
+      "rights_status": "hold_commercial_permission",
+      "test_state": "reachable_parsed",
+      "readable_entries": 8,
+      "error": null,
+      "review_reference": "https://www.boj.or.jp/en/about/copyright.htm",
+      "public_content_republished": false,
+      "independent_confirmation": false
+    },
+    {
+      "id": "ecb-press",
+      "publisher_id": "ecb",
+      "name": "ECB Press",
+      "category": "財經",
+      "stage": "probe_only",
+      "rights_status": "hold_rights_review",
+      "test_state": "reachable_parsed",
+      "readable_entries": 8,
+      "error": null,
+      "review_reference": "https://www.ecb.europa.eu/services/using-our-site/disclaimer/html/index.en.html",
+      "public_content_republished": false,
+      "independent_confirmation": false
+    },
+    {
+      "id": "twse-news",
+      "publisher_id": "twse",
+      "name": "TWSE News RSS",
+      "category": "台灣",
+      "stage": "manual_review_only",
+      "rights_status": "hold_reading_only",
+      "test_state": "not_attempted",
+      "readable_entries": null,
+      "error": null,
+      "review_reference": "https://www.twse.com.tw/zh/terms/rss.html",
+      "public_content_republished": false,
+      "independent_confirmation": false
+    }
+  ]
+}
