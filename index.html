@@ -28,7 +28,7 @@
 <div class="brand"><small>PERSONAL INTELLIGENCE</small><strong>SIGNAL</strong><em>視界｜個人情報研究所</em></div>
 <div class="side-heading">INTELLIGENCE DESK</div>
 <nav id="deskNav"></nav><div class="side-spacer"></div>
-<div class="side-note"><b>設計理念 · Beyond the feed</b><p>不追逐大量資訊，而是辨識真正重要的變化；同時保留不在既有興趣內的探索訊號。</p></div><div class="side-bottom">V0.4.2 · 作者摘要元資料 · 2026.11.05</div>
+<div class="side-note"><b>設計理念 · Beyond the feed</b><p>不追逐大量資訊，而是辨識真正重要的變化；同時保留不在既有興趣內的探索訊號。</p></div><div class="side-bottom">V0.4.3 · 來源盲區與證據 · 2026.11.05</div>
 </aside>
 <main class="main">
 <div class="topbar"><div class="crumb">SIGNAL / <span id="crumb">TODAY'S BRIEF</span></div><div class="status"><span><i class="dot"></i>編輯精選為靜態樣本</span><span class="snapshot" id="feedSyncStatus">新發現尚未同步</span></div></div>
@@ -65,10 +65,14 @@
 <div class="footnote">此模組不抓全文、不推斷已獲同儕審查、不提供價格預測。AI 標題解讀必須以人工查核原文及獨立資料來源後，才能提升為正式情報。</div>
 </section>
 <section id="page-evidence" class="page">
-<div class="head"><div><div class="eyebrow">SIGNAL · PRIMARY EVIDENCE / V0.4.2</div><h1 class="serif">證據檢核<span style="color:var(--golddeep)">.</span></h1><p>除來源追溯外，嘗試核對官方研究摘要元資料。作者摘要不等於獨立驗證，資料仍待審查。</p></div><div class="headtools"><button class="btn" data-page="triage">返回情報初篩 →</button></div></div>
+<div class="head"><div><div class="eyebrow">SIGNAL · EVIDENCE & COVERAGE / V0.4.3</div><h1 class="serif">證據檢核<span style="color:var(--golddeep)">.</span></h1><p>除來源追溯外，嘗試核對官方研究摘要元資料。作者摘要不等於獨立驗證，資料仍待審查。</p></div><div class="headtools"><button class="btn" data-page="triage">返回情報初篩 →</button></div></div>
 <div class="feedstate" id="evidenceStatus">尚未載入證據稽核資料；不會以 AI 推論冒充查證。</div>
 <div class="discover-kpis" id="evidenceKpis"></div>
 <div class="card" style="padding:20px;background:#faf7ef;margin:16px 0 24px"><b style="color:var(--golddeep)">目前只能說什麼？</b><p id="evidenceLimit" style="font-size:12px;color:#756956;line-height:1.9">只保有來源、標題和日期；尚未核對主張內容。</p><p style="font-size:11px;color:#887c6a">M0：僅標題元資料　→　M0A：取得 arXiv 作者摘要元資料（仍未查證）　→　M1：核對原始文件內容（尚未啟用）　→　M2：取得獨立佐證（尚未啟用）。</p></div>
+<div class="sectiontitle"><h2><span class="tiny">SOURCE COVERAGE · BLIND SPOTS</span>情報來源覆蓋與盲區</h2><span class="hint">不是全球重要事件覆蓋率</span></div>
+<div class="feedstate" id="qualityStatus">尚未產生來源覆蓋診斷；未建立人工基準前，不顯示重大消息遺漏率。</div>
+<div class="discover-kpis" id="qualityKpis"></div>
+<div class="card" id="qualityDomains" style="padding:18px 20px;background:#fffdf9;margin-bottom:26px"><div class="empty">需先執行 V0.4.3 來源診斷。</div></div>
 <div class="sectiontitle"><h2><span class="tiny">AUDIT QUEUE · NO CERTIFICATION</span>需要查證的內容</h2><span class="hint">此處顯示缺口，不是可信度或全球重要性排名</span></div>
 <div class="discovery-grid" id="evidenceList"><div class="empty">尚無證據稽核結果。</div></div>
 <div class="footnote">資料頁面不儲存第三方全文、沒有驗證過新聞敘述，也不能證明論文已通過同儕審查。來源數量不等於支持同一主張的獨立證據數。</div>
@@ -103,6 +107,7 @@ const safeHref=url=>{try{let u=new URL(url);return ['https:','http:'].includes(u
 let DISCOVERY={meta:{},items:[],sources:[]};
 let TRIAGE={meta:{},items:[]};
 let EVIDENCE={meta:{},items:[]};
+let QUALITY={meta:{},dimensions:[],publisher_activity:[]};
 let FEED=JSON.parse($('seed').textContent);let STORIES=FEED.stories,EVENTS=FEED.events;
 let prefs={};try{prefs=JSON.parse(localStorage.getItem('signal-v02-prefs')||'{}')}catch{};
 const state={page:'today',category:'全部',keyword:'',days:7,track:'saved',showAll:false,discoveryCategory:'全部',discoveryKeyword:'',discoveryLimit:48};
@@ -120,7 +125,7 @@ function fullEvent(e){const d=dateKey(e).slice(-2);return `<article class="card 
 function events(){const selected=EVENTS.filter(e=>eventDays(e)>=0&&eventDays(e)<state.days).sort((a,b)=>a.start.localeCompare(b.start));$('eventsList').innerHTML=selected.length?selected.map(fullEvent).join(''):'<div class="empty">該時段沒有收錄的重大事件。</div>';$('eventRanges').querySelectorAll('[data-days]').forEach(b=>b.classList.toggle('active',Number(b.dataset.days)===state.days));}
 function weekly(){const list=EVENTS.filter(e=>eventDays(e)>=0&&eventDays(e)<=7).sort((a,b)=>a.start.localeCompare(b.start));$('weeklyEvents').innerHTML=list.map(fullEvent).join('')||'<div class="empty">本週無收錄的重要事件。</div>'}
 function tracking(){document.querySelectorAll('[data-track]').forEach(b=>b.classList.toggle('active',b.dataset.track===state.track));const rows=STORIES.filter(a=>saved(a.id)[state.track]);$('trackList').innerHTML=rows.length?rows.map(a=>`<div class="track-row"><div><span class="tag">${sc(a.category)}</span><h3>${sc(a.title)}</h3><p>${sc(a.date)} · ${sc(a.source)}</p></div><button class="btn" data-story="${a.id}">閱讀</button></div>`).join(''):'<div class="track-empty">目前沒有內容。可在情報卡片中收藏，或進入詳情將主題加入追蹤。</div>'}
-function render(){if(state.page==='today')today();if(state.page==='discover')discover();if(state.page==='triage')renderTriage();if(state.page==='evidence')renderEvidence();if(state.page==='events')events();if(state.page==='weekly')weekly();if(state.page==='follow')tracking();}
+function render(){if(state.page==='today')today();if(state.page==='discover')discover();if(state.page==='triage')renderTriage();if(state.page==='evidence'){renderEvidence();renderQuality();}if(state.page==='events')events();if(state.page==='weekly')weekly();if(state.page==='follow')tracking();}
 function showStory(id){const a=STORIES.find(x=>x.id===id);if(!a)return;const p=saved(id);$('dialog').innerHTML=`<button class="x" data-close aria-label="關閉">×</button><div class="eyebrow">${sc(a.category)} / ${sc(a.signal)} / ${sc(a.date)}</div><h2 class="serif">${sc(a.title)}</h2><p class="lead">${sc(a.source)} · 原始出處可追溯 · 本文為簡短編輯整理與分析</p><div class="detail-section"><b>已知事實</b><p>${sc(a.summary)}</p></div><div class="detail-section"><b>為什麼值得關注？（分析推論）</b><p>${sc(a.why)}</p></div><div class="detail-section"><b>後續應驗證什麼？</b><p>${sc(a.watch)}</p></div><div class="detail-section"><b>不確定性與反面考量</b><p>${sc(a.caveat)}</p></div><div class="detail-section"><b>判斷資訊</b><p>編輯重要性 ${a.importance}/100 · 個人關聯度 ${a.relevance}/100 · ${a.explore?'跨領域探索候選':'核心領域'}<br>關聯資產標籤：${sc((a.markets||[]).join('、'))}（不代表交易建議）</p></div><div class="detail-section"><b>原始來源</b><p><a href="${sc(a.url)}" target="_blank" rel="noopener noreferrer">${sc(a.source)} ↗</a></p></div><div class="actions"><button class="btn gold" data-flag="follow" data-id="${a.id}">${p.follow?'✓ 已追蹤':'＋ 追蹤此主題'}</button><button class="btn" data-flag="saved" data-id="${a.id}">${p.saved?'★ 已收藏':'☆ 收藏'}</button><button class="btn" data-flag="read" data-id="${a.id}">${p.read?'✓ 已閱讀':'標記已閱讀'}</button></div>`;openModal();}
 function showEvent(id){const e=EVENTS.find(x=>x.id===id);if(!e)return;$('dialog').innerHTML=`<button class="x" data-close aria-label="關閉">×</button><div class="eyebrow">EVENT INTELLIGENCE / ${sc(e.category)}</div><h2 class="serif">${sc(e.title)}</h2><p class="lead">${sc(e.display)}（台灣時間）· ${sc(e.status)}</p><div class="detail-section"><b>提前觀察的重點</b><p>${sc(e.watch)}</p></div><div class="detail-section"><b>來源與時間驗證</b><p>來源：<a target="_blank" rel="noopener noreferrer" href="${sc(e.url)}">${sc(e.source)} ↗</a><br>核對基準：2026-11-05；若正式日期有修改，後續應以官方為準。</p></div><div class="detail-section"><b>事後結果</b><p>目前尚未發生。正式版需要事件公布後由官方資料更新「預期與實際」差異；原型不會假造結果。</p></div><div class="actions"><button class="btn gold" data-ics="${e.id}">下載 .ics 行事曆（提前一天提醒）</button></div>`;openModal();}
 function openModal(){$('overlay').classList.add('show');document.body.style.overflow='hidden';$('dialog').scrollTop=0}function closeModal(){$('overlay').classList.remove('show');document.body.style.overflow=''}
@@ -231,6 +236,33 @@ async function loadEvidence(){
  if(!loaded)EVIDENCE={meta:{},items:[]};
  renderEvidence();
 }
+function renderQuality(){
+ const m=QUALITY.meta||{},ds=QUALITY.dimensions||[];
+ if(m.status!=='input_coverage_diagnostic_only'){
+  $('qualityStatus').textContent='尚未產生 V0.4.3 來源覆蓋診斷；不可把目前候選當作全球新聞完整樣本。';
+  $('qualityKpis').innerHTML='';
+  $('qualityDomains').innerHTML='<div class="empty">等候完成來源覆蓋診斷。</div>';
+  return;
+ }
+ const all=ds.length;
+ $('qualityStatus').textContent=`來源覆蓋診斷 ${twDate(m.generated_at)}。只檢查已接入發布機構與資料領域，不等於全球重要新聞覆蓋率；沒有人工事件基準時，遺漏率不可計算。`;
+ $('qualityKpis').innerHTML=`<div class="card discover-kpi"><small>已觀測發布機構</small><strong>${Number(m.observed_publishers||0)}</strong><span>同機構多條 RSS 只算一家</span></div><div class="card discover-kpi"><small>缺少正式來源的領域</small><strong>${Number(m.domains_no_observed_publisher||0)}/${all}</strong><span>偵測的是來源盲區，非新聞漏報數</span></div><div class="card discover-kpi"><small>重大事件遺漏率</small><strong>—</strong><span>未建立人工基準，不能宣稱準確率</span></div>`;
+ $('qualityDomains').innerHTML='<div style="font-size:12px;color:#6f675c;margin-bottom:14px">覆蓋表示此領域是否至少有一家具備相應職責的來源被成功採集，並非事件真實性或充分查證。</div>'+
+  ds.map(x=>`<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #ede4d4;padding:10px 0;font-size:12px"><b>${sc(x.label)}</b><span style="color:${x.observed_publisher_count?'#6c5c3d':'#a14d41'}">${x.observed_publisher_count?('已觀測 '+x.observed_publisher_count+' 家 · 不等於獨立佐證'):'尚無正式來源'}</span></div>`).join('')+
+ '<div style="border-top:1px solid #ede4d4;padding-top:13px;font-size:11px;line-height:1.8;color:#857563">下一步：依來源治理規則補足國際政治、產業、台灣／日本／巴西等觀測盲區，再建立獨立、人工審核的事件基準清單。所有已收集研究仍需查證。</div>';
+}
+async function loadQuality(){
+ if(!/^https?:$/.test(location.protocol)){renderQuality();return;}
+ try{
+  let r=await fetch('./data/source_quality_v043.json?fresh='+Date.now(),{cache:'no-store'});
+  if(!r.ok)throw Error('HTTP '+r.status);
+  let d=await r.json();
+  if(!Array.isArray(d.dimensions)||d.meta?.rights_scope!=='descriptive_public_metadata_only'||d.meta?.status!=='input_coverage_diagnostic_only'||
+     d.meta?.global_news_recall!==null||Number(d.meta?.verified_claims||0)!==0)throw Error('Untrusted coverage report');
+  QUALITY=d;
+ }catch(e){QUALITY={meta:{},dimensions:[]};console.warn('coverage diagnostics unavailable',e);}
+ renderQuality();
+}
 async function loadTriage(){
  if(!/^https?:$/.test(location.protocol)){renderTriage();return;}
  try{const r=await fetch('./data/intelligence.json?fresh='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
@@ -239,7 +271,7 @@ async function loadTriage(){
  renderTriage();
 }
 
-navRender();render();loadGenerated();loadDiscovery();loadTriage();loadEvidence();
+navRender();render();loadGenerated();loadDiscovery();loadTriage();loadEvidence();loadQuality();
 })();
 </script>
 </body></html>

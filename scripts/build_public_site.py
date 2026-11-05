@@ -129,6 +129,38 @@ def build(output,source_root=BASE,*,strict=False):
                     raise RuntimeError('M0 improperly contains extended text')
             else:
                 raise RuntimeError('Unknown or unsupported evidence level')
+    # V0.4.3 diagnostics: allowed to describe SOURCE coverage, not news/event recall.
+    quality_path=source_root/'data/source_quality_v043.json'
+    if quality_path.is_file():
+        quality=json.loads(quality_path.read_text(encoding='utf-8'))
+        qm=quality.get('meta',{})
+        if (qm.get('rights_scope')!='descriptive_public_metadata_only'
+            or qm.get('status')!='input_coverage_diagnostic_only'
+            or qm.get('global_news_recall') is not None
+            or qm.get('benchmark_event_recall') is not None
+            or any(qm.get(k)!=0 for k in ('verified_claims','independently_confirmed_claims',
+                'independent_corrob_evidence_items','importance_scores_created'))):
+            raise RuntimeError('Source coverage report claims unsupported verification, importance or recall')
+        count=len({x.get('publisher_id') for x in live.get('items',[])})
+        if qm.get('observed_publishers')!=count or qm.get('observed_items')!=len(live.get('items',[])):
+            raise RuntimeError('Coverage source counts do not match source metadata')
+        from source_quality_v043 import DIMENSIONS
+        dimensions=quality.get('dimensions',[])
+        profiles={key:set(pubs) for key,label,pubs in DIMENSIONS}
+        expected_keys=set(profiles)
+        observed={x.get('publisher_id') for x in live.get('items',[])}
+        if (len(dimensions)!=len(expected_keys) or {x.get('key') for x in dimensions}!=expected_keys
+            or any(x.get('claim_coverage_confirmed') is not False for x in dimensions)
+            or any(x.get('observed_publishers')!=sorted(observed.intersection(profiles[x['key']]))
+                   or x.get('observed_publisher_count')!=len(observed.intersection(profiles[x['key']]))
+                   for x in dimensions)
+            or qm.get('domains_no_observed_publisher')!=sum(x.get('observed_publisher_count')==0 for x in dimensions)):
+            raise RuntimeError('Source coverage dimension is inconsistent or asserts verification')
+        dest=output/'data/source_quality_v043.json'
+        shutil.copyfile(quality_path,dest)
+    elif strict:
+        raise FileNotFoundError('Missing V0.4.3 coverage audit; production deployment blocked')
+
     published=sorted(str(p.relative_to(output)) for p in output.rglob('*') if p.is_file())
     print('Public site files:',json.dumps(published,ensure_ascii=False))
     return published
