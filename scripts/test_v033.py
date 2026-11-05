@@ -17,11 +17,12 @@ with tempfile.TemporaryDirectory() as t:
     assert obj['meta']['state']=='not_run' or obj['meta']['state']=='checked'
     assert obj.get('sources',[])==[] or all(r.get('legal_approved') is False for r in obj['sources'])
     disc=json.loads((dest/'data/discovered.json').read_text(encoding='utf-8'))
-    assert disc['items']==[], 'pilot must not publish non-approved titles'
+    assert disc['meta']['rights_scope']=='descriptive_public_metadata_only'
+    assert all(x['source_id'] in ('fed-monetary','bea-news','arxiv-ai','arxiv-robotics') and x.get('summary') is None for x in disc['items'])
     assert '來源接入' in (dest/'source-console.html').read_text(encoding='utf-8')
 wf=(BASE/'.github/workflows/signal-preflight-pages.yml').read_text(encoding='utf-8')
 assert 'SIGNAL_ENABLE_PROBE_SCHEDULE' in wf
 assert "github.event_name == 'workflow_dispatch'" in wf
 assert 'actions/deploy-pages@v4' in wf
 assert 'path: _site' in wf
-print('PASS V0.3.3: public allowlist, no unlicensed headlines, deployment gated, source data never misrepresented')
+print('PASS V0.3.3 compatibility: public allowlist, reviewed metadata only, source registry remains private')

@@ -1,0 +1,40 @@
+{
+  "schema_version": "0.3.4",
+  "purpose": "首批有明確公開元資料可再利用依據的 RSS 通道；僅發佈標題、原始連結、發布日期和出處，不擷取文章全文、不推論內容已查證。",
+  "reviewed_at": "2026-11-05",
+  "review_scope": "descriptive_public_metadata_only",
+  "sources": [
+    {
+      "id": "fed-monetary", "name": "Federal Reserve｜貨幣政策", "publisher_id": "fed",
+      "category": "財經", "kind": "official", "url": "https://www.federalreserve.gov/feeds/press_monetary.xml",
+      "max_items": 16, "status": "metadata_only", "terms_reviewed_at": "2026-11-05",
+      "evidence_url": "https://www.federalreserve.gov/disclaimer.htm",
+      "feed_reference_url": "https://www.federalreserve.gov/feeds/feeds.htm",
+      "scope_note": "聯準會網站原則上為公有領域（另有標記者除外）；引用機構，僅顯示官方發布標題與原文連結。"
+    },
+    {
+      "id": "bea-news", "name": "BEA｜美國經濟新聞發布", "publisher_id": "bea",
+      "category": "財經", "kind": "official", "url": "https://apps.bea.gov/rss/rss.xml",
+      "max_items": 16, "status": "metadata_only", "terms_reviewed_at": "2026-11-05",
+      "evidence_url": "https://www.bea.gov/help/faq/147",
+      "feed_reference_url": "https://www.bea.gov/",
+      "scope_note": "BEA 公告網站除另有註明外屬公有領域；僅取得標題、日期與連結，不使用第三方素材。"
+    },
+    {
+      "id": "arxiv-ai", "name": "arXiv｜人工智慧研究", "publisher_id": "arxiv",
+      "category": "知識", "kind": "research", "url": "https://rss.arxiv.org/rss/cs.AI",
+      "max_items": 16, "status": "metadata_only", "terms_reviewed_at": "2026-11-05",
+      "evidence_url": "https://info.arxiv.org/help/api/tou.html",
+      "feed_reference_url": "https://info.arxiv.org/help/rss.html",
+      "scope_note": "arXiv 描述性元資料 CC0；論文全文、圖片與附件不在此授權內；每個 arXiv 請求間至少相隔 3 秒。"
+    },
+    {
+      "id": "arxiv-robotics", "name": "arXiv｜機器人研究", "publisher_id": "arxiv",
+      "category": "知識", "kind": "research", "url": "https://rss.arxiv.org/rss/cs.RO",
+      "max_items": 16, "status": "metadata_only", "terms_reviewed_at": "2026-11-05",
+      "evidence_url": "https://info.arxiv.org/help/api/tou.html",
+      "feed_reference_url": "https://info.arxiv.org/help/rss.html",
+      "scope_note": "arXiv 描述性元資料 CC0；論文未經同儕審查；同發布機構不構成獨立佐證。"
+    }
+  ]
+}

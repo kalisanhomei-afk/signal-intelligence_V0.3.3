@@ -1,0 +1,77 @@
+name: SIGNAL V0.3.4 live update and Pages
+
+on:
+  workflow_dispatch:
+  schedule:
+    # UTC 00:27 / 12:27 => Asia/Taipei 08:27 / 20:27
+    - cron: '27 0,12 * * *'
+
+# Prevent overlapping edits to history.json. No need for a long-lived server.
+concurrency:
+  group: signal-live-v034
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  collect-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check offline acceptance tests
+        run: |
+          python scripts/test_pipeline.py
+          python scripts/test_governance.py
+          python scripts/test_v032.py
+          python scripts/test_v033.py
+          python scripts/test_v034.py
+      - name: Collect only rights-reviewed public descriptive metadata
+        run: python scripts/collect_v034.py --output data/live_items.json
+      - name: Save compact public history on main
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/live_items.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: refresh reviewed metadata [skip ci]"
+            git push origin HEAD:main
+          else
+            echo "No metadata change"
+          fi
+      - name: Assemble allowlisted public site
+        run: python scripts/build_public_site.py --output _site
+      - name: Publish collection summary
+        run: python scripts/v034_summary.py --input data/live_items.json --output "$GITHUB_STEP_SUMMARY"
+      - name: Upload metadata report for audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-v034-metadata
+          path: data/live_items.json
+          retention-days: 14
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+  deploy:
+    needs: collect-build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

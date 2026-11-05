@@ -1,8 +1,133 @@
 {
   "meta": {
-    "state": "not_run",
-    "last_attempt_at": null,
-    "note": "尚無實際外網探測；系統不應展示即時成功。"
+    "version": "0.3.2",
+    "state": "checked",
+    "last_attempt_at": "2026-11-05T10:44:51+00:00",
+    "reachable": 7,
+    "total": 10,
+    "rights_cleared": 0,
+    "note": "2026-11-05 手動 GitHub Actions 探測歷史快照，7/10 連線成功；不表示全部取得授權，不會與 V0.3.4 正式採集結果混同。"
   },
-  "sources": []
+  "sources": [
+    {
+      "source_id": "fed-monetary",
+      "publisher_id": "fed",
+      "state": "reachable",
+      "url": "https://www.federalreserve.gov/feeds/press_monetary.xml",
+      "reference_url": "https://www.federalreserve.gov/feeds/feeds.htm",
+      "items_seen": 15,
+      "error": null,
+      "legal_approved": false,
+      "latency_ms": null,
+      "live_tested_at": "2026-11-05T10:44:51+00:00"
+    },
+    {
+      "source_id": "bls-cpi",
+      "publisher_id": "bls",
+      "state": "unavailable",
+      "url": "https://www.bls.gov/feed/cpi.rss",
+      "reference_url": "https://www.bls.gov/feed/",
+      "items_seen": 0,
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "legal_approved": false,
+      "latency_ms": null,
+      "live_tested_at": null
+    },
+    {
+      "source_id": "bls-employment",
+      "publisher_id": "bls",
+      "state": "unavailable",
+      "url": "https://www.bls.gov/feed/empsit.rss",
+      "reference_url": "https://www.bls.gov/feed/",
+      "items_seen": 0,
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "legal_approved": false,
+      "latency_ms": null,
+      "live_tested_at": null
+    },
+    {
+      "source_id": "bea-news",
+      "publisher_id": "bea",
+      "state": "reachable",
+      "url": "https://apps.bea.gov/rss/rss.xml",
+      "reference_url": "https://www.bea.gov/resources/for-developers",
+      "items_seen": 16,
+      "error": null,
+      "legal_approved": false,
+      "latency_ms": null,
+      "live_tested_at": "2026-11-05T10:44:51+00:00"
+    },
+    {
+      "source_id": "ecb-press",
+      "publisher_id": "ecb",
+      "state": "reachable",
+      "url": "https://www.ecb.europa.eu/rss/press.html",
+      "reference_url": "https://www.ecb.europa.eu/home/html/rss.en.html",
+      "items_seen": 15,
+      "error": null,
+      "legal_approved": false,
+      "latency_ms": null,
+      "live_tested_at": "2026-11-05T10:44:51+00:00"
+    },
+    {
+      "source_id": "nasa-jpl",
+      "publisher_id": "nasa-jpl",
+      "state": "unavailable",
+      "url": "https://www.jpl.nasa.gov/feeds/news/",
+      "reference_url": "https://www.nasa.gov/rss-feeds/",
+      "items_seen": 0,
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "legal_approved": false,
+      "latency_ms": null,
+      "live_tested_at": null
+    },
+    {
+      "source_id": "arxiv-ai",
+      "publisher_id": "arxiv",
+      "state": "reachable",
+      "url": "https://rss.arxiv.org/rss/cs.AI",
+      "reference_url": "https://github.com/arXiv/arxiv-docs/blob/develop/source/help/rss.md",
+      "items_seen": 16,
+      "error": null,
+      "legal_approved": false,
+      "latency_ms": null,
+      "live_tested_at": "2026-11-05T10:44:51+00:00"
+    },
+    {
+      "source_id": "arxiv-robotics",
+      "publisher_id": "arxiv",
+      "state": "reachable",
+      "url": "https://rss.arxiv.org/rss/cs.RO",
+      "reference_url": "https://github.com/arXiv/arxiv-docs/blob/develop/source/help/rss.md",
+      "items_seen": 16,
+      "error": null,
+      "legal_approved": false,
+      "latency_ms": null,
+      "live_tested_at": "2026-11-05T10:44:51+00:00"
+    },
+    {
+      "source_id": "bbc-world",
+      "publisher_id": "bbc",
+      "state": "reachable",
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+      "reference_url": "https://www.bbc.co.uk/news/10628494",
+      "items_seen": 16,
+      "error": null,
+      "legal_approved": false,
+      "latency_ms": null,
+      "live_tested_at": "2026-11-05T10:44:51+00:00"
+    },
+    {
+      "source_id": "hn-signal",
+      "publisher_id": "hn",
+      "state": "reachable",
+      "url": "https://news.ycombinator.com/rss",
+      "reference_url": "https://news.ycombinator.com/",
+      "items_seen": 16,
+      "error": null,
+      "legal_approved": false,
+      "latency_ms": null,
+      "live_tested_at": "2026-11-05T10:44:51+00:00"
+    }
+  ]
 }

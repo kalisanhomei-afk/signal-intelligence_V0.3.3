@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#0b0b10">
-<title>視界 SIGNAL · 個人情報系統 V0.3.2</title>
+<title>視界 SIGNAL · 個人情報系統 V0.3.4</title>
 <style>
 :root{--black:#0b0b10;--paper:#ece6da;--gold:#c29b40;--golddeep:#8b6b2e;--white:#fff;--text:#26231f;--muted:#827b6f;--line:#ded8cb;--ivory:#faf8f4;--radius:17px;--shadow:0 18px 55px rgba(27,24,18,.055)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:var(--ivory);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft JhengHei",sans-serif;font-size:14px;line-height:1.68}button,input,select{font:inherit}button{cursor:pointer}a{color:var(--golddeep)}.serif{font-family:Georgia,"Noto Serif TC","PMingLiU",serif}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
@@ -128,17 +128,18 @@ function healthLabel(h){return h.ok?'正常':'失敗';}
 function discoveryStatus(){
   const m=DISCOVERY.meta||{};
   if(m.mode==='demo')return '【模擬測試模式】全部標題、來源健康度與時間皆為虛構測試資料；不是即時新聞。';
+  if(m.mode==='official_metadata'&&!m.last_attempt_at)return '正式公開元資料更新尚未執行。此頁不會用既有樣本偽裝即時新聞。';
   if(location.protocol==='file:')return '目前是單檔離線模式。需要透過網站伺服器開啟，才能讀取自動更新的 data/discovered.json。';
-  if(!m.last_attempt_at)return '尚未排程採集｜「今日情報」仍使用 2026/11/05 編輯樣本；「新發現」不會憑空更新。';
+  if(!m.last_attempt_at)return '尚未排程採集｜「今日情報」仍使用 2026/11/05 編輯樣本；「新發現」尚未運作。';
   let stale=!recentEnough(m.last_success_at);
-  return `上次嘗試 ${twDate(m.last_attempt_at)} · 最近成功 ${twDate(m.last_success_at)} · ${m.successful_sources??0}/${m.source_count??0} 個來源成功${stale?' · ⚠ 資料過期／可能停更':''}。所有新標題均未查證。`;
+  return `官方及研究元資料｜上次嘗試 ${twDate(m.last_attempt_at)} · 最近成功 ${twDate(m.last_success_at)} · ${m.successful_sources??0}/${m.source_count??0} 條通道成功${stale?' · ⚠ 資料可能過期':''}。僅公開標題／來源／日期，非查證後的情報分析。`;
 }
 function renderSourceHealth(){
  const arr=DISCOVERY.sources||[];
- $('sourceHealth').innerHTML=arr.length?arr.map(h=>`<div class="source-row"><span class="source-light ${h.ok?'healthy':'failed'}"></span><div><b>${sc(h.source||h.source_id)}</b><small>${sc(h.category)} · ${sc(h.source_kind)} · 最近成功：${twDate(h.last_success_at)}</small>${h.error?`<small class="source-error">${sc(h.error)}</small>`:''}</div><div class="source-right"><strong>${healthLabel(h)}</strong><small>${h.ok?`${h.count||0} 則標題`:'保留既有資料'}</small></div></div>`).join(''):'<div class="empty">尚未取得任何來源狀態；請先執行採集器或等待部署排程。</div>';
+ $('sourceHealth').innerHTML=arr.length?arr.map(h=>`<div class="source-row"><span class="source-light ${h.ok?'healthy':'failed'}"></span><div><b>${sc(h.source||h.source_id)}</b><small>${sc(h.category)} · ${sc(h.source_kind)} · 最近成功：${twDate(h.last_success_at)}</small>${h.error?`<small class="source-error">${sc(h.error)}</small>`:''}</div><div class="source-right"><strong>${healthLabel(h)}</strong><small>${h.ok?`${h.count||0} 則標題`:'保留既有資料'}</small></div></div>`).join(''):'<div class="empty">尚未取得正式公開元資料來源狀態；請從 GitHub Actions 啟動 V0.3.4。</div>';
 }
 function renderDiscoveryCard(item){
- return `<article class="card discovered-card"><header><span class="tag pale">${sc(item.category)}</span><span class="sourcebadge">${sc(item.source_kind)}</span></header><h3>${sc(item.title)}</h3><p>${sc(item.source)} · ${twDate(item.published_at)}</p><footer><span class="unreviewed">未審核標題</span><a class="btn" href="${safeHref(item.url)}" rel="noopener noreferrer" target="_blank">原文 ↗</a></footer></article>`;
+ return `<article class="card discovered-card"><header><span class="tag pale">${sc(item.category)}</span><span class="sourcebadge">${sc(item.source_kind)}</span></header><h3>${sc(item.title)}</h3><p>${sc(item.source)} · ${twDate(item.published_at)}</p><footer><span class="unreviewed">公開元資料 · 尚未查核主張</span><a class="btn" href="${safeHref(item.url)}" rel="noopener noreferrer" target="_blank">原文 ↗</a></footer></article>`;
 }
 function discover(){
  discoveryCategories();
@@ -147,7 +148,7 @@ function discover(){
  const selected=diverseSelection(filtered,state.discoveryLimit);
  $('discoveryStatus').textContent=discoveryStatus();
  $('feedSyncStatus').textContent=m.mode==='demo'?'DEMO · 虛構測試資料':m.last_success_at?(recentEnough(m.last_success_at)?'來源已更新 · '+twDate(m.last_success_at):'來源資料可能過期'):'新發現尚未同步';
- $('discoverKpis').innerHTML=`<div class="card discover-kpi"><small>採集標題</small><strong>${all.length}</strong><span>未經內容核實</span></div><div class="card discover-kpi"><small>可用來源</small><strong>${m.successful_sources??0}<em> / ${m.source_count??0}</em></strong><span>最後一次更新結果</span></div><div class="card discover-kpi"><small>涵蓋領域</small><strong>${new Set(all.map(x=>x.category)).size}</strong><span>不依賴個人點擊紀錄</span></div>`;
+ $('discoverKpis').innerHTML=`<div class="card discover-kpi"><small>採集標題</small><strong>${all.length}</strong><span>資料庫標題 · 未查核內文</span></div><div class="card discover-kpi"><small>可用來源</small><strong>${m.successful_sources??0}<em> / ${m.source_count??0}</em></strong><span>最後一次更新結果</span></div><div class="card discover-kpi"><small>涵蓋領域</small><strong>${new Set(all.map(x=>x.category)).size}</strong><span>不依賴個人點擊紀錄</span></div>`;
  $('discoveryList').innerHTML=selected.length?selected.map(renderDiscoveryCard).join(''):'<div class="empty">沒有符合條件的近期未審標題；可能尚未部署來源蒐集或目前來源全部失效。</div>';
  renderSourceHealth();
  const top=diverseSelection(all,5);

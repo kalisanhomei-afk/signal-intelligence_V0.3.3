@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Generate a public, safe-to-publish SIGNAL pilot website.
+"""Generate allowlisted public SIGNAL site with approved descriptive metadata only.
 
-Intentionally uses an explicit allowlist of files. No rights registry, secrets,
-project docs, source code, and no unlicensed scraped headlines are published.
-This stage only publishes the result of a read-only connection preflight.
+No secrets, registry, unlicensed scraped titles, article text or user info.
+The original editorial snapshot remains dated 2026-11-05.
 """
 from __future__ import annotations
 import argparse, json, shutil, sys
@@ -15,7 +14,7 @@ FILES={
     "index.html":"index.html",
     "source-console.html":"source-console.html",
     "data/feed.json":"data/feed.json",             # dated, manually curated 2026-11-05 snapshot
-    "data/discovered.json":"data/discovered.json", # empty, until publishing is licensed
+    "data/live_items.json":"data/discovered.json", # ONLY pre-reviewed official/CC0 descriptive metadata
     "data/v032_candidates.json":"data/v032_candidates.json",
     "data/v032_live_probe.json":"data/v032_live_probe.json",
 }
@@ -45,6 +44,12 @@ def build(output,source_root=BASE,*,strict=False):
     state=probe.get('meta',{}).get('state')
     if strict and state not in ('checked','not_run'):
         raise RuntimeError(f'unexpected probe state: {state}')
+    live=json.loads((output/'data/discovered.json').read_text(encoding='utf-8'))
+    if live.get('meta',{}).get('rights_scope')!='descriptive_public_metadata_only':
+        raise RuntimeError('Unsafe metadata: rights scope not approved')
+    for item in live.get('items',[]):
+        if item.get('summary') is not None or item.get('source_id') not in ('fed-monetary','bea-news','arxiv-ai','arxiv-robotics'):
+            raise RuntimeError('Unsafe metadata: unknown source or article content in export')
     published=sorted(str(p.relative_to(output)) for p in output.rglob('*') if p.is_file())
     print('Public site files:',json.dumps(published,ensure_ascii=False))
     return published

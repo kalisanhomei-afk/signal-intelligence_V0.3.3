@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "version": "0.3.4",
+    "mode": "official_metadata",
+    "status": "not_run",
+    "last_attempt_at": null,
+    "last_success_at": null,
+    "successful_sources": 0,
+    "source_count": 4,
+    "new_items_in_run": 0,
+    "item_count": 0,
+    "retention_days": 45,
+    "rights_scope": "descriptive_public_metadata_only",
+    "note": "正式更新尚未執行。本資料檔不包含即時新聞。"
+  },
+  "items": [],
+  "sources": []
+}
