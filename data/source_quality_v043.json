@@ -1,0 +1,149 @@
+{
+  "meta": {
+    "version": "0.4.3",
+    "generated_at": "2026-11-05T14:52:01+00:00",
+    "status": "input_coverage_diagnostic_only",
+    "rights_scope": "descriptive_public_metadata_only",
+    "observed_items": 39,
+    "approved_channels": 4,
+    "observed_channels": 4,
+    "observed_publishers": 3,
+    "publisher_ids": [
+      "arxiv",
+      "bea",
+      "fed"
+    ],
+    "last_collection_success_at": "2026-11-05T14:51:53+00:00",
+    "collection_last_success_age_hours": 0.0,
+    "domains_no_observed_publisher": 8,
+    "domains_single_publisher": 1,
+    "benchmarked_event_count": 0,
+    "benchmark_status": "not_measured_no_reference",
+    "global_news_recall": null,
+    "benchmark_event_recall": null,
+    "importance_scores_created": 0,
+    "verified_claims": 0,
+    "independently_confirmed_claims": 0,
+    "independent_corrob_evidence_items": 0,
+    "note": "僅診斷已接入資料來源的領域覆蓋與候選資料；不能量測全球重要新聞遺漏率或宣稱任何主張已驗證。",
+    "anti_echo_warning": "多個 RSS 頻道若來自同一發布機構，不等於多個獨立證據。",
+    "source_limitations": [
+      "目前只有美國官方財經與 arXiv 預印本來源",
+      "全球政治、企業/產業、台日巴等缺少正式採集來源",
+      "不能用 AI 推論補齊未蒐集消息"
+    ]
+  },
+  "dimensions": [
+    {
+      "key": "us_macro",
+      "label": "美國貨幣政策與經濟統計",
+      "observed_publishers": [
+        "bea",
+        "fed"
+      ],
+      "observed_publisher_count": 2,
+      "source_status": "multiple_publishers_not_same_claim",
+      "claim_coverage_confirmed": false
+    },
+    {
+      "key": "ai_preprint",
+      "label": "AI／機器人研究預印本",
+      "observed_publishers": [
+        "arxiv"
+      ],
+      "observed_publisher_count": 1,
+      "source_status": "single_publisher_only",
+      "claim_coverage_confirmed": false
+    },
+    {
+      "key": "world_politics",
+      "label": "全球政治與外交事件",
+      "observed_publishers": [],
+      "observed_publisher_count": 0,
+      "source_status": "no_reviewed_publisher_observed",
+      "claim_coverage_confirmed": false
+    },
+    {
+      "key": "industry",
+      "label": "企業／產業與商業模式",
+      "observed_publishers": [],
+      "observed_publisher_count": 0,
+      "source_status": "no_reviewed_publisher_observed",
+      "claim_coverage_confirmed": false
+    },
+    {
+      "key": "engineering",
+      "label": "工程產品／量產與技術商業化",
+      "observed_publishers": [],
+      "observed_publisher_count": 0,
+      "source_status": "no_reviewed_publisher_observed",
+      "claim_coverage_confirmed": false
+    },
+    {
+      "key": "energy",
+      "label": "能源與商品市場",
+      "observed_publishers": [],
+      "observed_publisher_count": 0,
+      "source_status": "no_reviewed_publisher_observed",
+      "claim_coverage_confirmed": false
+    },
+    {
+      "key": "taiwan",
+      "label": "台灣本地經濟／政治／科技",
+      "observed_publishers": [],
+      "observed_publisher_count": 0,
+      "source_status": "no_reviewed_publisher_observed",
+      "claim_coverage_confirmed": false
+    },
+    {
+      "key": "japan",
+      "label": "日本經濟／產業／政策",
+      "observed_publishers": [],
+      "observed_publisher_count": 0,
+      "source_status": "no_reviewed_publisher_observed",
+      "claim_coverage_confirmed": false
+    },
+    {
+      "key": "brazil",
+      "label": "巴西經濟／產業／政策",
+      "observed_publishers": [],
+      "observed_publisher_count": 0,
+      "source_status": "no_reviewed_publisher_observed",
+      "claim_coverage_confirmed": false
+    },
+    {
+      "key": "society",
+      "label": "社會／公共衛生／教育",
+      "observed_publishers": [],
+      "observed_publisher_count": 0,
+      "source_status": "no_reviewed_publisher_observed",
+      "claim_coverage_confirmed": false
+    }
+  ],
+  "publisher_activity": [
+    {
+      "publisher_id": "arxiv",
+      "item_count": 32,
+      "last_item_published_at": "2026-11-05T05:00:00+00:00",
+      "age_days_of_newest_item": 0.4
+    },
+    {
+      "publisher_id": "bea",
+      "item_count": 4,
+      "last_item_published_at": "2026-11-04T13:30:00+00:00",
+      "age_days_of_newest_item": 1.1
+    },
+    {
+      "publisher_id": "fed",
+      "item_count": 3,
+      "last_item_published_at": "2026-10-28T18:00:00+00:00",
+      "age_days_of_newest_item": 7.9
+    }
+  ],
+  "benchmark_candidates": [],
+  "next_actions": [
+    "先完成重要領域與不同地域的合法來源接入審核，不以付費/免費作為品質標準",
+    "由人工建立有日期、原始連結與審查者的重大事件基準清單，才有資格量測遺漏",
+    "跨發布機構的相同主張須拆解成可核對內容，不得僅以文章數量當作獨立佐證"
+  ]
+}
