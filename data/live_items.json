@@ -2,19 +2,67 @@
   "meta": {
     "version": "0.3.4",
     "mode": "official_metadata",
-    "generated_at": "2026-11-05T15:04:31+00:00",
-    "last_attempt_at": "2026-11-05T15:04:31+00:00",
-    "last_success_at": "2026-11-05T15:04:31+00:00",
-    "successful_sources": 6,
-    "source_count": 6,
+    "generated_at": "2026-11-06T00:57:13+00:00",
+    "last_attempt_at": "2026-11-06T00:57:13+00:00",
+    "last_success_at": "2026-11-06T00:57:13+00:00",
+    "successful_sources": 8,
+    "source_count": 8,
     "status": "healthy",
-    "new_items_in_run": 26,
-    "item_count": 65,
+    "new_items_in_run": 28,
+    "item_count": 93,
     "retention_days": 45,
     "rights_scope": "descriptive_public_metadata_only",
     "note": "僅公開公告或研究的描述性元資料；不代表全文被查證、來源互為獨立證據，亦非 AI 精選。"
   },
   "items": [
+    {
+      "id": "rss-d4d36af74f2a2095a54a50",
+      "title": "Pinning down the structure of quark-gluon plasma, the universe’s first fluid",
+      "url": "https://news.mit.edu/2026/pinning-down-quark-gluon-plasma-structure-1105",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-11-05T16:20:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-55a2930a5c54378a8e52b0",
+      "title": "Midwestern City Lights",
+      "url": "https://www.nasa.gov/image-article/midwestern-city-lights",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-05T15:17:19+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-6337b15d045c3dd154c45c",
+      "title": "NASA Astronauts to Answer Questions from Florida Students",
+      "url": "https://www.nasa.gov/learning-resources/nasa-astronauts-to-answer-questions-from-florida-students-2",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-05T15:11:25+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
     {
       "id": "rss-77ab5d7af2eff7b8db8f51",
       "title": "Category 2 Hurricane Isaias nears landfall, leading to production shut-ins",
@@ -29,7 +77,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-3993941242fcf8c5b02082",
@@ -45,7 +93,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-4d40eb7ca8fc9a3f90fd0f",
@@ -61,7 +109,151 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-7973a1f6463d4d38ab55be",
+      "title": "Remarks by Commissioner Serafin during the Budget Committee meeting at the European Parliament",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2358",
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "category": "政治",
+      "source_kind": "official",
+      "published_at": "2026-11-05T12:11:35+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-184fd9d367f81df38b6818",
+      "title": "Speech by Commissioner Dombrovskis presenting report on Simplification, Implementation and Enforcement at CEPS",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2357",
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "category": "政治",
+      "source_kind": "official",
+      "published_at": "2026-11-05T12:04:35+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-443f234dc304b45a88119a",
+      "title": "Daily News 05 / 11 / 2026",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/mex_26_2355",
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "category": "政治",
+      "source_kind": "official",
+      "published_at": "2026-11-05T10:32:53+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-a4a9b86f9791cc0f7462a2",
+      "title": "Questions and Answers on the 2027 fishing opportunities in the Atlantic, Kattegat and Skagerrak",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/qanda_26_2354",
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "category": "政治",
+      "source_kind": "official",
+      "published_at": "2026-11-05T10:28:43+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-7af55737ded2ed93219c39",
+      "title": "Commission proposes 2027 fishing opportunities for fish stocks in the Atlantic, Kattegat and Skagerrak",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_2353",
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "category": "政治",
+      "source_kind": "official",
+      "published_at": "2026-11-05T09:47:10+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-d7032417c4b5004d3b2c02",
+      "title": "European Innovation Council launches €1.8 billion in funding for 2027",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_2352",
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "category": "政治",
+      "source_kind": "official",
+      "published_at": "2026-11-05T09:45:37+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-90f10213dbe42d893d67f7",
+      "title": "Remarks by Executive Vice-President Mînzatu on the Education and Skills package",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2351",
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "category": "政治",
+      "source_kind": "official",
+      "published_at": "2026-11-05T09:43:57+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-9a08c9cc0c73ec2ea23f1d",
+      "title": "Keynote address by Commissioner Kubilius at the Konrad Adenauer Stiftung's Global Security Forum",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2350",
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "category": "政治",
+      "source_kind": "official",
+      "published_at": "2026-11-05T09:05:13+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-9399cf5ee9959c4211501b",
+      "title": "Commission disburses €4.36 billion to Ukraine under the €90 billion Ukraine Support Loan",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_2349",
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "category": "政治",
+      "source_kind": "official",
+      "published_at": "2026-11-05T08:01:16+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-8f73d19c713edd8561f16a",
@@ -77,7 +269,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-70aad3303bf3bdd1a4b853",
@@ -93,7 +285,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-fb43f0f2d5d92507744d15",
@@ -109,7 +301,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-f846b630bec3a503daeb64",
@@ -125,7 +317,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-f6365caf171c45c9ce2ec6",
@@ -141,7 +333,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-ea621de7e230ccb7aca7c1",
@@ -157,7 +349,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-e7906e0264c0efc13797a5",
@@ -173,7 +365,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-e20eec6c382dcfe4b55842",
@@ -189,7 +381,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-d00df6c93ac0026c23a21f",
@@ -205,7 +397,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-c2934b82588b76fc7fc856",
@@ -221,7 +413,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-bbb7f69db5debade679b62",
@@ -237,7 +429,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-b79b211040ef6969648f7e",
@@ -253,7 +445,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-b27a09d0d93233afa3b3fb",
@@ -269,7 +461,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-abdb707b0a55aeaa8cbd01",
@@ -285,7 +477,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-a0ba445070c2b1fe0cf1b7",
@@ -301,7 +493,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-9ec66997e4c67d1609559d",
@@ -317,7 +509,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-9e109f910ff861b4b6a0c0",
@@ -333,7 +525,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-9a2876bfe0c6b1db7700d8",
@@ -349,7 +541,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-988751dceb22688e500597",
@@ -365,7 +557,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-95c7efe247d46f3e264c26",
@@ -381,7 +573,23 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-87631feae5b67cf18cdcb5",
+      "title": "Clearing up a robot’s fuzzy memory",
+      "url": "https://news.mit.edu/2026/clearing-up-robot-fuzzy-memory-1105",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-11-05T05:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-833e9eaf617aca9be82ddf",
@@ -397,7 +605,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-8169d789c150c26cec0b3c",
@@ -413,7 +621,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-4ced9b5daa264ea9566439",
@@ -429,7 +637,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-495042ca0e78bb75db55be",
@@ -445,7 +653,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-48da68b7227da49a051915",
@@ -461,7 +669,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-3dabf25cdecd1ece505429",
@@ -477,7 +685,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-3a7683833c88aecd08c1aa",
@@ -493,7 +701,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-3751b7ab91027357836e75",
@@ -509,7 +717,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-2ae8b3d97a36342702f9e4",
@@ -525,7 +733,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-2ae2a8a1402b02d009c496",
@@ -541,7 +749,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-2101b19f66c97047766fc0",
@@ -557,7 +765,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-209029a364bea7da5bf4f7",
@@ -573,7 +781,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-0c6d1e4b113f05b8266249",
@@ -589,7 +797,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-050db25f92e6ec8c39768b",
@@ -605,7 +813,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-e16e941453c8c7a414b54c",
@@ -621,7 +829,23 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-7c9ee66c422c8beae7f53d",
+      "title": "Factsheet - EU solidarity with Ukraine",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/fs_22_3862",
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "category": "政治",
+      "source_kind": "official",
+      "published_at": "2026-11-04T23:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-17a93f731a4a1724c1a992",
@@ -637,7 +861,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-cc6901236979e720406f23",
@@ -653,7 +877,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-e4e032431b184aa8db1198",
@@ -669,7 +893,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-25c6bc8d2672898f1212fc",
@@ -685,7 +909,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-b1934d4389556f12301fdd",
@@ -717,7 +941,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-acc301e7ba339cf7543554",
@@ -736,6 +960,38 @@
       "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
+      "id": "rss-0533f5d4876d8b77746748",
+      "title": "MIT-led team receives funding to develop a wearable monitor for early disease detection",
+      "url": "https://news.mit.edu/2026/mit-led-team-receives-funding-for-early-disease-detection-wearable-monitor-1104",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-11-04T05:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-fa3c3955bedd87023e690a",
+      "title": "Featured video: Changing the conversation about endometriosis",
+      "url": "https://news.mit.edu/2026/featured-video-changing-conversation-about-endometriosis-1103",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-11-03T21:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
       "id": "rss-526cec034ccb484b91924a",
       "title": "Global refinery inputs fell sharply in the second quarter of 2026 before modest recovery",
       "url": "https://www.eia.gov/todayinenergy/detail.php?id=68404",
@@ -749,7 +1005,87 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-5fc0241e25c90db0d110df",
+      "title": "Powering up for a pivotal moment",
+      "url": "https://news.mit.edu/2026/powering-up-for-pivotal-moment-1102",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-11-02T19:55:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-8ab749438eee347af72bc5",
+      "title": "A flexible new route to designer materials built from nanoparticles",
+      "url": "https://news.mit.edu/2026/flexible-new-route-designer-materials-from-nanoparticles-1102",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-11-02T10:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-09573cf26432bf09b46941",
+      "title": "MIT engineers design a safer, more efficient vaccination system for farmed fish",
+      "url": "https://news.mit.edu/2026/mit-engineers-design-safer-more-efficient-vaccination-system-farmed-fish-1102",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-11-02T05:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-d1d9225d9bc11abe25783e",
+      "title": "Study pinpoints states with steepest warming trends since 1980",
+      "url": "https://news.mit.edu/2026/study-pinpoints-states-with-steepest-warming-trends-1030",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-10-30T19:15:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-3dbc47c31caae53214cc52",
+      "title": "Q&A: Hey AI, who should I vote for this year?",
+      "url": "https://news.mit.edu/2026/qa-hey-ai-who-should-i-vote-for-this-year-1030",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-10-30T19:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-a3882203fc7693802125f3",
@@ -765,7 +1101,23 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-4a7112d2f79c11dcd650dd",
+      "title": "MIT engineers create nanoparticles for delivering personalized cancer vaccines",
+      "url": "https://news.mit.edu/2026/mit-engineers-create-nanoparticles-delivering-personalized-cancer-vaccines-1030",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-10-30T04:30:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-6d5f94b54e3e2bf7acf1f2",
@@ -781,7 +1133,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-ed83cb0bc28656a36c6f39",
@@ -797,7 +1149,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-aeb9f5365fde19f44e2313",
@@ -813,7 +1165,87 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-0b4b10cb796c52ff97a7ea",
+      "title": "Magnetic sensors track muscle movement, for better prosthetic limb control",
+      "url": "https://news.mit.edu/2026/magnetic-sensors-track-muscle-movement-better-prosthetic-limb-control-1029",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-10-29T10:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-11b68ff7abfe769a0250f8",
+      "title": "New system gives users more control over their online experience",
+      "url": "https://news.mit.edu/2026/new-system-gives-users-more-control-over-online-experience-1029",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-10-29T04:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-0a6c84210d9a748d7ff02d",
+      "title": "Capturing the complete process of embryonic development",
+      "url": "https://news.mit.edu/2026/capturing-complete-process-of-embryonic-development-1028",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-10-28T20:30:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-d3a80cb5d7e8a5841d52b7",
+      "title": "How the biggest Alzheimer’s risk gene disrupts the process of insulating neurons",
+      "url": "https://news.mit.edu/2026/how-biggest-alzheimers-risk-gene-disrupts-process-insulating-neurons-1028",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-10-28T18:25:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-a912ef7f01eb37570f9c13",
+      "title": "A soft robot could help doctors diagnose and treat disorders of the small intestine",
+      "url": "https://news.mit.edu/2026/soft-robot-could-help-doctors-diagnose-treat-small-intestine-disorders-1028",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-10-28T18:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-a0c3e1be77e8b5a27f797a",
@@ -829,7 +1261,23 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
+    },
+    {
+      "id": "rss-8cedd51707f2b8e3c3da68",
+      "title": "Origami-based construction method yields lightweight, load-bearing structures on architectural scales",
+      "url": "https://news.mit.edu/2026/origami-based-construction-method-yields-lightweight-load-bearing-structures-architecture-1027",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-10-27T04:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-06T00:57:13+00:00",
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-11274263ec4ec7aa15ad19",
@@ -845,7 +1293,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-9b574b9b6d9a12cd61d443",
@@ -861,7 +1309,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-207bf0c6d4cca97565ea65",
@@ -877,7 +1325,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-cb5890d031cd055d66cdc7",
@@ -893,7 +1341,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-15c2bd28b112053151bc52",
@@ -909,7 +1357,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-ca688a27006cdc18bac09f",
@@ -925,7 +1373,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-08dfdbdaa9ce20cc125a15",
@@ -941,7 +1389,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-109f7d64c8d9628cdb1057",
@@ -957,7 +1405,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-73998ce676150f5cf0a3c1",
@@ -973,7 +1421,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-a1bdb43bd9d916d69fc532",
@@ -989,7 +1437,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-312ecd6a696d2a87caef2c",
@@ -1005,7 +1453,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-a148fadf946c26c24b7555",
@@ -1021,7 +1469,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-becfb45a459ae5cb357f40",
@@ -1037,7 +1485,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     },
     {
       "id": "rss-4df0a12d1719abe4d86c8f",
@@ -1053,7 +1501,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T15:04:31+00:00"
+      "last_seen_at": "2026-11-06T00:57:13+00:00"
     }
   ],
   "sources": [
@@ -1066,9 +1514,9 @@
       "ok": true,
       "count": 15,
       "error": null,
-      "last_attempt_at": "2026-11-05T15:04:31+00:00",
-      "last_success_at": "2026-11-05T15:04:31+00:00",
-      "latency_ms": 91,
+      "last_attempt_at": "2026-11-06T00:57:13+00:00",
+      "last_success_at": "2026-11-06T00:57:13+00:00",
+      "latency_ms": 94,
       "evidence_url": "https://www.federalreserve.gov/disclaimer.htm"
     },
     {
@@ -1080,9 +1528,9 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-05T15:04:31+00:00",
-      "last_success_at": "2026-11-05T15:04:31+00:00",
-      "latency_ms": 124,
+      "last_attempt_at": "2026-11-06T00:57:13+00:00",
+      "last_success_at": "2026-11-06T00:57:13+00:00",
+      "latency_ms": 257,
       "evidence_url": "https://www.bea.gov/help/faq/147"
     },
     {
@@ -1094,9 +1542,9 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-05T15:04:31+00:00",
-      "last_success_at": "2026-11-05T15:04:31+00:00",
-      "latency_ms": 367,
+      "last_attempt_at": "2026-11-06T00:57:13+00:00",
+      "last_success_at": "2026-11-06T00:57:13+00:00",
+      "latency_ms": 210,
       "evidence_url": "https://info.arxiv.org/help/api/tou.html"
     },
     {
@@ -1108,9 +1556,9 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-05T15:04:31+00:00",
-      "last_success_at": "2026-11-05T15:04:31+00:00",
-      "latency_ms": 64,
+      "last_attempt_at": "2026-11-06T00:57:13+00:00",
+      "last_success_at": "2026-11-06T00:57:13+00:00",
+      "latency_ms": 109,
       "evidence_url": "https://info.arxiv.org/help/api/tou.html"
     },
     {
@@ -1122,9 +1570,9 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-05T15:04:31+00:00",
-      "last_success_at": "2026-11-05T15:04:31+00:00",
-      "latency_ms": 146,
+      "last_attempt_at": "2026-11-06T00:57:13+00:00",
+      "last_success_at": "2026-11-06T00:57:13+00:00",
+      "latency_ms": 193,
       "evidence_url": "https://www.eia.gov/TODAYINENERGY/about.php"
     },
     {
@@ -1136,10 +1584,38 @@
       "ok": true,
       "count": 10,
       "error": null,
-      "last_attempt_at": "2026-11-05T15:04:31+00:00",
-      "last_success_at": "2026-11-05T15:04:31+00:00",
-      "latency_ms": 127,
+      "last_attempt_at": "2026-11-06T00:57:13+00:00",
+      "last_success_at": "2026-11-06T00:57:13+00:00",
+      "latency_ms": 160,
       "evidence_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+    },
+    {
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "source_kind": "official",
+      "category": "政治",
+      "ok": true,
+      "count": 10,
+      "error": null,
+      "last_attempt_at": "2026-11-06T00:57:13+00:00",
+      "last_success_at": "2026-11-06T00:57:13+00:00",
+      "latency_ms": 1016,
+      "evidence_url": "https://commission.europa.eu/legal-notice_en"
+    },
+    {
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "source_kind": "institutional_news",
+      "category": "科技",
+      "ok": true,
+      "count": 16,
+      "error": null,
+      "last_attempt_at": "2026-11-06T00:57:13+00:00",
+      "last_success_at": "2026-11-06T00:57:13+00:00",
+      "latency_ms": 98,
+      "evidence_url": "https://news.mit.edu/terms-of-use"
     }
   ]
 }

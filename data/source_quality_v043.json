@@ -1,23 +1,25 @@
 {
   "meta": {
     "version": "0.4.3",
-    "generated_at": "2026-11-05T15:04:41+00:00",
+    "generated_at": "2026-11-06T00:57:24+00:00",
     "status": "input_coverage_diagnostic_only",
     "rights_scope": "descriptive_public_metadata_only",
-    "observed_items": 65,
-    "approved_channels": 6,
-    "observed_channels": 6,
-    "observed_publishers": 5,
+    "observed_items": 93,
+    "approved_channels": 8,
+    "observed_channels": 8,
+    "observed_publishers": 7,
     "publisher_ids": [
       "arxiv",
       "bea",
       "eia",
+      "eu_commission",
       "fed",
+      "mit_news",
       "nasa"
     ],
-    "last_collection_success_at": "2026-11-05T15:04:31+00:00",
+    "last_collection_success_at": "2026-11-06T00:57:13+00:00",
     "collection_last_success_age_hours": 0.0,
-    "domains_no_observed_publisher": 6,
+    "domains_no_observed_publisher": 5,
     "domains_single_publisher": 3,
     "benchmarked_event_count": 0,
     "benchmark_status": "not_measured_no_reference",
@@ -31,7 +33,7 @@
     "anti_echo_warning": "多個 RSS 頻道若來自同一發布機構，不等於多個獨立證據。",
     "source_limitations": [
       "配置已新增 EIA/NASA 官方 RSS，但須依本次來源狀態確認實際讀取成功",
-      "全球政治、獨立產業分析及台日巴仍缺少正式採集來源",
+      "歐盟政策與 MIT 機構新聞可作為一手線索，但仍缺獨立國際媒體、商業產業情報及台日巴正式採集來源",
       "不能用 AI 推論補齊未蒐集消息"
     ]
   },
@@ -60,9 +62,11 @@
     {
       "key": "world_politics",
       "label": "全球政治與外交事件",
-      "observed_publishers": [],
-      "observed_publisher_count": 0,
-      "source_status": "no_reviewed_publisher_observed",
+      "observed_publishers": [
+        "eu_commission"
+      ],
+      "observed_publisher_count": 1,
+      "source_status": "single_publisher_only",
       "claim_coverage_confirmed": false
     },
     {
@@ -77,10 +81,11 @@
       "key": "engineering",
       "label": "工程產品／量產與技術商業化",
       "observed_publishers": [
+        "mit_news",
         "nasa"
       ],
-      "observed_publisher_count": 1,
-      "source_status": "single_publisher_only",
+      "observed_publisher_count": 2,
+      "source_status": "multiple_publishers_not_same_claim",
       "claim_coverage_confirmed": false
     },
     {
@@ -131,31 +136,43 @@
       "publisher_id": "arxiv",
       "item_count": 32,
       "last_item_published_at": "2026-11-05T05:00:00+00:00",
-      "age_days_of_newest_item": 0.4
+      "age_days_of_newest_item": 0.8
     },
     {
       "publisher_id": "bea",
       "item_count": 4,
       "last_item_published_at": "2026-11-04T13:30:00+00:00",
-      "age_days_of_newest_item": 1.1
+      "age_days_of_newest_item": 1.5
     },
     {
       "publisher_id": "eia",
       "item_count": 16,
       "last_item_published_at": "2026-11-05T14:00:00+00:00",
-      "age_days_of_newest_item": 0.0
+      "age_days_of_newest_item": 0.5
+    },
+    {
+      "publisher_id": "eu_commission",
+      "item_count": 10,
+      "last_item_published_at": "2026-11-05T12:11:35+00:00",
+      "age_days_of_newest_item": 0.5
     },
     {
       "publisher_id": "fed",
       "item_count": 3,
       "last_item_published_at": "2026-10-28T18:00:00+00:00",
-      "age_days_of_newest_item": 7.9
+      "age_days_of_newest_item": 8.3
+    },
+    {
+      "publisher_id": "mit_news",
+      "item_count": 16,
+      "last_item_published_at": "2026-11-05T16:20:00+00:00",
+      "age_days_of_newest_item": 0.4
     },
     {
       "publisher_id": "nasa",
-      "item_count": 10,
-      "last_item_published_at": "2026-11-05T12:56:21+00:00",
-      "age_days_of_newest_item": 0.1
+      "item_count": 12,
+      "last_item_published_at": "2026-11-05T15:17:19+00:00",
+      "age_days_of_newest_item": 0.4
     }
   ],
   "benchmark_candidates": [],
