@@ -1,0 +1,26 @@
+{
+  "schema_version": "signal-analysis-selection-r4",
+  "cases": [
+    {
+      "case_id": "bea",
+      "priority": "追蹤",
+      "focus_fact_ids": ["F001", "F002"],
+      "theme_id": "trade_structure_monitor",
+      "question_ids": ["compare_periods", "check_scope"]
+    },
+    {
+      "case_id": "eia",
+      "priority": "追蹤",
+      "focus_fact_ids": ["EIA-F001", "EIA-F002", "EIA-F003", "EIA-F004"],
+      "theme_id": "refinery_yield_mix",
+      "question_ids": ["find_actual_monthly_yields", "check_duration"]
+    },
+    {
+      "case_id": "arxiv",
+      "priority": "一般",
+      "focus_fact_ids": ["ARXIV-F001", "ARXIV-F002", "ARXIV-F005", "ARXIV-F006"],
+      "theme_id": "benchmark_interpretation",
+      "question_ids": ["read_metric_definition", "check_reproduction"]
+    }
+  ]
+}

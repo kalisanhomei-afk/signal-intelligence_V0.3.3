@@ -1,0 +1,254 @@
+{
+  "schema_version": "signal-rebuild-bound-review-r4",
+  "source_basis": "R1/R2/R3 pinned offline archived excerpts (not freshly verified)",
+  "run_mode": "offline_simulated_ai_selection",
+  "api_calls": 0,
+  "publication_allowed": false,
+  "human_approved": false,
+  "independently_verified_claims": 0,
+  "catalog_fact_count": 16,
+  "cases": [
+    {
+      "case_id": "bea",
+      "priority": "追蹤",
+      "focus_fact_ids": [
+        "F001",
+        "F002"
+      ],
+      "theme_id": "trade_structure_monitor",
+      "hypothesis": "若相關貿易結構變化持續，值得核對統計定義、主要商品與其他月份的比較；不能僅由這段摘錄推論原因。",
+      "review_questions": [
+        "能否從官方完整統計表核對前期與修訂值？",
+        "出口與進口的地理範圍及統計口徑為何？"
+      ],
+      "model_generated_numerical_claims": 0,
+      "selection_is_not_factual_verification": true,
+      "case_title": "BEA｜貿易統計",
+      "source_title": "U.S. International Trade in Goods and Services, September 2026",
+      "source_url": "https://www.bea.gov/news/2026/us-international-trade-goods-and-services-september-2026",
+      "selected_facts": [
+        {
+          "case_id": "bea",
+          "fact_id": "F001",
+          "label": "對台灣的文中貿易逆差",
+          "measurement_role": "current_level",
+          "value_display": "本期 21.9 billion USD（原始單位）",
+          "value_original": "21.9",
+          "unit_original": "USD billion",
+          "source_evidence_id": "E7",
+          "source_span_sha256": "b82a1000d2506b6faaa86cb70f0b2078a426ca49d1592516b469306906fe02f7",
+          "source_url": "https://www.bea.gov/news/2026/us-international-trade-goods-and-services-september-2026",
+          "period_as_written": null,
+          "qualifier": null,
+          "attribution": "official_source_excerpt_not_independently_verified",
+          "independently_verified": false
+        },
+        {
+          "case_id": "bea",
+          "fact_id": "F002",
+          "label": "對台灣的文中貿易逆差",
+          "measurement_role": "increase",
+          "value_display": "較前期增加 3.6 billion USD（原始單位）",
+          "value_original": "3.6",
+          "unit_original": "USD billion",
+          "source_evidence_id": "E7",
+          "source_span_sha256": "b82a1000d2506b6faaa86cb70f0b2078a426ca49d1592516b469306906fe02f7",
+          "source_url": "https://www.bea.gov/news/2026/us-international-trade-goods-and-services-september-2026",
+          "period_as_written": null,
+          "qualifier": null,
+          "attribution": "official_source_excerpt_not_independently_verified",
+          "independently_verified": false
+        }
+      ],
+      "human_approved": false,
+      "publication_allowed": false,
+      "independently_verified_claims": 0
+    },
+    {
+      "case_id": "eia",
+      "priority": "追蹤",
+      "focus_fact_ids": [
+        "EIA-F001",
+        "EIA-F002",
+        "EIA-F003",
+        "EIA-F004"
+      ],
+      "theme_id": "refinery_yield_mix",
+      "hypothesis": "可追蹤煉油廠產品組合的變化；典型範圍與門檻描述不是當月精確測值。",
+      "review_questions": [
+        "官方月度原始表中的汽油與航空燃油實際產出率為何？",
+        "這項產品結構變化是否延續至後續月份？"
+      ],
+      "model_generated_numerical_claims": 0,
+      "selection_is_not_factual_verification": true,
+      "case_title": "EIA｜煉油廠能源資料",
+      "source_title": "Refineries have shifted production away from gasoline to middle distillates",
+      "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=68424",
+      "selected_facts": [
+        {
+          "case_id": "eia",
+          "fact_id": "EIA-F001",
+          "label": "美國煉油廠汽油產出率",
+          "measurement_role": "typical_range_lower_bound",
+          "value_display": "典型範圍下界 45%（不是當月實測值）",
+          "value_original": "45",
+          "unit_original": "percent (%)",
+          "source_evidence_id": "E2",
+          "source_span_sha256": "453d6eca6f97b3fb4fd69abd09213f9da568a28ccb96a06f403ca53a0aa0429b",
+          "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=68424",
+          "period_as_written": null,
+          "qualifier": "Typical range reported by this article; not an observed value for a specific month",
+          "attribution": "official_source_excerpt_not_independently_verified",
+          "independently_verified": false
+        },
+        {
+          "case_id": "eia",
+          "fact_id": "EIA-F002",
+          "label": "美國煉油廠汽油產出率",
+          "measurement_role": "typical_range_upper_bound",
+          "value_display": "典型範圍上界 50%（不是當月實測值）",
+          "value_original": "50",
+          "unit_original": "percent (%)",
+          "source_evidence_id": "E2",
+          "source_span_sha256": "453d6eca6f97b3fb4fd69abd09213f9da568a28ccb96a06f403ca53a0aa0429b",
+          "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=68424",
+          "period_as_written": null,
+          "qualifier": "Typical range reported by this article; not an observed value for a specific month",
+          "attribution": "official_source_excerpt_not_independently_verified",
+          "independently_verified": false
+        },
+        {
+          "case_id": "eia",
+          "fact_id": "EIA-F003",
+          "label": "美國煉油廠航空燃油產出率",
+          "measurement_role": "first_exceeded_threshold",
+          "value_display": "首次超過 12%（不是精確測值）",
+          "value_original": "12",
+          "unit_original": "percent (%)",
+          "source_evidence_id": "E5",
+          "source_span_sha256": "07dd3138cf25e66f8c5582020a36449a8aa8ce402b475f31457350adbbfba48d",
+          "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=68424",
+          "period_as_written": "March 2026",
+          "qualifier": "Threshold exceeded; actual March yield not provided in excerpt",
+          "attribution": "official_source_excerpt_not_independently_verified",
+          "independently_verified": false
+        },
+        {
+          "case_id": "eia",
+          "fact_id": "EIA-F004",
+          "label": "美國煉油廠航空燃油產出率",
+          "measurement_role": "continued_at_or_above_threshold",
+          "value_display": "持續至少 12%（不是精確測值）",
+          "value_original": "12",
+          "unit_original": "percent (%)",
+          "source_evidence_id": "E5",
+          "source_span_sha256": "07dd3138cf25e66f8c5582020a36449a8aa8ce402b475f31457350adbbfba48d",
+          "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=68424",
+          "period_as_written": "March 2026 through August 2026",
+          "qualifier": "Threshold sustained in reported monthly data through named ending month",
+          "attribution": "official_source_excerpt_not_independently_verified",
+          "independently_verified": false
+        }
+      ],
+      "human_approved": false,
+      "publication_allowed": false,
+      "independently_verified_claims": 0
+    },
+    {
+      "case_id": "arxiv",
+      "priority": "一般",
+      "focus_fact_ids": [
+        "ARXIV-F001",
+        "ARXIV-F002",
+        "ARXIV-F005",
+        "ARXIV-F006"
+      ],
+      "theme_id": "benchmark_interpretation",
+      "hypothesis": "評估設計可作為未來研究的參考，惟摘要中的報告百分比不等於已驗證的準確率或實場成功率。",
+      "review_questions": [
+        "論文全文如何定義報告百分比、評估分母與統計不確定性？",
+        "評估方法與實驗結果是否有獨立重現或同儕審查？"
+      ],
+      "model_generated_numerical_claims": 0,
+      "selection_is_not_factual_verification": true,
+      "case_title": "arXiv｜機器人研究作者摘要",
+      "source_title": "MESA: An Evaluation Framework for Compositional, Semantic, and Spatial Generalization in Robotics",
+      "source_url": "https://arxiv.org/abs/2611.05567",
+      "selected_facts": [
+        {
+          "case_id": "arxiv",
+          "fact_id": "ARXIV-F001",
+          "label": "MESA 評估套件數量（作者自述）",
+          "measurement_role": "authors_described_framework_design",
+          "value_display": "5 evaluation suites（作者摘要自述）",
+          "value_original": "five",
+          "unit_original": "evaluation suites",
+          "source_evidence_id": "E4",
+          "source_span_sha256": "19ac23e57fd452ddfd01db8578a942ce869a43fdd12d46f15c91a944c9d79915",
+          "source_url": "https://arxiv.org/abs/2611.05567",
+          "period_as_written": null,
+          "qualifier": "Five suites include in-distribution performance and four generalization axes; the axes are not five extra suites.",
+          "attribution": "authors_abstract_self_report",
+          "independently_verified": false
+        },
+        {
+          "case_id": "arxiv",
+          "fact_id": "ARXIV-F002",
+          "label": "MESA 泛化評估軸數量（作者自述）",
+          "measurement_role": "authors_described_framework_design",
+          "value_display": "4 generalization axes（作者摘要自述）",
+          "value_original": "four",
+          "unit_original": "generalization axes",
+          "source_evidence_id": "E4",
+          "source_span_sha256": "19ac23e57fd452ddfd01db8578a942ce869a43fdd12d46f15c91a944c9d79915",
+          "source_url": "https://arxiv.org/abs/2611.05567",
+          "period_as_written": null,
+          "qualifier": "Four axes are spatial configuration, object instance, object category, and subtask composition.",
+          "attribution": "authors_abstract_self_report",
+          "independently_verified": false
+        },
+        {
+          "case_id": "arxiv",
+          "fact_id": "ARXIV-F005",
+          "label": "MESA 作者報告的最佳模型表現",
+          "measurement_role": "authors_reported_best_result",
+          "value_display": "52%（作者摘要自述；未確認指標定義）",
+          "value_original": "52",
+          "unit_original": "percent (%)",
+          "source_evidence_id": "E6",
+          "source_span_sha256": "d4c06b1058b7dd18f0539a32944d40575cc2e77ca6cfd9e7a1b896d594310f07",
+          "source_url": "https://arxiv.org/abs/2611.05567",
+          "period_as_written": null,
+          "qualifier": "Authors say strongest model achieves 52% on MESA; metric definition, denominator and validity not in archived abstract.",
+          "attribution": "authors_abstract_self_report",
+          "independently_verified": false
+        },
+        {
+          "case_id": "arxiv",
+          "fact_id": "ARXIV-F006",
+          "label": "BiMESA 作者報告的最佳模型表現",
+          "measurement_role": "authors_reported_best_result",
+          "value_display": "49%（作者摘要自述；未確認指標定義）",
+          "value_original": "49",
+          "unit_original": "percent (%)",
+          "source_evidence_id": "E6",
+          "source_span_sha256": "d4c06b1058b7dd18f0539a32944d40575cc2e77ca6cfd9e7a1b896d594310f07",
+          "source_url": "https://arxiv.org/abs/2611.05567",
+          "period_as_written": null,
+          "qualifier": "Authors say strongest model achieves 49% on BiMESA; do NOT relabel as accuracy or task-success rate.",
+          "attribution": "authors_abstract_self_report",
+          "independently_verified": false
+        }
+      ],
+      "human_approved": false,
+      "publication_allowed": false,
+      "independently_verified_claims": 0
+    }
+  ],
+  "limitations": [
+    "AI output only selects known IDs, themes and questions; wording is program-authored predefined text.",
+    "Selected themes are hypotheses, not a source-derived cause-and-effect claim.",
+    "Hash matching proves archived input integrity, not live source truth or independent verification.",
+    "R4 has no real AI call; full usefulness and quality require R5/R6/R7 tests."
+  ]
+}
