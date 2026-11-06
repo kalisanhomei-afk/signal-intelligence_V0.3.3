@@ -33,8 +33,16 @@
 <main class="main">
 <div class="topbar"><div class="crumb">SIGNAL / <span id="crumb">TODAY'S BRIEF</span></div><div class="status"><span><i class="dot"></i>編輯精選為靜態樣本</span><span class="snapshot" id="feedSyncStatus">新發現尚未同步</span></div></div>
 <section id="page-today" class="page active">
-<div class="head"><div><div class="eyebrow">THURSDAY · 05 NOV 2026</div><h1 class="serif">今日情報<span style="color:var(--golddeep)">.</span></h1><p>從雜訊中找出影響世界的變化，也保留未知領域的探索。</p></div><div class="headtools"><button class="btn" data-page="events">未來重大事件 ↗</button></div></div>
-<div class="hero"><div class="hero-left"><div class="hero-top">EDITOR'S PERSPECTIVE · 本期主題</div><div><h2 class="serif">AI 成長的瓶頸，<br>正從算力走向<span style="color:#e4bd68">電力與供應鏈。</span></h2><p>從 IEA 電網研究到半導體產能分配，理解同一波科技投資如何重塑不同產業，而不是只追蹤股價。</p></div><button class="btn gold" data-story="iea-power-ai">閱讀情報分析 ↗</button></div><div class="hero-art"><div class="diagonal"></div><strong>01</strong></div></div>
+<div class="head"><div><div class="eyebrow">SIGNAL · LIVE REVIEW CANDIDATES + 2026-11-05 ARCHIVE</div><h1 class="serif">今日情報<span style="color:var(--golddeep)">.</span></h1><p>從雜訊中找出影響世界的變化，也保留未知領域的探索。</p></div><div class="headtools"><button class="btn" data-page="events">未來重大事件 ↗</button></div></div>
+<section id="dailyPreview" class="card" style="margin:0 0 22px;padding:24px 25px;border:1px solid #dacdaf;box-shadow:0 10px 22px rgba(22,18,11,.035)">
+ <div class="eyebrow">LIVE METADATA · DAILY REVIEW CANDIDATES</div>
+ <h2 class="serif" style="margin:9px 0 8px;font-size:28px;color:#151319">今日選讀候選<span style="color:#ae893c">.</span></h2>
+ <p style="font-size:12px;line-height:1.85;color:#766c5c">從最近 72 小時的已審核元資料挑選，兼顧發布機構與領域分散。這是<strong>閱讀候選</strong>，不是「全球最重要新聞」、獨立查證結果或投資訊號。</p>
+ <div id="dailyPreviewStatus" class="feedstate">正在讀取最新的候選資料；若未取得，將明確標示，不以舊稿冒充今日快訊。</div>
+ <div id="dailyPreviewList" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin-top:15px"></div>
+</section>
+<div style="margin:15px 0 13px;color:#887a61;font-size:11px;letter-spacing:.06em">以下編輯專題與既有「精選資訊」為 <strong>2026-11-05 固定存檔</strong>，不代表當日最新新聞、AI 查證或投資判斷。</div>
+<div class="hero"><div class="hero-left"><div class="hero-top">2026-11-05 EDITORIAL ARCHIVE · 非即時結論</div><div><h2 class="serif">AI 成長的瓶頸，<br>正從算力走向<span style="color:#e4bd68">電力與供應鏈。</span></h2><p>從 IEA 電網研究到半導體產能分配，理解同一波科技投資如何重塑不同產業，而不是只追蹤股價。</p></div><button class="btn gold" data-story="iea-power-ai">閱讀情報分析 ↗</button></div><div class="hero-art"><div class="diagonal"></div><strong>01</strong></div></div>
 <div class="grid"><div>
 <div class="sectiontitle"><h2><span class="tiny">SELECTED INTELLIGENCE</span>值得關注的資訊</h2><span class="hint" id="storycount"></span></div>
 <div class="filters" id="storyFilters"></div><div class="story-grid" id="storyGrid"></div><div id="moreStories" style="text-align:center;margin:17px 0 0"></div>
@@ -287,7 +295,38 @@ async function loadTriage(){
  renderTriage();
 }
 
-navRender();render();loadGenerated();loadDiscovery();loadTriage();loadEvidence();loadQuality();loadExpansion();
+// V0.5.0: a time- and diversity-bounded READ-MORE queue, never AI-generated verified news.
+let DAILY={meta:{},items:[]};
+function renderDaily(){
+ const m=DAILY.meta||{}, items=DAILY.items||[],status=$('dailyPreviewStatus'),target=$('dailyPreviewList');
+ if(m.version!=='0.5.0'||m.type!=='daily_review_candidates_not_a_news_brief'){
+  status.textContent='尚無 V0.5 試刊資料。網站會保留現有來源紀錄；不能把固定存檔當成今日情報。';target.innerHTML='';return;
+ }
+ const freshness=m.stale_source?' ⚠ 資料採集已超過48小時或無紀錄，請勿視為最新消息。':'（來源更新狀態正常）';
+ const gaps=m.uncovered_domains_in_source_audit==null?'來源缺口未量測':`缺少正式來源的觀測領域 ${Number(m.uncovered_domains_in_source_audit)}/10`;
+ status.textContent=`資料產生：${twDate(m.generated_at)} · 近72小時候選 ${items.length} 則／${Number(m.daily_publishers||0)} 家發布機構 · ${gaps} · ${freshness} 僅作選讀，未進行重大性評分。`;
+ if(!items.length){target.innerHTML='<div class="empty">近72小時沒有符合來源、日期與多樣性限制的可發布候選。這不代表世界沒有重要消息；請查看「新發現」和來源盲區。</div>';return;}
+ target.innerHTML=items.map(x=>`<article class="card" style="padding:16px 17px;box-shadow:none;background:#fff">
+   <div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><span class="tag pale">${sc(x.category)}</span><span style="font-size:10px;color:#957c4f">${sc(x.evidence_level)} · 未查證</span></div>
+   <h3 style="font-size:15px;line-height:1.6;margin:11px 0 10px">${sc(x.title)}</h3>
+   <p style="font-size:11px;color:#897b65;margin:0 0 8px">${sc(x.source)} · ${twDate(x.published_at)}</p>
+   <p style="font-size:11px;line-height:1.85;color:#5e5547;margin:0 0 12px"><b>閱讀時應查：</b>${sc(x.review_prompt)}</p>
+   <div style="border-top:1px solid #e8e0d2;padding-top:9px;display:flex;justify-content:space-between;gap:10px;align-items:center"><small style="color:#98866b">僅標題元資料 · 非新聞摘要</small><a class="btn" href="${safeHref(x.url)}" rel="noopener noreferrer" target="_blank">原始出處 ↗</a></div>
+  </article>`).join('');
+}
+async function loadDaily(){
+ if(!/^https?:$/.test(location.protocol)){renderDaily();return;}
+ try{
+  const r=await fetch('./data/daily_brief_v050.json?fresh='+Date.now(),{cache:'no-store'});
+  if(!r.ok)throw Error('HTTP '+r.status);
+  const d=await r.json(),m=d.meta||{};
+  if(m.version!=='0.5.0'||m.rights_scope!=='descriptive_public_metadata_only'||m.verified_claims!==0||m.independent_confirmations!==0||m.global_event_recall!==null||!Array.isArray(d.items))throw Error('Unsafe or invalid daily candidate data');
+  DAILY=d;
+ }catch(e){console.warn('V0.5 daily preview unavailable',e);DAILY={meta:{},items:[]};}
+ renderDaily();
+}
+
+navRender();render();loadGenerated();loadDiscovery();loadTriage();loadEvidence();loadQuality();loadExpansion();loadDaily();
 })();
 </script>
 </body></html>

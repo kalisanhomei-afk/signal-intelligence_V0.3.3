@@ -1,4 +1,4 @@
-name: SIGNAL V0.4.5 European policy and research source pilot + Pages
+name: SIGNAL V0.5.0 daily review candidates + Pages
 
 on:
   workflow_dispatch:
@@ -40,6 +40,7 @@ jobs:
           python scripts/test_v043.py
           python scripts/test_v044.py
           python scripts/test_v045.py
+          python scripts/test_v050.py
       - name: Collect only rights-reviewed public descriptive metadata
         run: python scripts/collect_v034.py --output data/live_items.json
       - name: Probe newly evaluated public feeds and probe-only endpoints (never republish held content)
@@ -56,12 +57,14 @@ jobs:
         run: python scripts/evidence_v042.py --max-new 8
       - name: Audit publisher diversity, domain gaps, and reference readiness (not global recall)
         run: python scripts/source_quality_v043.py
+      - name: Build cautious daily review candidates from already-approved metadata (not verified news)
+        run: python scripts/daily_candidate_v050.py
       - name: Save compact public history on main
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/live_items.json data/intelligence.json data/evidence_audit.json data/evidence_enriched.json data/source_quality_v043.json data/source_expansion_v044.json
+          git add data/live_items.json data/intelligence.json data/evidence_audit.json data/evidence_enriched.json data/source_quality_v043.json data/source_expansion_v044.json data/daily_brief_v050.json
           if ! git diff --cached --quiet; then
             git commit -m "data: refresh reviewed metadata [skip ci]"
             git push origin HEAD:main
@@ -80,13 +83,16 @@ jobs:
         run: python scripts/v044_summary.py
       - name: Report two new reviewed source pilots and licensing blocks
         run: python scripts/v045_summary.py
+      - name: Publish V0.5 daily candidates and source-gap warning
+        run: python scripts/v050_summary.py
       - name: Upload metadata report for audit
         uses: actions/upload-artifact@v4
         with:
-          name: signal-v045-two-source-pilot-and-licensing
+          name: signal-v050-daily-review-candidates-and-quality-gates
           path: |
             data/live_items.json
             data/intelligence.json
+            data/daily_brief_v050.json
             data/evidence_audit.json
             data/evidence_enriched.json
             data/source_quality_v043.json

@@ -39,6 +39,12 @@ def build(output,source_root=BASE,*,strict=False):
         target=output/target_file
         target.parent.mkdir(parents=True,exist_ok=True)
         shutil.copyfile(origin,target)
+    # V0.5 daily briefing preview is optional in legacy fixture builds; required for production.
+    daily_path=source_root/'data/daily_brief_v050.json'
+    if daily_path.is_file():
+        shutil.copyfile(daily_path,output/'data/daily_brief_v050.json')
+    elif strict:
+        raise FileNotFoundError('V0.5 daily briefing preview is required for deployment')
     # V0.4.2 optional during legacy unit tests, mandatory in actual strict deployment.
     extra=source_root/'data/evidence_enriched.json'
     if extra.is_file():
@@ -175,6 +181,14 @@ def build(output,source_root=BASE,*,strict=False):
         shutil.copyfile(probe_path,output/'data/source_expansion_v044.json')
     elif strict:
         raise FileNotFoundError('V0.4.4 candidate probe report required')
+    # V0.5 daily-review preview is strictly derived from the already-approved public metadata.
+    from daily_candidate_v050 import validate as validate_daily_v050
+    daily_p=output/'data/daily_brief_v050.json'
+    if strict:
+        if not daily_p.is_file():
+            raise FileNotFoundError('V0.5 daily preview missing')
+        daily=json.loads(daily_p.read_text(encoding='utf-8'))
+        validate_daily_v050(daily, live, config)
     published=sorted(str(p.relative_to(output)) for p in output.rglob('*') if p.is_file())
     print('Public site files:',json.dumps(published,ensure_ascii=False))
     return published
