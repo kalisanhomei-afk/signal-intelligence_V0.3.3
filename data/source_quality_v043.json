@@ -1,22 +1,24 @@
 {
   "meta": {
     "version": "0.4.3",
-    "generated_at": "2026-11-05T14:52:01+00:00",
+    "generated_at": "2026-11-05T15:04:41+00:00",
     "status": "input_coverage_diagnostic_only",
     "rights_scope": "descriptive_public_metadata_only",
-    "observed_items": 39,
-    "approved_channels": 4,
-    "observed_channels": 4,
-    "observed_publishers": 3,
+    "observed_items": 65,
+    "approved_channels": 6,
+    "observed_channels": 6,
+    "observed_publishers": 5,
     "publisher_ids": [
       "arxiv",
       "bea",
-      "fed"
+      "eia",
+      "fed",
+      "nasa"
     ],
-    "last_collection_success_at": "2026-11-05T14:51:53+00:00",
+    "last_collection_success_at": "2026-11-05T15:04:31+00:00",
     "collection_last_success_age_hours": 0.0,
-    "domains_no_observed_publisher": 8,
-    "domains_single_publisher": 1,
+    "domains_no_observed_publisher": 6,
+    "domains_single_publisher": 3,
     "benchmarked_event_count": 0,
     "benchmark_status": "not_measured_no_reference",
     "global_news_recall": null,
@@ -28,8 +30,8 @@
     "note": "僅診斷已接入資料來源的領域覆蓋與候選資料；不能量測全球重要新聞遺漏率或宣稱任何主張已驗證。",
     "anti_echo_warning": "多個 RSS 頻道若來自同一發布機構，不等於多個獨立證據。",
     "source_limitations": [
-      "目前只有美國官方財經與 arXiv 預印本來源",
-      "全球政治、企業/產業、台日巴等缺少正式採集來源",
+      "配置已新增 EIA/NASA 官方 RSS，但須依本次來源狀態確認實際讀取成功",
+      "全球政治、獨立產業分析及台日巴仍缺少正式採集來源",
       "不能用 AI 推論補齊未蒐集消息"
     ]
   },
@@ -74,17 +76,21 @@
     {
       "key": "engineering",
       "label": "工程產品／量產與技術商業化",
-      "observed_publishers": [],
-      "observed_publisher_count": 0,
-      "source_status": "no_reviewed_publisher_observed",
+      "observed_publishers": [
+        "nasa"
+      ],
+      "observed_publisher_count": 1,
+      "source_status": "single_publisher_only",
       "claim_coverage_confirmed": false
     },
     {
       "key": "energy",
       "label": "能源與商品市場",
-      "observed_publishers": [],
-      "observed_publisher_count": 0,
-      "source_status": "no_reviewed_publisher_observed",
+      "observed_publishers": [
+        "eia"
+      ],
+      "observed_publisher_count": 1,
+      "source_status": "single_publisher_only",
       "claim_coverage_confirmed": false
     },
     {
@@ -134,10 +140,22 @@
       "age_days_of_newest_item": 1.1
     },
     {
+      "publisher_id": "eia",
+      "item_count": 16,
+      "last_item_published_at": "2026-11-05T14:00:00+00:00",
+      "age_days_of_newest_item": 0.0
+    },
+    {
       "publisher_id": "fed",
       "item_count": 3,
       "last_item_published_at": "2026-10-28T18:00:00+00:00",
       "age_days_of_newest_item": 7.9
+    },
+    {
+      "publisher_id": "nasa",
+      "item_count": 10,
+      "last_item_published_at": "2026-11-05T12:56:21+00:00",
+      "age_days_of_newest_item": 0.1
     }
   ],
   "benchmark_candidates": [],

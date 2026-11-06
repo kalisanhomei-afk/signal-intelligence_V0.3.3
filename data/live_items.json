@@ -2,19 +2,99 @@
   "meta": {
     "version": "0.3.4",
     "mode": "official_metadata",
-    "generated_at": "2026-11-05T14:51:53+00:00",
-    "last_attempt_at": "2026-11-05T14:51:53+00:00",
-    "last_success_at": "2026-11-05T14:51:53+00:00",
-    "successful_sources": 4,
-    "source_count": 4,
+    "generated_at": "2026-11-05T15:04:31+00:00",
+    "last_attempt_at": "2026-11-05T15:04:31+00:00",
+    "last_success_at": "2026-11-05T15:04:31+00:00",
+    "successful_sources": 6,
+    "source_count": 6,
     "status": "healthy",
-    "new_items_in_run": 24,
-    "item_count": 39,
+    "new_items_in_run": 26,
+    "item_count": 65,
     "retention_days": 45,
     "rights_scope": "descriptive_public_metadata_only",
     "note": "僅公開公告或研究的描述性元資料；不代表全文被查證、來源互為獨立證據，亦非 AI 精選。"
   },
   "items": [
+    {
+      "id": "rss-77ab5d7af2eff7b8db8f51",
+      "title": "Category 2 Hurricane Isaias nears landfall, leading to production shut-ins",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68284",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": null,
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-3993941242fcf8c5b02082",
+      "title": "Refineries have shifted production away from gasoline to middle distillates",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68424",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": "2026-11-05T14:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-4d40eb7ca8fc9a3f90fd0f",
+      "title": "Hubble Learns Galactic History From Stars",
+      "url": "https://science.nasa.gov/missions/hubble/hubble-learns-galactic-history-from-stars",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-05T12:56:21+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-8f73d19c713edd8561f16a",
+      "title": "APOD: 2026 November 5 – Enceladus in Silhouette",
+      "url": "https://science.nasa.gov/image-article/apod-2026-november-5-enceladus-in-silhouette",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-05T05:05:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-70aad3303bf3bdd1a4b853",
+      "title": "Cyprus: Island of Snakes, Cats, and Ophiolites",
+      "url": "https://science.nasa.gov/earth/earth-observatory/cyprus-island-of-snakes-cats-and-ophiolites",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-05T05:01:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
     {
       "id": "rss-fb43f0f2d5d92507744d15",
       "title": "Agent Harness Awareness: Turning Verified Telemetry into Operational Control for Tool-Using Agents",
@@ -29,7 +109,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-f846b630bec3a503daeb64",
@@ -45,7 +125,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-f6365caf171c45c9ce2ec6",
@@ -61,7 +141,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-ea621de7e230ccb7aca7c1",
@@ -77,7 +157,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-e7906e0264c0efc13797a5",
@@ -93,7 +173,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-e20eec6c382dcfe4b55842",
@@ -109,7 +189,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-d00df6c93ac0026c23a21f",
@@ -125,7 +205,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-c2934b82588b76fc7fc856",
@@ -141,7 +221,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-bbb7f69db5debade679b62",
@@ -157,7 +237,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-b79b211040ef6969648f7e",
@@ -173,7 +253,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-b27a09d0d93233afa3b3fb",
@@ -189,7 +269,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-abdb707b0a55aeaa8cbd01",
@@ -205,7 +285,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-a0ba445070c2b1fe0cf1b7",
@@ -221,7 +301,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-9ec66997e4c67d1609559d",
@@ -237,7 +317,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-9e109f910ff861b4b6a0c0",
@@ -253,7 +333,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-9a2876bfe0c6b1db7700d8",
@@ -269,7 +349,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-988751dceb22688e500597",
@@ -285,7 +365,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-95c7efe247d46f3e264c26",
@@ -301,7 +381,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-833e9eaf617aca9be82ddf",
@@ -317,7 +397,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-8169d789c150c26cec0b3c",
@@ -333,7 +413,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-4ced9b5daa264ea9566439",
@@ -349,7 +429,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-495042ca0e78bb75db55be",
@@ -365,7 +445,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-48da68b7227da49a051915",
@@ -381,7 +461,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-3dabf25cdecd1ece505429",
@@ -397,7 +477,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-3a7683833c88aecd08c1aa",
@@ -413,7 +493,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-3751b7ab91027357836e75",
@@ -429,7 +509,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-2ae8b3d97a36342702f9e4",
@@ -445,7 +525,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-2ae2a8a1402b02d009c496",
@@ -461,7 +541,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-2101b19f66c97047766fc0",
@@ -477,7 +557,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-209029a364bea7da5bf4f7",
@@ -493,7 +573,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-0c6d1e4b113f05b8266249",
@@ -509,7 +589,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-050db25f92e6ec8c39768b",
@@ -525,7 +605,103 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-e16e941453c8c7a414b54c",
+      "title": "NASA Announces X-70 Experimental Aircraft to Advance Flight Research",
+      "url": "https://www.nasa.gov/news-release/nasa-announces-x-70-experimental-aircraft-to-advance-flight-research",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-05T01:43:21+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-17a93f731a4a1724c1a992",
+      "title": "NASA Shares Plans to Accelerate Artemis, Return to Moon",
+      "url": "https://www.nasa.gov/missions/artemis/nasa-shares-plans-to-accelerate-artemis-return-to-moon",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-04T21:04:10+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-cc6901236979e720406f23",
+      "title": "NASA Announces Ka-Band Satellite Relay Awards for Space Communications",
+      "url": "https://www.nasa.gov/news-release/nasa-announces-ka-band-satellite-relay-awards-for-space-communications",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-04T18:00:02+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-e4e032431b184aa8db1198",
+      "title": "NASA Navigation Experiment Shows Promise for Planetary Landings",
+      "url": "https://www.nasa.gov/centers-and-facilities/armstrong/nasa-navigation-experiment-shows-promise-for-planetary-landings",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-04T16:52:43+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-25c6bc8d2672898f1212fc",
+      "title": "NASA Space Grant Students Fuel Agency’s Inspiration Tour",
+      "url": "https://www.nasa.gov/learning-resources/nasa-space-grant-students-fuel-agencys-inspiration-tour",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-04T16:16:41+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-b1934d4389556f12301fdd",
+      "title": "Hubble Reveals Cosmic Mystery",
+      "url": "https://www.nasa.gov/image-article/hubble-reveals-cosmic-mystery",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-04T15:59:36+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-9cc53e9eda9e7cde360497",
@@ -541,7 +717,71 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-acc301e7ba339cf7543554",
+      "title": "APOD: 2026 November 4 – The Not-So-Hidden Galaxy, IC 342",
+      "url": "https://science.nasa.gov/image-article/apod-2026-november-4-the-not-so-hidden-galaxy-ic-342",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-04T05:05:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-526cec034ccb484b91924a",
+      "title": "Global refinery inputs fell sharply in the second quarter of 2026 before modest recovery",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68404",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": "2026-11-03T14:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-a3882203fc7693802125f3",
+      "title": "The share of solar generation with co-located battery storage is increasing",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68384",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": "2026-10-30T14:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-6d5f94b54e3e2bf7acf1f2",
+      "title": "LNG imports make up increasing share of Colombia's natural gas supply",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68364",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": "2026-10-29T14:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-ed83cb0bc28656a36c6f39",
@@ -557,7 +797,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-aeb9f5365fde19f44e2313",
@@ -573,7 +813,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-a0c3e1be77e8b5a27f797a",
@@ -589,7 +829,87 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-11274263ec4ec7aa15ad19",
+      "title": "U.S. refineries have been running at very high rates in 2026",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68344",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": "2026-10-22T14:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-9b574b9b6d9a12cd61d443",
+      "title": "Hybrid sales rise while battery electric sales remain lower after tax credit expiration",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68325",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": "2026-10-19T14:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-207bf0c6d4cca97565ea65",
+      "title": "U.S. small-scale solar generation has quadrupled in the last decade",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68324",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": "2026-10-16T14:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-cb5890d031cd055d66cdc7",
+      "title": "PJM, ERCOT, and SWPP all set peak load records this summer",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68305",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": "2026-10-15T14:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-15c2bd28b112053151bc52",
+      "title": "Monthly wind generation in ISO-NE is about 68% higher than last year",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68304",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": "2026-10-14T14:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-ca688a27006cdc18bac09f",
@@ -605,7 +925,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-08dfdbdaa9ce20cc125a15",
@@ -621,7 +941,103 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-109f7d64c8d9628cdb1057",
+      "title": "Mixed outlook for energy expenditures this winter",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68264",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": "2026-10-07T14:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-73998ce676150f5cf0a3c1",
+      "title": "Crude oil prices and refinery margins generally increased throughout the third quarter",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68245",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": "2026-10-05T14:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-a1bdb43bd9d916d69fc532",
+      "title": "U.S. natural gas production reached a record high in July 2026",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68225",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": "2026-10-02T14:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-312ecd6a696d2a87caef2c",
+      "title": "U.S. exports of propane reached records in the first half of 2026",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68244",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": "2026-10-01T14:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-a148fadf946c26c24b7555",
+      "title": "U.S. electricity use for electric vehicles increasing at a slower pace in 2026",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68224",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": "2026-09-30T14:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
+    },
+    {
+      "id": "rss-becfb45a459ae5cb357f40",
+      "title": "Henry Hub natural gas prices this summer were 6% lower than last summer",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68204",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": "2026-09-25T14:00:00+00:00",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     },
     {
       "id": "rss-4df0a12d1719abe4d86c8f",
@@ -637,7 +1053,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-05T14:51:53+00:00"
+      "last_seen_at": "2026-11-05T15:04:31+00:00"
     }
   ],
   "sources": [
@@ -650,9 +1066,9 @@
       "ok": true,
       "count": 15,
       "error": null,
-      "last_attempt_at": "2026-11-05T14:51:53+00:00",
-      "last_success_at": "2026-11-05T14:51:53+00:00",
-      "latency_ms": 60,
+      "last_attempt_at": "2026-11-05T15:04:31+00:00",
+      "last_success_at": "2026-11-05T15:04:31+00:00",
+      "latency_ms": 91,
       "evidence_url": "https://www.federalreserve.gov/disclaimer.htm"
     },
     {
@@ -664,9 +1080,9 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-05T14:51:53+00:00",
-      "last_success_at": "2026-11-05T14:51:53+00:00",
-      "latency_ms": 66,
+      "last_attempt_at": "2026-11-05T15:04:31+00:00",
+      "last_success_at": "2026-11-05T15:04:31+00:00",
+      "latency_ms": 124,
       "evidence_url": "https://www.bea.gov/help/faq/147"
     },
     {
@@ -678,9 +1094,9 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-05T14:51:53+00:00",
-      "last_success_at": "2026-11-05T14:51:53+00:00",
-      "latency_ms": 64,
+      "last_attempt_at": "2026-11-05T15:04:31+00:00",
+      "last_success_at": "2026-11-05T15:04:31+00:00",
+      "latency_ms": 367,
       "evidence_url": "https://info.arxiv.org/help/api/tou.html"
     },
     {
@@ -692,10 +1108,38 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-05T14:51:53+00:00",
-      "last_success_at": "2026-11-05T14:51:53+00:00",
-      "latency_ms": 24,
+      "last_attempt_at": "2026-11-05T15:04:31+00:00",
+      "last_success_at": "2026-11-05T15:04:31+00:00",
+      "latency_ms": 64,
       "evidence_url": "https://info.arxiv.org/help/api/tou.html"
+    },
+    {
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "source_kind": "official",
+      "category": "能源",
+      "ok": true,
+      "count": 16,
+      "error": null,
+      "last_attempt_at": "2026-11-05T15:04:31+00:00",
+      "last_success_at": "2026-11-05T15:04:31+00:00",
+      "latency_ms": 146,
+      "evidence_url": "https://www.eia.gov/TODAYINENERGY/about.php"
+    },
+    {
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "source_kind": "official",
+      "category": "科技",
+      "ok": true,
+      "count": 10,
+      "error": null,
+      "last_attempt_at": "2026-11-05T15:04:31+00:00",
+      "last_success_at": "2026-11-05T15:04:31+00:00",
+      "latency_ms": 127,
+      "evidence_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
     }
   ]
 }
