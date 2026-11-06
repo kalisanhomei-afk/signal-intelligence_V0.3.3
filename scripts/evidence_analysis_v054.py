@@ -18,7 +18,7 @@ from urllib.request import Request,urlopen
 from intelligence_v040 import atomic_write,response_text
 from evidence_pilot_v054 import validate as validate_evidence
 
-VERSION='0.5.4'
+VERSION='0.5.4'  # analysis schema stays compatible; input contract is V0.5.4c
 MODEL='gpt-4.1-mini'
 FIELDS=('zh_title','what_source_says','key_facts','impact_hypotheses','reading_priority',
         'why_priority','unknowns','next_check')
@@ -44,6 +44,7 @@ impact_hypotheses必須是清楚可驗證的條件句，寫明觸發前提與時
 優先審閱是供人工分配時間的建議，不是全球重要性、可信度或金融訊號。資料不足就選資料不足並可輸出0個事實。
 來源可能有缺頁、數據修訂、非獨立研究或局部段落。若作者摘要未經同儕審查不得宣稱研究已獨立證實。
 保持精簡，每欄最多250中文字，不得引用超過必要的小片段，不得虛構第二個來源。
+來源標題、URL及發布日期由程式在審閱報告中另行呈現，不會提供給模型。不得自行猜測報告年份、月份或文章編號。中文標題只需概括提供的證據主題。
 key_facts以1至2項為佳。如果來源摘錄沒有某個年份／月份／數字，不得在事實句補寫，即使它出現在新聞標題。英文來源中以文字拼寫的數目不可自行改寫成阿拉伯數字。若需翻譯數量，保持原文數字字符與單位（例如21.9 billion不可改為219億）。如無法保證逐字一致，請改寫為不含數字的事實句並引用摘錄；仍無法確定就不產生該項事實。
 impact_hypotheses的hypothesis欄請明寫「若」或「如果」，不應只在assumptions欄出現條件。'''
 NUM=re.compile(r'(?<![A-Za-z\d.])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?%?(?![A-Za-z\d.])')
@@ -53,9 +54,13 @@ def call_model(row,*,api_key,model=MODEL,transport=None):
     if not api_key:raise ValueError('No API key')
     payload={'model':model,'store':False,'max_output_tokens':2600,
              'input':[{'role':'system','content':SYSTEM},{'role':'user','content':json.dumps({
-                 'UNTRUSTED_SOURCE_MATERIAL':True,'title':row['title'],
-                 'publisher':row['publisher_id'],'source_url':row['url'],
-                 'kind':row['kind'],'snippets':[
+                 # Never mix metadata (including report year, URL IDs, dates) with
+                 # cited excerpt facts. The full original metadata remains in
+                 # evidence.json and in the human review page, not in the model input.
+                 'UNTRUSTED_SOURCE_MATERIAL':True,
+                 'publisher':row['publisher_id'],
+                 'kind':row['kind'],'input_scope':'cited_excerpts_only',
+                 'snippets':[
                     {'id':s['id'],'text':s['text']} for s in row['evidence_spans']]
              },ensure_ascii=False)}],
              'text':{'format':{'name':'signal_v054_evidence_pilot',
@@ -158,6 +163,7 @@ def analyze(evidence, *, enable_ai=False, api_key='', max_calls=3, model=MODEL,a
     return {'meta':{'version':VERSION,'status':'private_unverified_evidence_model_pilot',
        'generated_at':dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds'),
        'paid_ai_enabled':bool(enable_ai),'model':model if enable_ai else None,
+       'model_input_scope':'cited_excerpts_only_no_title_url_or_published_date',
        'api_calls_attempted':used,'api_failures':failures,
        'evidence_ready':sum(x['status']=='excerpts_available' for x in evidence['items']),
        'draft_count':sum(x['status']=='model_draft_unverified' for x in items),

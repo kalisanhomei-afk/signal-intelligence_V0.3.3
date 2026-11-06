@@ -33,6 +33,8 @@ jobs:
         run: python scripts/test_v054.py
       - name: Check V0.5.4b strict numeric citation regression (offline, free)
         run: python scripts/test_v054b.py
+      - name: Check V0.5.4c isolation of metadata from AI evidence (offline, free)
+        run: python scripts/test_v054c.py
       - name: Select fresh rules-only candidates; do not call paid AI
         run: |
           mkdir -p _v054_private
@@ -80,6 +82,7 @@ jobs:
           if a.exists():
               doc=json.loads(a.read_text(encoding='utf-8'));m=doc['meta']
               print(f'- AI calls: {m["api_calls_attempted"]}; drafts: {m["draft_count"]}; failures: {m["api_failures"]}')
+              print(f'- Model input scope: {m.get("model_input_scope","unknown")}')
               for x in doc.get('items',[]):
                   if x.get('error_code'):
                       print(f'- AI rejection for {x["id"]}: {x["error_code"]}')
