@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "version": "0.5.2a",
+    "type": "publication_date_quality_only",
+    "generated_at": "2026-11-06T03:30:40+00:00",
+    "rights_scope": "descriptive_public_metadata_only",
+    "total_checked": 93,
+    "counts": {
+      "recent_7_days": 68,
+      "older_than_7_days": 24,
+      "missing_date": 1,
+      "future_date": 0
+    },
+    "quarantined": 1,
+    "verified_claims": 0,
+    "importance_scores": 0,
+    "notice": "首次採集時間不是新聞發布日期；沒有可信發布時間或時間超前超過1小時，不得放入最新情報。"
+  },
+  "quarantine": [
+    {
+      "id": "rss-77ab5d7af2eff7b8db8f51",
+      "title": "Category 2 Hurricane Isaias nears landfall, leading to production shut-ins",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68284",
+      "source": "EIA｜Today in Energy",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "published_at": null,
+      "first_seen_at": "2026-11-05T15:04:31+00:00",
+      "reason": "missing_date",
+      "verification_status": "未查證／日期待核對"
+    }
+  ]
+}
