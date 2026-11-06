@@ -1,8 +1,8 @@
 name: SIGNAL R6 isolated branch QA + optional one paid call
 
-# Branch-only push trigger; not workflow_dispatch (which would require default branch).
-# The FIRST commit runs offline only. A deliberate EXACT commit summary below
-# AND changed approval file are required for any paid API request.
+# Branch-isolated push workflow. Approval is computed from the checked-out
+# commit and reported in the Actions summary, avoiding brittle push payload
+# `head_commit.modified` job-level conditions.
 on:
   push:
     branches:
@@ -43,23 +43,59 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
-  one_paid_call:
+  approval_gate:
     needs: offline_qa
-    if: >-
-      github.repository == 'kalisanhomei-afk/signal-intelligence_V0.3.3' &&
-      github.actor == 'kalisanhomei-afk' &&
-      github.run_attempt == 1 &&
-      contains(github.event.head_commit.modified, 'rebuild_r6/APPROVE_ONE_CALL.txt') &&
-      github.event.head_commit.message == 'SIGNAL_R6_APPROVE_ONE_PAID_CALL'
+    runs-on: ubuntu-latest
+    outputs:
+      approved: ${{ steps.guard.outputs.approved }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Determine exact one-call approval (NO API)
+        id: guard
+        shell: bash
+        run: |
+          approved=false
+          reason='not requested'
+          if [[ "$GITHUB_EVENT_NAME" != 'push' ]]; then
+            reason='not a push event'
+          elif [[ "$GITHUB_REPOSITORY" != 'kalisanhomei-afk/signal-intelligence_V0.3.3' ]]; then
+            reason='repository mismatch'
+          elif [[ "$GITHUB_REF" != 'refs/heads/signal-evidence-rebuild' ]]; then
+            reason='branch mismatch'
+          elif [[ "$GITHUB_ACTOR" != 'kalisanhomei-afk' ]]; then
+            reason='actor mismatch'
+          elif [[ "$GITHUB_RUN_ATTEMPT" != '1' ]]; then
+            reason='rerun not authorized'
+          elif [[ "$(git log -1 --format=%s)" != 'SIGNAL_R6_APPROVE_ONE_PAID_CALL' ]]; then
+            reason='commit summary not approval phrase'
+          elif ! grep -Fxq 'APPROVE_ONE_CALL=YES' rebuild_r6/APPROVE_ONE_CALL.txt; then
+            reason='approval marker not YES'
+          elif ! git diff --name-only HEAD^ HEAD | grep -Fxq 'rebuild_r6/APPROVE_ONE_CALL.txt'; then
+            reason='approval marker not modified in this commit'
+          else
+            approved=true
+            reason='all checks passed'
+          fi
+          echo "approved=$approved" >> "$GITHUB_OUTPUT"
+          echo "### R6 authorization gate" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Approved for at most one API call: **$approved**" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Gate diagnosis: $reason" >> "$GITHUB_STEP_SUMMARY"
+
+  one_paid_call:
+    needs: [offline_qa, approval_gate]
+    if: needs.approval_gate.outputs.approved == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Check explicit approval marker
+      - name: Re-check one-call marker and prevent billable reruns
         shell: bash
         run: |
+          test "$GITHUB_RUN_ATTEMPT" = '1'
           grep -Fxq 'APPROVE_ONE_CALL=YES' rebuild_r6/APPROVE_ONE_CALL.txt
       - name: Run exactly one OpenAI API request (no retries, no site publish)
         env:
