@@ -1,4 +1,4 @@
-name: SIGNAL V0.5.1 independent reference benchmark + Pages
+name: SIGNAL V0.5.2 editorial attention + optional AI review + Pages
 
 on:
   workflow_dispatch:
@@ -42,6 +42,7 @@ jobs:
           python scripts/test_v045.py
           python scripts/test_v050.py
           python scripts/test_v051.py
+          python scripts/test_v052.py
       - name: Collect only rights-reviewed public descriptive metadata
         run: python scripts/collect_v034.py --output data/live_items.json
       - name: Probe newly evaluated public feeds and probe-only endpoints (never republish held content)
@@ -62,12 +63,18 @@ jobs:
         run: python scripts/daily_candidate_v050.py
       - name: Cross-check external reference candidates (no auto gold labels or global recall)
         run: python scripts/benchmark_v051.py
+      - name: Assemble provisional attention reading queue (optional capped AI; never news verification)
+        env:
+          SIGNAL_V052_AI_ENABLED: ${{ vars.SIGNAL_V052_AI_ENABLED }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SIGNAL_V052_MODEL: ${{ vars.SIGNAL_V052_MODEL }}
+        run: python scripts/impact_review_v052.py --max-ai 6
       - name: Save compact public history on main
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/live_items.json data/intelligence.json data/evidence_audit.json data/evidence_enriched.json data/source_quality_v043.json data/source_expansion_v044.json data/daily_brief_v050.json data/benchmark_audit_v051.json
+          git add data/live_items.json data/intelligence.json data/evidence_audit.json data/evidence_enriched.json data/source_quality_v043.json data/source_expansion_v044.json data/daily_brief_v050.json data/benchmark_audit_v051.json data/impact_review_v052.json
           if ! git diff --cached --quiet; then
             git commit -m "data: refresh reviewed metadata [skip ci]"
             git push origin HEAD:main
@@ -90,15 +97,18 @@ jobs:
         run: python scripts/v050_summary.py
       - name: Publish V0.5.1 reviewed benchmark readiness (not news recall)
         run: python scripts/v051_summary.py
+      - name: Report provisional V0.5.2 candidate attention (never accuracy)
+        run: python scripts/v052_summary.py
       - name: Upload metadata report for audit
         uses: actions/upload-artifact@v4
         with:
-          name: signal-v051-independent-reference-benchmark-and-quality-gates
+          name: signal-v052-provisional-review-and-quality-gates
           path: |
             data/live_items.json
             data/intelligence.json
             data/daily_brief_v050.json
             data/benchmark_audit_v051.json
+            data/impact_review_v052.json
             data/evidence_audit.json
             data/evidence_enriched.json
             data/source_quality_v043.json

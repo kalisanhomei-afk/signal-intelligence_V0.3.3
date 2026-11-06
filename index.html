@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#0b0b10">
-<title>視界 SIGNAL · 個人情報系統 V0.4.5</title>
+<title>視界 SIGNAL · 個人情報系統 V0.5.2</title>
 <style>
 :root{--black:#0b0b10;--paper:#ece6da;--gold:#c29b40;--golddeep:#8b6b2e;--white:#fff;--text:#26231f;--muted:#827b6f;--line:#ded8cb;--ivory:#faf8f4;--radius:17px;--shadow:0 18px 55px rgba(27,24,18,.055)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:var(--ivory);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft JhengHei",sans-serif;font-size:14px;line-height:1.68}button,input,select{font:inherit}button{cursor:pointer}a{color:var(--golddeep)}.serif{font-family:Georgia,"Noto Serif TC","PMingLiU",serif}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
@@ -28,12 +28,21 @@
 <div class="brand"><small>PERSONAL INTELLIGENCE</small><strong>SIGNAL</strong><em>視界｜個人情報研究所</em></div>
 <div class="side-heading">INTELLIGENCE DESK</div>
 <nav id="deskNav"></nav><div class="side-spacer"></div>
-<div class="side-note"><b>設計理念 · Beyond the feed</b><p>不追逐大量資訊，而是辨識真正重要的變化；同時保留不在既有興趣內的探索訊號。</p></div><div class="side-bottom">V0.5.1 · 獨立事件參考庫與品質驗收 · 2026.11.05</div>
+<div class="side-note"><b>設計理念 · Beyond the feed</b><p>不追逐大量資訊，而是辨識真正重要的變化；同時保留不在既有興趣內的探索訊號。</p></div><div class="side-bottom">V0.5.2 · 人工優先檢視與 AI 條件式草稿 · 2026.11.06</div>
 </aside>
 <main class="main">
 <div class="topbar"><div class="crumb">SIGNAL / <span id="crumb">TODAY'S BRIEF</span></div><div class="status"><span><i class="dot"></i>編輯精選為靜態樣本</span><span class="snapshot" id="feedSyncStatus">新發現尚未同步</span></div></div>
 <section id="page-today" class="page active">
 <div class="head"><div><div class="eyebrow">SIGNAL · LIVE REVIEW CANDIDATES + 2026-11-05 ARCHIVE</div><h1 class="serif">今日情報<span style="color:var(--golddeep)">.</span></h1><p>從雜訊中找出影響世界的變化，也保留未知領域的探索。</p></div><div class="headtools"><button class="btn" data-page="events">未來重大事件 ↗</button></div></div>
+<section id="impactV052" class="card" style="margin:0 0 20px;padding:25px;border:1px solid #d7c7a5;box-shadow:0 12px 30px rgba(22,18,11,.045)">
+ <div class="eyebrow">V0.5.2 · REVIEW PRIORITIES · NOT VERIFIED</div>
+ <h2 class="serif" style="font-size:28px;margin:9px 0 6px;color:#151319">人工優先檢視<span style="color:#ae893c">.</span></h2>
+ <p style="font-size:12px;color:#6c6151;line-height:1.85">先按照公告／研究標題型態與來源分散決定審閱次序。若另行啟用 AI，才會附上<strong>條件式影響假說</strong>，不是已驗證的重要新聞，也不代替閱讀原始資料。</p>
+ <div class="feedstate" id="impact052Status">尚未取得 V0.5.2 的評估資料；不以舊編輯文章冒充新消息。</div>
+ <div id="impact052Stats" style="display:flex;flex-wrap:wrap;gap:9px;margin:11px 0 13px"></div>
+ <div id="impact052Cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,315px),1fr));gap:12px"></div>
+ <p class="footnote" style="margin-top:13px">AI 或規則只提供審閱順序建議。可信度／重要性須分開驗收；已獨立驗證主張仍為 0，尚不能測量全球漏報率。來源盲區請參閱「證據檢核」。</p>
+</section>
 <section id="dailyPreview" class="card" style="margin:0 0 22px;padding:24px 25px;border:1px solid #dacdaf;box-shadow:0 10px 22px rgba(22,18,11,.035)">
  <div class="eyebrow">LIVE METADATA · DAILY REVIEW CANDIDATES</div>
  <h2 class="serif" style="margin:9px 0 8px;font-size:28px;color:#151319">今日選讀候選<span style="color:#ae893c">.</span></h2>
@@ -330,6 +339,43 @@ async function loadDaily(){
  renderDaily();
 }
 
+
+// V0.5.2 — editorial attention trial only. AI-generated content, when present, is ALWAYS hypothesis.
+let IMPACT052={meta:{},items:[]};
+function renderImpact052(){
+ const meta=IMPACT052.meta||{}, items=IMPACT052.items||[],stat=$('impact052Status'),list=$('impact052Cards'),metrics=$('impact052Stats');
+ if(meta.version!=='0.5.2'||meta.status!=='provisional_editorial_review_only'){
+  stat.textContent='尚無可用的 V0.5.2 審閱資料；若直接以 file:// 開啟，請改用 GitHub Pages 網址。';
+  list.innerHTML='';metrics.innerHTML='';return;
+ }
+ const aiCount=items.filter(x=>x.editorial_mode==='ai_hypothesis_only').length;
+ stat.textContent=`暫定人工候選 ${items.length} 則 · AI 草稿 ${aiCount} 則（${meta.ai_enabled?'已啟用':'未啟用'}） · 資料建立 ${twDate(meta.generated_at)}${meta.stale_source?' · ⚠ 來源逾期':''}。本頁沒有已查證的新聞、投資訊號或全球重要性分數。`;
+ metrics.innerHTML=`<span class="tag pale">7 日內候選池 ${Number(meta.input_pool_considered||0)}</span><span class="tag pale">與原 72h 清單重疊 ${Number(meta.baseline_candidate_overlap||0)}</span><span class="tag pale">模型呼叫 ${Number(meta.api_calls_attempted||0)}</span>`;
+ if(!items.length){list.innerHTML='<div class="empty">目前沒有符合合法來源、日期及分散性要求的候選，不能因此推論近期沒有重大新聞。</div>';return;}
+ const labels={policy_or_data:'政策／數據公告型',technical_or_industry:'技術／產業型',unclassified:'待判讀類型',routine_activity:'一般活動型'};
+ list.innerHTML=items.map(x=>{
+   const a=x.editorial_mode==='ai_hypothesis_only'&&x.ai_draft?x.ai_draft:null;
+   const reason=a?`<p style="margin:9px 0 5px;font-size:12px;line-height:1.7"><b>值得查閱的假說：</b>${sc(a.why_review)}</p><p style="margin:0 0 5px;font-size:12px;line-height:1.7"><b>可能影響：</b>${sc(a.potential_impact)}</p><p style="margin:0 0 5px;font-size:11px;color:#7d6e59"><b>影響時間：</b>${sc(a.impact_horizon)} · <b>未知：</b>${sc(a.unknowns)}</p><p style="margin:0 0 7px;font-size:12px"><b>核對問題：</b>${sc(a.check_question)}</p>`:`<p style="font-size:12px;line-height:1.8;color:#665d50"><b>規則選取理由：</b>${sc(labels[x.metadata_signal]||'標題待審')}；僅因標題類型進入候選，不代表新聞重大或研究已證實。</p><p style="font-size:11px"><b>下一步：</b>${sc(x.suggested_check)}</p>`;
+   return `<article class="card" style="padding:16px 17px;box-shadow:none"><header style="display:flex;justify-content:space-between;gap:7px"><span class="tag pale">${sc(x.category)} · ${sc(x.evidence_level)}</span><span class="sourcebadge">${a?'AI 草稿：'+sc(a.attention_tier):'規則初選'}</span></header>
+    <h3 style="font-size:15px;line-height:1.56;margin:11px 0 8px">${sc(a?a.zh_title:x.title)}</h3>
+    ${a?`<p style="font-size:11px;color:#897d69;margin:0 0 7px">原標題：${sc(x.title)}</p>`:''}
+    <p style="font-size:11px;color:#8a7760;margin:0 0 9px">${sc(x.source)} · ${twDate(x.published_at)} · ${sc(x.evidence_basis)}</p>
+    ${reason}<div style="border-top:1px solid #e8e0d2;padding-top:10px;display:flex;align-items:center;justify-content:space-between;gap:9px"><small style="color:#958468">未查證 · 人工覆核必須</small><a class="btn" href="${safeHref(x.url)}" target="_blank" rel="noopener noreferrer">原始出處 ↗</a></div>
+   </article>`;
+ }).join('');
+}
+async function loadImpact052(){
+ if(!/^https?:$/.test(location.protocol)){renderImpact052();return;}
+ try{
+  const r=await fetch('./data/impact_review_v052.json?fresh='+Date.now(),{cache:'no-store'});
+  if(!r.ok)throw Error('HTTP '+r.status);
+  const d=await r.json(),m=d.meta||{};
+  if(m.version!=='0.5.2'||m.status!=='provisional_editorial_review_only'||m.rights_scope!=='descriptive_public_metadata_only'||m.verified_claims!==0||m.independent_confirmations!==0||m.global_event_recall!==null||m.importance_accuracy!==null||!Array.isArray(d.items))throw Error('Unacceptable review claims');
+  IMPACT052=d;
+ }catch(e){console.warn('V0.5.2 review unavailable',e);IMPACT052={meta:{},items:[]};}
+ renderImpact052();
+}
+
 // V0.5.1: external-source reference anchors; no automatic gold labels or global recall.
 let BENCH={meta:{},events:[]};
 function renderBenchmark(){
@@ -357,7 +403,7 @@ async function loadBenchmark(){
  renderBenchmark();
 }
 
-navRender();render();loadGenerated();loadDiscovery();loadTriage();loadEvidence();loadQuality();loadExpansion();loadDaily();loadBenchmark();
+navRender();render();loadGenerated();loadDiscovery();loadTriage();loadEvidence();loadQuality();loadExpansion();loadDaily();loadBenchmark();loadImpact052();
 })();
 </script>
 </body></html>

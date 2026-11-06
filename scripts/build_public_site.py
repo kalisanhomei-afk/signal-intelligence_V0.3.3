@@ -58,6 +58,19 @@ def build(output,source_root=BASE,*,strict=False):
         shutil.copyfile(bench_path,output/'data/benchmark_audit_v051.json')
     elif strict:
         raise FileNotFoundError('Missing V0.5.1 reference audit; production publish blocked')
+    # V0.5.2: review output is public only after checking provenance and unverified-status invariants.
+    impact_file=source_root/'data/impact_review_v052.json'
+    if impact_file.is_file():
+        from impact_review_v052 import validate as validate_impact
+        review=json.loads(impact_file.read_text(encoding='utf-8'))
+        evidence_path=source_root/'data/evidence_enriched.json'
+        evidence_doc=json.loads(evidence_path.read_text(encoding='utf-8')) if evidence_path.is_file() else None
+        source_cfg=json.loads((source_root/'data/v034_sources.json').read_text(encoding='utf-8'))
+        live_input=json.loads((source_root/'data/live_items.json').read_text(encoding='utf-8'))
+        validate_impact(review,live_input,source_cfg,evidence_doc)
+        shutil.copyfile(impact_file,output/'data/impact_review_v052.json')
+    elif strict:
+        raise FileNotFoundError('V0.5.2 impact review missing; cannot deploy')
     # V0.4.2 optional during legacy unit tests, mandatory in actual strict deployment.
     extra=source_root/'data/evidence_enriched.json'
     if extra.is_file():
