@@ -31,6 +31,8 @@ jobs:
           python-version: '3.12'
       - name: Run offline V0.5.4 safety and provenance tests
         run: python scripts/test_v054.py
+      - name: Check V0.5.4b strict numeric citation regression (offline, free)
+        run: python scripts/test_v054b.py
       - name: Select fresh rules-only candidates; do not call paid AI
         run: |
           mkdir -p _v054_private
