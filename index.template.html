@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#0b0b10">
-<title>視界 SIGNAL · 個人情報系統 V0.5.2</title>
+<title>視界 SIGNAL · 個人情報系統 V0.5.2a</title>
 <style>
 :root{--black:#0b0b10;--paper:#ece6da;--gold:#c29b40;--golddeep:#8b6b2e;--white:#fff;--text:#26231f;--muted:#827b6f;--line:#ded8cb;--ivory:#faf8f4;--radius:17px;--shadow:0 18px 55px rgba(27,24,18,.055)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:var(--ivory);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft JhengHei",sans-serif;font-size:14px;line-height:1.68}button,input,select{font:inherit}button{cursor:pointer}a{color:var(--golddeep)}.serif{font-family:Georgia,"Noto Serif TC","PMingLiU",serif}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
@@ -28,12 +28,12 @@
 <div class="brand"><small>PERSONAL INTELLIGENCE</small><strong>SIGNAL</strong><em>視界｜個人情報研究所</em></div>
 <div class="side-heading">INTELLIGENCE DESK</div>
 <nav id="deskNav"></nav><div class="side-spacer"></div>
-<div class="side-note"><b>設計理念 · Beyond the feed</b><p>不追逐大量資訊，而是辨識真正重要的變化；同時保留不在既有興趣內的探索訊號。</p></div><div class="side-bottom">V0.5.2 · 人工優先檢視與 AI 條件式草稿 · 2026.11.06</div>
+<div class="side-note"><b>設計理念 · Beyond the feed</b><p>不追逐大量資訊，而是辨識真正重要的變化；同時保留不在既有興趣內的探索訊號。</p></div><div class="side-bottom">V0.5.2a · 日期防護／獨立編輯存檔 · 2026.11.06</div>
 </aside>
 <main class="main">
-<div class="topbar"><div class="crumb">SIGNAL / <span id="crumb">TODAY'S BRIEF</span></div><div class="status"><span><i class="dot"></i>編輯精選為靜態樣本</span><span class="snapshot" id="feedSyncStatus">新發現尚未同步</span></div></div>
+<div class="topbar"><div class="crumb">SIGNAL / <span id="crumb">TODAY'S BRIEF</span></div><div class="status"><span><i class="dot"></i>元資料候選未經內容查證</span><span class="snapshot" id="feedSyncStatus">新發現尚未同步</span></div></div>
 <section id="page-today" class="page active">
-<div class="head"><div><div class="eyebrow">SIGNAL · LIVE REVIEW CANDIDATES + 2026-11-05 ARCHIVE</div><h1 class="serif">今日情報<span style="color:var(--golddeep)">.</span></h1><p>從雜訊中找出影響世界的變化，也保留未知領域的探索。</p></div><div class="headtools"><button class="btn" data-page="events">未來重大事件 ↗</button></div></div>
+<div class="head"><div><div class="eyebrow">SIGNAL · LIVE REVIEW CANDIDATES · NOT VERIFIED</div><h1 class="serif">今日情報<span style="color:var(--golddeep)">.</span></h1><p>今日首頁僅顯示來源日期可核對的審閱候選；固定編輯樣本已移至「編輯存檔」。</p></div><div class="headtools"><button class="btn" data-page="events">未來重大事件 ↗</button></div></div>
 <section id="impactV052" class="card" style="margin:0 0 20px;padding:25px;border:1px solid #d7c7a5;box-shadow:0 12px 30px rgba(22,18,11,.045)">
  <div class="eyebrow">V0.5.2 · REVIEW PRIORITIES · NOT VERIFIED</div>
  <h2 class="serif" style="font-size:28px;margin:9px 0 6px;color:#151319">人工優先檢視<span style="color:#ae893c">.</span></h2>
@@ -50,14 +50,17 @@
  <div id="dailyPreviewStatus" class="feedstate">正在讀取最新的候選資料；若未取得，將明確標示，不以舊稿冒充今日快訊。</div>
  <div id="dailyPreviewList" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin-top:15px"></div>
 </section>
+<section class="card" style="margin:0 0 20px;padding:22px 25px"><div class="sectiontitle" style="margin:0 0 12px"><h2><span class="tiny">SOURCE METADATA · PARSEABLE PUBLICATION DATE</span>近期來源標題（未查證）</h2><span class="hint">僅7天內、來源日期可解析；未經交叉查證</span></div><div id="autoFeed" style="padding:4px"><div class="empty">等待近期來源。</div></div><div style="margin-top:14px"><button class="btn" data-page="archive">查看 2026-11-05 編輯存檔（非即時） →</button></div></section>
+</section>
+<section id="page-archive" class="page"><div class="head"><div><div class="eyebrow">EDITORIAL ARCHIVE / 2026-11-05 · FIXED SNAPSHOT</div><h1 class="serif">編輯存檔<span style="color:var(--golddeep)">.</span></h1><p>固定日期的編輯樣本；分數為早期展示值，不屬於正式驗證。</p></div><button class="btn" data-page="today">返回今日情報 →</button></div>
 <div style="margin:15px 0 13px;color:#887a61;font-size:11px;letter-spacing:.06em">以下編輯專題與既有「精選資訊」為 <strong>2026-11-05 固定存檔</strong>，不代表當日最新新聞、AI 查證或投資判斷。</div>
 <div class="hero"><div class="hero-left"><div class="hero-top">2026-11-05 EDITORIAL ARCHIVE · 非即時結論</div><div><h2 class="serif">AI 成長的瓶頸，<br>正從算力走向<span style="color:#e4bd68">電力與供應鏈。</span></h2><p>從 IEA 電網研究到半導體產能分配，理解同一波科技投資如何重塑不同產業，而不是只追蹤股價。</p></div><button class="btn gold" data-story="iea-power-ai">閱讀情報分析 ↗</button></div><div class="hero-art"><div class="diagonal"></div><strong>01</strong></div></div>
 <div class="grid"><div>
 <div class="sectiontitle"><h2><span class="tiny">SELECTED INTELLIGENCE</span>值得關注的資訊</h2><span class="hint" id="storycount"></span></div>
 <div class="filters" id="storyFilters"></div><div class="story-grid" id="storyGrid"></div><div id="moreStories" style="text-align:center;margin:17px 0 0"></div>
-<div class="footnote">以上為「可追溯來源的近期待選情報」，不是自動同步的今日快訊；所有事件與原始消息日期可在詳情查看。重要性分數屬編輯測試值，不是市場預測。</div><div class="sectiontitle"><h2><span class="tiny">NEWLY DISCOVERED · TO BE VERIFIED</span>新發現／待審資訊</h2><span class="hint">來源標題，不代表事實已驗證</span></div><div class="card" id="autoFeed" style="padding:17px"><div class="empty">尚未取得自動蒐集資料；可從「新發現」查看資料來源健康度。</div></div><div style="margin:12px 0 0"><button class="btn dark" data-page="triage">查看跨來源情報初篩（待審，不代表查證）→</button></div>
-</div><div class="side-col"><div class="card sidepanel"><div class="sectiontitle" style="margin:0 0 3px"><h2><span class="tiny">UPCOMING EVENTS</span>未來重大事件</h2></div><div id="upcoming"></div><button class="btn plain" style="width:100%" data-page="events">查看完整行事曆 →</button></div>
-<div class="insight"><div class="eyebrow">ANTI-ECHO CHAMBER</div><h3 class="serif">今天的盲點探索</h3><p>不要只追蹤 AI 與金融。從工程設計、資安與能源系統等較少出現在財經頭條的技術訊號，尋找被忽略的跨領域影響。</p><div class="mini-line"></div><div id="blindSpot"></div></div></div></div>
+<div class="footnote">本區為 2026-11-05 固定編輯存檔；任何測試分數都不是現行重要性評估或交易訊號。</div>
+</div><div class="side-col"><div class="card sidepanel"><div class="sectiontitle" style="margin:0 0 3px"><h2><span class="tiny">2026-11-05 ARCHIVE</span>當時的預告事件（已過期可能）</h2></div><div id="upcoming"></div><button class="btn plain" style="width:100%" data-page="events">查看完整行事曆 →</button></div>
+<div class="insight"><div class="eyebrow">ARCHIVE · ANTI-ECHO CHAMBER</div><h3 class="serif">當時的盲點探索（存檔）</h3><p>不要只追蹤 AI 與金融。從工程設計、資安與能源系統等較少出現在財經頭條的技術訊號，尋找被忽略的跨領域影響。</p><div class="mini-line"></div><div id="blindSpot"></div></div></div></div>
 </section>
 <section id="page-discover" class="page">
 <div class="head"><div><div class="eyebrow">SOURCE DISCOVERY · UNREVIEWED</div><h1 class="serif">新發現<span style="color:var(--golddeep)">.</span></h1><p>觀察正在出現的科技、知識、產業及全球消息。這裡是原始來源標題，不代表已查證或值得投資。</p></div><div class="headtools"><button class="btn" data-reload="1">重新讀取已發布資料 ↻</button></div></div>
@@ -65,11 +68,12 @@
 <div class="discover-kpis" id="discoverKpis"></div>
 <div class="sectiontitle"><h2><span class="tiny">BROAD DISCOVERY · SOURCE DIVERSITY</span>跨領域最新標題</h2><span class="hint">預設跨來源輪流呈現，避免單一媒體洗版</span></div>
 <div class="filters" id="discoverFilters"></div>
-<div class="discovery-grid" id="discoveryList"><div class="empty">沒有可用的近期來源標題。部署自動更新後顯示。</div></div>
+<div class="discovery-grid" id="discoveryList"><div class="empty">沒有可用的近期來源標題。部署自動更新後顯示。</div></div><div class="feedstate" id="dateQualityStatus">來源時間品質統計尚未載入；沒有日期的標題不列入最新資訊。</div>
+<details class="card" style="padding:15px 18px;margin:12px 0 18px"><summary style="cursor:pointer;font-weight:750;color:#8b6b2e">日期待核對清單（僅供查核，不是新消息）</summary><div id="dateQuarantine" style="margin-top:12px;font-size:12px"></div></details>
 <div class="sectiontitle"><h2><span class="tiny">SOURCE OPERATIONS</span>資訊來源健康度</h2><span class="hint">顯示採集成功與失敗，不掩蓋停更</span></div>
 <div class="card health-panel" id="sourceHealth"><div class="empty">尚無來源檢測紀錄。</div></div>
 <div class="footnote"><a class="btn dark" href="./source-console.html">查看首批 10 條候選來源與審核進度 →</a>　來源接入狀態與採集健康度不同；候選資料不能當作正式新聞。</div>
-<div class="footnote">採集器只讀取公開 RSS/Atom 的標題與連結，不會為原文生成事實摘要。研究論文為預印本時不代表已經同儕審查；社群消息也不是獨立證據。資料時間採台灣時區，無發布時間者標為「日期未提供」。</div>
+<div class="footnote">採集器只讀取公開 RSS/Atom 的標題與連結，不會為原文生成事實摘要。研究論文為預印本時不代表已經同儕審查；社群消息也不是獨立證據。資料時間採台灣時區，無發布時間者會隔離於「日期待核對」，不能以首次採集時間當作發布日。</div>
 </section>
 <section id="page-triage" class="page">
 <div class="head"><div><div class="eyebrow">SIGNAL · EVIDENCE-BOUNDED TRIAGE</div><h1 class="serif">情報初篩<span style="color:var(--golddeep)">.</span></h1><p>來源優先、可追溯、把未知留在未知。先挑選研究候選，再進行人工或跨來源查證。</p></div><div class="headtools"><button class="btn" data-page="discover">查看原始標題 ↗</button></div></div>
@@ -123,7 +127,8 @@
 (()=>{'use strict';
 const $=id=>document.getElementById(id), safe=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const icons={evidence:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m4 12 5 5 11-11"/><path d="M4 3h16v18H4z"/></svg>',triage:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 4h18v16H3zM7 9h10M7 13h6M7 17h5"/></svg>',discover:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4M8 11h6M11 8v6"/></svg>',today:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11.5 12 4l9 7.5V21H3v-9.5Z"/><path d="M9 21v-7h6v7"/></svg>',weekly:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h16v16H4zM4 9h16M9 4v16M14 13h4M14 17h4"/></svg>',events:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 2v6M17 2v6M3 10h18"/></svg>',markets:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 19h18M5 15l4-5 4 3 6-8"/><path d="M16 5h3v3"/></svg>',follow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h14v17l-7-5-7 5z"/></svg>'};
-const NAV=[['today','今日情報','TODAY\'S BRIEF'],['discover','新發現','SOURCE DISCOVERY'],['triage','情報初篩','REVIEW QUEUE'],['evidence','證據檢核','EVIDENCE AUDIT'],['weekly','本週觀察','WEEKLY REVIEW'],['events','重大事件','EVENT CALENDAR'],['markets','投資研究','MARKET RESEARCH'],['follow','我的追蹤','MY TRACKING']];
+icons.archive=icons.weekly;
+const NAV=[['today','今日情報','TODAY\'S BRIEF'],['discover','新發現','SOURCE DISCOVERY'],['triage','情報初篩','REVIEW QUEUE'],['evidence','證據檢核','EVIDENCE AUDIT'],['archive','編輯存檔','EDITORIAL ARCHIVE'],['weekly','本週觀察','WEEKLY REVIEW'],['events','重大事件','EVENT CALENDAR'],['markets','投資研究','MARKET RESEARCH'],['follow','我的追蹤','MY TRACKING']];
 const SNAPSHOT='2026-11-05';
 const LOCAL_DATE=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 const twDate=raw=>{if(!raw)return '日期未提供';let v=new Date(raw);return Number.isNaN(v.getTime())?'日期未提供':new Intl.DateTimeFormat('zh-TW',{timeZone:'Asia/Taipei',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(v)+'（台灣）'};
@@ -149,7 +154,7 @@ function fullEvent(e){const d=dateKey(e).slice(-2);return `<article class="card 
 function events(){const selected=EVENTS.filter(e=>eventDays(e)>=0&&eventDays(e)<state.days).sort((a,b)=>a.start.localeCompare(b.start));$('eventsList').innerHTML=selected.length?selected.map(fullEvent).join(''):'<div class="empty">該時段沒有收錄的重大事件。</div>';$('eventRanges').querySelectorAll('[data-days]').forEach(b=>b.classList.toggle('active',Number(b.dataset.days)===state.days));}
 function weekly(){const list=EVENTS.filter(e=>eventDays(e)>=0&&eventDays(e)<=7).sort((a,b)=>a.start.localeCompare(b.start));$('weeklyEvents').innerHTML=list.map(fullEvent).join('')||'<div class="empty">本週無收錄的重要事件。</div>'}
 function tracking(){document.querySelectorAll('[data-track]').forEach(b=>b.classList.toggle('active',b.dataset.track===state.track));const rows=STORIES.filter(a=>saved(a.id)[state.track]);$('trackList').innerHTML=rows.length?rows.map(a=>`<div class="track-row"><div><span class="tag">${sc(a.category)}</span><h3>${sc(a.title)}</h3><p>${sc(a.date)} · ${sc(a.source)}</p></div><button class="btn" data-story="${a.id}">閱讀</button></div>`).join(''):'<div class="track-empty">目前沒有內容。可在情報卡片中收藏，或進入詳情將主題加入追蹤。</div>'}
-function render(){if(state.page==='today')today();if(state.page==='discover')discover();if(state.page==='triage')renderTriage();if(state.page==='evidence'){renderEvidence();renderQuality();renderBenchmark();}if(state.page==='events')events();if(state.page==='weekly')weekly();if(state.page==='follow')tracking();}
+function render(){if(state.page==='archive')today();if(state.page==='discover')discover();if(state.page==='triage')renderTriage();if(state.page==='evidence'){renderEvidence();renderQuality();renderBenchmark();}if(state.page==='events')events();if(state.page==='weekly')weekly();if(state.page==='follow')tracking();}
 function showStory(id){const a=STORIES.find(x=>x.id===id);if(!a)return;const p=saved(id);$('dialog').innerHTML=`<button class="x" data-close aria-label="關閉">×</button><div class="eyebrow">${sc(a.category)} / ${sc(a.signal)} / ${sc(a.date)}</div><h2 class="serif">${sc(a.title)}</h2><p class="lead">${sc(a.source)} · 原始出處可追溯 · 本文為簡短編輯整理與分析</p><div class="detail-section"><b>已知事實</b><p>${sc(a.summary)}</p></div><div class="detail-section"><b>為什麼值得關注？（分析推論）</b><p>${sc(a.why)}</p></div><div class="detail-section"><b>後續應驗證什麼？</b><p>${sc(a.watch)}</p></div><div class="detail-section"><b>不確定性與反面考量</b><p>${sc(a.caveat)}</p></div><div class="detail-section"><b>判斷資訊</b><p>編輯重要性 ${a.importance}/100 · 個人關聯度 ${a.relevance}/100 · ${a.explore?'跨領域探索候選':'核心領域'}<br>關聯資產標籤：${sc((a.markets||[]).join('、'))}（不代表交易建議）</p></div><div class="detail-section"><b>原始來源</b><p><a href="${sc(a.url)}" target="_blank" rel="noopener noreferrer">${sc(a.source)} ↗</a></p></div><div class="actions"><button class="btn gold" data-flag="follow" data-id="${a.id}">${p.follow?'✓ 已追蹤':'＋ 追蹤此主題'}</button><button class="btn" data-flag="saved" data-id="${a.id}">${p.saved?'★ 已收藏':'☆ 收藏'}</button><button class="btn" data-flag="read" data-id="${a.id}">${p.read?'✓ 已閱讀':'標記已閱讀'}</button></div>`;openModal();}
 function showEvent(id){const e=EVENTS.find(x=>x.id===id);if(!e)return;$('dialog').innerHTML=`<button class="x" data-close aria-label="關閉">×</button><div class="eyebrow">EVENT INTELLIGENCE / ${sc(e.category)}</div><h2 class="serif">${sc(e.title)}</h2><p class="lead">${sc(e.display)}（台灣時間）· ${sc(e.status)}</p><div class="detail-section"><b>提前觀察的重點</b><p>${sc(e.watch)}</p></div><div class="detail-section"><b>來源與時間驗證</b><p>來源：<a target="_blank" rel="noopener noreferrer" href="${sc(e.url)}">${sc(e.source)} ↗</a><br>核對基準：2026-11-05；若正式日期有修改，後續應以官方為準。</p></div><div class="detail-section"><b>事後結果</b><p>目前尚未發生。正式版需要事件公布後由官方資料更新「預期與實際」差異；原型不會假造結果。</p></div><div class="actions"><button class="btn gold" data-ics="${e.id}">下載 .ics 行事曆（提前一天提醒）</button></div>`;openModal();}
 function openModal(){$('overlay').classList.add('show');document.body.style.overflow='hidden';$('dialog').scrollTop=0}function closeModal(){$('overlay').classList.remove('show');document.body.style.overflow=''}
@@ -175,13 +180,20 @@ function discoveryCategories(){
     `<input aria-label="搜尋來源標題" class="search" id="discoverSearch" placeholder="搜尋標題或來源…" value="${sc(state.discoveryKeyword)}">`;
 }
 function recentEnough(date){if(!date)return false;let t=Date.parse(date);return Number.isFinite(t)&&Date.now()-t<=48*3600*1000;}
+function dateState(item){const time=Date.parse(item.published_at||'');if(!Number.isFinite(time))return 'missing_date';const age=Date.now()-time;if(age < -3600000)return 'future_date';return age <= 7*86400000?'recent_7_days':'older_than_7_days';}
+let DATE_QUALITY={meta:{},quarantine:[]};
+function displayDateQuality(){const m=DATE_QUALITY.meta||{},counts=m.counts||{},current=(DISCOVERY.items||[]).filter(x=>dateState(x)==='recent_7_days').length;const quarantine=(DISCOVERY.items||[]).filter(x=>['missing_date','future_date'].includes(dateState(x)));$('dateQualityStatus').textContent=`近7天可顯示 ${current} 則；缺乏發布日期 ${quarantine.filter(x=>dateState(x)==='missing_date').length} 則；超前日期 ${quarantine.filter(x=>dateState(x)==='future_date').length} 則。${m.version==='0.5.2a'?'已產生日期稽核':'待取得新版日期稽核'}。首次採集時間從不作為新聞發布日。`;
+$('dateQuarantine').innerHTML=quarantine.length?quarantine.slice(0,30).map(x=>`<div class="track-row" style="padding:9px 0"><div><b>${sc(x.title)}</b><p style="font-size:11px;color:#8b6b2e">${dateState(x)==='missing_date'?'缺乏可信發布日期':'來源日期超前'} · ${sc(x.source)} · 僅供核對</p></div><a href="${safeHref(x.url)}" target="_blank" rel="noopener noreferrer" class="btn">原文 ↗</a></div>`).join(''):'<p>目前沒有缺日期或日期超前的保存標題。超過7天的已知日期資料仍保留於採集歷史，但不當作最新消息。</p>';
+}
+async function loadDateQuality(){try{const r=await fetch('./data/date_quality_v052a.json?fresh='+Date.now(),{cache:'no-store'});if(r.ok){const d=await r.json();if(d.meta?.version==='0.5.2a'&&d.meta.verified_claims===0)DATE_QUALITY=d;}}catch(e){console.warn('Date audit unavailable',e);}displayDateQuality();}
+
 function healthLabel(h){return h.ok?'正常':'失敗';}
 function discoveryStatus(){
   const m=DISCOVERY.meta||{};
   if(m.mode==='demo')return '【模擬測試模式】全部標題、來源健康度與時間皆為虛構測試資料；不是即時新聞。';
   if(m.mode==='official_metadata'&&!m.last_attempt_at)return '正式公開元資料更新尚未執行。此頁不會用既有樣本偽裝即時新聞。';
   if(location.protocol==='file:')return '目前是單檔離線模式。需要透過網站伺服器開啟，才能讀取自動更新的 data/discovered.json。';
-  if(!m.last_attempt_at)return '尚未排程採集｜「今日情報」仍使用 2026/11/05 編輯樣本；「新發現」尚未運作。';
+  if(!m.last_attempt_at)return '尚未排程採集｜今日情報無真實候選；固定編輯樣本僅見「編輯存檔」。';
   let stale=!recentEnough(m.last_success_at);
   return `官方及研究元資料｜上次嘗試 ${twDate(m.last_attempt_at)} · 最近成功 ${twDate(m.last_success_at)} · ${m.successful_sources??0}/${m.source_count??0} 條通道成功${stale?' · ⚠ 資料可能過期':''}。僅公開標題／來源／日期，非查證後的情報分析。`;
 }
@@ -195,14 +207,15 @@ function renderDiscoveryCard(item){
 function discover(){
  discoveryCategories();
  let m=DISCOVERY.meta||{}, all=DISCOVERY.items||[];
- let filtered=all.filter(x=>(state.discoveryCategory==='全部'||x.category===state.discoveryCategory)&&`${x.title} ${x.source} ${x.category}`.toLowerCase().includes(state.discoveryKeyword.toLowerCase()));
+ let filtered=all.filter(x=>dateState(x)==='recent_7_days'&&(state.discoveryCategory==='全部'||x.category===state.discoveryCategory)&&`${x.title} ${x.source} ${x.category}`.toLowerCase().includes(state.discoveryKeyword.toLowerCase()));
  const selected=diverseSelection(filtered,state.discoveryLimit);
  $('discoveryStatus').textContent=discoveryStatus();
  $('feedSyncStatus').textContent=m.mode==='demo'?'DEMO · 虛構測試資料':m.last_success_at?(recentEnough(m.last_success_at)?'來源已更新 · '+twDate(m.last_success_at):'來源資料可能過期'):'新發現尚未同步';
- $('discoverKpis').innerHTML=`<div class="card discover-kpi"><small>採集標題</small><strong>${all.length}</strong><span>資料庫標題 · 未查核內文</span></div><div class="card discover-kpi"><small>可用來源</small><strong>${m.successful_sources??0}<em> / ${m.source_count??0}</em></strong><span>最後一次更新結果</span></div><div class="card discover-kpi"><small>涵蓋領域</small><strong>${new Set(all.map(x=>x.category)).size}</strong><span>不依賴個人點擊紀錄</span></div>`;
+ $('discoverKpis').innerHTML=`<div class="card discover-kpi"><small>近7日有來源日期</small><strong>${all.filter(x=>dateState(x)==='recent_7_days').length}</strong><span>非新聞查證 · 資料庫總 ${all.length} 筆</span></div><div class="card discover-kpi"><small>可用來源</small><strong>${m.successful_sources??0}<em> / ${m.source_count??0}</em></strong><span>最後一次更新結果</span></div><div class="card discover-kpi"><small>涵蓋領域</small><strong>${new Set(all.map(x=>x.category)).size}</strong><span>不依賴個人點擊紀錄</span></div>`;
  $('discoveryList').innerHTML=selected.length?selected.map(renderDiscoveryCard).join(''):'<div class="empty">沒有符合條件的近期未審標題；可能尚未部署來源蒐集或目前來源全部失效。</div>';
  renderSourceHealth();
- const top=diverseSelection(all,5);
+ displayDateQuality();
+ const top=diverseSelection(all.filter(x=>dateState(x)==='recent_7_days'),5);
  $('autoFeed').innerHTML=`<p style="font-size:11px;color:#87765d;margin:0 0 12px">${sc(discoveryStatus())}</p>`+(top.length?top.map(a=>`<div class="track-row" style="padding:11px 0"><div><span class="tag pale">${sc(a.category)}</span> <span style="font-size:10px;color:#978a75">${sc(a.source)} · ${sc(twDate(a.published_at))}</span><h3 style="font-size:13px">${sc(a.title)}</h3></div><a class="btn" href="${safeHref(a.url)}" rel="noopener noreferrer" target="_blank">原文 ↗</a></div>`).join(''):'<div class="empty">沒有可用的新標題；這不表示近期沒有新聞。</div>')+'<div style="margin-top:12px"><button data-page="discover" class="btn dark">全部新發現與來源狀態 →</button></div>';
 }
 async function loadDiscovery(){
@@ -403,7 +416,7 @@ async function loadBenchmark(){
  renderBenchmark();
 }
 
-navRender();render();loadGenerated();loadDiscovery();loadTriage();loadEvidence();loadQuality();loadExpansion();loadDaily();loadBenchmark();loadImpact052();
+navRender();render();loadGenerated();loadDiscovery();loadDateQuality();loadTriage();loadEvidence();loadQuality();loadExpansion();loadDaily();loadBenchmark();loadImpact052();
 })();
 </script>
 </body></html>

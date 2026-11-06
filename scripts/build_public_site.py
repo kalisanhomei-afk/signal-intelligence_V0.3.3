@@ -58,6 +58,16 @@ def build(output,source_root=BASE,*,strict=False):
         shutil.copyfile(bench_path,output/'data/benchmark_audit_v051.json')
     elif strict:
         raise FileNotFoundError('Missing V0.5.1 reference audit; production publish blocked')
+    # V0.5.2a: quarantine ledger is derived from this exact current live document.
+    date_p=source_root/'data/date_quality_v052a.json'
+    if date_p.is_file():
+        from date_quality_v052a import validate as validate_date_quality
+        checked=json.loads(date_p.read_text(encoding='utf-8'))
+        current=json.loads((source_root/'data/live_items.json').read_text(encoding='utf-8'))
+        validate_date_quality(checked,current)
+        shutil.copyfile(date_p,output/'data/date_quality_v052a.json')
+    elif strict:
+        raise FileNotFoundError('Date quality report missing; production deploy blocked')
     # V0.5.2: review output is public only after checking provenance and unverified-status invariants.
     impact_file=source_root/'data/impact_review_v052.json'
     if impact_file.is_file():

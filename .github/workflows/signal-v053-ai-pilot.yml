@@ -1,0 +1,43 @@
+name: SIGNAL V0.5.3 AI hypothesis pilot (manual only / no Pages)
+on:
+  workflow_dispatch:
+    inputs:
+      run_paid_ai:
+        description: 'I understand API usage is billable; run a maximum of 3 hypotheses'
+        type: boolean
+        required: true
+        default: false
+permissions:
+  contents: read
+jobs:
+  pilot:
+    if: ${{ inputs.run_paid_ai == true }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Confirm secret presence without exposing it
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then echo '::error::Missing OPENAI_API_KEY repository secret'; exit 1; fi
+      - name: Generate capped AI drafts into temporary folder only (never commit/Pages)
+        env:
+          SIGNAL_V052_AI_ENABLED: 'true'
+          SIGNAL_V052_MODEL: 'gpt-4.1-mini'
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          mkdir -p _pilot
+          python scripts/impact_review_v052.py --previous _pilot/none.json --output _pilot/review.json --max-ai 3
+      - name: Produce human review sheet and validate provenance
+        run: python scripts/v053_pilot_sheet.py --review _pilot/review.json --output _pilot/pilot_review.html
+      - uses: actions/upload-artifact@v4
+        with:
+          name: signal-v053-review-hypotheses-not-verified
+          path: |
+            _pilot/review.json
+            _pilot/pilot_review.html
+          retention-days: 7

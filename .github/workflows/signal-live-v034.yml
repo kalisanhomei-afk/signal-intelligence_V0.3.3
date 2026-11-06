@@ -1,4 +1,4 @@
-name: SIGNAL V0.5.2 editorial attention + optional AI review + Pages
+name: SIGNAL V0.5.2a date-quality guard + Pages
 
 on:
   workflow_dispatch:
@@ -43,13 +43,16 @@ jobs:
           python scripts/test_v050.py
           python scripts/test_v051.py
           python scripts/test_v052.py
+          python scripts/test_v052a.py
       - name: Collect only rights-reviewed public descriptive metadata
         run: python scripts/collect_v034.py --output data/live_items.json
+      - name: Classify unknown/future publication dates and quarantine from latest news
+        run: python scripts/date_quality_v052a.py
       - name: Probe newly evaluated public feeds and probe-only endpoints (never republish held content)
         run: python scripts/source_expansion_v044.py
       - name: Assemble bounded intelligence review queue (optional AI)
         env:
-          SIGNAL_AI_ENABLED: ${{ vars.SIGNAL_AI_ENABLED }}
+          SIGNAL_AI_ENABLED: 'false'  # Avoid automatic paid AI in regular refresh
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.SIGNAL_AI_MODEL }}
         run: python scripts/intelligence_v040.py --max-ai 6
@@ -65,7 +68,7 @@ jobs:
         run: python scripts/benchmark_v051.py
       - name: Assemble provisional attention reading queue (optional capped AI; never news verification)
         env:
-          SIGNAL_V052_AI_ENABLED: ${{ vars.SIGNAL_V052_AI_ENABLED }}
+          SIGNAL_V052_AI_ENABLED: 'false'  # Paid AI pilot requires a separate explicit manual-only workflow
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           SIGNAL_V052_MODEL: ${{ vars.SIGNAL_V052_MODEL }}
         run: python scripts/impact_review_v052.py --max-ai 6
@@ -74,7 +77,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/live_items.json data/intelligence.json data/evidence_audit.json data/evidence_enriched.json data/source_quality_v043.json data/source_expansion_v044.json data/daily_brief_v050.json data/benchmark_audit_v051.json data/impact_review_v052.json
+          git add data/date_quality_v052a.json data/live_items.json data/intelligence.json data/evidence_audit.json data/evidence_enriched.json data/source_quality_v043.json data/source_expansion_v044.json data/daily_brief_v050.json data/benchmark_audit_v051.json data/impact_review_v052.json
           if ! git diff --cached --quiet; then
             git commit -m "data: refresh reviewed metadata [skip ci]"
             git push origin HEAD:main
@@ -85,6 +88,8 @@ jobs:
         run: python scripts/build_public_site.py --output _site
       - name: Publish collection summary
         run: python scripts/v034_summary.py --input data/live_items.json --output "$GITHUB_STEP_SUMMARY"
+      - name: Publish publication-date audit summary
+        run: python scripts/v052a_summary.py
       - name: Publish evidence-enrichment status (M1 is author metadata, never verification)
         run: python scripts/v042_summary.py --evidence data/evidence_enriched.json --append "$GITHUB_STEP_SUMMARY"
       - name: Publish source-coverage limitations and missing benchmark warning
@@ -102,8 +107,9 @@ jobs:
       - name: Upload metadata report for audit
         uses: actions/upload-artifact@v4
         with:
-          name: signal-v052-provisional-review-and-quality-gates
+          name: signal-v052a-date-provenance-and-quality-gates
           path: |
+            data/date_quality_v052a.json
             data/live_items.json
             data/intelligence.json
             data/daily_brief_v050.json

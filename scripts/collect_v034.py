@@ -120,6 +120,8 @@ def collect(sources, previous, loader, *, now=None, ttl_days=45, limit=420, paus
                                                 'category','source_kind','published_at')}
                 if not obj['id'] or not obj['title'] or not obj['url'] or obj['source_id'] != sid:
                     continue
+                # first_seen_at is NEVER a substitute for the publication timestamp.
+                obj['date_status'] = 'provided' if parse_time(obj.get('published_at')) else 'unverified_missing'
                 obj['status'] = '來源元資料，內容未查證'
                 obj['verification_state'] = '原始發布標題／非 AI 精選'
                 obj['summary'] = None
@@ -154,6 +156,10 @@ def collect(sources, previous, loader, *, now=None, ttl_days=45, limit=420, paus
         published = dt.datetime.fromisoformat(date)
         if lower <= published <= upper:
             cleaned.append(item)
+    # Unknown-date items remain short-lived metadata for audit; sorting by first_seen
+    # is ONLY for storage order, never evidence of recent publication.
+    for obj in cleaned:
+        obj['date_status']='provided' if parse_time(obj.get('published_at')) else 'unverified_missing'
     cleaned.sort(key=lambda x:(x.get('published_at') or x.get('first_seen_at') or '', x['id']),reverse=True)
     cleaned = cleaned[:limit]
     # Important: count only *retained* first-seen records. Older RSS items beyond
