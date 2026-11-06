@@ -20,10 +20,14 @@ PUBLISHERS={
          'questions':['是否核對 EIA 正式統計來源、期間與單位？','是實際數據還是預測／情境？','有無其他機構或市場資料交叉驗證？']},
  'nasa': {'host':'nasa.gov','role':'第一手航太科研機構','evidence_kind':'航太與技術機構公開消息標題元資料',
          'questions':['是否核對 NASA 原始新聞及任務紀錄？','是研究、測試、實際部署或商業化？','相關成果有無獨立測試或第三方研究？']},
+ 'eu_commission': {'host':'ec.europa.eu','role':'第一手歐盟政策公告機構','evidence_kind':'歐盟政策官方發布標題元資料',
+         'questions':['是否核對正式法規、公告內容與適用時間？','只是政策提案、政治表態，還是已生效措施？','是否有真正獨立的國際媒體或研究佐證？']},
+ 'mit_news': {'host':'news.mit.edu','role':'研究機構自有新聞編輯室','evidence_kind':'MIT 自有研究報導標題元資料',
+         'questions':['是否核對研究原始論文、方法、數據與限制？','是否有同儕審查、外部複現或第三方報導？','研究結果與商業部署或規模化是否有證據？']},
  'arxiv': {'host':'arxiv.org','role':'研究預印本儲存平台','evidence_kind':'未確認同儕審查之預印本元資料',
          'questions':['是否閱讀摘要或論文、確認研究方法與樣本？','是否已通過同儕審查或有獨立重現結果？','有沒有實際部署、效能基準及限制證據？']},
 }
-SOURCE_TO_PUB={'fed-monetary':'fed','bea-news':'bea','arxiv-ai':'arxiv','arxiv-robotics':'arxiv','eia-energy':'eia','nasa-news':'nasa'}
+SOURCE_TO_PUB={'fed-monetary':'fed','bea-news':'bea','arxiv-ai':'arxiv','arxiv-robotics':'arxiv','eia-energy':'eia','nasa-news':'nasa','eu-press':'eu_commission','mit-research':'mit_news'}
 
 def load(path,default):
     path=Path(path)

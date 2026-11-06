@@ -25,6 +25,8 @@ EXPECTED = {
     'arxiv-robotics': ('arxiv', 'rss.arxiv.org', 'https://rss.arxiv.org/rss/cs.RO'),
     'eia-energy': ('eia', 'www.eia.gov', 'https://www.eia.gov/rss/todayinenergy.xml'),
     'nasa-news': ('nasa', 'www.nasa.gov', 'https://www.nasa.gov/feed/'),
+    'eu-press': ('eu_commission', 'ec.europa.eu', 'https://ec.europa.eu/commission/presscorner/api/rss?language=en'),
+    'mit-research': ('mit_news', 'news.mit.edu', 'https://news.mit.edu/rss/research'),
 }
 
 

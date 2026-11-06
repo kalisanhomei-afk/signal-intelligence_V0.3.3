@@ -1,6 +1,6 @@
 {
-  "schema_version": "0.4.4",
-  "purpose": "分階段新增 EIA 與 NASA 的官方描述性 RSS 元資料；其他候選仍在試探與授權審核，不直接發布。",
+  "schema_version": "0.4.5",
+  "purpose": "原六條來源保留，受控加入歐盟執委會政策公告與 MIT News 研究新聞；兩家僅描述性元資料試運行，不代表獨立媒體驗證或已證實科學主張。",
   "reviewed_at": "2026-11-05",
   "review_scope": "descriptive_public_metadata_only",
   "sources": [
@@ -87,6 +87,34 @@
       "evidence_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
       "feed_reference_url": "https://www.nasa.gov/rss-feeds/",
       "scope_note": "NASA 公開資訊通常可用於非背書的資訊用途；第三方素材例外，勿使用標誌、照片或全文。此 RSS 是 NASA 綜合動態，非專用技術研究資料。"
+    },
+    {
+      "id": "eu-press",
+      "name": "European Commission｜政策與國際事務",
+      "publisher_id": "eu_commission",
+      "category": "政治",
+      "kind": "official",
+      "url": "https://ec.europa.eu/commission/presscorner/api/rss?language=en",
+      "max_items": 16,
+      "status": "metadata_only",
+      "terms_reviewed_at": "2026-11-05",
+      "evidence_url": "https://commission.europa.eu/legal-notice_en",
+      "feed_reference_url": "https://ec.europa.eu/commission/presscorner/home/en",
+      "scope_note": "歐盟擁有的 EC 內容原則上 CC BY 4.0，重製標題時標示 European Commission／原文連結，不使用第三方內容；首測需確認 API 實際連通。官方政策主張不是獨立新聞佐證。"
+    },
+    {
+      "id": "mit-research",
+      "name": "MIT News｜研究與創新",
+      "publisher_id": "mit_news",
+      "category": "科技",
+      "kind": "institutional_news",
+      "url": "https://news.mit.edu/rss/research",
+      "max_items": 16,
+      "status": "metadata_only",
+      "terms_reviewed_at": "2026-11-05",
+      "evidence_url": "https://news.mit.edu/terms-of-use",
+      "feed_reference_url": "https://news.mit.edu/rss",
+      "scope_note": "MIT News 官方提供 RSS syndication；僅顯示新聞標題、MIT News 明顯來源與原文連結，不重刊內文、圖片、摘要或宣稱 MIT 認證研究成果；商業化前仍需重審。"
     }
   ]
 }

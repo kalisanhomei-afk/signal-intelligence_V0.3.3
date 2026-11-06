@@ -1,4 +1,4 @@
-name: SIGNAL V0.4.4 official source expansion + Pages
+name: SIGNAL V0.4.5 European policy and research source pilot + Pages
 
 on:
   workflow_dispatch:
@@ -39,6 +39,7 @@ jobs:
           python scripts/test_v042.py
           python scripts/test_v043.py
           python scripts/test_v044.py
+          python scripts/test_v045.py
       - name: Collect only rights-reviewed public descriptive metadata
         run: python scripts/collect_v034.py --output data/live_items.json
       - name: Probe newly evaluated public feeds and probe-only endpoints (never republish held content)
@@ -77,10 +78,12 @@ jobs:
         run: python scripts/v043_summary.py --input data/source_quality_v043.json --append "$GITHUB_STEP_SUMMARY"
       - name: Publish admission and license gate report
         run: python scripts/v044_summary.py
+      - name: Report two new reviewed source pilots and licensing blocks
+        run: python scripts/v045_summary.py
       - name: Upload metadata report for audit
         uses: actions/upload-artifact@v4
         with:
-          name: signal-v044-source-expansion-rights-gates
+          name: signal-v045-two-source-pilot-and-licensing
           path: |
             data/live_items.json
             data/intelligence.json

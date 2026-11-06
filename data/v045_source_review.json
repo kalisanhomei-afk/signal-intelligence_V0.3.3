@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.4.5",
+  "reviewed_at": "2026-11-05",
+  "basis": "Newsroom content licensing differs from hyperlinking. Fail closed until explicit rights are confirmed.",
+  "pilot_new_sources": [
+    {
+      "id": "eu-press",
+      "publisher_id": "eu_commission",
+      "status": "approved_descriptive_metadata_trial",
+      "attribution": "European Commission · CC BY 4.0 unless noted",
+      "rights_url": "https://commission.europa.eu/legal-notice_en"
+    },
+    {
+      "id": "mit-research",
+      "publisher_id": "mit_news",
+      "status": "approved_descriptive_metadata_trial",
+      "attribution": "MIT News · 原文連結",
+      "rights_url": "https://news.mit.edu/terms-of-use"
+    }
+  ],
+  "independent_journalism_holds": [
+    {
+      "name": "Reuters",
+      "status": "hold_licensing",
+      "scope": "news_agency",
+      "note": "不得將個人閱讀權限視為批次 API 重製權"
+    },
+    {
+      "name": "Associated Press",
+      "status": "hold_licensing",
+      "scope": "news_agency",
+      "note": "契約與內容授權需確認"
+    },
+    {
+      "name": "BBC News",
+      "status": "hold_metadata_license",
+      "scope": "global_news",
+      "note": "官方說明商務使用 RSS 或 metadata 通常需要許可；禁止未授權 metadata extraction"
+    },
+    {
+      "name": "Financial Times",
+      "status": "hold_licensing",
+      "scope": "finance_journalism",
+      "note": "只評估人工摘要與原文連結，未進入機器收集"
+    },
+    {
+      "name": "Nikkei Asia",
+      "status": "hold_licensing",
+      "scope": "asian_industry",
+      "note": "亞洲產業獨立新聞，待合法授權資料流"
+    }
+  ],
+  "warning": "機構官方消息與研究機構新聞室都屬第一手訊號；不能算作獨立媒體交叉查證。"
+}

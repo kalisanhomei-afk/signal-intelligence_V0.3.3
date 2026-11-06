@@ -10,8 +10,8 @@ ROOT=Path(__file__).resolve().parents[1]
 config=json.loads((ROOT/'data/v044_candidates.json').read_text(encoding='utf-8'))
 live=json.loads((ROOT/'data/v034_sources.json').read_text(encoding='utf-8'))
 by=approved_config(config,live)
-assert len(checked_sources(live))==6
-assert len({i['publisher_id'] for i in checked_sources(live)})==5
+assert len(checked_sources(live))==8
+assert len({i['publisher_id'] for i in checked_sources(live)})==7
 assert {'eia-energy','nasa-news'}<=set(x['id'] for x in live['sources'])
 assert {'boj-news','ecb-press','twse-news'}.isdisjoint(x['id'] for x in live['sources'])
 for sid in ('boj-news','ecb-press','twse-news'):
@@ -49,10 +49,10 @@ xml=lambda sid:(f'<rss version="2.0"><channel><item><title>PROBE {sid}</title>'
     f'<link>https://example.org/{sid}</link><pubDate>Thu, 05 Nov 2026 15:00:00 GMT</pubDate></item></channel></rss>').encode()
 all_sources=checked_sources(live)
 first=collect(all_sources,{'meta':{},'items':[],'sources':[]},lambda s:parse_xml(xml(s['id']),s),now=now,pause=lambda n:None)
-assert len(first['items'])==6
+assert len(first['items'])==8
 second=collect(all_sources,first,lambda s:(_ for _ in ()).throw(PermissionError('simulated 403')) if s['id'] in ('eia-energy','nasa-news') else parse_xml(xml(s['id']),s),now=now+dt.timedelta(hours=4),pause=lambda n:None)
-assert second['meta']['status']=='partial' and len(second['items'])==6
-assert second['meta']['successful_sources']==4
+assert second['meta']['status']=='partial' and len(second['items'])==8
+assert second['meta']['successful_sources']==6
 assert second['meta']['new_items_in_run']==0
 print('PASS V0.4.4: exact host/rights gating, 2 legal-metadata trials, 3 held, no article republishing, failure preserves history.')
 

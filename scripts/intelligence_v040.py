@@ -20,7 +20,7 @@ from urllib.parse import urlsplit
 from urllib.request import Request, urlopen
 
 ROOT=Path(__file__).resolve().parents[1]
-TRUSTED_SOURCES={'fed-monetary':'fed','bea-news':'bea','arxiv-ai':'arxiv','arxiv-robotics':'arxiv','eia-energy':'eia','nasa-news':'nasa'}
+TRUSTED_SOURCES={'fed-monetary':'fed','bea-news':'bea','arxiv-ai':'arxiv','arxiv-robotics':'arxiv','eia-energy':'eia','nasa-news':'nasa','eu-press':'eu_commission','mit-research':'mit_news'}
 CATEGORIES={'科技','財經','政治','產業','知識','能源','社會','其他'}
 AI_MODEL_DEFAULT='gpt-4.1-mini'
 PROMPT_VERSION='signal-v040-headline-only-20261105'
