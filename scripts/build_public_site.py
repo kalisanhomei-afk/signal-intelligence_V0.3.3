@@ -45,6 +45,19 @@ def build(output,source_root=BASE,*,strict=False):
         shutil.copyfile(daily_path,output/'data/daily_brief_v050.json')
     elif strict:
         raise FileNotFoundError('V0.5 daily briefing preview is required for deployment')
+    # V0.5.1 external reference benchmark: generated, human-gated diagnostic only.
+    bench_path=source_root/'data/benchmark_audit_v051.json'
+    seed_path=source_root/'data/benchmark_candidates_v051.json'
+    if bench_path.is_file() and seed_path.is_file():
+        from benchmark_v051 import validate as validate_benchmark
+        result=json.loads(bench_path.read_text(encoding='utf-8'))
+        seed=json.loads(seed_path.read_text(encoding='utf-8'))
+        live_current=json.loads((source_root/'data/live_items.json').read_text(encoding='utf-8'))
+        daily_current=json.loads((source_root/'data/daily_brief_v050.json').read_text(encoding='utf-8'))
+        validate_benchmark(result,seed,live_current,daily_current)
+        shutil.copyfile(bench_path,output/'data/benchmark_audit_v051.json')
+    elif strict:
+        raise FileNotFoundError('Missing V0.5.1 reference audit; production publish blocked')
     # V0.4.2 optional during legacy unit tests, mandatory in actual strict deployment.
     extra=source_root/'data/evidence_enriched.json'
     if extra.is_file():
