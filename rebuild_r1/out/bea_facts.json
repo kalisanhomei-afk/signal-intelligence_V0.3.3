@@ -1,0 +1,107 @@
+{
+  "schema_version": "signal-facts-r1",
+  "publication_allowed": false,
+  "human_approved": false,
+  "review_status": "machine_extracted_requires_human_crosscheck",
+  "source": {
+    "publisher_id": "bea",
+    "source_id": "bea-news",
+    "source_url": "https://www.bea.gov/news/2026/us-international-trade-goods-and-services-september-2026",
+    "source_title": "U.S. International Trade in Goods and Services, September 2026",
+    "source_published_at": "2026-11-04T13:30:00+00:00",
+    "excerpt_id": "E7",
+    "excerpt_sha256": "b82a1000d2506b6faaa86cb70f0b2078a426ca49d1592516b469306906fe02f7",
+    "period_as_written": "September",
+    "period_year_in_excerpt": null,
+    "rights_note": "Excerpt supplied in existing SIGNAL user test artifact; review before further redistribution"
+  },
+  "facts": [
+    {
+      "fact_id": "F001",
+      "metric": "taiwan_reported_deficit",
+      "measurement_role": "current_level",
+      "value_original": "21.9",
+      "unit_original": "USD billion",
+      "source_evidence_id": "E7",
+      "source_span_sha256": "b82a1000d2506b6faaa86cb70f0b2078a426ca49d1592516b469306906fe02f7",
+      "source_verification": "excerpt_exact_match_only_not_independently_verified"
+    },
+    {
+      "fact_id": "F002",
+      "metric": "taiwan_reported_deficit",
+      "measurement_role": "increase",
+      "value_original": "3.6",
+      "unit_original": "USD billion",
+      "source_evidence_id": "E7",
+      "source_span_sha256": "b82a1000d2506b6faaa86cb70f0b2078a426ca49d1592516b469306906fe02f7",
+      "source_verification": "excerpt_exact_match_only_not_independently_verified"
+    },
+    {
+      "fact_id": "F003",
+      "metric": "reported_exports",
+      "measurement_role": "current_level",
+      "value_original": "5.3",
+      "unit_original": "USD billion",
+      "source_evidence_id": "E7",
+      "source_span_sha256": "b82a1000d2506b6faaa86cb70f0b2078a426ca49d1592516b469306906fe02f7",
+      "source_verification": "excerpt_exact_match_only_not_independently_verified"
+    },
+    {
+      "fact_id": "F004",
+      "metric": "reported_exports",
+      "measurement_role": "increase",
+      "value_original": "0.6",
+      "unit_original": "USD billion",
+      "source_evidence_id": "E7",
+      "source_span_sha256": "b82a1000d2506b6faaa86cb70f0b2078a426ca49d1592516b469306906fe02f7",
+      "source_verification": "excerpt_exact_match_only_not_independently_verified"
+    },
+    {
+      "fact_id": "F005",
+      "metric": "reported_imports",
+      "measurement_role": "current_level",
+      "value_original": "27.3",
+      "unit_original": "USD billion",
+      "source_evidence_id": "E7",
+      "source_span_sha256": "b82a1000d2506b6faaa86cb70f0b2078a426ca49d1592516b469306906fe02f7",
+      "source_verification": "excerpt_exact_match_only_not_independently_verified"
+    },
+    {
+      "fact_id": "F006",
+      "metric": "reported_imports",
+      "measurement_role": "increase",
+      "value_original": "4.2",
+      "unit_original": "USD billion",
+      "source_evidence_id": "E7",
+      "source_span_sha256": "b82a1000d2506b6faaa86cb70f0b2078a426ca49d1592516b469306906fe02f7",
+      "source_verification": "excerpt_exact_match_only_not_independently_verified"
+    }
+  ],
+  "claim_groups": [
+    {
+      "kind": "increased_to",
+      "subject": "taiwan_reported_deficit",
+      "amount": "F001",
+      "change": "F002"
+    },
+    {
+      "kind": "increased_to",
+      "subject": "reported_exports",
+      "amount": "F003",
+      "change": "F004"
+    },
+    {
+      "kind": "increased_to",
+      "subject": "reported_imports",
+      "amount": "F005",
+      "change": "F006"
+    }
+  ],
+  "raw_excerpt": "The deficit with Taiwan increased $3.6 billion to $21.9 billion in September. Exports increased $0.6 billion to $5.3 billion and imports increased $4.2 billion to $27.3 billion.",
+  "audit": [
+    "No inferred base-period values, percentage changes, exchange conversions or market impact",
+    "'reported_exports/imports' are context-bound to excerpt E7; geographic/basis scope needs human review",
+    "The excerpt mentions September without a year: metadata year is separate and not promoted into excerpt facts",
+    "Citation IDs identify excerpts; they do not prove independent verification"
+  ]
+}
