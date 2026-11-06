@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.1",
-    "generated_at": "2026-11-06T03:30:41+00:00",
+    "generated_at": "2026-11-06T13:36:03+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "status": "metadata_gap_audit_only",
     "candidate_count": 12,
@@ -32,13 +32,13 @@
   },
   "items": [
     {
-      "id": "rss-fb43f0f2d5d92507744d15",
+      "id": "rss-f145415baaf53e506417c0",
       "source_id": "arxiv-ai",
       "publisher_id": "arxiv",
-      "title": "Agent Harness Awareness: Turning Verified Telemetry into Operational Control for Tool-Using Agents",
+      "title": "Resource-Efficient Reinforcement Learning Post-Training through Elastic Expert Parallelism",
       "category": "知識",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "url": "https://arxiv.org/abs/2611.05391",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "url": "https://arxiv.org/abs/2611.06984",
       "source_role": "研究預印本儲存平台",
       "evidence_kind": "未確認同儕審查之預印本元資料",
       "evidence_level": "M0",
@@ -54,7 +54,7 @@
         "有沒有實際部署、效能基準及限制證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "6f0022288a54a9b6a4e93d45"
+      "fingerprint": "a2a99d2bc77416e50776bc6d"
     },
     {
       "id": "rss-9cc53e9eda9e7cde360497",
@@ -107,13 +107,13 @@
       "fingerprint": "425927564e4b105f079bf476"
     },
     {
-      "id": "rss-7973a1f6463d4d38ab55be",
+      "id": "rss-09bb1ad32db5ff72080874",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Remarks by Commissioner Serafin during the Budget Committee meeting at the European Parliament",
+      "title": "Speech by Commissioner Hoekstra at the 22nd Athens Tax Forum",
       "category": "政治",
-      "published_at": "2026-11-05T12:11:35+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2358",
+      "published_at": "2026-11-06T13:25:32+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2370",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -129,7 +129,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "399cb870da9069461b9f3a24"
+      "fingerprint": "4ff37a9d2662137397dfd4f5"
     },
     {
       "id": "rss-a0c3e1be77e8b5a27f797a",
@@ -182,13 +182,13 @@
       "fingerprint": "b242acd0c24b4878cde08d3c"
     },
     {
-      "id": "rss-55a2930a5c54378a8e52b0",
+      "id": "rss-89a92c97d83383c64d650d",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
-      "title": "Midwestern City Lights",
+      "title": "APOD: 2026 November 6 – A Farewell to Swift",
       "category": "科技",
-      "published_at": "2026-11-05T15:17:19+00:00",
-      "url": "https://www.nasa.gov/image-article/midwestern-city-lights",
+      "published_at": "2026-11-06T05:05:00+00:00",
+      "url": "https://science.nasa.gov/image-article/apod-2026-november-6-a-farewell-to-swift",
       "source_role": "第一手航太科研機構",
       "evidence_kind": "航太與技術機構公開消息標題元資料",
       "evidence_level": "M0",
@@ -204,16 +204,16 @@
         "相關成果有無獨立測試或第三方研究？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "8c44d9b439efbd02bce8d070"
+      "fingerprint": "fa07388ff83030bbbdb49079"
     },
     {
-      "id": "rss-f846b630bec3a503daeb64",
+      "id": "rss-e4ba57732a4477963733fb",
       "source_id": "arxiv-ai",
       "publisher_id": "arxiv",
-      "title": "Who May Overrule the Agent? Evidence-Gated Authority in LLM Review Institutions",
+      "title": "Closed-Loop Agent Evaluation: Layered Measurement and Self-Calibration",
       "category": "知識",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "url": "https://arxiv.org/abs/2611.05390",
+      "published_at": "2026-11-06T05:00:00+00:00",
+      "url": "https://arxiv.org/abs/2611.07051",
       "source_role": "研究預印本儲存平台",
       "evidence_kind": "未確認同儕審查之預印本元資料",
       "evidence_level": "M0",
@@ -229,7 +229,7 @@
         "有沒有實際部署、效能基準及限制證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "9afd48a9f9b5cb0e47f750bc"
+      "fingerprint": "6e2d3de1a67bd51f05e27177"
     },
     {
       "id": "rss-ed83cb0bc28656a36c6f39",
@@ -282,13 +282,13 @@
       "fingerprint": "e8bd0f079835d80904598125"
     },
     {
-      "id": "rss-184fd9d367f81df38b6818",
+      "id": "rss-377dda7de24e65136b761f",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Speech by Commissioner Dombrovskis presenting report on Simplification, Implementation and Enforcement at CEPS",
+      "title": "Speech by Commissioner Lahbib at the InvestFrontier Conference",
       "category": "政治",
-      "published_at": "2026-11-05T12:04:35+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2357",
+      "published_at": "2026-11-06T12:00:46+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2369",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -304,7 +304,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "315c8146443ab987c90ec3b4"
+      "fingerprint": "40905e744462cb5316cb10cf"
     },
     {
       "id": "rss-ca688a27006cdc18bac09f",
