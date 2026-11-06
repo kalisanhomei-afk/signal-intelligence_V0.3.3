@@ -132,6 +132,9 @@ def extract_html_spans(raw,title):
     for i,(tag,text) in enumerate(all_rows):
         if tag.startswith('h'):continue
         if text in seen or len(text)<45:continue
+        if text.lower().startswith(('browse by tag ', 'tags:',
+            'exploration and reserves, storage,',
+            'reserves, production, prices, employment')):continue
         seen.add(text)
         low=text.lower()
         if any(t in low for t in ('privacy policy','subscribe to','sign up for','cookie policy','accessibility')):

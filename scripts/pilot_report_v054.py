@@ -16,7 +16,8 @@ def render(evidence,review):
         snippets=''.join(f'<li id="s-{i}-{E(s["id"])}"><b>{E(s["id"])}：</b>{E(s["text"])}<br><small>SHA-256 {E(s["sha256"][:18])}…</small></li>'
                          for s in source['evidence_spans']) or '<li>無法取得足夠可核對之摘錄；請檢查原始頁面。</li>'
         report='''<p class="mute">未呼叫 AI，僅供人工研讀與評估。</p>'''
-        if a['status']=='model_failed': report='<p class="warn">AI 處理失敗，未偽造結果。</p>'
+        if a['status']=='model_failed':
+            report='<p class="warn">AI 草稿未通過驗收；錯誤分類：'+E(a.get('error_code') or a.get('error_type') or 'unknown')+'。未偽造結果。</p>'
         if a['status']=='model_draft_unverified':
             draft=a['analysis']
             facts=''.join(f'<li>{E(f["statement"])} <b>摘錄ID：{E(", ".join(f["evidence_ids"]))}</b></li>'

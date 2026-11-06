@@ -8,6 +8,14 @@ on:
         required: true
         type: boolean
         default: false
+      max_paid_calls:
+        description: 'Diagnostic: start with 1 paid AI call; 3 is for full pilot after diagnosis'
+        required: true
+        type: choice
+        options:
+          - '1'
+          - '3'
+        default: '1'
 
 permissions:
   contents: read
@@ -46,9 +54,10 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           RUN_PAID_AI: ${{ inputs.run_paid_ai }}
+          MAX_PAID_CALLS: ${{ inputs.max_paid_calls }}
         run: |
           if [ "$RUN_PAID_AI" = "true" ]; then
-            python scripts/evidence_analysis_v054.py --evidence _v054_private/evidence.json --output _v054_private/analysis.json --paid-ai --max-ai 3
+            python scripts/evidence_analysis_v054.py --evidence _v054_private/evidence.json --output _v054_private/analysis.json --paid-ai --max-ai "$MAX_PAID_CALLS"
           else
             python scripts/evidence_analysis_v054.py --evidence _v054_private/evidence.json --output _v054_private/analysis.json --max-ai 0
           fi
@@ -67,8 +76,11 @@ jobs:
               print(f'- Source excerpt retrieval: {d["meta"]["source_readable_count"]}/{d["meta"]["selected_count"]}')
               for x in d['items']:print(f'- {x["publisher_id"]}: **{x["status"]}** ({len(x["evidence_spans"])} excerpts, error class: {x["error_type"] or "none"})')
           if a.exists():
-              m=json.loads(a.read_text(encoding='utf-8'))['meta']
+              doc=json.loads(a.read_text(encoding='utf-8'));m=doc['meta']
               print(f'- AI calls: {m["api_calls_attempted"]}; drafts: {m["draft_count"]}; failures: {m["api_failures"]}')
+              for x in doc.get('items',[]):
+                  if x.get('error_code'):
+                      print(f'- AI rejection for {x["id"]}: {x["error_code"]}')
           print('- Independently verified claims: **0**; not published to Pages; not an investment signal.')
           PY
       - name: Downloadable seven-day human review artifact (repository access applies)
@@ -81,3 +93,18 @@ jobs:
             _v054_private/analysis.json
             _v054_private/pilot_review_v054.html
           retention-days: 7
+
+      - name: Fail AI pilot acceptance if all paid drafts failed (artifact already saved)
+        if: always()
+        env:
+          RUN_PAID_AI: ${{ inputs.run_paid_ai }}
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          if os.getenv('RUN_PAID_AI') == 'true':
+              p=pathlib.Path('_v054_private/analysis.json')
+              if not p.exists():raise SystemExit('Missing AI analysis report; pilot not accepted')
+              m=json.loads(p.read_text(encoding='utf-8'))['meta']
+              if m['api_calls_attempted'] and m['draft_count']==0:
+                  raise SystemExit('All paid AI drafts failed validation; inspect error codes in artifact and summary')
+          PY

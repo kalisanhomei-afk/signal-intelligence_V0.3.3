@@ -12,6 +12,7 @@ import json
 import os
 from pathlib import Path
 import re
+from urllib.error import HTTPError
 from urllib.request import Request,urlopen
 
 from intelligence_v040 import atomic_write,response_text
@@ -42,13 +43,15 @@ key_facts每項必須填原文支持的evidence_ids（例如E1），可提數字
 impact_hypotheses必須是清楚可驗證的條件句，寫明觸發前提與時間；不是已證實的因果。所有對未來的分析都須標成假設。
 優先審閱是供人工分配時間的建議，不是全球重要性、可信度或金融訊號。資料不足就選資料不足並可輸出0個事實。
 來源可能有缺頁、數據修訂、非獨立研究或局部段落。若作者摘要未經同儕審查不得宣稱研究已獨立證實。
-保持精簡，每欄最多250中文字，不得引用超過必要的小片段，不得虛構第二個來源。'''
+保持精簡，每欄最多250中文字，不得引用超過必要的小片段，不得虛構第二個來源。
+key_facts以1至2項為佳；英文來源中以文字拼寫的數目不可自行改寫成阿拉伯數字。所有量化內容直接沿用摘錄原本的數字與單位。
+impact_hypotheses的hypothesis欄請明寫「若」或「如果」，不應只在assumptions欄出現條件。'''
 NUM=re.compile(r'(?<![A-Za-z\d])\d[\d,]*(?:\.\d+)?%?')
 
 
 def call_model(row,*,api_key,model=MODEL,transport=None):
     if not api_key:raise ValueError('No API key')
-    payload={'model':model,'store':False,'max_output_tokens':1900,
+    payload={'model':model,'store':False,'max_output_tokens':2600,
              'input':[{'role':'system','content':SYSTEM},{'role':'user','content':json.dumps({
                  'UNTRUSTED_SOURCE_MATERIAL':True,'title':row['title'],
                  'publisher':row['publisher_id'],'source_url':row['url'],
@@ -62,6 +65,11 @@ def call_model(row,*,api_key,model=MODEL,transport=None):
         req=Request('https://api.openai.com/v1/responses',data=json.dumps(payload,ensure_ascii=False).encode(),
                     headers={'Authorization':'Bearer '+api_key,'Content-Type':'application/json'},method='POST')
         with urlopen(req,timeout=45) as response:resp=json.loads(response.read(180000))
+    if resp.get('status')=='incomplete':
+        details=resp.get('incomplete_details') or {}
+        reason=details.get('reason','unknown')
+        if reason not in ('max_output_tokens','content_filter','max_messages','steered'):reason='unknown'
+        raise ValueError('Incomplete model response: '+reason)
     ans=json.loads(response_text(resp))
     validate_answer(ans,row)
     return ans
@@ -97,12 +105,34 @@ def validate_answer(ans,row):
     return True
 
 
+# Error codes are allowlisted constants; no prompt, API key, response body or article text is logged.
+def failure_code(exc):
+    if isinstance(exc,HTTPError):
+        return 'api_http_'+str(exc.code) if exc.code in (400,401,403,408,409,429,500,502,503,504) else 'api_http_other'
+    if isinstance(exc,json.JSONDecodeError):return 'model_json_parse_failed'
+    if isinstance(exc,TimeoutError):return 'api_timeout'
+    if isinstance(exc,ValueError):
+        msg=str(exc)
+        cases=[('Incomplete model response: max_output_tokens','model_output_token_limit'),
+               ('Incomplete model response','model_response_not_completed'),
+               ('No model text','model_text_missing'),('AI refused','model_refusal'),
+               ('Uncited numeric assertion','numeric_not_exactly_in_cited_excerpt'),
+               ('Missing traceable fact evidence','fact_evidence_ids_invalid'),
+               ('Impact hypothesis not conditional','impact_condition_missing'),
+               ('Impact hypotheses count invalid','too_many_impact_hypotheses'),
+               ('Fact count invalid','too_many_key_facts'),
+               ('Unexpected structured response','structured_response_mismatch'),
+               ('Field invalid','model_field_invalid')]
+        return next((label for prefix,label in cases if msg.startswith(prefix)), 'other_value_error')
+    return 'other_'+type(exc).__name__.lower() if type(exc).__name__.isidentifier() else 'other_exception'
+
+
 def analyze(evidence, *, enable_ai=False, api_key='', max_calls=3, model=MODEL,annotator=call_model):
     if enable_ai and not api_key:raise ValueError('Paid AI requested but OPENAI_API_KEY missing')
     if max_calls<0 or max_calls>3:raise ValueError('API hard cap 3')
     used=0;failures=0;items=[]
     for row in evidence['items']:
-        result={'id':row['id'],'status':'evidence_unavailable','analysis':None,'error_type':None}
+        result={'id':row['id'],'status':'evidence_unavailable','analysis':None,'error_type':None,'error_code':None}
         if row['status']=='excerpts_available':
             result['status']='evidence_only_not_ai'
             if enable_ai and used<max_calls:
@@ -113,6 +143,9 @@ def analyze(evidence, *, enable_ai=False, api_key='', max_calls=3, model=MODEL,a
                     result['status']='model_draft_unverified'
                 except Exception as exc:
                     failures+=1;result['status']='model_failed';result['error_type']=type(exc).__name__
+                    result['error_code']=failure_code(exc)
+                    print('AI draft rejected: publisher={} reason={} (no content logged)'.format(
+                        row['publisher_id'],result['error_code']))
         items.append(result)
     return {'meta':{'version':VERSION,'status':'private_unverified_evidence_model_pilot',
        'generated_at':dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds'),
