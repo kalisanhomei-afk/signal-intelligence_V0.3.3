@@ -18,7 +18,7 @@ from urllib.request import Request,urlopen
 from intelligence_v040 import atomic_write,response_text
 from evidence_pilot_v054 import validate as validate_evidence
 
-VERSION='0.5.4'  # analysis schema stays compatible; input contract is V0.5.4c
+VERSION='0.5.4'  # analysis schema stays compatible; input contract is V0.5.4d
 MODEL='gpt-4.1-mini'
 FIELDS=('zh_title','what_source_says','key_facts','impact_hypotheses','reading_priority',
         'why_priority','unknowns','next_check')
@@ -45,9 +45,36 @@ impact_hypotheses必須是清楚可驗證的條件句，寫明觸發前提與時
 來源可能有缺頁、數據修訂、非獨立研究或局部段落。若作者摘要未經同儕審查不得宣稱研究已獨立證實。
 保持精簡，每欄最多250中文字，不得引用超過必要的小片段，不得虛構第二個來源。
 來源標題、URL及發布日期由程式在審閱報告中另行呈現，不會提供給模型。不得自行猜測報告年份、月份或文章編號。中文標題只需概括提供的證據主題。
-key_facts以1至2項為佳。如果來源摘錄沒有某個年份／月份／數字，不得在事實句補寫，即使它出現在新聞標題。英文來源中以文字拼寫的數目不可自行改寫成阿拉伯數字。若需翻譯數量，保持原文數字字符與單位（例如21.9 billion不可改為219億）。如無法保證逐字一致，請改寫為不含數字的事實句並引用摘錄；仍無法確定就不產生該項事實。
+key_facts以1至2項為佳。如果來源摘錄沒有某個年份／月份／數字，不得在事實句補寫，即使它出現在新聞標題。英文月份名稱（如 September）請用中文月份文字（如「九月」），不要寫「9月」；不能憑標題自動補月份。英文來源中以文字拼寫的數目不可自行改寫成阿拉伯數字。若需翻譯數量，保持原文數字字符與單位（例如21.9 billion不可改為219億）。如無法保證逐字一致，請改寫為不含數字的事實句並引用摘錄；仍無法確定就不產生該項事實。
 impact_hypotheses的hypothesis欄請明寫「若」或「如果」，不應只在assumptions欄出現條件。'''
 NUM=re.compile(r'(?<![A-Za-z\d.])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?%?(?![A-Za-z\d.])')
+
+
+# The only allowed numeric normalization is an *unambiguous month label*:
+# "September" in the cited excerpt -> 9月 -> 九月. This changes no statistic,
+# magnitude, year, day or financial amount. Everything else remains exact.
+MONTH_NAMES=(
+    ('January','一月'),('February','二月'),('March','三月'),
+    ('April','四月'),('May','五月'),('June','六月'),
+    ('July','七月'),('August','八月'),('September','九月'),
+    ('October','十月'),('November','十一月'),('December','十二月'),
+)
+
+def normalize_cited_months(statement, cited_text):
+    """Normalize only zh month numerals supported by a named English month.
+
+    This does not infer publication dates, tolerate uncited statistics, or
+    transform integers that merely occur inside decimal values such as 21.9.
+    """
+    if not isinstance(statement,str) or not isinstance(cited_text,str):
+        return statement
+    for month_number,(name,zh) in enumerate(MONTH_NAMES,1):
+        if re.search(r'\b'+name+r'\b',cited_text,re.IGNORECASE):
+            # In Chinese prose only: digits immediately followed by 月.
+            # No conversion of percentages, decimals, $ amounts, or years.
+            statement=re.sub(r'(?<![A-Za-z\d.])'+str(month_number)+r'\s*月',
+                             zh,statement)
+    return statement
 
 
 def call_model(row,*,api_key,model=MODEL,transport=None):
@@ -95,6 +122,10 @@ def validate_answer(ans,row):
             or len(fact['evidence_ids'])>4
             or any(x not in byid for x in fact['evidence_ids'])):raise ValueError('Missing traceable fact evidence')
         support=' '.join(byid[k] for k in fact['evidence_ids'])
+        # Safe normalization happens before numeric validation. 9月 (when the
+        # excerpt explicitly says September) is a translated month label, not
+        # an independent numeric fact. Numbers and amounts remain exact-match.
+        fact['statement']=normalize_cited_months(fact['statement'],support)
         # Conservative number guard: figures must appear exactly in cited excerpts.
         # Semantic support still needs a human examiner.
         cited_numbers=set(NUM.findall(support))
@@ -164,6 +195,7 @@ def analyze(evidence, *, enable_ai=False, api_key='', max_calls=3, model=MODEL,a
        'generated_at':dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds'),
        'paid_ai_enabled':bool(enable_ai),'model':model if enable_ai else None,
        'model_input_scope':'cited_excerpts_only_no_title_url_or_published_date',
+       'numeric_validation_contract':'literal_match_with_cited_english_month_to_chinese_month_normalization_v054d',
        'api_calls_attempted':used,'api_failures':failures,
        'evidence_ready':sum(x['status']=='excerpts_available' for x in evidence['items']),
        'draft_count':sum(x['status']=='model_draft_unverified' for x in items),

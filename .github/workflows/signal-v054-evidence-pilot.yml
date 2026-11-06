@@ -35,6 +35,8 @@ jobs:
         run: python scripts/test_v054b.py
       - name: Check V0.5.4c isolation of metadata from AI evidence (offline, free)
         run: python scripts/test_v054c.py
+      - name: Check V0.5.4d named-month normalization and numeric guard (offline, free)
+        run: python scripts/test_v054d.py
       - name: Select fresh rules-only candidates; do not call paid AI
         run: |
           mkdir -p _v054_private
