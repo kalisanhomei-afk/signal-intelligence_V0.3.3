@@ -1,0 +1,27 @@
+{
+  "fixture_license_note": "Extracts E2 and E5 from user-provided SIGNAL V0.5.4 GitHub Actions Artifact, offline-only test; original article must be rechecked by a person.",
+  "item": {
+    "id": "rss-3993941242fcf8c5b02082",
+    "publisher_id": "eia",
+    "source_id": "eia-energy",
+    "title": "Refineries have shifted production away from gasoline to middle distillates",
+    "url": "https://www.eia.gov/todayinenergy/detail.php?id=68424",
+    "published_at": "2026-11-05T14:00:00+00:00",
+    "status": "excerpts_available",
+    "kind": "html",
+    "retrieved_at": "2026-11-06T06:48:04+00:00",
+    "body_read": true,
+    "evidence_spans": [
+      {
+        "id": "E2",
+        "text": "Petroleum refinery yields represent the share of a specific fuel that is produced from each barrel of crude oil a given refinery (or group of refineries) processes. The U.S. refining fleet tends to have a strong refinery yield of gasoline—typically between 45%–50%. In general terms, for every 100 barrels of crude oil U.S. refiners process, they produce about",
+        "sha256": "453d6eca6f97b3fb4fd69abd09213f9da568a28ccb96a06f403ca53a0aa0429b"
+      },
+      {
+        "id": "E5",
+        "text": "Refinery yields of jet fuel have also been relatively high this year. The U.S. refinery fleet exceeded an average jet fuel yield of 12% for the first time in March 2026, according to EIA data. Since then, the fleetwide average jet fuel yield has remained at or above 12% through the latest Petroleum Supply Monthly data for August 2026. Jet fuel yields were al",
+        "sha256": "07dd3138cf25e66f8c5582020a36449a8aa8ce402b475f31457350adbbfba48d"
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "schema_version": "signal-facts-r2",
+  "publication_allowed": false,
+  "human_approved": false,
+  "review_status": "machine_extracted_from_archived_snippets_requires_human_confirmation",
+  "source": {
+    "publisher_id": "eia",
+    "source_id": "eia-energy",
+    "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=68424",
+    "source_title": "Refineries have shifted production away from gasoline to middle distillates",
+    "source_published_at": "2026-11-05T14:00:00+00:00",
+    "source_archived_retrieved_at": "2026-11-06T06:48:04+00:00",
+    "excerpt_sha256": {
+      "E2": "453d6eca6f97b3fb4fd69abd09213f9da568a28ccb96a06f403ca53a0aa0429b",
+      "E5": "07dd3138cf25e66f8c5582020a36449a8aa8ce402b475f31457350adbbfba48d"
+    },
+    "rights_note": "Archived in user-provided GitHub Actions artifact; excerpts for internal offline validation only"
+  },
+  "facts": [
+    {
+      "fact_id": "EIA-F001",
+      "metric": "us_refinery_motor_gasoline_yield",
+      "measurement_role": "typical_range_lower_bound",
+      "value_original": "45",
+      "unit_original": "percent (%)",
+      "period_as_written": null,
+      "qualifier": "Typical range reported by this article; not an observed value for a specific month",
+      "source_evidence_id": "E2",
+      "source_span_sha256": "453d6eca6f97b3fb4fd69abd09213f9da568a28ccb96a06f403ca53a0aa0429b",
+      "source_verification": "archived_excerpt_pattern_match_only_not_independently_verified"
+    },
+    {
+      "fact_id": "EIA-F002",
+      "metric": "us_refinery_motor_gasoline_yield",
+      "measurement_role": "typical_range_upper_bound",
+      "value_original": "50",
+      "unit_original": "percent (%)",
+      "period_as_written": null,
+      "qualifier": "Typical range reported by this article; not an observed value for a specific month",
+      "source_evidence_id": "E2",
+      "source_span_sha256": "453d6eca6f97b3fb4fd69abd09213f9da568a28ccb96a06f403ca53a0aa0429b",
+      "source_verification": "archived_excerpt_pattern_match_only_not_independently_verified"
+    },
+    {
+      "fact_id": "EIA-F003",
+      "metric": "us_refinery_jet_fuel_yield",
+      "measurement_role": "first_exceeded_threshold",
+      "value_original": "12",
+      "unit_original": "percent (%)",
+      "period_as_written": "March 2026",
+      "qualifier": "Threshold exceeded; actual March yield not provided in excerpt",
+      "source_evidence_id": "E5",
+      "source_span_sha256": "07dd3138cf25e66f8c5582020a36449a8aa8ce402b475f31457350adbbfba48d",
+      "source_verification": "archived_excerpt_pattern_match_only_not_independently_verified"
+    },
+    {
+      "fact_id": "EIA-F004",
+      "metric": "us_refinery_jet_fuel_yield",
+      "measurement_role": "continued_at_or_above_threshold",
+      "value_original": "12",
+      "unit_original": "percent (%)",
+      "period_as_written": "March 2026 through August 2026",
+      "qualifier": "Threshold sustained in reported monthly data through named ending month",
+      "source_evidence_id": "E5",
+      "source_span_sha256": "07dd3138cf25e66f8c5582020a36449a8aa8ce402b475f31457350adbbfba48d",
+      "source_verification": "archived_excerpt_pattern_match_only_not_independently_verified"
+    }
+  ],
+  "claim_groups": [
+    {
+      "kind": "typical_range",
+      "metric": "us_refinery_motor_gasoline_yield",
+      "low_fact_id": "EIA-F001",
+      "high_fact_id": "EIA-F002"
+    },
+    {
+      "kind": "threshold_history",
+      "metric": "us_refinery_jet_fuel_yield",
+      "first_exceeded_fact_id": "EIA-F003",
+      "continued_minimum_fact_id": "EIA-F004"
+    }
+  ],
+  "raw_excerpts": [
+    {
+      "id": "E2",
+      "text": "Petroleum refinery yields represent the share of a specific fuel that is produced from each barrel of crude oil a given refinery (or group of refineries) processes. The U.S. refining fleet tends to have a strong refinery yield of gasoline—typically between 45%–50%. In general terms, for every 100 barrels of crude oil U.S. refiners process, they produce about"
+    },
+    {
+      "id": "E5",
+      "text": "Refinery yields of jet fuel have also been relatively high this year. The U.S. refinery fleet exceeded an average jet fuel yield of 12% for the first time in March 2026, according to EIA data. Since then, the fleetwide average jet fuel yield has remained at or above 12% through the latest Petroleum Supply Monthly data for August 2026. Jet fuel yields were al"
+    }
+  ],
+  "audit": [
+    "E2 only reports a typical gasoline yield range, not current monthly production",
+    "E5 reports thresholds; 12% is not an observed exact March or August jet-fuel yield",
+    "Do not infer fuel prices, future refinery yields, measured jet-fuel output or causal effect sizes",
+    "Source IDs and checksums give traceability only; no live independent confirmation was performed",
+    "No AI calls, no site publication, no external requests"
+  ]
+}
