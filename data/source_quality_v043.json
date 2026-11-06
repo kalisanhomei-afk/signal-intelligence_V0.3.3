@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.3",
-    "generated_at": "2026-11-06T00:57:24+00:00",
+    "generated_at": "2026-11-06T01:36:04+00:00",
     "status": "input_coverage_diagnostic_only",
     "rights_scope": "descriptive_public_metadata_only",
     "observed_items": 93,
@@ -17,7 +17,7 @@
       "mit_news",
       "nasa"
     ],
-    "last_collection_success_at": "2026-11-06T00:57:13+00:00",
+    "last_collection_success_at": "2026-11-06T01:35:52+00:00",
     "collection_last_success_age_hours": 0.0,
     "domains_no_observed_publisher": 5,
     "domains_single_publisher": 3,
@@ -136,7 +136,7 @@
       "publisher_id": "arxiv",
       "item_count": 32,
       "last_item_published_at": "2026-11-05T05:00:00+00:00",
-      "age_days_of_newest_item": 0.8
+      "age_days_of_newest_item": 0.9
     },
     {
       "publisher_id": "bea",
@@ -154,7 +154,7 @@
       "publisher_id": "eu_commission",
       "item_count": 10,
       "last_item_published_at": "2026-11-05T12:11:35+00:00",
-      "age_days_of_newest_item": 0.5
+      "age_days_of_newest_item": 0.6
     },
     {
       "publisher_id": "fed",
