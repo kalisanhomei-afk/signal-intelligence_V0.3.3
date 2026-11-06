@@ -1,0 +1,200 @@
+{
+  "schema_version": "signal-facts-r3",
+  "publication_allowed": false,
+  "human_approved": false,
+  "review_status": "authors_abstract_only_not_peer_reviewed_or_independently_verified",
+  "source": {
+    "publisher_id": "arxiv",
+    "source_id": "arxiv-robotics",
+    "source_url": "https://arxiv.org/abs/2611.05567",
+    "source_title": "MESA: An Evaluation Framework for Compositional, Semantic, and Spatial Generalization in Robotics",
+    "source_rss_published_at": "2026-11-05T05:00:00+00:00",
+    "source_archived_retrieved_at": "2026-11-06T06:48:04+00:00",
+    "source_kind": "arxiv_author_abstract_snippets_not_full_paper",
+    "excerpt_sha256": {
+      "E1": "d408ce43e2a4ca402f7121e1bbac538a69af04438440c8f813e5b331682afbea",
+      "E2": "566f423e0cf0b8b131270eeb393f02c751befaeca9193abbe7160738f2233564",
+      "E3": "2849a9d7049213dd18aad01b82f67bee9138d83c4ef6278b27118f94cc94f7cb",
+      "E4": "19ac23e57fd452ddfd01db8578a942ce869a43fdd12d46f15c91a944c9d79915",
+      "E5": "295e849b23facc42b10c1c65187425cb5dfdb9bd04b9081417226d49e738ff6d",
+      "E6": "d4c06b1058b7dd18f0539a32944d40575cc2e77ca6cfd9e7a1b896d594310f07"
+    },
+    "rights_note": "User-provided private artifact excerpt only; internal offline validation"
+  },
+  "facts": [
+    {
+      "fact_id": "ARXIV-F001",
+      "metric": "mesa_evaluation_suite_count",
+      "measurement_role": "authors_described_framework_design",
+      "value_original": "five",
+      "value_normalized": 5,
+      "unit_original": "evaluation suites",
+      "source_evidence_id": "E4",
+      "source_span_sha256": "19ac23e57fd452ddfd01db8578a942ce869a43fdd12d46f15c91a944c9d79915",
+      "claim_attribution": "authors_abstract_self_report",
+      "independently_verified": false,
+      "peer_review_confirmed": false,
+      "metric_definition_verified": null,
+      "interpretation_limit": "Five suites include in-distribution performance and four generalization axes; the axes are not five extra suites.",
+      "context": null
+    },
+    {
+      "fact_id": "ARXIV-F002",
+      "metric": "mesa_generalization_axis_count",
+      "measurement_role": "authors_described_framework_design",
+      "value_original": "four",
+      "value_normalized": 4,
+      "unit_original": "generalization axes",
+      "source_evidence_id": "E4",
+      "source_span_sha256": "19ac23e57fd452ddfd01db8578a942ce869a43fdd12d46f15c91a944c9d79915",
+      "claim_attribution": "authors_abstract_self_report",
+      "independently_verified": false,
+      "peer_review_confirmed": false,
+      "metric_definition_verified": null,
+      "interpretation_limit": "Four axes are spatial configuration, object instance, object category, and subtask composition.",
+      "context": null
+    },
+    {
+      "fact_id": "ARXIV-F003",
+      "metric": "mesa_platform_count",
+      "measurement_role": "authors_described_release",
+      "value_original": "two",
+      "value_normalized": 2,
+      "unit_original": "platforms",
+      "source_evidence_id": "E5",
+      "source_span_sha256": "295e849b23facc42b10c1c65187425cb5dfdb9bd04b9081417226d49e738ff6d",
+      "claim_attribution": "authors_abstract_self_report",
+      "independently_verified": false,
+      "peer_review_confirmed": false,
+      "metric_definition_verified": null,
+      "interpretation_limit": "Authors describe single-arm MESA and bimanual BiMESA; this is not a count of real-world deployments.",
+      "context": null
+    },
+    {
+      "fact_id": "ARXIV-F004",
+      "metric": "baseline_method_count",
+      "measurement_role": "authors_described_experiment",
+      "value_original": "seven",
+      "value_normalized": 7,
+      "unit_original": "baseline methods",
+      "source_evidence_id": "E6",
+      "source_span_sha256": "d4c06b1058b7dd18f0539a32944d40575cc2e77ca6cfd9e7a1b896d594310f07",
+      "claim_attribution": "authors_abstract_self_report",
+      "independently_verified": false,
+      "peer_review_confirmed": false,
+      "metric_definition_verified": null,
+      "interpretation_limit": "Seven methods reported by the authors; not an independent method comparison.",
+      "context": null
+    },
+    {
+      "fact_id": "ARXIV-F005",
+      "metric": "mesa_best_baseline_reported_performance",
+      "measurement_role": "authors_reported_best_result",
+      "value_original": "52",
+      "value_normalized": 52,
+      "unit_original": "percent (%)",
+      "source_evidence_id": "E6",
+      "source_span_sha256": "d4c06b1058b7dd18f0539a32944d40575cc2e77ca6cfd9e7a1b896d594310f07",
+      "claim_attribution": "authors_abstract_self_report",
+      "independently_verified": false,
+      "peer_review_confirmed": false,
+      "metric_definition_verified": false,
+      "interpretation_limit": "Authors say strongest model achieves 52% on MESA; metric definition, denominator and validity not in archived abstract.",
+      "context": "MESA"
+    },
+    {
+      "fact_id": "ARXIV-F006",
+      "metric": "bimesa_best_baseline_reported_performance",
+      "measurement_role": "authors_reported_best_result",
+      "value_original": "49",
+      "value_normalized": 49,
+      "unit_original": "percent (%)",
+      "source_evidence_id": "E6",
+      "source_span_sha256": "d4c06b1058b7dd18f0539a32944d40575cc2e77ca6cfd9e7a1b896d594310f07",
+      "claim_attribution": "authors_abstract_self_report",
+      "independently_verified": false,
+      "peer_review_confirmed": false,
+      "metric_definition_verified": false,
+      "interpretation_limit": "Authors say strongest model achieves 49% on BiMESA; do NOT relabel as accuracy or task-success rate.",
+      "context": "BiMESA"
+    }
+  ],
+  "claim_groups": [
+    {
+      "kind": "benchmark_design",
+      "suite_count_fact_id": "ARXIV-F001",
+      "axis_count_fact_id": "ARXIV-F002",
+      "axes_as_written": [
+        "spatial configuration",
+        "object instance",
+        "object category",
+        "subtask composition"
+      ],
+      "author_explains_in_distribution": true
+    },
+    {
+      "kind": "benchmark_platforms",
+      "platform_count_fact_id": "ARXIV-F003",
+      "platform_labels": [
+        "single-arm MESA",
+        "BiMESA (bimanual)"
+      ]
+    },
+    {
+      "kind": "baseline_results",
+      "baseline_count_fact_id": "ARXIV-F004",
+      "mesa_result_fact_id": "ARXIV-F005",
+      "bimesa_result_fact_id": "ARXIV-F006",
+      "metric_name": "not_specified_in_archived_abstract",
+      "denominator": "not_specified_in_archived_abstract",
+      "winner_identity": "not_specified_in_archived_abstract"
+    }
+  ],
+  "qualitative_author_claims_not_verified": [
+    {
+      "evidence_id": "E3",
+      "claim": "MESA introduced as an evaluation framework",
+      "status": "author_stated"
+    },
+    {
+      "evidence_id": "E5",
+      "claim": "BiMESA described as the first large-scale benchmark for bimanual generalization",
+      "status": "priority_claim_not_independently_verified"
+    }
+  ],
+  "raw_excerpts": [
+    {
+      "id": "E1",
+      "text": "Despite growing interest in foundation models for robotic manipulation, systematic evaluation of their capabilities remains elusive."
+    },
+    {
+      "id": "E2",
+      "text": "Existing benchmarks are either narrow and saturated, offering little signal on SOTA methods, broadly scoped, providing diversity at the cost of controlled experimentation, or require training on large, messy open-source datasets."
+    },
+    {
+      "id": "E3",
+      "text": "We introduce MESA, an evaluation framework designed for precise, reproducible measurement of language-conditioned policy generalization."
+    },
+    {
+      "id": "E4",
+      "text": "MESA provides five evaluation suites that isolate in-distribution performance and four distinct axes of generalization: spatial configuration, object instance, object category, and subtask composition, enabling researchers to diagnose where and why policies fail, not just whether they fail."
+    },
+    {
+      "id": "E5",
+      "text": "To populate these suites at scale, we develop MESA-Gen, a pipeline for task and demonstration generation built by improving MimicGen. We instantiate the framework on two platforms and release both: the single-arm MESA suite, and BiMESA, the first large-scale benchmark for bimanual generalization."
+    },
+    {
+      "id": "E6",
+      "text": "We evaluate seven baseline methods spanning diffusion policies, VLM-based approaches, and pretrained VLAs, finding that the strongest model achieves only 52% on MESA and 49% on BiMESA, providing meaningful signal while leaving ample room for progress."
+    }
+  ],
+  "audit": [
+    "Fixed arXiv abstract excerpts are author self-reports, not independently confirmed experimental results",
+    "Reported 52% and 49% must not be called success rate, accuracy, or validated deployment performance",
+    "Five evaluation suites consist of in-distribution plus four generalization axes, not nine suites",
+    "Two experimental platforms must not be recast as two production robots, clients or sites",
+    "The abstract does not establish peer-review status, metric denominator, CI, benchmark difficulty or external replication",
+    "Source snippet hashes protect archived-fixture consistency only; no fresh original-source verification",
+    "No AI/API calls, network requests, background work, paid use or website publication"
+  ]
+}

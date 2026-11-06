@@ -1,0 +1,48 @@
+{
+  "fixture_license_note": "User-provided 2026-11-06 SIGNAL V0.5.4 GitHub Actions Artifact (evidence.json); authors abstract excerpts only, NOT independent verification or peer-review.",
+  "source_artifact": "signal-v054-source-excerpts-ai-manual-review(3).zip/evidence.json",
+  "item": {
+    "id": "rss-209029a364bea7da5bf4f7",
+    "title": "MESA: An Evaluation Framework for Compositional, Semantic, and Spatial Generalization in Robotics",
+    "url": "https://arxiv.org/abs/2611.05567",
+    "source_id": "arxiv-robotics",
+    "publisher_id": "arxiv",
+    "published_at": "2026-11-05T05:00:00+00:00",
+    "status": "excerpts_available",
+    "kind": "arxiv_api",
+    "retrieved_at": "2026-11-06T06:48:04+00:00",
+    "body_read": false,
+    "evidence_spans": [
+      {
+        "id": "E1",
+        "text": "Despite growing interest in foundation models for robotic manipulation, systematic evaluation of their capabilities remains elusive.",
+        "sha256": "d408ce43e2a4ca402f7121e1bbac538a69af04438440c8f813e5b331682afbea"
+      },
+      {
+        "id": "E2",
+        "text": "Existing benchmarks are either narrow and saturated, offering little signal on SOTA methods, broadly scoped, providing diversity at the cost of controlled experimentation, or require training on large, messy open-source datasets.",
+        "sha256": "566f423e0cf0b8b131270eeb393f02c751befaeca9193abbe7160738f2233564"
+      },
+      {
+        "id": "E3",
+        "text": "We introduce MESA, an evaluation framework designed for precise, reproducible measurement of language-conditioned policy generalization.",
+        "sha256": "2849a9d7049213dd18aad01b82f67bee9138d83c4ef6278b27118f94cc94f7cb"
+      },
+      {
+        "id": "E4",
+        "text": "MESA provides five evaluation suites that isolate in-distribution performance and four distinct axes of generalization: spatial configuration, object instance, object category, and subtask composition, enabling researchers to diagnose where and why policies fail, not just whether they fail.",
+        "sha256": "19ac23e57fd452ddfd01db8578a942ce869a43fdd12d46f15c91a944c9d79915"
+      },
+      {
+        "id": "E5",
+        "text": "To populate these suites at scale, we develop MESA-Gen, a pipeline for task and demonstration generation built by improving MimicGen. We instantiate the framework on two platforms and release both: the single-arm MESA suite, and BiMESA, the first large-scale benchmark for bimanual generalization.",
+        "sha256": "295e849b23facc42b10c1c65187425cb5dfdb9bd04b9081417226d49e738ff6d"
+      },
+      {
+        "id": "E6",
+        "text": "We evaluate seven baseline methods spanning diffusion policies, VLM-based approaches, and pretrained VLAs, finding that the strongest model achieves only 52% on MESA and 49% on BiMESA, providing meaningful signal while leaving ample room for progress.",
+        "sha256": "d4c06b1058b7dd18f0539a32944d40575cc2e77ca6cfd9e7a1b896d594310f07"
+      }
+    ]
+  }
+}
