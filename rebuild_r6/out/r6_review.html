@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SIGNAL R6｜BEA AI 真實模型冒煙測試</title><style>
+    :root{--bg:#10161f;--card:#202d3c;--gold:#e3be7c;--text:#f5ecdd;--muted:#b1bcce;--line:#4a5b6b}
+    *{box-sizing:border-box}body{max-width:1020px;margin:35px auto;padding:0 20px;background:var(--bg);color:var(--text);font:15px/1.8 system-ui,'Microsoft JhengHei',sans-serif}
+    h1,h2,h3{color:var(--gold)}a{color:#f0d39c}section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;margin:20px 0}
+    .warn{border-left:5px solid #e4b569;padding:15px;background:#463726}table{width:100%;border-collapse:collapse}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--gold)}.scroll{overflow:auto}
+    .muted{color:var(--muted)}.review{background:#283b4c;padding:15px}@media print{body{background:white;color:black}section{background:white;color:black}}
+    </style></head><body><h1>視界 SIGNAL｜R6 真實 AI 契約測試</h1>
+    <p class="warn"><b>技術測試 ≠ 已查證情報</b>。執行模式：offline_mock；測試結果：OFFLINE_MOCK_ONLY。沒有更新正式網站，不可作為投資依據。</p>
+    <section><h2>BEA｜貿易數據</h2><p>模型選擇的人工閱讀優先度：<b>追蹤</b>；Fact IDs：F001, F002</p>
+    <p>程式提供的條件式分析角度：若相關貿易結構變化持續，值得核對統計定義、主要商品與其他月份的比較；不能僅由這段摘錄推論原因。</p><p><a href="https://www.bea.gov/news/2026/us-international-trade-goods-and-services-september-2026" target="_blank" rel="noopener noreferrer">來源網頁（此測試未重新開啟）</a></p>
+    <h3>程式引用的原始數據</h3><div class="scroll"><table><thead><tr><th>事實 ID</th><th>指標</th><th>原始數值／角色</th><th>來源</th><th>統計期間</th><th>限制</th></tr></thead><tbody><tr><td>F001</td><td>對台灣的文中貿易逆差</td><td>本期 21.9 billion USD（原始單位）</td><td>E7</td><td>待核</td><td>來源摘錄待核</td></tr><tr><td>F002</td><td>對台灣的文中貿易逆差</td><td>較前期增加 3.6 billion USD（原始單位）</td><td>E7</td><td>待核</td><td>來源摘錄待核</td></tr></tbody></table></div>
+    <h3>核查問題</h3><ul><li>能否從官方完整統計表核對前期與修訂值？</li><li>出口與進口的地理範圍及統計口徑為何？</li></ul><p class="review">人工核查　□ 原始全文　□ 數值及口徑　□ 重要性　□ 推論是否有根據　□ 是否值得繼續開發</p></section>
+    <section><h2>驗收邊界</h2><ul><li>模型只選擇來源內 ID／預設分析角度，沒有產生自由文字的深度洞察。</li><li>數字由程式按 R1 事實表帶入，並不是獨立外部事實查證。</li><li>優先程度只是 AI 的試驗選擇；本次無全球事件重要性準確率。</li><li>沒有重新擷取原始網頁，引用資料是固定歷史快照。</li><li>本次不得發布到 SIGNAL 正式網站。</li></ul><p class="muted">API 嘗試次數：0；模型：OFFLINE_MOCK；人工核准：否；獨立查證：0。</p></section></body></html>

@@ -1,0 +1,75 @@
+name: SIGNAL R6 isolated branch QA + optional one paid call
+
+# Branch-only push trigger; not workflow_dispatch (which would require default branch).
+# The FIRST commit runs offline only. A deliberate EXACT commit summary below
+# AND changed approval file are required for any paid API request.
+on:
+  push:
+    branches:
+      - signal-evidence-rebuild
+    paths:
+      - 'rebuild_r6/**'
+      - '.github/workflows/signal-evidence-r6-branch.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: signal-r6-branch-safe
+  cancel-in-progress: false
+
+jobs:
+  offline_qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: R5 offline gate (80 legacy tests + exact pinned files)
+        run: python rebuild_r5/qa_gate.py --root . --out "$RUNNER_TEMP/r5qa"
+      - name: R6 unit tests (no billable calls)
+        run: python -m unittest discover -s rebuild_r6 -p 'test_*.py' -v
+      - name: R6 offline dry run (no billable calls)
+        run: python rebuild_r6/r6_pilot.py --root . --out "$RUNNER_TEMP/r6offline"
+      - name: Archive offline QA results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-r6-offline-qa
+          path: |
+            ${{ runner.temp }}/r5qa/
+            ${{ runner.temp }}/r6offline/
+          if-no-files-found: warn
+          retention-days: 14
+
+  one_paid_call:
+    needs: offline_qa
+    if: >-
+      github.repository == 'kalisanhomei-afk/signal-intelligence_V0.3.3' &&
+      github.actor == 'kalisanhomei-afk' &&
+      github.run_attempt == 1 &&
+      contains(github.event.head_commit.modified, 'rebuild_r6/APPROVE_ONE_CALL.txt') &&
+      github.event.head_commit.message == 'SIGNAL_R6_APPROVE_ONE_PAID_CALL'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check explicit approval marker
+        shell: bash
+        run: |
+          grep -Fxq 'APPROVE_ONE_CALL=YES' rebuild_r6/APPROVE_ONE_CALL.txt
+      - name: Run exactly one OpenAI API request (no retries, no site publish)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python rebuild_r6/r6_pilot.py --root . --out "$RUNNER_TEMP/r6live" --live
+      - name: Preserve sanitized technical result for manual review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-r6-one-bea-live-manual-review
+          path: ${{ runner.temp }}/r6live/
+          if-no-files-found: warn
+          retention-days: 14
