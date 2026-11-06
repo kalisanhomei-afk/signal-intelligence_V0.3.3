@@ -1,0 +1,83 @@
+name: SIGNAL V0.5.4 official evidence + optional AI pilot (manual only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_paid_ai:
+        description: 'Run up to 3 billable AI evidence drafts after source extraction'
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  official-evidence-pilot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run offline V0.5.4 safety and provenance tests
+        run: python scripts/test_v054.py
+      - name: Select fresh rules-only candidates; do not call paid AI
+        run: |
+          mkdir -p _v054_private
+          python scripts/impact_review_v052.py --previous _v054_private/none.json --output _v054_private/base.json --max-ai 0
+      - name: Fetch narrowly scoped official snippets for manual review only
+        run: |
+          python scripts/evidence_pilot_v054.py --review _v054_private/base.json --output _v054_private/evidence.json
+      - name: Fail clearly if no primary evidence could be obtained
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('_v054_private/evidence.json',encoding='utf-8'))
+          n=d['meta']['source_readable_count']
+          print(f'Official evidence read: {n}/{d["meta"]["selected_count"]}. Green job does not certify facts.')
+          if d['meta']['selected_count'] != 3:
+              raise SystemExit('The three pinned V0.5.3 reference articles are not all in the rolling 7-day queue; do not silently substitute newer articles')
+          if n == 0:
+              raise SystemExit('No usable primary-source excerpts: do not run AI without evidence')
+          PY
+      - name: Produce conditionally paid evidence-bound AI review
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          RUN_PAID_AI: ${{ inputs.run_paid_ai }}
+        run: |
+          if [ "$RUN_PAID_AI" = "true" ]; then
+            python scripts/evidence_analysis_v054.py --evidence _v054_private/evidence.json --output _v054_private/analysis.json --paid-ai --max-ai 3
+          else
+            python scripts/evidence_analysis_v054.py --evidence _v054_private/evidence.json --output _v054_private/analysis.json --max-ai 0
+          fi
+      - name: Create human review HTML without publishing to Pages
+        run: |
+          python scripts/pilot_report_v054.py --base _v054_private/base.json --evidence _v054_private/evidence.json --analysis _v054_private/analysis.json --output _v054_private/pilot_review_v054.html
+      - name: Summarize measured evidence outcomes without declaring facts verified
+        if: always()
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json,pathlib
+          e=pathlib.Path('_v054_private/evidence.json');a=pathlib.Path('_v054_private/analysis.json')
+          print('## SIGNAL V0.5.4 | Official evidence pilot / NOT verified intelligence')
+          if e.exists():
+              d=json.loads(e.read_text(encoding='utf-8'))
+              print(f'- Source excerpt retrieval: {d["meta"]["source_readable_count"]}/{d["meta"]["selected_count"]}')
+              for x in d['items']:print(f'- {x["publisher_id"]}: **{x["status"]}** ({len(x["evidence_spans"])} excerpts, error class: {x["error_type"] or "none"})')
+          if a.exists():
+              m=json.loads(a.read_text(encoding='utf-8'))['meta']
+              print(f'- AI calls: {m["api_calls_attempted"]}; drafts: {m["draft_count"]}; failures: {m["api_failures"]}')
+          print('- Independently verified claims: **0**; not published to Pages; not an investment signal.')
+          PY
+      - name: Downloadable seven-day human review artifact (repository access applies)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-v054-source-excerpts-ai-manual-review
+          path: |
+            _v054_private/evidence.json
+            _v054_private/analysis.json
+            _v054_private/pilot_review_v054.html
+          retention-days: 7
