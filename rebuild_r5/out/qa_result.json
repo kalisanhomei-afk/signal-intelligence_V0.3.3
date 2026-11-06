@@ -1,0 +1,67 @@
+{
+  "gate_version": "signal-evidence-preflight-r5",
+  "decision": "OFFLINE_PASS_R6_CANDIDATE",
+  "pinned_status": "PASS",
+  "replay_status": "PASS",
+  "run_mode": "offline_only",
+  "api_calls": 0,
+  "publication_allowed": false,
+  "human_approved": false,
+  "independently_verified_claims": 0,
+  "fact_count": 16,
+  "source_cases": [
+    "bea",
+    "eia",
+    "arxiv"
+  ],
+  "total_tests": 80,
+  "suites": [
+    {
+      "suite": "REBUILD_R1",
+      "tests_run": 9,
+      "status": "PASS",
+      "tail": "test_no_auto_verified_publication (test_fact_pipeline.FactPipelineTests.test_no_auto_verified_publication) ... ok\ntest_no_generic_number_extraction_from_unmatched_text (test_fact_pipeline.FactPipelineTests.test_no_generic_number_extraction_from_unmatched_text) ... ok\ntest_review_report_is_not_published (test_fact_pipeline.FactPipelineTests.test_review_report_is_not_published) ... ok\ntest_unapproved_url_fails (test_fact_pipeline.FactPipelineTests.test_unapproved_url_fails) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.001s\n\nOK"
+    },
+    {
+      "suite": "REBUILD_R2",
+      "tests_run": 11,
+      "status": "PASS",
+      "tail": "test_modified_typical_gasoline_range_rejected (test_eia_pipeline.R2EvidenceTests.test_modified_typical_gasoline_range_rejected) ... ok\ntest_report_is_offline_and_has_caveats (test_eia_pipeline.R2EvidenceTests.test_report_is_offline_and_has_caveats) ... ok\ntest_threshold_not_misrepresented_as_exact_observation (test_eia_pipeline.R2EvidenceTests.test_threshold_not_misrepresented_as_exact_observation) ... ok\ntest_unread_source_rejected (test_eia_pipeline.R2EvidenceTests.test_unread_source_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.002s\n\nOK"
+    },
+    {
+      "suite": "REBUILD_R3",
+      "tests_run": 17,
+      "status": "PASS",
+      "tail": "test_rejects_removed_duplicate_and_extra_snippets (test_arxiv_pipeline.ArxivR3Tests.test_rejects_removed_duplicate_and_extra_snippets) ... ok\ntest_rejects_tampered_claim_groups_and_new_claims (test_arxiv_pipeline.ArxivR3Tests.test_rejects_tampered_claim_groups_and_new_claims) ... ok\ntest_rejects_unlisted_source (test_arxiv_pipeline.ArxivR3Tests.test_rejects_unlisted_source) ... ok\ntest_render_rejects_approved_flag (test_arxiv_pipeline.ArxivR3Tests.test_render_rejects_approved_flag) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 0.004s\n\nOK"
+    },
+    {
+      "suite": "REBUILD_R4",
+      "tests_run": 22,
+      "status": "PASS",
+      "tail": "test_unknown_case_or_metric_cannot_render_numbers (test_binding_pipeline.R4BindingTests.test_unknown_case_or_metric_cannot_render_numbers) ... ok\ntest_unknown_duplicate_or_overlong_fact_ids_rejected (test_binding_pipeline.R4BindingTests.test_unknown_duplicate_or_overlong_fact_ids_rejected) ... ok\ntest_unknown_theme_or_cross_source_theme_rejected (test_binding_pipeline.R4BindingTests.test_unknown_theme_or_cross_source_theme_rejected) ... ok\ntest_valid_mock_three_cases (test_binding_pipeline.R4BindingTests.test_valid_mock_three_cases) ... ok\n\n----------------------------------------------------------------------\nRan 22 tests in 0.011s\n\nOK"
+    },
+    {
+      "suite": "REBUILD_R5",
+      "tests_run": 21,
+      "status": "PASS",
+      "tail": "test_reject_missing_and_extra_cases (test_qa_gate.R5OfflineQualityTests.test_reject_missing_and_extra_cases) ... ok\ntest_reject_unhashable_and_wrong_types_fail_closed (test_qa_gate.R5OfflineQualityTests.test_reject_unhashable_and_wrong_types_fail_closed) ... ok\ntest_source_snapshot_modify_rejected (test_qa_gate.R5OfflineQualityTests.test_source_snapshot_modify_rejected) ... ok\ntest_tampered_generated_out_not_used (test_qa_gate.R5OfflineQualityTests.test_tampered_generated_out_not_used) ... ok\n\n----------------------------------------------------------------------\nRan 21 tests in 0.050s\n\nOK"
+    }
+  ],
+  "source_pins_sha256": {
+    "rebuild_r1/fixtures/bea_e7.json": "daca60a19a255adb5c1d24a42a4bf520586b34e018e62b8559534c3adb755bb3",
+    "rebuild_r2/fixtures/eia_yields_e2_e5.json": "771ebc6739a4c55e4ad1b5260e83228c4756d198657d0a0fea607d737a7a50af",
+    "rebuild_r3/fixtures/arxiv_mesa_abstract_e1_e6.json": "66f510adac22653e9e6c494fda1568761afda9d006518498e7f3b7081439ef16",
+    "rebuild_r1/fact_pipeline.py": "22a2192883c93e8640813077619607c4128b5a2a0d36c9e201735848522929bf",
+    "rebuild_r2/eia_pipeline.py": "5fc399de6e42ba4409aceed7a811693d6f6dbe041076b683401961fc815c8bad",
+    "rebuild_r3/arxiv_pipeline.py": "e113889f305b56fdb4c38215107c223046e6d8bcb8ec660a65fe089f1ff44d64",
+    "rebuild_r4/binding_pipeline.py": "7b4c9fe57abdcc3480e30d246333d096f8da86ea9e21e77afac87ac7d904a8ca",
+    "rebuild_r4/fixtures/mock_ai_selection.json": "cee6d8b98175a96fb749941321b774bc01130ead28dceb1a37bff64dfdb83344"
+  },
+  "issues": [],
+  "limits": [
+    "Pinned archive test only, not all future source formats",
+    "No real model, no remote official page read and no independent corroboration",
+    "R6 API run and R7 human review are still necessary",
+    "Not permission to publish, trade, or merge into main"
+  ]
+}
