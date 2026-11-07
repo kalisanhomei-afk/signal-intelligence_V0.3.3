@@ -1,0 +1,61 @@
+{
+  "schema_version": "signal-r8-r7-editorial-reference-baseline-v1",
+  "source_file": "SIGNAL_R7_人工審閱結果.json",
+  "source_review_date": "2026-11-07T02:00:57.193Z",
+  "review_scope": "human ratings of a 3-source editorial reference page; not 3 actual AI outputs",
+  "source_crosscheck": "human self-reported original_source_read=true; NOT independent corroboration",
+  "rated_items": [
+    {
+      "case_id": "bea",
+      "scores": {
+        "evidence_accuracy": 3,
+        "analytic_depth": 3,
+        "importance_reasoning": 3,
+        "uncertainty_disclosure": 3,
+        "follow_up_usefulness": 3
+      },
+      "total": 15,
+      "max_total": 25,
+      "note": ""
+    },
+    {
+      "case_id": "eia",
+      "scores": {
+        "evidence_accuracy": 3,
+        "analytic_depth": 2,
+        "importance_reasoning": 3,
+        "uncertainty_disclosure": 3,
+        "follow_up_usefulness": 3
+      },
+      "total": 14,
+      "max_total": 25,
+      "note": ""
+    },
+    {
+      "case_id": "arxiv",
+      "scores": {
+        "evidence_accuracy": 3,
+        "analytic_depth": 2,
+        "importance_reasoning": 1,
+        "uncertainty_disclosure": 3,
+        "follow_up_usefulness": 1
+      },
+      "total": 10,
+      "max_total": 25,
+      "note": ""
+    }
+  ],
+  "total_points": 39,
+  "possible_points": 75,
+  "publication_allowed": false,
+  "human_publication_approval": false,
+  "actual_r6_ai_run_cases": [
+    "bea"
+  ],
+  "warnings": [
+    "Only BEA was run against real model in R6",
+    "EIA and arxiv are editorial reference cases, not AI output",
+    "No reviewer written rationales for low ratings",
+    "Do not label as AI accuracy"
+  ]
+}

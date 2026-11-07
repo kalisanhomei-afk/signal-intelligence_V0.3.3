@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SIGNAL R8 mock output contract (development draft, not yet validated against OpenAI Structured Outputs)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "signal-r8-analysis-draft-v1"
+    },
+    "case_id": {
+      "enum": [
+        "bea",
+        "eia",
+        "arxiv"
+      ]
+    },
+    "observation": {
+      "$ref": "#/$defs/claim"
+    },
+    "interpretation": {
+      "$ref": "#/$defs/claim"
+    },
+    "impact": {
+      "$ref": "#/$defs/claim"
+    },
+    "importance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tier": {
+          "enum": [
+            "高",
+            "中",
+            "低",
+            "待評估"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 15
+        },
+        "fact_ids": {
+          "$ref": "#/$defs/ids"
+        }
+      },
+      "required": [
+        "tier",
+        "reason",
+        "fact_ids"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 5
+      }
+    },
+    "next_checks": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "question": {
+            "type": "string"
+          },
+          "target_source": {
+            "type": "string"
+          },
+          "decision_test": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "question",
+          "target_source",
+          "decision_test"
+        ]
+      }
+    },
+    "publication_allowed": {
+      "const": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "case_id",
+    "observation",
+    "interpretation",
+    "impact",
+    "importance",
+    "limitations",
+    "next_checks",
+    "publication_allowed"
+  ],
+  "$defs": {
+    "ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^(F[0-9]{3}|EIA-F[0-9]{3}|ARXIV-F[0-9]{3})$"
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 12
+        },
+        "claim_type": {
+          "enum": [
+            "fact",
+            "inference",
+            "hypothesis"
+          ]
+        },
+        "fact_ids": {
+          "$ref": "#/$defs/ids"
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "text",
+        "claim_type",
+        "fact_ids",
+        "assumptions"
+      ]
+    }
+  }
+}

@@ -1,0 +1,461 @@
+{
+  "r7_editorial_baseline_not_ai_score": {
+    "schema_version": "signal-r8-r7-editorial-reference-baseline-v1",
+    "source_file": "SIGNAL_R7_人工審閱結果.json",
+    "source_review_date": "2026-11-07T02:00:57.193Z",
+    "review_scope": "human ratings of a 3-source editorial reference page; not 3 actual AI outputs",
+    "source_crosscheck": "human self-reported original_source_read=true; NOT independent corroboration",
+    "rated_items": [
+      {
+        "case_id": "bea",
+        "scores": {
+          "evidence_accuracy": 3,
+          "analytic_depth": 3,
+          "importance_reasoning": 3,
+          "uncertainty_disclosure": 3,
+          "follow_up_usefulness": 3
+        },
+        "total": 15,
+        "max_total": 25,
+        "note": ""
+      },
+      {
+        "case_id": "eia",
+        "scores": {
+          "evidence_accuracy": 3,
+          "analytic_depth": 2,
+          "importance_reasoning": 3,
+          "uncertainty_disclosure": 3,
+          "follow_up_usefulness": 3
+        },
+        "total": 14,
+        "max_total": 25,
+        "note": ""
+      },
+      {
+        "case_id": "arxiv",
+        "scores": {
+          "evidence_accuracy": 3,
+          "analytic_depth": 2,
+          "importance_reasoning": 1,
+          "uncertainty_disclosure": 3,
+          "follow_up_usefulness": 1
+        },
+        "total": 10,
+        "max_total": 25,
+        "note": ""
+      }
+    ],
+    "total_points": 39,
+    "possible_points": 75,
+    "publication_allowed": false,
+    "human_publication_approval": false,
+    "actual_r6_ai_run_cases": [
+      "bea"
+    ],
+    "warnings": [
+      "Only BEA was run against real model in R6",
+      "EIA and arxiv are editorial reference cases, not AI output",
+      "No reviewer written rationales for low ratings",
+      "Do not label as AI accuracy"
+    ]
+  },
+  "schema_version": "signal-r8a-offline-review-v1",
+  "status": "OFFLINE_FIXTURE_CONTRACT_PASSED_NOT_EDITORIAL_APPROVAL",
+  "run_mode": "OFFLINE_HAND_WRITTEN_MOCK_ONLY",
+  "api_calls_attempted": 0,
+  "real_ai_drafts": 0,
+  "mock_drafts": 3,
+  "source_catalog_sha256": "1bca9543dea02a954ae374087c703d40a2d91418aa1de51f49d1b3cc247590a5",
+  "drafts_sha256": "0613fb4bc26e259143a30074e5060b36a3d74c99153bbb7bc7e06218d72b34db",
+  "case_count": 3,
+  "human_approved": false,
+  "publication_allowed": false,
+  "limitations": [
+    "固定歷史快照，並非重新讀取網頁；未完成獨立驗證。",
+    "分析文字是人工撰寫的離線測試樣本，不是 AI 模型的輸出。",
+    "程式驗證結構、ID、數字字面與有限禁語；不能自動判定所有語義、因果或重要性正確性。",
+    "R7 分數是人工對編輯參考報告的評價，不能當成 R8 AI 分數。"
+  ],
+  "cases": [
+    {
+      "case_id": "bea",
+      "fact_refs": [
+        "F001",
+        "F002"
+      ],
+      "checks": 1,
+      "title": "BEA｜美國對台貿易",
+      "draft_source": "HAND_WRITTEN_MOCK_NOT_MODEL",
+      "facts": {
+        "F001": {
+          "case_id": "bea",
+          "fact_id": "F001",
+          "label": "對台灣的文中貿易逆差",
+          "measurement_role": "current_level",
+          "value_display": "本期 21.9 billion USD（原始單位）",
+          "value_original": "21.9",
+          "unit_original": "USD billion",
+          "source_evidence_id": "E7",
+          "source_span_sha256": "b82a1000d2506b6faaa86cb70f0b2078a426ca49d1592516b469306906fe02f7",
+          "source_url": "https://www.bea.gov/news/2026/us-international-trade-goods-and-services-september-2026",
+          "period_as_written": null,
+          "qualifier": null,
+          "attribution": "official_source_excerpt_not_independently_verified",
+          "independently_verified": false
+        },
+        "F002": {
+          "case_id": "bea",
+          "fact_id": "F002",
+          "label": "對台灣的文中貿易逆差",
+          "measurement_role": "increase",
+          "value_display": "較前期增加 3.6 billion USD（原始單位）",
+          "value_original": "3.6",
+          "unit_original": "USD billion",
+          "source_evidence_id": "E7",
+          "source_span_sha256": "b82a1000d2506b6faaa86cb70f0b2078a426ca49d1592516b469306906fe02f7",
+          "source_url": "https://www.bea.gov/news/2026/us-international-trade-goods-and-services-september-2026",
+          "period_as_written": null,
+          "qualifier": null,
+          "attribution": "official_source_excerpt_not_independently_verified",
+          "independently_verified": false
+        }
+      },
+      "analysis": {
+        "schema_version": "signal-r8-analysis-draft-v1",
+        "case_id": "bea",
+        "observation": {
+          "text": "來源摘錄呈現美國對台灣的雙邊貿易逆差及其增加額，適合先作國別貿易變化的觀察起點。",
+          "claim_type": "fact",
+          "fact_ids": [
+            "F001",
+            "F002"
+          ],
+          "assumptions": []
+        },
+        "interpretation": {
+          "text": "逆差增加可能與進出口組合變動有關，但現有的國別總額不足以確定由何種商品或企業活動造成。",
+          "claim_type": "inference",
+          "fact_ids": [
+            "F001",
+            "F002"
+          ],
+          "assumptions": [
+            "需查詢商品別及相同統計口徑的期間比較"
+          ]
+        },
+        "impact": {
+          "text": "如果這種變化延續，研究台美供應鏈的使用者可優先檢視商品類別的貢獻，暫不據此判斷特定產業受益或受損。",
+          "claim_type": "hypothesis",
+          "fact_ids": [
+            "F001",
+            "F002"
+          ],
+          "assumptions": [
+            "必須先核對時間序列、修訂值和商品結構"
+          ]
+        },
+        "importance": {
+          "tier": "待評估",
+          "reason": "來源顯示可追蹤的國別貿易變動，但缺少可比較的歷史分布與商品貢獻，尚不足以確定屬於重大產業訊號。",
+          "fact_ids": [
+            "F001",
+            "F002"
+          ]
+        },
+        "limitations": [
+          "此固定快照中的部分 BEA 事實缺少明確的期間與統計口徑欄位",
+          "尚未進行獨立來源交叉查證或商品別拆解"
+        ],
+        "next_checks": [
+          {
+            "question": "哪些商品類別造成對台貿易變動，是否存在修訂？",
+            "target_source": "BEA 與 Census 官方國別商品貿易表及修訂歷史",
+            "decision_test": "核對一致口徑的前後期及商品別貢獻後，再判斷是否涉及特定產業"
+          }
+        ],
+        "publication_allowed": false
+      },
+      "human_approved": false,
+      "independently_verified": false,
+      "publication_allowed": false
+    },
+    {
+      "case_id": "eia",
+      "fact_refs": [
+        "EIA-F001",
+        "EIA-F002",
+        "EIA-F003",
+        "EIA-F004"
+      ],
+      "checks": 1,
+      "title": "EIA｜煉油產品配置",
+      "draft_source": "HAND_WRITTEN_MOCK_NOT_MODEL",
+      "facts": {
+        "EIA-F001": {
+          "case_id": "eia",
+          "fact_id": "EIA-F001",
+          "label": "美國煉油廠汽油產出率",
+          "measurement_role": "typical_range_lower_bound",
+          "value_display": "典型範圍下界 45%（不是當月實測值）",
+          "value_original": "45",
+          "unit_original": "percent (%)",
+          "source_evidence_id": "E2",
+          "source_span_sha256": "453d6eca6f97b3fb4fd69abd09213f9da568a28ccb96a06f403ca53a0aa0429b",
+          "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=68424",
+          "period_as_written": null,
+          "qualifier": "Typical range reported by this article; not an observed value for a specific month",
+          "attribution": "official_source_excerpt_not_independently_verified",
+          "independently_verified": false
+        },
+        "EIA-F002": {
+          "case_id": "eia",
+          "fact_id": "EIA-F002",
+          "label": "美國煉油廠汽油產出率",
+          "measurement_role": "typical_range_upper_bound",
+          "value_display": "典型範圍上界 50%（不是當月實測值）",
+          "value_original": "50",
+          "unit_original": "percent (%)",
+          "source_evidence_id": "E2",
+          "source_span_sha256": "453d6eca6f97b3fb4fd69abd09213f9da568a28ccb96a06f403ca53a0aa0429b",
+          "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=68424",
+          "period_as_written": null,
+          "qualifier": "Typical range reported by this article; not an observed value for a specific month",
+          "attribution": "official_source_excerpt_not_independently_verified",
+          "independently_verified": false
+        },
+        "EIA-F003": {
+          "case_id": "eia",
+          "fact_id": "EIA-F003",
+          "label": "美國煉油廠航空燃油產出率",
+          "measurement_role": "first_exceeded_threshold",
+          "value_display": "首次超過 12%（不是精確測值）",
+          "value_original": "12",
+          "unit_original": "percent (%)",
+          "source_evidence_id": "E5",
+          "source_span_sha256": "07dd3138cf25e66f8c5582020a36449a8aa8ce402b475f31457350adbbfba48d",
+          "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=68424",
+          "period_as_written": "March 2026",
+          "qualifier": "Threshold exceeded; actual March yield not provided in excerpt",
+          "attribution": "official_source_excerpt_not_independently_verified",
+          "independently_verified": false
+        },
+        "EIA-F004": {
+          "case_id": "eia",
+          "fact_id": "EIA-F004",
+          "label": "美國煉油廠航空燃油產出率",
+          "measurement_role": "continued_at_or_above_threshold",
+          "value_display": "持續至少 12%（不是精確測值）",
+          "value_original": "12",
+          "unit_original": "percent (%)",
+          "source_evidence_id": "E5",
+          "source_span_sha256": "07dd3138cf25e66f8c5582020a36449a8aa8ce402b475f31457350adbbfba48d",
+          "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=68424",
+          "period_as_written": "March 2026 through August 2026",
+          "qualifier": "Threshold sustained in reported monthly data through named ending month",
+          "attribution": "official_source_excerpt_not_independently_verified",
+          "independently_verified": false
+        }
+      },
+      "analysis": {
+        "schema_version": "signal-r8-analysis-draft-v1",
+        "case_id": "eia",
+        "observation": {
+          "text": "來源以汽油產出率的典型區間及航空燃油產出率門檻描述煉油產品組合，這些不是可直接互換的當期實測值。",
+          "claim_type": "fact",
+          "fact_ids": [
+            "EIA-F001",
+            "EIA-F002",
+            "EIA-F003",
+            "EIA-F004"
+          ],
+          "assumptions": []
+        },
+        "interpretation": {
+          "text": "產品組合調整可能與不同燃料的相對利潤和需求變化有關，但這些比例本身不能證明哪個驅動因素占主導。",
+          "claim_type": "inference",
+          "fact_ids": [
+            "EIA-F003",
+            "EIA-F004"
+          ],
+          "assumptions": [
+            "相對利潤及需求需由其他官方資料補充"
+          ]
+        },
+        "impact": {
+          "text": "如果煉油配置調整持續，燃料供應分析應連同庫存及裂解價差檢查，不能僅憑產出率斷定終端價格走勢。",
+          "claim_type": "hypothesis",
+          "fact_ids": [
+            "EIA-F003",
+            "EIA-F004"
+          ],
+          "assumptions": [
+            "仍須取得同期庫存、出口流向和相對利潤"
+          ]
+        },
+        "importance": {
+          "tier": "中",
+          "reason": "可能反映煉油廠對燃料品項配置的變化，但缺乏足夠的價格與全市場供給證據，暫不應推定為重大能源價格事件。",
+          "fact_ids": [
+            "EIA-F001",
+            "EIA-F004"
+          ]
+        },
+        "limitations": [
+          "典型區間不是某月實測值，超過門檻亦不是精確產出率",
+          "尚未獨立核對裂解價差、庫存與區域差異"
+        ],
+        "next_checks": [
+          {
+            "question": "產品配置的變化是否伴隨相對利潤與庫存變動？",
+            "target_source": "EIA 官方煉油產出率、庫存與成品油價差資料",
+            "decision_test": "比較同期利潤、庫存與產量時間序列，檢驗組合變化是否具有持續性"
+          }
+        ],
+        "publication_allowed": false
+      },
+      "human_approved": false,
+      "independently_verified": false,
+      "publication_allowed": false
+    },
+    {
+      "case_id": "arxiv",
+      "fact_refs": [
+        "ARXIV-F001",
+        "ARXIV-F004",
+        "ARXIV-F005",
+        "ARXIV-F006"
+      ],
+      "checks": 1,
+      "title": "arXiv｜MESA 機器人研究",
+      "draft_source": "HAND_WRITTEN_MOCK_NOT_MODEL",
+      "facts": {
+        "ARXIV-F001": {
+          "case_id": "arxiv",
+          "fact_id": "ARXIV-F001",
+          "label": "MESA 評估套件數量（作者自述）",
+          "measurement_role": "authors_described_framework_design",
+          "value_display": "5 evaluation suites（作者摘要自述）",
+          "value_original": "five",
+          "unit_original": "evaluation suites",
+          "source_evidence_id": "E4",
+          "source_span_sha256": "19ac23e57fd452ddfd01db8578a942ce869a43fdd12d46f15c91a944c9d79915",
+          "source_url": "https://arxiv.org/abs/2611.05567",
+          "period_as_written": null,
+          "qualifier": "Five suites include in-distribution performance and four generalization axes; the axes are not five extra suites.",
+          "attribution": "authors_abstract_self_report",
+          "independently_verified": false
+        },
+        "ARXIV-F004": {
+          "case_id": "arxiv",
+          "fact_id": "ARXIV-F004",
+          "label": "比較基準方法數量（作者自述）",
+          "measurement_role": "authors_described_experiment",
+          "value_display": "7 baseline methods（作者摘要自述）",
+          "value_original": "seven",
+          "unit_original": "baseline methods",
+          "source_evidence_id": "E6",
+          "source_span_sha256": "d4c06b1058b7dd18f0539a32944d40575cc2e77ca6cfd9e7a1b896d594310f07",
+          "source_url": "https://arxiv.org/abs/2611.05567",
+          "period_as_written": null,
+          "qualifier": "Seven methods reported by the authors; not an independent method comparison.",
+          "attribution": "authors_abstract_self_report",
+          "independently_verified": false
+        },
+        "ARXIV-F005": {
+          "case_id": "arxiv",
+          "fact_id": "ARXIV-F005",
+          "label": "MESA 作者報告的最佳模型表現",
+          "measurement_role": "authors_reported_best_result",
+          "value_display": "52%（作者摘要自述；未確認指標定義）",
+          "value_original": "52",
+          "unit_original": "percent (%)",
+          "source_evidence_id": "E6",
+          "source_span_sha256": "d4c06b1058b7dd18f0539a32944d40575cc2e77ca6cfd9e7a1b896d594310f07",
+          "source_url": "https://arxiv.org/abs/2611.05567",
+          "period_as_written": null,
+          "qualifier": "Authors say strongest model achieves 52% on MESA; metric definition, denominator and validity not in archived abstract.",
+          "attribution": "authors_abstract_self_report",
+          "independently_verified": false
+        },
+        "ARXIV-F006": {
+          "case_id": "arxiv",
+          "fact_id": "ARXIV-F006",
+          "label": "BiMESA 作者報告的最佳模型表現",
+          "measurement_role": "authors_reported_best_result",
+          "value_display": "49%（作者摘要自述；未確認指標定義）",
+          "value_original": "49",
+          "unit_original": "percent (%)",
+          "source_evidence_id": "E6",
+          "source_span_sha256": "d4c06b1058b7dd18f0539a32944d40575cc2e77ca6cfd9e7a1b896d594310f07",
+          "source_url": "https://arxiv.org/abs/2611.05567",
+          "period_as_written": null,
+          "qualifier": "Authors say strongest model achieves 49% on BiMESA; do NOT relabel as accuracy or task-success rate.",
+          "attribution": "authors_abstract_self_report",
+          "independently_verified": false
+        }
+      },
+      "analysis": {
+        "schema_version": "signal-r8-analysis-draft-v1",
+        "case_id": "arxiv",
+        "observation": {
+          "text": "作者摘要描述機器人泛化能力評估框架、比較方法及作者報告的模型表現，屬於研究團隊自行陳述。",
+          "claim_type": "fact",
+          "fact_ids": [
+            "ARXIV-F001",
+            "ARXIV-F004",
+            "ARXIV-F005",
+            "ARXIV-F006"
+          ],
+          "assumptions": []
+        },
+        "interpretation": {
+          "text": "這項工作更接近評測方法學訊號，而不是機器人產品已成熟的證據；是否改善社群比較能力仍需外部重現。",
+          "claim_type": "inference",
+          "fact_ids": [
+            "ARXIV-F001",
+            "ARXIV-F004"
+          ],
+          "assumptions": [
+            "尚缺其他研究群體的重現與基準採用資料"
+          ]
+        },
+        "impact": {
+          "text": "若框架被研究社群廣泛採用，未來有機會改善不同機器人系統的能力比較，但不代表商業部署已經實現。",
+          "claim_type": "hypothesis",
+          "fact_ids": [
+            "ARXIV-F001",
+            "ARXIV-F005"
+          ],
+          "assumptions": [
+            "需要公開程式、外部重現及跨平台測試結果"
+          ]
+        },
+        "importance": {
+          "tier": "待評估",
+          "reason": "研究新穎性可能在於提供較可比較的泛化評估方法，但作者自述的結果尚不足以推定技術突破或市場採用。",
+          "fact_ids": [
+            "ARXIV-F001",
+            "ARXIV-F004",
+            "ARXIV-F005"
+          ]
+        },
+        "limitations": [
+          "表現數字來自作者摘要，缺乏足夠的指標定義與外部獨立核對",
+          "尚未確認同行審查、外部重現或商業採用"
+        ],
+        "next_checks": [
+          {
+            "question": "是否已有外部團隊重現評估並採用共同指標？",
+            "target_source": "arXiv 版本紀錄、研究程式庫與後續獨立論文",
+            "decision_test": "若具備可重現程式、明確評估指標及獨立測試，再提高其方法學重要性評價"
+          }
+        ],
+        "publication_allowed": false
+      },
+      "human_approved": false,
+      "independently_verified": false,
+      "publication_allowed": false
+    }
+  ]
+}

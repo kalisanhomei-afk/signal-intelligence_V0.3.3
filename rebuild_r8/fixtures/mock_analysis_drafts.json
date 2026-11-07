@@ -1,0 +1,114 @@
+{
+  "fixture_type": "HAND_WRITTEN_OFFLINE_EXAMPLES_NOT_AI_OUTPUT",
+  "schema_version": "signal-r8-offline-fixture-set-v1",
+  "drafts": [
+    {
+      "schema_version": "signal-r8-analysis-draft-v1",
+      "case_id": "bea",
+      "observation": {
+        "text": "來源摘錄呈現美國對台灣的雙邊貿易逆差及其增加額，適合先作國別貿易變化的觀察起點。",
+        "claim_type": "fact",
+        "fact_ids": ["F001", "F002"],
+        "assumptions": []
+      },
+      "interpretation": {
+        "text": "逆差增加可能與進出口組合變動有關，但現有的國別總額不足以確定由何種商品或企業活動造成。",
+        "claim_type": "inference",
+        "fact_ids": ["F001", "F002"],
+        "assumptions": ["需查詢商品別及相同統計口徑的期間比較"]
+      },
+      "impact": {
+        "text": "如果這種變化延續，研究台美供應鏈的使用者可優先檢視商品類別的貢獻，暫不據此判斷特定產業受益或受損。",
+        "claim_type": "hypothesis",
+        "fact_ids": ["F001", "F002"],
+        "assumptions": ["必須先核對時間序列、修訂值和商品結構"]
+      },
+      "importance": {
+        "tier": "待評估",
+        "reason": "來源顯示可追蹤的國別貿易變動，但缺少可比較的歷史分布與商品貢獻，尚不足以確定屬於重大產業訊號。",
+        "fact_ids": ["F001", "F002"]
+      },
+      "limitations": ["此固定快照中的部分 BEA 事實缺少明確的期間與統計口徑欄位", "尚未進行獨立來源交叉查證或商品別拆解"],
+      "next_checks": [
+        {
+          "question": "哪些商品類別造成對台貿易變動，是否存在修訂？",
+          "target_source": "BEA 與 Census 官方國別商品貿易表及修訂歷史",
+          "decision_test": "核對一致口徑的前後期及商品別貢獻後，再判斷是否涉及特定產業"
+        }
+      ],
+      "publication_allowed": false
+    },
+    {
+      "schema_version": "signal-r8-analysis-draft-v1",
+      "case_id": "eia",
+      "observation": {
+        "text": "來源以汽油產出率的典型區間及航空燃油產出率門檻描述煉油產品組合，這些不是可直接互換的當期實測值。",
+        "claim_type": "fact",
+        "fact_ids": ["EIA-F001", "EIA-F002", "EIA-F003", "EIA-F004"],
+        "assumptions": []
+      },
+      "interpretation": {
+        "text": "產品組合調整可能與不同燃料的相對利潤和需求變化有關，但這些比例本身不能證明哪個驅動因素占主導。",
+        "claim_type": "inference",
+        "fact_ids": ["EIA-F003", "EIA-F004"],
+        "assumptions": ["相對利潤及需求需由其他官方資料補充"]
+      },
+      "impact": {
+        "text": "如果煉油配置調整持續，燃料供應分析應連同庫存及裂解價差檢查，不能僅憑產出率斷定終端價格走勢。",
+        "claim_type": "hypothesis",
+        "fact_ids": ["EIA-F003", "EIA-F004"],
+        "assumptions": ["仍須取得同期庫存、出口流向和相對利潤"]
+      },
+      "importance": {
+        "tier": "中",
+        "reason": "可能反映煉油廠對燃料品項配置的變化，但缺乏足夠的價格與全市場供給證據，暫不應推定為重大能源價格事件。",
+        "fact_ids": ["EIA-F001", "EIA-F004"]
+      },
+      "limitations": ["典型區間不是某月實測值，超過門檻亦不是精確產出率", "尚未獨立核對裂解價差、庫存與區域差異"],
+      "next_checks": [
+        {
+          "question": "產品配置的變化是否伴隨相對利潤與庫存變動？",
+          "target_source": "EIA 官方煉油產出率、庫存與成品油價差資料",
+          "decision_test": "比較同期利潤、庫存與產量時間序列，檢驗組合變化是否具有持續性"
+        }
+      ],
+      "publication_allowed": false
+    },
+    {
+      "schema_version": "signal-r8-analysis-draft-v1",
+      "case_id": "arxiv",
+      "observation": {
+        "text": "作者摘要描述機器人泛化能力評估框架、比較方法及作者報告的模型表現，屬於研究團隊自行陳述。",
+        "claim_type": "fact",
+        "fact_ids": ["ARXIV-F001", "ARXIV-F004", "ARXIV-F005", "ARXIV-F006"],
+        "assumptions": []
+      },
+      "interpretation": {
+        "text": "這項工作更接近評測方法學訊號，而不是機器人產品已成熟的證據；是否改善社群比較能力仍需外部重現。",
+        "claim_type": "inference",
+        "fact_ids": ["ARXIV-F001", "ARXIV-F004"],
+        "assumptions": ["尚缺其他研究群體的重現與基準採用資料"]
+      },
+      "impact": {
+        "text": "若框架被研究社群廣泛採用，未來有機會改善不同機器人系統的能力比較，但不代表商業部署已經實現。",
+        "claim_type": "hypothesis",
+        "fact_ids": ["ARXIV-F001", "ARXIV-F005"],
+        "assumptions": ["需要公開程式、外部重現及跨平台測試結果"]
+      },
+      "importance": {
+        "tier": "待評估",
+        "reason": "研究新穎性可能在於提供較可比較的泛化評估方法，但作者自述的結果尚不足以推定技術突破或市場採用。",
+        "fact_ids": ["ARXIV-F001", "ARXIV-F004", "ARXIV-F005"]
+      },
+      "limitations": ["表現數字來自作者摘要，缺乏足夠的指標定義與外部獨立核對", "尚未確認同行審查、外部重現或商業採用"],
+      "next_checks": [
+        {
+          "question": "是否已有外部團隊重現評估並採用共同指標？",
+          "target_source": "arXiv 版本紀錄、研究程式庫與後續獨立論文",
+          "decision_test": "若具備可重現程式、明確評估指標及獨立測試，再提高其方法學重要性評價"
+        }
+      ],
+      "publication_allowed": false
+    }
+  ]
+}
