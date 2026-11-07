@@ -52,7 +52,10 @@ def schema_for_bea(catalog: dict) -> dict:
     return obj({
         'schema_version': {'type': 'string', 'enum': ['signal-r8-analysis-draft-v1']},
         'case_id': {'type': 'string', 'enum': ['bea']},
-        'observation': claim('fact'),
+        # The model chooses fact IDs, but NEVER authors the factual observation text.
+        # This prevents Chinese-number spellings and unit conversions from entering
+        # the published (still unverified) fact observation.
+        'observation': obj({'fact_ids': id_arr}),
         'interpretation': claim('inference'),
         'impact': claim('hypothesis'),
         'importance': obj({'tier': {'type': 'string', 'enum': ['高', '中', '低', '待評估']},
@@ -73,8 +76,10 @@ def build_payload(catalog: dict, model: str = MODEL) -> dict:
             'unit_original', 'value_display', 'source_evidence_id',
             'period_as_written', 'qualifier', 'attribution')})
     instructions = '''你是「視界 SIGNAL」資料約束的情報研究助手。只分析使用者提供的 BEA 固定歷史事實快照，不可上網。
-產出六個區塊（observation、interpretation、impact、importance、limitations、next_checks）。所有中文散文只能寫字，不得自行寫阿拉伯數字、年份、日期、量值、百分比或數字單位；需要數據時，引用 fact_ids，程式會渲染原始數值。
-observation 是來源摘錄所載事實，不得擅加沒有來源的解釋；interpretation 是推論並必須列假設；impact 是條件式待證假說並必須列假設。
+產出六個區塊（observation、interpretation、impact、importance、limitations、next_checks）。
+重要：observation 僅能填 fact_ids，不得包含 text、claim_type、assumptions 等其他欄位。程式將自行組合觀察文字並從資料表呈現原始數字；你不能改寫、換算或轉譯這些數字。
+interpretation、impact、importance、limitations、next_checks 所有自由文字均禁止阿拉伯數字、中文數字及中文數量詞（例如『二十一點九十億美元』、『三點六十億美元』）、年份、日期、百分比，以及 F001 這類事實 ID；事實 ID 只能放在 fact_ids 陣列，不得寫在文字段落。需要引用數據，只能填 fact_ids。
+interpretation 是推論並必須列假設；impact 是條件式待證假說並必須列假設。
 重要性應以證據強弱、變化是否顯著、比較基準是否足夠、可影響的決策說明，避免只說「值得關注」。如無足夠背景，選「待評估」。
 必須指出至少一項「去哪裡查、查什麼、何種結果會改變判斷」；內容要具體，不可空泛。
 注意：事實表的 period_as_written 若為 null，不能自行補年份、月份或完整統計期間；F003～F006 的統計範圍尚待核，不得把不同口徑直接相比；不得推測特定台灣企業受益、歸因特定關稅政策或提供投資建議。
@@ -91,7 +96,7 @@ observation 是來源摘錄所載事實，不得擅加沒有來源的解釋；in
                 'case_id': 'bea',
                 'source_name': 'BEA',
                 'facts': facts,
-                'task': '產出可審查的結構化短分析，事實數字僅引用 fact_ids，不得自行印出數字。'
+                'task': 'observation 僅列 fact_ids，其他區塊可撰寫有分析價值的短文，但禁止以任何形式撰寫數字、數值、中文數字或在文字中出現 F001 等 ID；引用只放 fact_ids 陣列。'
             }, ensure_ascii=False)},
         ],
         'text': {'format': {'type': 'json_schema', 'name': 'signal_r8b_bea_analysis',
@@ -152,6 +157,33 @@ def one_api_request(payload: dict, api_key: str, timeout: int = 60,
         raise R8BError('API_RESPONSE_PARSE_ERROR', 'invalid API JSON') from None
 
 
+# The model is never permitted to author the observation prose.
+# Keep this fixed sentence human-readable but never claim full source verification.
+PROGRAM_OBSERVATION_TEXT = (
+    '本案列示來源摘錄所載的事實項目；原始數值、單位與證據出處由程式從下方資料表帶入，統計口徑仍須人工核對。'
+)
+
+
+def bind_model_observation(raw_draft: dict) -> dict:
+    """Build the fact observation from selected IDs, never from model wording.
+    Model-supplied factual prose is rejected, NOT silently discarded. This also
+    keeps the R8-A fixture/validator unchanged for existing offline tests.
+    """
+    if not isinstance(raw_draft, dict):
+        raise R8BError('MODEL_OBSERVATION_SCHEMA_MISMATCH', 'draft must be a JSON object')
+    obs = raw_draft.get('observation')
+    if not isinstance(obs, dict) or set(obs) != {'fact_ids'}:
+        raise R8BError('MODEL_OBSERVATION_SCHEMA_MISMATCH', 'observation may contain only fact_ids')
+    result = copy.deepcopy(raw_draft)
+    result['observation'] = {
+        'text': PROGRAM_OBSERVATION_TEXT,
+        'claim_type': 'fact',
+        'fact_ids': obs['fact_ids'],
+        'assumptions': [],
+    }
+    return result
+
+
 def safe_schema_and_fact_draft(draft: dict, catalog: dict) -> dict:
     try:
         verified = r8a.validate_draft(draft, catalog)
@@ -178,6 +210,9 @@ def report_bundle(draft: dict, catalog: dict, mode: str, usage: dict | None = No
         'api_calls_attempted': 1 if mode == 'LIVE_MODEL_UNVERIFIED' else 0,
         'usage': usage,
         'draft': draft,
+        'observation_text_origin': ('PROGRAM_RENDERED_FROM_FACT_IDS'
+                                    if mode == 'LIVE_MODEL_UNVERIFIED'
+                                    else 'HAND_WRITTEN_OFFLINE_FIXTURE'),
         'facts_bound_by_code': {f: fact_map[f] for f in ids},
         'fact_ids': ids,
         'structural_validation': 'PASSED_NOT_SEMANTIC_VERIFICATION',
@@ -285,7 +320,9 @@ def run_live() -> dict:
         # Strict cap: exactly one request; the request function contains no retry loop.
         calls = 1  # conservative: may have been sent even on HTTP or network exception
         api = one_api_request(payload, key)
-        draft = parse_response(api)
+        raw_draft = parse_response(api)
+        draft = raw_draft  # retained solely for safe failed-validation diagnostics
+        draft = bind_model_observation(raw_draft)
         bundle = report_bundle(draft, cat, 'LIVE_MODEL_UNVERIFIED', api.get('usage'))
         bundle['api_response_id_suffix'] = (api.get('id') or '')[-8:]
         save(bundle, 'live_result')
@@ -294,7 +331,9 @@ def run_live() -> dict:
         code = exc.code
         detail = exc.detail if isinstance(exc, R8BError) else exc.field
         # Rejected draft in artifact ONLY, never published to Pages and never printed to logs.
-        rejected = draft if isinstance(draft, dict) and code.startswith('VALIDATION_') else None
+        rejected = (draft if isinstance(draft, dict) and
+                    (code.startswith('VALIDATION_') or code == 'MODEL_OBSERVATION_SCHEMA_MISMATCH')
+                    else None)
         save(failure_bundle(code, detail, calls, sha, rejected), 'live_result')
         raise
     except Exception as exc:

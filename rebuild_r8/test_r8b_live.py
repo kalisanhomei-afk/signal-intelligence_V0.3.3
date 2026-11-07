@@ -45,6 +45,51 @@ class R8BTests(unittest.TestCase):
                 for t in x: walk(t)
         walk(b.schema_for_bea(self.cat))
 
+    def test_model_observation_can_only_select_fact_ids(self):
+        observation = b.schema_for_bea(self.cat)['properties']['observation']
+        self.assertEqual(set(observation['properties']), {'fact_ids'})
+        self.assertIs(observation['additionalProperties'], False)
+
+    def test_observation_rendered_by_program_from_fact_ids(self):
+        raw = copy.deepcopy(self.draft)
+        raw['observation'] = {'fact_ids': ['F001', 'F002']}
+        assembled = b.bind_model_observation(raw)
+        result = b.report_bundle(assembled, self.cat, 'LIVE_MODEL_UNVERIFIED')
+        self.assertEqual(result['observation_text_origin'], 'PROGRAM_RENDERED_FROM_FACT_IDS')
+        self.assertEqual(result['draft']['observation']['text'], b.PROGRAM_OBSERVATION_TEXT)
+        self.assertEqual(result['facts_bound_by_code']['F001']['value_original'], '21.9')
+        self.assertEqual(result['facts_bound_by_code']['F002']['value_original'], '3.6')
+        self.assertFalse(result['publication_allowed'])
+
+    def test_actual_rejection_pattern_is_not_silently_sanitized(self):
+        raw = copy.deepcopy(self.draft)
+        raw['observation'] = {
+            'text': '逆差為二十一點九十億美元（F001），增加三點六十億美元（F002）。',
+            'fact_ids': ['F001', 'F002'],
+        }
+        with self.assertRaisesRegex(b.R8BError, 'MODEL_OBSERVATION_SCHEMA_MISMATCH'):
+            b.bind_model_observation(raw)
+
+    def test_invalid_fact_id_rejected_after_program_binding(self):
+        raw = copy.deepcopy(self.draft)
+        raw['observation'] = {'fact_ids': ['F999']}
+        with self.assertRaisesRegex(b.R8BError, 'INVALID_OR_CROSS_CASE_FACT'):
+            b.safe_schema_and_fact_draft(b.bind_model_observation(raw), self.cat)
+
+    def test_free_analysis_numbers_remain_blocked(self):
+        raw = copy.deepcopy(self.draft)
+        raw['observation'] = {'fact_ids': ['F001']}
+        raw['interpretation']['text'] += ' 因此推測增加二十一億美元。'
+        with self.assertRaisesRegex(b.R8BError, 'MODEL_GENERATED_NUMBER'):
+            b.safe_schema_and_fact_draft(b.bind_model_observation(raw), self.cat)
+
+    def test_fact_id_inside_free_analysis_text_blocked(self):
+        raw = copy.deepcopy(self.draft)
+        raw['observation'] = {'fact_ids': ['F001']}
+        raw['interpretation']['text'] += ' 請查看F001。'
+        with self.assertRaisesRegex(b.R8BError, 'MODEL_GENERATED_NUMBER'):
+            b.safe_schema_and_fact_draft(b.bind_model_observation(raw), self.cat)
+
     def test_schema_only_bea_ids(self):
         a=b.schema_for_bea(self.cat)['properties']['importance']['properties']['fact_ids']['items']['enum']
         self.assertEqual(a, sorted(self.cat['sources']['bea']))
