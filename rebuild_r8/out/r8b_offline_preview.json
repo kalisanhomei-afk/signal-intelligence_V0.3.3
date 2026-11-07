@@ -1,0 +1,107 @@
+{
+  "schema_version": "signal-r8b-review-v1",
+  "mode": "HAND_WRITTEN_MOCK_NOT_MODEL",
+  "source_snapshot_sha256": "1bca9543dea02a954ae374087c703d40a2d91418aa1de51f49d1b3cc247590a5",
+  "snapshot_origin": "R4 fixed historical excerpts; not refreshed or independently verified",
+  "model": null,
+  "case_id": "bea",
+  "api_calls_attempted": 0,
+  "usage": null,
+  "draft": {
+    "schema_version": "signal-r8-analysis-draft-v1",
+    "case_id": "bea",
+    "observation": {
+      "text": "來源摘錄呈現美國對台灣的雙邊貿易逆差及其增加額，適合先作國別貿易變化的觀察起點。",
+      "claim_type": "fact",
+      "fact_ids": [
+        "F001",
+        "F002"
+      ],
+      "assumptions": []
+    },
+    "interpretation": {
+      "text": "逆差增加可能與進出口組合變動有關，但現有的國別總額不足以確定由何種商品或企業活動造成。",
+      "claim_type": "inference",
+      "fact_ids": [
+        "F001",
+        "F002"
+      ],
+      "assumptions": [
+        "需查詢商品別及相同統計口徑的期間比較"
+      ]
+    },
+    "impact": {
+      "text": "如果這種變化延續，研究台美供應鏈的使用者可優先檢視商品類別的貢獻，暫不據此判斷特定產業受益或受損。",
+      "claim_type": "hypothesis",
+      "fact_ids": [
+        "F001",
+        "F002"
+      ],
+      "assumptions": [
+        "必須先核對時間序列、修訂值和商品結構"
+      ]
+    },
+    "importance": {
+      "tier": "待評估",
+      "reason": "來源顯示可追蹤的國別貿易變動，但缺少可比較的歷史分布與商品貢獻，尚不足以確定屬於重大產業訊號。",
+      "fact_ids": [
+        "F001",
+        "F002"
+      ]
+    },
+    "limitations": [
+      "此固定快照中的部分 BEA 事實缺少明確的期間與統計口徑欄位",
+      "尚未進行獨立來源交叉查證或商品別拆解"
+    ],
+    "next_checks": [
+      {
+        "question": "哪些商品類別造成對台貿易變動，是否存在修訂？",
+        "target_source": "BEA 與 Census 官方國別商品貿易表及修訂歷史",
+        "decision_test": "核對一致口徑的前後期及商品別貢獻後，再判斷是否涉及特定產業"
+      }
+    ],
+    "publication_allowed": false
+  },
+  "facts_bound_by_code": {
+    "F001": {
+      "case_id": "bea",
+      "fact_id": "F001",
+      "label": "對台灣的文中貿易逆差",
+      "measurement_role": "current_level",
+      "value_display": "本期 21.9 billion USD（原始單位）",
+      "value_original": "21.9",
+      "unit_original": "USD billion",
+      "source_evidence_id": "E7",
+      "source_span_sha256": "b82a1000d2506b6faaa86cb70f0b2078a426ca49d1592516b469306906fe02f7",
+      "source_url": "https://www.bea.gov/news/2026/us-international-trade-goods-and-services-september-2026",
+      "period_as_written": null,
+      "qualifier": null,
+      "attribution": "official_source_excerpt_not_independently_verified",
+      "independently_verified": false
+    },
+    "F002": {
+      "case_id": "bea",
+      "fact_id": "F002",
+      "label": "對台灣的文中貿易逆差",
+      "measurement_role": "increase",
+      "value_display": "較前期增加 3.6 billion USD（原始單位）",
+      "value_original": "3.6",
+      "unit_original": "USD billion",
+      "source_evidence_id": "E7",
+      "source_span_sha256": "b82a1000d2506b6faaa86cb70f0b2078a426ca49d1592516b469306906fe02f7",
+      "source_url": "https://www.bea.gov/news/2026/us-international-trade-goods-and-services-september-2026",
+      "period_as_written": null,
+      "qualifier": null,
+      "attribution": "official_source_excerpt_not_independently_verified",
+      "independently_verified": false
+    }
+  },
+  "fact_ids": [
+    "F001",
+    "F002"
+  ],
+  "structural_validation": "PASSED_NOT_SEMANTIC_VERIFICATION",
+  "human_approved": false,
+  "independently_verified": false,
+  "publication_allowed": false
+}

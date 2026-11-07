@@ -1,0 +1,83 @@
+name: SIGNAL R8-B isolated narrative QA and optional one API call
+
+on:
+  push:
+    branches:
+      - signal-evidence-rebuild
+    paths:
+      - 'rebuild_r8/**'
+      - '.github/workflows/signal-evidence-r8b-branch.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: signal-r8b-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  offline_qa:
+    name: R8-B offline contract QA
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify R8-A and R8-B without network calls
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s rebuild_r8 -p 'test_r8_offline.py' -v
+          python -m unittest discover -s rebuild_r8 -p 'test_r8b_live.py' -v
+          python rebuild_r8/r8b_live.py --mock
+      - name: Save offline review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-r8b-offline-qa
+          path: |
+            rebuild_r8/out/r8b_offline_preview.json
+            rebuild_r8/out/r8b_offline_preview.html
+          if-no-files-found: error
+
+  approval_gate:
+    name: R8-B paid request authorization
+    needs: offline_qa
+    runs-on: ubuntu-latest
+    outputs:
+      approved: ${{ steps.gate.outputs.approved }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Prove one-time NO to YES transition and commit-only authorization
+        id: gate
+        env:
+          GITHUB_RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: python3 rebuild_r8/r8b_gate.py
+
+  one_paid_call:
+    name: R8-B single paid model analysis (never publish)
+    needs: [offline_qa, approval_gate]
+    if: ${{ needs.approval_gate.outputs.approved == 'true' && github.run_attempt == 1 }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: One Responses API call, no retry; fail closed on invalid draft
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SIGNAL_R8B_ALLOW_PAID_CALL: 'YES'
+        run: python rebuild_r8/r8b_live.py --live
+      - name: Keep review artifact, even on a validation failure
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-r8b-one-bea-narrative-unverified
+          path: |
+            rebuild_r8/out/r8b_live_result.json
+            rebuild_r8/out/r8b_live_result.html
+          if-no-files-found: warn
