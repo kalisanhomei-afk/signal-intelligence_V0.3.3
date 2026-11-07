@@ -1,0 +1,82 @@
+{
+  "schema_version": "signal-r7-editorial-triage-v1",
+  "case_id": "bea",
+  "source_basis": "fixed R1 BEA E7 archived excerpt; not a current web read",
+  "input_status": "TECHNICAL_SMOKE_PASSED_HUMAN_REVIEW_REQUIRED",
+  "run_mode": "live_one_api_call",
+  "input_model": "gpt-4.1-mini",
+  "input_publication_allowed": false,
+  "r6_technical_pass": true,
+  "r7_editorial_quality_pass": false,
+  "publication_allowed": false,
+  "editorial_decision": "NO_GO_PEND_EVIDENCE_AND_HUMAN_REVIEW",
+  "facts_selected": 4,
+  "facts_missing_period": [
+    "F001",
+    "F002",
+    "F005",
+    "F006"
+  ],
+  "facts_scope_unresolved": [
+    "F005",
+    "F006"
+  ],
+  "importance_quality": "NOT_EVALUABLE_WITH_ONE_CASE",
+  "analysis_quality": "PRESET_THEME_NOT_ORIGINAL_ANALYSIS",
+  "checks": [
+    {
+      "code": "tracked_provenance",
+      "label": "數據具有來源網址、E7 證據識別與原始單位",
+      "passed": true,
+      "note": "僅代表引用欄位存在，不代表已核對官方全文。"
+    },
+    {
+      "code": "machine_bound_numbers",
+      "label": "未由模型自行生成新的數字主張",
+      "passed": true,
+      "note": "檢查 R6 結果中的契約旗標，不是獨立數字查證。"
+    },
+    {
+      "code": "period_scope_clear",
+      "label": "全部選中事實的統計期間已確認",
+      "passed": false,
+      "note": "缺少期間的事實 ID：F001, F002, F005, F006"
+    },
+    {
+      "code": "measurement_scope_clear",
+      "label": "全部選中事實的統計範圍已確認",
+      "passed": false,
+      "note": "存在範圍待核的事實 ID：F005, F006"
+    },
+    {
+      "code": "analysis_depth",
+      "label": "存在模型提供、而非預設模板的實質解釋",
+      "passed": false,
+      "note": "R6 模型只選擇預設主題及提問；尚無自由分析文字。"
+    },
+    {
+      "code": "importance_calibrated",
+      "label": "重要性分級已與人工基準比較",
+      "passed": false,
+      "note": "R6 importance_accuracy 為 null，無基準可以評分。"
+    },
+    {
+      "code": "human_signoff",
+      "label": "人工已閱讀完整原始來源並核准",
+      "passed": false,
+      "note": "R6 尚未人工核准。"
+    },
+    {
+      "code": "independent_confirmation",
+      "label": "至少有一項獨立確認",
+      "passed": false,
+      "note": "R6 independent_confirmations 為 0；仍須人工決定適當的驗證方法。"
+    }
+  ],
+  "priority_for_next_stage": [
+    "核對選中 BEA 事實的統計期間與統計範圍（特別是 F005、F006）。",
+    "將 AI 角色從預設主題選擇擴展到受證據約束的可審核分析假說。",
+    "建立至少 3 個不同領域的人工參考案例後，再評估重要性判斷。"
+  ],
+  "note": "這是規則式編輯預審，不等於已完成人工品質評估、官方全文驗證或新聞重要性測量。"
+}
