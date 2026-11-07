@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.2",
-    "generated_at": "2026-11-07T01:28:36+00:00",
+    "generated_at": "2026-11-07T13:20:26+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "status": "primary_metadata_enrichment_only",
     "candidate_count": 12,
@@ -204,13 +204,13 @@
       "original_document_verified": false
     },
     {
-      "id": "rss-344d924327419a44654fb9",
+      "id": "rss-9f7215bf24ee128182d17c",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
-      "title": "M30’s Sparkling Stars",
+      "title": "APOD: 2026 November 7 – De Gerlache-Kocher Massif",
       "category": "科技",
-      "published_at": "2026-11-06T16:23:41+00:00",
-      "url": "https://www.nasa.gov/image-article/m30s-sparkling-stars",
+      "published_at": "2026-11-07T05:05:00+00:00",
+      "url": "https://science.nasa.gov/image-article/apod-2026-november-7-de-gerlache-kocher-massif",
       "source_role": "第一手航太科研機構",
       "evidence_kind": "航太與技術機構公開消息標題元資料",
       "evidence_level": "M0",
@@ -226,7 +226,7 @@
         "相關成果有無獨立測試或第三方研究？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "a6c42ab395858e37c66e18db",
+      "fingerprint": "9e320fd3ef2379de1f00fed5",
       "author_abstract": null,
       "metadata_read": false,
       "primary_source_kind": null,

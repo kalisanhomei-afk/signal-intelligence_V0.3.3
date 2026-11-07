@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": "0.4.0",
-    "generated_at": "2026-11-07T01:28:31+00:00",
-    "source_last_success_at": "2026-11-07T01:28:23+00:00",
+    "generated_at": "2026-11-07T13:20:22+00:00",
+    "source_last_success_at": "2026-11-07T13:20:16+00:00",
     "source_status": "healthy",
     "mode": "rules_only",
     "analysis_request": "disabled",
@@ -13,7 +13,7 @@
     "ai_error_codes": [],
     "cached_ai_annotations": 0,
     "candidate_count": 12,
-    "input_count": 143,
+    "input_count": 144,
     "publisher_counts": {
       "arxiv": 2,
       "bea": 2,
@@ -167,16 +167,16 @@
       "review_required": true
     },
     {
-      "id": "rss-344d924327419a44654fb9",
+      "id": "rss-9f7215bf24ee128182d17c",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
       "source": "NASA｜News & Technology",
       "source_kind": "official",
       "category": "科技",
-      "title": "M30’s Sparkling Stars",
-      "url": "https://www.nasa.gov/image-article/m30s-sparkling-stars",
-      "published_at": "2026-11-06T16:23:41+00:00",
-      "fingerprint": "4ef4504a48f1dcc5591197c2",
+      "title": "APOD: 2026 November 7 – De Gerlache-Kocher Massif",
+      "url": "https://science.nasa.gov/image-article/apod-2026-november-7-de-gerlache-kocher-massif",
+      "published_at": "2026-11-07T05:05:00+00:00",
+      "fingerprint": "aaa7ae62e99d571cb19f6c1d",
       "triage_priority": "一般候選",
       "analysis_mode": "rules_only",
       "zh_title": null,

@@ -1,18 +1,18 @@
 {
   "meta": {
     "version": "0.5.0",
-    "generated_at": "2026-11-07T01:28:36+00:00",
+    "generated_at": "2026-11-07T13:20:26+00:00",
     "type": "daily_review_candidates_not_a_news_brief",
     "rights_scope": "descriptive_public_metadata_only",
     "input_mode": "official_metadata",
-    "source_last_success_at": "2026-11-07T01:28:23+00:00",
+    "source_last_success_at": "2026-11-07T13:20:16+00:00",
     "source_age_hours": 0.0,
     "stale_source": false,
     "review_window_hours": 72,
     "reference_window_days": 7,
     "max_daily_candidates": 8,
     "daily_candidate_count": 8,
-    "seven_day_source_titles": 114,
+    "seven_day_source_titles": 115,
     "daily_publishers": 5,
     "active_configured_publishers": 7,
     "uncovered_domains_in_source_audit": 5,
@@ -27,6 +27,22 @@
     "notice": "這是近72小時可溯源元資料的「選讀候選」，非查證新聞、非全球重大事件排行、非投資建議；來源缺口與時效限制不可由 AI 補寫。"
   },
   "items": [
+    {
+      "id": "rss-9f7215bf24ee128182d17c",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "title": "APOD: 2026 November 7 – De Gerlache-Kocher Massif",
+      "url": "https://science.nasa.gov/image-article/apod-2026-november-7-de-gerlache-kocher-massif",
+      "published_at": "2026-11-07T05:05:00+00:00",
+      "category": "科技",
+      "source_kind": "official",
+      "evidence_level": "M0",
+      "verification_status": "未查證",
+      "importance_assessed": false,
+      "independent_confirmation": false,
+      "review_prompt": "查核公告範圍、生效時間及是否存在後續修訂；官方發布不等於獨立驗證。"
+    },
     {
       "id": "rss-d1104ad8e14a506f770758",
       "source_id": "mit-research",
@@ -58,22 +74,6 @@
       "importance_assessed": false,
       "independent_confirmation": false,
       "review_prompt": "查核原始研究或產品文件，區分機構宣傳、客觀證據與商業化程度。"
-    },
-    {
-      "id": "rss-344d924327419a44654fb9",
-      "source_id": "nasa-news",
-      "publisher_id": "nasa",
-      "source": "NASA｜News & Technology",
-      "title": "M30’s Sparkling Stars",
-      "url": "https://www.nasa.gov/image-article/m30s-sparkling-stars",
-      "published_at": "2026-11-06T16:23:41+00:00",
-      "category": "科技",
-      "source_kind": "official",
-      "evidence_level": "M0",
-      "verification_status": "未查證",
-      "importance_assessed": false,
-      "independent_confirmation": false,
-      "review_prompt": "查核公告範圍、生效時間及是否存在後續修訂；官方發布不等於獨立驗證。"
     },
     {
       "id": "rss-0300679559154a9dd73222",
