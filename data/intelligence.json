@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": "0.4.0",
-    "generated_at": "2026-11-08T01:37:01+00:00",
-    "source_last_success_at": "2026-11-08T01:36:52+00:00",
+    "generated_at": "2026-11-08T13:20:31+00:00",
+    "source_last_success_at": "2026-11-08T13:20:24+00:00",
     "source_status": "healthy",
     "mode": "rules_only",
     "analysis_request": "disabled",
@@ -167,16 +167,16 @@
       "review_required": true
     },
     {
-      "id": "rss-7fccb3522d0d3bf297a7f6",
+      "id": "rss-4d1edc58dbf944a956edd4",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
       "source": "NASA｜News & Technology",
       "source_kind": "official",
       "category": "科技",
-      "title": "NASA Awards Moon Base Transportation, Technology, Science Projects",
-      "url": "https://www.nasa.gov/news-release/nasa-awards-moon-base-transportation-technology-science-projects",
-      "published_at": "2026-11-07T22:47:03+00:00",
-      "fingerprint": "4616a5321e4da6f9ac2e8a0c",
+      "title": "APOD: 2026 November 8 – Major Fireball Meteor",
+      "url": "https://science.nasa.gov/image-article/apod-2026-november-8-major-fireball-meteor",
+      "published_at": "2026-11-08T05:05:00+00:00",
+      "fingerprint": "4d79e4526dc6035c70260d97",
       "triage_priority": "一般候選",
       "analysis_mode": "rules_only",
       "zh_title": null,
