@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": "0.4.0",
-    "generated_at": "2026-11-07T13:20:22+00:00",
-    "source_last_success_at": "2026-11-07T13:20:16+00:00",
+    "generated_at": "2026-11-08T01:37:01+00:00",
+    "source_last_success_at": "2026-11-08T01:36:52+00:00",
     "source_status": "healthy",
     "mode": "rules_only",
     "analysis_request": "disabled",
@@ -13,7 +13,7 @@
     "ai_error_codes": [],
     "cached_ai_annotations": 0,
     "candidate_count": 12,
-    "input_count": 144,
+    "input_count": 146,
     "publisher_counts": {
       "arxiv": 2,
       "bea": 2,
@@ -167,16 +167,16 @@
       "review_required": true
     },
     {
-      "id": "rss-9f7215bf24ee128182d17c",
+      "id": "rss-7fccb3522d0d3bf297a7f6",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
       "source": "NASA｜News & Technology",
       "source_kind": "official",
       "category": "科技",
-      "title": "APOD: 2026 November 7 – De Gerlache-Kocher Massif",
-      "url": "https://science.nasa.gov/image-article/apod-2026-november-7-de-gerlache-kocher-massif",
-      "published_at": "2026-11-07T05:05:00+00:00",
-      "fingerprint": "aaa7ae62e99d571cb19f6c1d",
+      "title": "NASA Awards Moon Base Transportation, Technology, Science Projects",
+      "url": "https://www.nasa.gov/news-release/nasa-awards-moon-base-transportation-technology-science-projects",
+      "published_at": "2026-11-07T22:47:03+00:00",
+      "fingerprint": "4616a5321e4da6f9ac2e8a0c",
       "triage_priority": "一般候選",
       "analysis_mode": "rules_only",
       "zh_title": null,
