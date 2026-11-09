@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.1",
-    "generated_at": "2026-11-09T01:40:27+00:00",
+    "generated_at": "2026-11-09T13:41:49+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "status": "metadata_gap_audit_only",
     "candidate_count": 12,
@@ -32,13 +32,13 @@
   },
   "items": [
     {
-      "id": "rss-f145415baaf53e506417c0",
-      "source_id": "arxiv-ai",
+      "id": "rss-fb8ba6348d680e1e3d0f73",
+      "source_id": "arxiv-robotics",
       "publisher_id": "arxiv",
-      "title": "Resource-Efficient Reinforcement Learning Post-Training through Elastic Expert Parallelism",
+      "title": "Polarization calibration of fisheye cameras using skylight in the wild",
       "category": "知識",
-      "published_at": "2026-11-06T05:00:00+00:00",
-      "url": "https://arxiv.org/abs/2611.06984",
+      "published_at": "2026-11-09T05:00:00+00:00",
+      "url": "https://arxiv.org/abs/2611.08911",
       "source_role": "研究預印本儲存平台",
       "evidence_kind": "未確認同儕審查之預印本元資料",
       "evidence_level": "M0",
@@ -54,7 +54,7 @@
         "有沒有實際部署、效能基準及限制證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "a2a99d2bc77416e50776bc6d"
+      "fingerprint": "071ce9459ad0172bb9fc39bb"
     },
     {
       "id": "rss-9cc53e9eda9e7cde360497",
@@ -107,13 +107,13 @@
       "fingerprint": "0c3e581145b6fa39bee4e812"
     },
     {
-      "id": "rss-09bb1ad32db5ff72080874",
+      "id": "rss-c7888dc7b0c45dade665ff",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Speech by Commissioner Hoekstra at the 22nd Athens Tax Forum",
+      "title": "Speech by Commissioner Kos at the first High-Level Connectivity Platform Meeting on Digital",
       "category": "政治",
-      "published_at": "2026-11-06T13:25:32+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2370",
+      "published_at": "2026-11-09T12:56:19+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2380",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -129,7 +129,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "4ff37a9d2662137397dfd4f5"
+      "fingerprint": "326448bff8b77b124a0a1425"
     },
     {
       "id": "rss-a0c3e1be77e8b5a27f797a",
@@ -157,13 +157,13 @@
       "fingerprint": "6a6acf1cc9b03b29f843c83e"
     },
     {
-      "id": "rss-d1104ad8e14a506f770758",
+      "id": "rss-f2b130fea883df692eb472",
       "source_id": "mit-research",
       "publisher_id": "mit_news",
-      "title": "Fabric molds could bring material-saving concrete beams within reach",
+      "title": "AI-assisted learning platform helps robots reason beyond literal commands",
       "category": "科技",
-      "published_at": "2026-11-06T19:35:00+00:00",
-      "url": "https://news.mit.edu/2026/fabric-molds-could-bring-material-saving-concrete-beams-within-reach-1106",
+      "published_at": "2026-11-09T05:00:00+00:00",
+      "url": "https://news.mit.edu/2026/ai-assisted-learning-platform-helps-robots-reason-beyond-literal-commands-1109",
       "source_role": "研究機構自有新聞編輯室",
       "evidence_kind": "MIT 自有研究報導標題元資料",
       "evidence_level": "M0",
@@ -179,16 +179,16 @@
         "研究結果與商業部署或規模化是否有證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "aaa27aab672c067cda0ab0c3"
+      "fingerprint": "0eeb21c7048aec50268109b6"
     },
     {
-      "id": "rss-8488895cda9a8ebb635793",
+      "id": "rss-ff7d4fc2e22cc37906ac8b",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
-      "title": "NASA Announces $1 Million to Students for Moon Base Challenge",
+      "title": "CHAPEA Mission 2 Crew Reflects After 378 Days on Simulated Mars",
       "category": "科技",
-      "published_at": "2026-11-08T15:26:38+00:00",
-      "url": "https://www.nasa.gov/news-release/nasa-announces-1-million-to-students-for-moon-base-challenge",
+      "published_at": "2026-11-09T11:00:00+00:00",
+      "url": "https://www.nasa.gov/centers-and-facilities/johnson/chapea-mission-2-crew-reflects-after-378-days-on-simulated-mars",
       "source_role": "第一手航太科研機構",
       "evidence_kind": "航太與技術機構公開消息標題元資料",
       "evidence_level": "M0",
@@ -204,16 +204,16 @@
         "相關成果有無獨立測試或第三方研究？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "3a3693b98eea780e7e33650c"
+      "fingerprint": "806b802decc10f2b0fc3c340"
     },
     {
-      "id": "rss-e4ba57732a4477963733fb",
+      "id": "rss-f0fc1ec2b15269c6aefab2",
       "source_id": "arxiv-ai",
       "publisher_id": "arxiv",
-      "title": "Closed-Loop Agent Evaluation: Layered Measurement and Self-Calibration",
+      "title": "Jacobian-Causal Memory Control for Persistent Memory in Language Model Systems",
       "category": "知識",
-      "published_at": "2026-11-06T05:00:00+00:00",
-      "url": "https://arxiv.org/abs/2611.07051",
+      "published_at": "2026-11-09T05:00:00+00:00",
+      "url": "https://arxiv.org/abs/2611.08779",
       "source_role": "研究預印本儲存平台",
       "evidence_kind": "未確認同儕審查之預印本元資料",
       "evidence_level": "M0",
@@ -229,7 +229,7 @@
         "有沒有實際部署、效能基準及限制證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "6e2d3de1a67bd51f05e27177"
+      "fingerprint": "493843e128fa9bde496b20e0"
     },
     {
       "id": "rss-ed83cb0bc28656a36c6f39",
@@ -282,13 +282,13 @@
       "fingerprint": "425927564e4b105f079bf476"
     },
     {
-      "id": "rss-377dda7de24e65136b761f",
+      "id": "rss-d1fd3118604a1efc0a916c",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Speech by Commissioner Lahbib at the InvestFrontier Conference",
+      "title": "Daily News 09 / 11 / 2026",
       "category": "政治",
-      "published_at": "2026-11-06T12:00:46+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2369",
+      "published_at": "2026-11-09T10:50:56+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/mex_26_2378",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -304,7 +304,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "40905e744462cb5316cb10cf"
+      "fingerprint": "1762218b803a7b54006bedb1"
     },
     {
       "id": "rss-ca688a27006cdc18bac09f",
