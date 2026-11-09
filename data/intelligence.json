@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": "0.4.0",
-    "generated_at": "2026-11-08T13:20:31+00:00",
-    "source_last_success_at": "2026-11-08T13:20:24+00:00",
+    "generated_at": "2026-11-09T01:40:27+00:00",
+    "source_last_success_at": "2026-11-09T01:40:20+00:00",
     "source_status": "healthy",
     "mode": "rules_only",
     "analysis_request": "disabled",
@@ -13,7 +13,7 @@
     "ai_error_codes": [],
     "cached_ai_annotations": 0,
     "candidate_count": 12,
-    "input_count": 146,
+    "input_count": 147,
     "publisher_counts": {
       "arxiv": 2,
       "bea": 2,
@@ -167,16 +167,16 @@
       "review_required": true
     },
     {
-      "id": "rss-4d1edc58dbf944a956edd4",
+      "id": "rss-8488895cda9a8ebb635793",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
       "source": "NASA｜News & Technology",
       "source_kind": "official",
       "category": "科技",
-      "title": "APOD: 2026 November 8 – Major Fireball Meteor",
-      "url": "https://science.nasa.gov/image-article/apod-2026-november-8-major-fireball-meteor",
-      "published_at": "2026-11-08T05:05:00+00:00",
-      "fingerprint": "4d79e4526dc6035c70260d97",
+      "title": "NASA Announces $1 Million to Students for Moon Base Challenge",
+      "url": "https://www.nasa.gov/news-release/nasa-announces-1-million-to-students-for-moon-base-challenge",
+      "published_at": "2026-11-08T15:26:38+00:00",
+      "fingerprint": "adda5a9b4aeb89e6eb0aa9db",
       "triage_priority": "一般候選",
       "analysis_mode": "rules_only",
       "zh_title": null,

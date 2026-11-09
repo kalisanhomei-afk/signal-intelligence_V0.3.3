@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.2",
-    "generated_at": "2026-11-08T13:20:35+00:00",
+    "generated_at": "2026-11-09T01:40:31+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "status": "primary_metadata_enrichment_only",
     "candidate_count": 12,
@@ -204,13 +204,13 @@
       "original_document_verified": false
     },
     {
-      "id": "rss-4d1edc58dbf944a956edd4",
+      "id": "rss-8488895cda9a8ebb635793",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
-      "title": "APOD: 2026 November 8 – Major Fireball Meteor",
+      "title": "NASA Announces $1 Million to Students for Moon Base Challenge",
       "category": "科技",
-      "published_at": "2026-11-08T05:05:00+00:00",
-      "url": "https://science.nasa.gov/image-article/apod-2026-november-8-major-fireball-meteor",
+      "published_at": "2026-11-08T15:26:38+00:00",
+      "url": "https://www.nasa.gov/news-release/nasa-announces-1-million-to-students-for-moon-base-challenge",
       "source_role": "第一手航太科研機構",
       "evidence_kind": "航太與技術機構公開消息標題元資料",
       "evidence_level": "M0",
@@ -226,7 +226,7 @@
         "相關成果有無獨立測試或第三方研究？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "c6e293f4fab170682bd1b906",
+      "fingerprint": "3a3693b98eea780e7e33650c",
       "author_abstract": null,
       "metadata_read": false,
       "primary_source_kind": null,
