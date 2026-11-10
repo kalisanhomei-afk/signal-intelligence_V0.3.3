@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.1",
-    "generated_at": "2026-11-09T13:41:49+00:00",
+    "generated_at": "2026-11-10T01:32:24+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "status": "metadata_gap_audit_only",
     "candidate_count": 12,
@@ -107,13 +107,13 @@
       "fingerprint": "0c3e581145b6fa39bee4e812"
     },
     {
-      "id": "rss-c7888dc7b0c45dade665ff",
+      "id": "rss-7aa3dcd2fde7ac25badf67",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Speech by Commissioner Kos at the first High-Level Connectivity Platform Meeting on Digital",
+      "title": "Speech by Commissioner Kos at the Plenary Session of the Parliament of the Republic of Moldova",
       "category": "政治",
-      "published_at": "2026-11-09T12:56:19+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2380",
+      "published_at": "2026-11-09T14:35:48+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2383",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -129,7 +129,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "326448bff8b77b124a0a1425"
+      "fingerprint": "802de9d51eeba5e9e5efd7f5"
     },
     {
       "id": "rss-a0c3e1be77e8b5a27f797a",
@@ -182,13 +182,13 @@
       "fingerprint": "0eeb21c7048aec50268109b6"
     },
     {
-      "id": "rss-ff7d4fc2e22cc37906ac8b",
+      "id": "rss-8a918517c6245020c27c12",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
-      "title": "CHAPEA Mission 2 Crew Reflects After 378 Days on Simulated Mars",
+      "title": "Rubies on Mars?",
       "category": "科技",
-      "published_at": "2026-11-09T11:00:00+00:00",
-      "url": "https://www.nasa.gov/centers-and-facilities/johnson/chapea-mission-2-crew-reflects-after-378-days-on-simulated-mars",
+      "published_at": "2026-11-09T22:27:12+00:00",
+      "url": "https://science.nasa.gov/blog/rubies-on-mars",
       "source_role": "第一手航太科研機構",
       "evidence_kind": "航太與技術機構公開消息標題元資料",
       "evidence_level": "M0",
@@ -204,7 +204,7 @@
         "相關成果有無獨立測試或第三方研究？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "806b802decc10f2b0fc3c340"
+      "fingerprint": "9e73303d8dcf5433f958c29f"
     },
     {
       "id": "rss-f0fc1ec2b15269c6aefab2",
@@ -282,13 +282,13 @@
       "fingerprint": "425927564e4b105f079bf476"
     },
     {
-      "id": "rss-d1fd3118604a1efc0a916c",
+      "id": "rss-0272f3ef499c4203c1d74e",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Daily News 09 / 11 / 2026",
+      "title": "Remarks by Commissioner Dombrovskis at the ECOFIN press conference",
       "category": "政治",
-      "published_at": "2026-11-09T10:50:56+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/mex_26_2378",
+      "published_at": "2026-11-09T13:35:40+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2382",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -304,7 +304,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "1762218b803a7b54006bedb1"
+      "fingerprint": "ebf982958320b780cdf62ea9"
     },
     {
       "id": "rss-ca688a27006cdc18bac09f",
