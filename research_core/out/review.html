@@ -1,0 +1,42 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SIGNAL K1｜共同研究核心離線驗收</title>
+    <style>
+    :root{--bg:#0d1118;--panel:#151b23;--line:#3b3a2d;--gold:#dcc180;--text:#f1eee5;--muted:#b3bdc7;--success:#8bd3b1}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:'Microsoft JhengHei',system-ui,sans-serif;line-height:1.7}
+    .wrap{max-width:1120px;margin:auto;padding:36px 22px 70px}.kicker{color:var(--gold);font-weight:700;letter-spacing:3px;font-size:12px}h1{margin:8px 0 10px;font-size:clamp(30px,4vw,48px);line-height:1.2}h2{font-size:21px;color:var(--gold);margin:0 0 16px}h3{margin:0 0 10px;color:var(--gold)}p{margin:10px 0}.muted,.subtle{color:var(--muted)}.lede{max-width:810px;color:#d7dee6;font-size:16px}.note{margin:26px 0;padding:15px 20px;background:#33291a;border:1px solid #9d824c;border-radius:10px;color:#ffe5ac}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0 24px}.card,section{background:var(--panel);border:1px solid var(--line);border-radius:14px}.card{padding:18px}.label{font-size:13px;color:var(--muted)}.big{font-size:29px;font-weight:800;color:var(--success);margin:5px 0}.card p{font-size:12px;color:var(--muted)}section{padding:25px;margin:19px 0}code{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:#e9cd8a;overflow-wrap:anywhere}table{width:100%;border-collapse:collapse;min-width:610px;font-size:13px}th{color:var(--gold);text-align:left;border-bottom:1px solid #6b5a39;padding:10px 8px}td{padding:11px 8px;border-bottom:1px solid #303741}.val{font-weight:800;color:#fff;text-align:right}.scroll{overflow-x:auto}.tag{padding:2px 8px;background:#203b31;color:#a1dec3;border-radius:4px}.timeline{display:flex;gap:16px}.timeline>div{flex:1;padding:15px;border-left:3px solid var(--gold);background:#1b232d;border-radius:4px}.timeline span{display:block;color:var(--muted);font-size:12px}.split{display:grid;grid-template-columns:1fr 1fr;gap:23px}footer{color:var(--muted);font-size:12px;margin-top:27px}@media(max-width:780px){.grid{grid-template-columns:1fr 1fr}.timeline,.split{display:block}.timeline>div{margin-bottom:12px}section{padding:18px}}@media(max-width:450px){.grid{grid-template-columns:1fr 1fr;gap:8px}.card{padding:12px}.big{font-size:23px}}
+    </style></head><body><main class="wrap"><div class="kicker">視界 SIGNAL / RESEARCH CORE / K1</div><h1>先讓資料能夠<br>被正確地用於預測</h1><p class="lede">雙引擎共同研究核心第一道驗收：來源、版本、時點、單位與存量流量一致性。所有數值均為合成示例。</p>
+    <div class="note"><strong>完全合成的工程測試資料</strong>　不是 USDA 官方觀測值、不是市場報價、不是投資預測或建議。</div>
+    <div class="grid">
+        <div class="card"><div class="label">K1 驗收狀態</div><div class="big">PASS</div><p>7 / 7 項合成反例／會計檢查</p></div>
+        <div class="card"><div class="label">資料版本</div><div class="big">2</div><p>原始版本與後續修訂均保留</p></div>
+        <div class="card"><div class="label">預測前可用資料</div><div class="big">6</div><p>v1；沒有使用 v2 未來修訂值</p></div>
+        <div class="card"><div class="label">期末庫存一致性</div><div class="big">PASS</div><p>輸入期末值 1625 百萬蒲式耳</p></div>
+    </div>
+    <section><h2>01｜時點重播：資料不是永遠只有最新版</h2>
+      <p>模擬研究截止時間：<code>2026-01-12T10:00:00-05:00</code>。截至該時點，僅 v1 可用。後續的 <code>v2</code> 必須留在資料庫，但不能回寫到當時的研究結果。</p>
+      <div class="timeline"><div><b>v1｜首次模擬公開</b><span>2026-01-10</span><p>產量 <strong>15,000</strong>、期末庫存 <strong>1,625</strong>（百萬蒲式耳）</p></div>
+      <div><b>v2｜後續合成修訂</b><span>2026-01-15</span><p>產量 <strong>14,900</strong>、期末庫存 <strong>1,525</strong>（百萬蒲式耳）</p></div></div>
+      <p class="subtle">此為完全虛構示例；用來證明後續修訂不會污染較早日期的模型輸入。</p>
+    </section>
+    <section><h2>02｜研究時點的乾淨輸入</h2>
+      <div class="scroll"><table><thead><tr><th>變數</th><th>值</th><th>單位</th><th>版本</th><th>公開時間</th></tr></thead><tbody><tr><td><code>beginning_stocks</code></td><td class='val'>1700</td><td>million_bushels</td><td><code>v1</code></td><td>2026-01-10T09:00:00-05:00</td></tr>
+<tr><td><code>domestic_use</code></td><td class='val'>12300</td><td>million_bushels</td><td><code>v1</code></td><td>2026-01-10T09:00:00-05:00</td></tr>
+<tr><td><code>ending_stocks</code></td><td class='val'>1625</td><td>million_bushels</td><td><code>v1</code></td><td>2026-01-10T09:00:00-05:00</td></tr>
+<tr><td><code>exports</code></td><td class='val'>2800</td><td>million_bushels</td><td><code>v1</code></td><td>2026-01-10T09:00:00-05:00</td></tr>
+<tr><td><code>imports</code></td><td class='val'>25</td><td>million_bushels</td><td><code>v1</code></td><td>2026-01-10T09:00:00-05:00</td></tr>
+<tr><td><code>production</code></td><td class='val'>15000</td><td>million_bushels</td><td><code>v1</code></td><td>2026-01-10T09:00:00-05:00</td></tr></tbody></table></div>
+      <p>會計檢查：期初庫存 + 產量 + 進口 − 國內使用 − 出口 = <strong>1625</strong>（百萬蒲式耳）。資料表示期末庫存為 <strong>1625</strong>。差額 <strong>0</strong>。</p>
+      <p class="subtle">同一版本、同一期間、同一國家與商品、同一統計口徑，才可放進這張表。K1 沒有預測未來價格。</p>
+    </section>
+    <section><h2>03｜故意錯誤案例與攔截結果</h2>
+      <div class="scroll"><table><thead><tr><th>案例</th><th>預期</th><th>實際</th><th>程式代碼</th><th>檢驗</th></tr></thead><tbody><tr><td>future_data_leakage</td><td>REJECT</td><td><span class='tag'>REJECT</span></td><td><code>FUTURE_DATA</code></td><td>通過</td></tr>
+<tr><td>revision_cannot_overwrite</td><td>REJECT</td><td><span class='tag'>REJECT</span></td><td><code>IMMUTABLE_VINTAGE</code></td><td>通過</td></tr>
+<tr><td>monthly_data_cannot_replace_marketing_year</td><td>REJECT</td><td><span class='tag'>REJECT</span></td><td><code>PERIOD_MISMATCH</code></td><td>通過</td></tr>
+<tr><td>bushels_cannot_become_tonnes</td><td>REJECT</td><td><span class='tag'>REJECT</span></td><td><code>UNIT_MISMATCH</code></td><td>通過</td></tr>
+<tr><td>price_change_does_not_prove_production_cause</td><td>REJECT</td><td><span class='tag'>REJECT</span></td><td><code>CAUSAL_OVERCLAIM</code></td><td>通過</td></tr>
+<tr><td>source_vintage_mismatch</td><td>REJECT</td><td><span class='tag'>REJECT</span></td><td><code>VINTAGE_MISMATCH</code></td><td>通過</td></tr>
+<tr><td>unbalanced_inventory_flagged_not_corrected</td><td>FLAG</td><td><span class='tag'>FLAG</span></td><td><code>BALANCE_DISCREPANCY</code></td><td>通過</td></tr></tbody></table></div>
+    </section>
+    <section><h2>04｜已完成／尚未完成</h2>
+      <div class="split"><div><h3>已完成 K1</h3><p>來源快照雜湊、不可覆寫版本、時點限制、單位規範、供需平衡、因果推論狀態約束、可重播的離線測試。</p></div>
+      <div><h3>尚未完成 K2/K3</h3><p>事件引擎、主動推演預測、真實 USDA 資料接入、與市場預期比較、期貨報價、資產配置／投資績效。</p></div></div>
+    </section><footer>SIGNAL K1 offline / Synthetic fixture only / No AI API / No market price / No live trading / No main deployment</footer></main></body></html>

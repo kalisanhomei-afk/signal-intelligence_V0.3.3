@@ -1,0 +1,66 @@
+{
+  "all_passed": true,
+  "case_count": 7,
+  "cases": [
+    {
+      "case": "future_data_leakage",
+      "code": "FUTURE_DATA",
+      "detail": "SYN-v2-beginning_stocks was not public at 2026-01-12T10:00:00-05:00",
+      "expectation": "REJECT",
+      "observed": "REJECT",
+      "passed": true
+    },
+    {
+      "case": "revision_cannot_overwrite",
+      "code": "IMMUTABLE_VINTAGE",
+      "detail": "observation already exists: SYN-v1-beginning_stocks",
+      "expectation": "REJECT",
+      "observed": "REJECT",
+      "passed": true
+    },
+    {
+      "case": "monthly_data_cannot_replace_marketing_year",
+      "code": "PERIOD_MISMATCH",
+      "detail": "components have inconsistent period",
+      "expectation": "REJECT",
+      "observed": "REJECT",
+      "passed": true
+    },
+    {
+      "case": "bushels_cannot_become_tonnes",
+      "code": "UNIT_MISMATCH",
+      "detail": "components have inconsistent unit",
+      "expectation": "REJECT",
+      "observed": "REJECT",
+      "passed": true
+    },
+    {
+      "case": "price_change_does_not_prove_production_cause",
+      "code": "CAUSAL_OVERCLAIM",
+      "detail": "K1 events cannot certify a reverse causal explanation",
+      "expectation": "REJECT",
+      "observed": "REJECT",
+      "passed": true
+    },
+    {
+      "case": "source_vintage_mismatch",
+      "code": "VINTAGE_MISMATCH",
+      "detail": "SYN-v1-beginning_stocks mismatches source vintage",
+      "expectation": "REJECT",
+      "observed": "REJECT",
+      "passed": true
+    },
+    {
+      "case": "unbalanced_inventory_flagged_not_corrected",
+      "code": "BALANCE_DISCREPANCY",
+      "detail": "reported=1700; calculated=1625",
+      "expectation": "FLAG",
+      "observed": "FLAG",
+      "passed": true
+    }
+  ],
+  "data_type": "SYNTHETIC_ONLY_NOT_USDA",
+  "no_api_calls": true,
+  "passed_cases": 7,
+  "test_mode": "synthetic_contract_negative_cases"
+}
