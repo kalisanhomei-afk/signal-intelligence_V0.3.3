@@ -1,0 +1,40 @@
+name: SIGNAL K3.2 corn stock-flow audit (manual, offline-by-default)
+on:
+  workflow_dispatch:
+    inputs:
+      official_historical_csv_url:
+        description: 'Optional STRICT USDA archived CSV URL; leave empty for offline audit'
+        required: false
+        default: ''
+permissions:
+  contents: read
+jobs:
+  k32-research-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout selected branch
+        uses: actions/checkout@v4
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run deterministic tests (not dependent on network)
+        run: python -m unittest discover -s research_core/k3_2/tests -v
+      - name: Optional one-time official USDA historical CSV intake
+        if: ${{ inputs.official_historical_csv_url != '' }}
+        env:
+          USDA_CSV_URL: ${{ inputs.official_historical_csv_url }}
+        run: |
+          python research_core/k3_2/historical_import.py \
+            --download-url "$USDA_CSV_URL" \
+            --output research_core/k3_2/inputs/historical_vintages.csv \
+            --audit k32-review/historical_intake_audit.json \
+            --raw-output k32-review/official_historical_raw.csv
+      - name: Reconcile official report and K3.1 samples; no model trained
+        run: python research_core/k3_2/pipeline.py --output k32-review
+      - name: Upload private review artifact (not Pages)
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k32-balance-audit
+          path: k32-review/
+          if-no-files-found: error
