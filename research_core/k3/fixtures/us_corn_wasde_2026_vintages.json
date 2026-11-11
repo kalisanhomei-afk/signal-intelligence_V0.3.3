@@ -1,0 +1,55 @@
+{
+  "schema": "signal-k3-real-wasde-v1",
+  "scope": "US corn supply use, crop year 2026/27; each release new estimate",
+  "archive_retrieval_utc": "2026-11-11T06:08:33+00:00",
+  "sources": [
+    {
+      "release_date": "2026-07-10",
+      "published_at": "2026-07-10T12:00:00-04:00",
+      "retrieved_at": "2026-11-11T06:08:33+00:00",
+      "source_uri": "https://esmis.nal.usda.gov/sites/default/release-files/795974/wasde0726.txt",
+      "commodity": "CORN",
+      "geography": "US",
+      "marketing_year": "2026/27",
+      "source_unit": "Million Bushels (stock-flow); Acres/Yield as separately labeled",
+      "excerpt_kind": "MANUALLY_TRANSCRIBED_USDA_TXT_TABLE_ROWS_NOT_FULL_ORIGINAL_FILE",
+      "excerpt": "U.S. Feed Grain and Corn Supply and Use\n2024/25  2025/26 Est.  2026/27 Proj.  2026/27 Proj.\nCORN\nMillion Acres / Bushels / Million Bushels (per original table)\nArea Harvested                 83.0 91.3 87.4* 87.4*\nYield per Harvested Acre       179.3 186.5 183.0* 183.0*\nBeginning Stocks               1763 1551 2145 2020\nProduction                     14892 17021 15995 16000\nImports                        22 28 25 25\nSupply, Total                  16677 18600 18165 18045\nDomestic, Total                12253 13255 13055 13055\nExports                        2873 3325 3150 3200\nUse, Total                     15126 16580 16205 16255\nEnding Stocks                  1551 2020 1960 1790"
+    },
+    {
+      "release_date": "2026-08-12",
+      "published_at": "2026-08-12T12:00:00-04:00",
+      "retrieved_at": "2026-11-11T06:08:33+00:00",
+      "source_uri": "https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt",
+      "commodity": "CORN",
+      "geography": "US",
+      "marketing_year": "2026/27",
+      "source_unit": "Million Bushels (stock-flow); Acres/Yield as separately labeled",
+      "excerpt_kind": "MANUALLY_TRANSCRIBED_USDA_TXT_TABLE_ROWS_NOT_FULL_ORIGINAL_FILE",
+      "excerpt": "U.S. Feed Grain and Corn Supply and Use\n2024/25  2025/26 Est.  2026/27 Proj.  2026/27 Proj.\nCORN\nMillion Acres / Bushels / Million Bushels (per original table)\nArea Harvested                 83.0 91.3 87.4* 88.6\nYield per Harvested Acre       179.3 186.5 183.0* 180.7\nBeginning Stocks               1763 1551 2020 1945\nProduction                     14892 17021 16000 16013\nImports                        22 28 25 25\nSupply, Total                  16677 18600 18045 17983\nDomestic, Total                12253 13255 13055 13055\nExports                        2873 3400 3200 3275\nUse, Total                     15126 16655 16255 16330\nEnding Stocks                  1551 1945 1790 1653"
+    },
+    {
+      "release_date": "2026-09-11",
+      "published_at": "2026-09-11T12:00:00-04:00",
+      "retrieved_at": "2026-11-11T06:08:33+00:00",
+      "source_uri": "https://esmis.nal.usda.gov/sites/default/release-files/796054/wasde0926.txt",
+      "commodity": "CORN",
+      "geography": "US",
+      "marketing_year": "2026/27",
+      "source_unit": "Million Bushels (stock-flow); Acres/Yield as separately labeled",
+      "excerpt_kind": "MANUALLY_TRANSCRIBED_USDA_TXT_TABLE_ROWS_NOT_FULL_ORIGINAL_FILE",
+      "excerpt": "U.S. Feed Grain and Corn Supply and Use\n2024/25  2025/26 Est.  2026/27 Proj.  2026/27 Proj.\nCORN\nMillion Acres / Bushels / Million Bushels (per original table)\nArea Harvested                 83.0 91.3 88.6 88.5\nYield per Harvested Acre       179.3 186.5 180.7 178.5\nBeginning Stocks               1763 1551 1945 1922\nProduction                     14892 17021 16013 15800\nImports                        22 30 25 25\nSupply, Total                  16677 18602 17983 17747\nDomestic, Total                12253 13255 13055 12905\nExports                        2873 3425 3275 3275\nUse, Total                     15126 16680 16330 16180\nEnding Stocks                  1551 1922 1653 1567"
+    },
+    {
+      "release_date": "2026-10-09",
+      "published_at": "2026-10-09T12:00:00-04:00",
+      "retrieved_at": "2026-11-11T06:08:33+00:00",
+      "source_uri": "https://esmis.nal.usda.gov/sites/default/release-files/796099/wasde1026.txt",
+      "commodity": "CORN",
+      "geography": "US",
+      "marketing_year": "2026/27",
+      "source_unit": "Million Bushels (stock-flow); Acres/Yield as separately labeled",
+      "excerpt_kind": "MANUALLY_TRANSCRIBED_USDA_TXT_TABLE_ROWS_NOT_FULL_ORIGINAL_FILE",
+      "excerpt": "U.S. Feed Grain and Corn Supply and Use\n2024/25  2025/26 Est.  2026/27 Proj.  2026/27 Proj.\nCORN\nMillion Acres / Bushels / Million Bushels (per original table)\nArea Harvested                 83.0 90.9 88.5 88.5\nYield per Harvested Acre       179.3 186.5 178.5 181.2\nBeginning Stocks               1763 1551 1922 2095\nProduction                     14892 16964 15800 16034\nImports                        22 31 25 25\nSupply, Total                  16677 18546 17747 18154\nDomestic, Total                12253 13022 12905 13005\nExports                        2873 3429 3275 3300\nUse, Total                     15126 16451 16180 16305\nEnding Stocks                  1551 2095 1567 1849"
+    }
+  ]
+}

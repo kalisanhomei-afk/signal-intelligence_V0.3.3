@@ -1,0 +1,176 @@
+{
+  "schema_version": "signal-k3-official-vintage-replay-v1",
+  "data_provenance": "USDA ESMIS public release TXT; manual row transcription",
+  "release_states": [
+    {
+      "as_of": "2026-07-10T12:00:00-04:00",
+      "policy": "public_replay",
+      "publication": "2026-07-10T12:00:00-04:00",
+      "vintage": "USDA_WASDE_2026-07-10",
+      "market_year": "MY2026/27",
+      "scope": "US_CORN_WASDE_MY2026_27",
+      "unit": "million_bushels",
+      "values": {
+        "beginning_stocks": "2020",
+        "production": "16000",
+        "imports": "25",
+        "domestic_use": "13055",
+        "exports": "3200",
+        "ending_stocks": "1790"
+      },
+      "source_uri": "https://esmis.nal.usda.gov/sites/default/release-files/795974/wasde0726.txt"
+    },
+    {
+      "as_of": "2026-08-12T12:00:00-04:00",
+      "policy": "public_replay",
+      "publication": "2026-08-12T12:00:00-04:00",
+      "vintage": "USDA_WASDE_2026-08-12",
+      "market_year": "MY2026/27",
+      "scope": "US_CORN_WASDE_MY2026_27",
+      "unit": "million_bushels",
+      "values": {
+        "beginning_stocks": "1945",
+        "production": "16013",
+        "imports": "25",
+        "domestic_use": "13055",
+        "exports": "3275",
+        "ending_stocks": "1653"
+      },
+      "source_uri": "https://esmis.nal.usda.gov/sites/default/release-files/796014/wasde0826.txt"
+    },
+    {
+      "as_of": "2026-09-11T12:00:00-04:00",
+      "policy": "public_replay",
+      "publication": "2026-09-11T12:00:00-04:00",
+      "vintage": "USDA_WASDE_2026-09-11",
+      "market_year": "MY2026/27",
+      "scope": "US_CORN_WASDE_MY2026_27",
+      "unit": "million_bushels",
+      "values": {
+        "beginning_stocks": "1922",
+        "production": "15800",
+        "imports": "25",
+        "domestic_use": "12905",
+        "exports": "3275",
+        "ending_stocks": "1567"
+      },
+      "source_uri": "https://esmis.nal.usda.gov/sites/default/release-files/796054/wasde0926.txt"
+    },
+    {
+      "as_of": "2026-10-09T12:00:00-04:00",
+      "policy": "public_replay",
+      "publication": "2026-10-09T12:00:00-04:00",
+      "vintage": "USDA_WASDE_2026-10-09",
+      "market_year": "MY2026/27",
+      "scope": "US_CORN_WASDE_MY2026_27",
+      "unit": "million_bushels",
+      "values": {
+        "beginning_stocks": "2095",
+        "production": "16034",
+        "imports": "25",
+        "domestic_use": "13005",
+        "exports": "3300",
+        "ending_stocks": "1849"
+      },
+      "source_uri": "https://esmis.nal.usda.gov/sites/default/release-files/796099/wasde1026.txt"
+    }
+  ],
+  "revisions": [
+    {
+      "old_release": "2026-07-10T12:00:00-04:00",
+      "new_release": "2026-08-12T12:00:00-04:00",
+      "old_ending_stocks": "1790",
+      "new_ending_stocks": "1653",
+      "stock_revision": "-137",
+      "accounting_contributions": {
+        "beginning_stocks": "-75",
+        "production": "13",
+        "imports": "0",
+        "domestic_use": "-0",
+        "exports": "-75"
+      },
+      "causal_identification": false,
+      "interpretation": "Observed forecast REVISION decomposition, not attribution of biological/economic cause."
+    },
+    {
+      "old_release": "2026-08-12T12:00:00-04:00",
+      "new_release": "2026-09-11T12:00:00-04:00",
+      "old_ending_stocks": "1653",
+      "new_ending_stocks": "1567",
+      "stock_revision": "-86",
+      "accounting_contributions": {
+        "beginning_stocks": "-23",
+        "production": "-213",
+        "imports": "0",
+        "domestic_use": "150",
+        "exports": "-0"
+      },
+      "causal_identification": false,
+      "interpretation": "Observed forecast REVISION decomposition, not attribution of biological/economic cause."
+    },
+    {
+      "old_release": "2026-09-11T12:00:00-04:00",
+      "new_release": "2026-10-09T12:00:00-04:00",
+      "old_ending_stocks": "1567",
+      "new_ending_stocks": "1849",
+      "stock_revision": "282",
+      "accounting_contributions": {
+        "beginning_stocks": "173",
+        "production": "234",
+        "imports": "0",
+        "domestic_use": "-100",
+        "exports": "-25"
+      },
+      "causal_identification": false,
+      "interpretation": "Observed forecast REVISION decomposition, not attribution of biological/economic cause."
+    }
+  ],
+  "benchmark": {
+    "baseline": "PERSISTENCE_BENCHMARK",
+    "data_type": "USDA_ARCHIVE_OFFICIAL_ESTIMATES",
+    "replay_policy": "RETROSPECTIVE_PUBLIC_AVAILABILITY_NOT_ACTUAL_SYSTEM_HISTORY",
+    "sample_count": 3,
+    "mae_million_bushels": "168.3333333333333333333333333",
+    "forecasts": [
+      {
+        "frozen_as_of": "2026-07-10T12:00:00-04:00",
+        "model": "PERSISTENCE_BENCHMARK",
+        "target_release": "2026-08-12T12:00:00-04:00",
+        "target_description": "next USDA WASDE 2026/27 US corn ending-stocks ESTIMATE, not realized actual stocks",
+        "predicted": "1790",
+        "next_official_estimate": "1653",
+        "error_actual_minus_predicted": "-137",
+        "verified_realized_inventory": false,
+        "is_investment_signal": false
+      },
+      {
+        "frozen_as_of": "2026-08-12T12:00:00-04:00",
+        "model": "PERSISTENCE_BENCHMARK",
+        "target_release": "2026-09-11T12:00:00-04:00",
+        "target_description": "next USDA WASDE 2026/27 US corn ending-stocks ESTIMATE, not realized actual stocks",
+        "predicted": "1653",
+        "next_official_estimate": "1567",
+        "error_actual_minus_predicted": "-86",
+        "verified_realized_inventory": false,
+        "is_investment_signal": false
+      },
+      {
+        "frozen_as_of": "2026-09-11T12:00:00-04:00",
+        "model": "PERSISTENCE_BENCHMARK",
+        "target_release": "2026-10-09T12:00:00-04:00",
+        "target_description": "next USDA WASDE 2026/27 US corn ending-stocks ESTIMATE, not realized actual stocks",
+        "predicted": "1567",
+        "next_official_estimate": "1849",
+        "error_actual_minus_predicted": "282",
+        "verified_realized_inventory": false,
+        "is_investment_signal": false
+      }
+    ],
+    "model_has_outperformance_evidence": false,
+    "caveat": "Only tests revisions of USDA estimates in a single crop year; not end-of-year realized stocks, futures prices, or tradable profit."
+  },
+  "independently_verified_claims": 0,
+  "investment_signal": false,
+  "forecast_skill_established": false,
+  "publication_allowed": false
+}
