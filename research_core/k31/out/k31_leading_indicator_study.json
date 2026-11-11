@@ -1,0 +1,142 @@
+{
+  "schema_version": "signal-k31-leading-indicator-study-v1",
+  "all_lead_observations": [
+    {
+      "source_date": "2026-07-06",
+      "week_ending": "2026-07-05",
+      "available_at_proxy_utc": "2026-07-07T12:00:00+00:00",
+      "good_excellent_pct": 67,
+      "source_uri": "https://esmis.nal.usda.gov/sites/default/release-files/795970/prog2726.txt"
+    },
+    {
+      "source_date": "2026-08-10",
+      "week_ending": "2026-08-09",
+      "available_at_proxy_utc": "2026-08-11T12:00:00+00:00",
+      "good_excellent_pct": 61,
+      "source_uri": "https://esmis.nal.usda.gov/sites/default/release-files/796012/prog3226.txt"
+    },
+    {
+      "source_date": "2026-09-08",
+      "week_ending": "2026-09-06",
+      "available_at_proxy_utc": "2026-09-09T12:00:00+00:00",
+      "good_excellent_pct": 56,
+      "source_uri": "https://esmis.nal.usda.gov/sites/default/release-files/796051/prog3626.txt"
+    },
+    {
+      "source_date": "2026-10-05",
+      "week_ending": "2026-10-04",
+      "available_at_proxy_utc": "2026-10-06T12:00:00+00:00",
+      "good_excellent_pct": 54,
+      "source_uri": "https://esmis.nal.usda.gov/sites/default/release-files/796095/prog4026.txt"
+    }
+  ],
+  "latest_unscored_origin": {
+    "as_of": "2026-10-09T12:00:00-04:00",
+    "source_date": "2026-10-05",
+    "last_good_excellent_pct": 54,
+    "selected_edition_delta_pp": -2,
+    "hypothesis_direction": "DOWN",
+    "evaluation_status": "NOT_SCORED_NEXT_WASDE_NOT_IN_FROZEN_K3_DATASET"
+  },
+  "mode": "RETROSPECTIVE_PUBLIC_RELEASE_REPLAY_NOT_HISTORICAL_SYSTEM_COLLECTION",
+  "feature_scope": "NASS corn good+excellent, 18 selected states",
+  "forecast_target": "next WASDE estimate of 2026/27 US corn yield (NOT realized yield)",
+  "strategy": "sign of change between the two selected NASS condition release editions",
+  "no_parameter_fitting": true,
+  "trials": [
+    {
+      "forecast_origin": "2026-07-10T12:00:00-04:00",
+      "target_release": "2026-08-12T12:00:00-04:00",
+      "source_edition_dates": [
+        "2026-07-06"
+      ],
+      "source_urls": [
+        "https://esmis.nal.usda.gov/sites/default/release-files/795970/prog2726.txt"
+      ],
+      "signal_good_excellent_pct": 67,
+      "signal_selected_edition_change_pp": null,
+      "mechanical_hypothesis_next_yield_revision": "ABSTAIN_INSUFFICIENT_PRIOR_SIGNAL",
+      "current_wasde_yield_bushels_per_acre": "183.0",
+      "next_wasde_yield_estimate_bushels_per_acre": "180.7",
+      "official_yield_revision_bushels_per_acre": "-2.3",
+      "official_yield_revision_direction": "DOWN",
+      "direction_correct_if_testable": null,
+      "persistence_abs_error_bu_per_acre": "2.3",
+      "not_a_trained_price_model": true,
+      "not_a_realized_yield": true
+    },
+    {
+      "forecast_origin": "2026-08-12T12:00:00-04:00",
+      "target_release": "2026-09-11T12:00:00-04:00",
+      "source_edition_dates": [
+        "2026-07-06",
+        "2026-08-10"
+      ],
+      "source_urls": [
+        "https://esmis.nal.usda.gov/sites/default/release-files/795970/prog2726.txt",
+        "https://esmis.nal.usda.gov/sites/default/release-files/796012/prog3226.txt"
+      ],
+      "signal_good_excellent_pct": 61,
+      "signal_selected_edition_change_pp": -6,
+      "mechanical_hypothesis_next_yield_revision": "DOWN",
+      "current_wasde_yield_bushels_per_acre": "180.7",
+      "next_wasde_yield_estimate_bushels_per_acre": "178.5",
+      "official_yield_revision_bushels_per_acre": "-2.2",
+      "official_yield_revision_direction": "DOWN",
+      "direction_correct_if_testable": true,
+      "persistence_abs_error_bu_per_acre": "2.2",
+      "not_a_trained_price_model": true,
+      "not_a_realized_yield": true
+    },
+    {
+      "forecast_origin": "2026-09-11T12:00:00-04:00",
+      "target_release": "2026-10-09T12:00:00-04:00",
+      "source_edition_dates": [
+        "2026-08-10",
+        "2026-09-08"
+      ],
+      "source_urls": [
+        "https://esmis.nal.usda.gov/sites/default/release-files/796012/prog3226.txt",
+        "https://esmis.nal.usda.gov/sites/default/release-files/796051/prog3626.txt"
+      ],
+      "signal_good_excellent_pct": 56,
+      "signal_selected_edition_change_pp": -5,
+      "mechanical_hypothesis_next_yield_revision": "DOWN",
+      "current_wasde_yield_bushels_per_acre": "178.5",
+      "next_wasde_yield_estimate_bushels_per_acre": "181.2",
+      "official_yield_revision_bushels_per_acre": "2.7",
+      "official_yield_revision_direction": "UP",
+      "direction_correct_if_testable": false,
+      "persistence_abs_error_bu_per_acre": "2.7",
+      "not_a_trained_price_model": true,
+      "not_a_realized_yield": true
+    }
+  ],
+  "comparison": {
+    "target_count": 3,
+    "direction_tested_count": 2,
+    "direction_correct_count": 1,
+    "baseline": "PERSISTENCE_OF_CURRENT_WASDE_YIELD_ESTIMATE",
+    "baseline_mae_bu_per_acre": "2.4",
+    "forecast_skill_established": false,
+    "price_forecast_established": false,
+    "model_outperforms_baseline": null,
+    "why_not_comparable": "Direction-only hypothesis has no numerical yield estimate; it cannot be judged by MAE against a numerical persistence forecast."
+  },
+  "provenance": {
+    "lead": "USDA NASS weekly Crop Progress ESMIS manual condition-row transcription",
+    "target": "K3 USDA WASDE ESMIS manually transcribed contemporaneous estimates",
+    "cutoff_policy": "Conservative next-day 12:00 UTC availability PROXY; NOT exact historical release hour",
+    "weekly_sample_policy": "Selected editions only, NOT consecutive weekly change",
+    "replay": "RETROSPECTIVE public availability; NOT SIGNAL recorded historical acquisition"
+  },
+  "publication_allowed": false,
+  "trade_allowed": false,
+  "limitations": [
+    "Only one marketing year and two evaluated directional predictions: no validated predictive power.",
+    "18 selected states represent prior-year 91% planted acres, not nationwide census.",
+    "Corn condition is not equivalent to the USDA yield forecast and may have seasonality.",
+    "Later WASDE estimate is a revised forecast, not realized harvest and not futures price.",
+    "No market-consensus, CME price, timing, cost, or investable performance analysis."
+  ]
+}
