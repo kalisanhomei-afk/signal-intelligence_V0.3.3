@@ -1,0 +1,17 @@
+{
+  "causal_validation": "NOT_ESTABLISHED",
+  "data_type": "SYNTHETIC_ONLY_NOT_USDA",
+  "evaluation_at": "2026-01-16T12:00:00-05:00",
+  "investment_signal": false,
+  "next_research": [
+    "Collect actual vintage-stamped crop-yield and harvested-area observations at each prediction cutoff",
+    "Distinguish official forecast revisions from harvest realizations and market expectations",
+    "Use many strictly out-of-sample periods before claiming forecast skill"
+  ],
+  "observed_revision_delta": "-100",
+  "predictive_edge": "NOT_TESTED_SINGLE_SYNTHETIC_CASE",
+  "revision_delta_residual_observed_minus_scenario": "-20",
+  "scenario_delta": "-80",
+  "scenario_frozen_as_of": "2026-01-11T12:00:00-05:00",
+  "scenario_id": "K2-S1-production-minus-80"
+}

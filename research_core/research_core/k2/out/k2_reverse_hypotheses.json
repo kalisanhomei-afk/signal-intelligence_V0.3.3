@@ -1,0 +1,138 @@
+{
+  "after_as_of_state": {
+    "as_of": "2026-01-16T12:00:00-05:00",
+    "commodity": "corn",
+    "ending_stocks": "1525",
+    "frequency": "marketing_year",
+    "geography": "US",
+    "measurement_basis": "synthetic_US_corn_marketing_year_stockflow",
+    "observation_ids": {
+      "beginning_stocks": "SYN-v2-beginning_stocks",
+      "domestic_use": "SYN-v2-domestic_use",
+      "ending_stocks": "SYN-v2-ending_stocks",
+      "exports": "SYN-v2-exports",
+      "imports": "SYN-v2-imports",
+      "production": "SYN-v2-production"
+    },
+    "period": "MY2025/26",
+    "snapshot_ids": {
+      "beginning_stocks": "SYN-CORN-v2",
+      "domestic_use": "SYN-CORN-v2",
+      "ending_stocks": "SYN-CORN-v2",
+      "exports": "SYN-CORN-v2",
+      "imports": "SYN-CORN-v2",
+      "production": "SYN-CORN-v2"
+    },
+    "unit": "million_bushels",
+    "values": {
+      "beginning_stocks": "1700",
+      "domestic_use": "12300",
+      "ending_stocks": "1525",
+      "exports": "2800",
+      "imports": "25",
+      "production": "14900"
+    },
+    "vintage_id": "v2"
+  },
+  "data_type": "SYNTHETIC_ONLY_NOT_USDA",
+  "diagnostic": {
+    "accounting_contributors": [
+      {
+        "accounting_contribution_to_ending_stocks": "-100",
+        "change": "-100",
+        "current_observation_id": "SYN-v2-production",
+        "explanation_status": "OBSERVED_ACCOUNTING_CONTRIBUTION_NOT_CAUSAL_IDENTIFICATION",
+        "previous_observation_id": "SYN-v1-production",
+        "series_id": "production"
+      }
+    ],
+    "after_as_of": "2026-01-16T12:00:00-05:00",
+    "after_vintage": "v2",
+    "before_as_of": "2026-01-11T12:00:00-05:00",
+    "before_vintage": "v1",
+    "causality_confirmed": false,
+    "data_type": "SYNTHETIC_ONLY_NOT_USDA",
+    "diagnostic_mode": "REVISION_ACCOUNTING_NOT_CAUSAL_IDENTIFICATION",
+    "identity": "ending_stocks = beginning_stocks + production + imports - domestic_use - exports",
+    "k1_causal_hypotheses": [
+      {
+        "evidence_status": "hypothesis",
+        "from_variable": "yield_revision",
+        "identification_method": "",
+        "lag_description": "unknown; requires domain study",
+        "link_id": "K2-yield_revision",
+        "relation_type": "causal_hypothesis",
+        "schema_version": "1.0",
+        "scope": "synthetic US corn marketing-year fixture",
+        "supporting_evidence_ids": [],
+        "to_variable": "production"
+      },
+      {
+        "evidence_status": "hypothesis",
+        "from_variable": "area_revision",
+        "identification_method": "",
+        "lag_description": "unknown; requires domain study",
+        "link_id": "K2-area_revision",
+        "relation_type": "causal_hypothesis",
+        "schema_version": "1.0",
+        "scope": "synthetic US corn marketing-year fixture",
+        "supporting_evidence_ids": [],
+        "to_variable": "production"
+      },
+      {
+        "evidence_status": "hypothesis",
+        "from_variable": "method_revision",
+        "identification_method": "",
+        "lag_description": "unknown; requires domain study",
+        "link_id": "K2-method_revision",
+        "relation_type": "causal_hypothesis",
+        "schema_version": "1.0",
+        "scope": "synthetic US corn marketing-year fixture",
+        "supporting_evidence_ids": [],
+        "to_variable": "production"
+      }
+    ],
+    "k1_event_signal": {
+      "candidate_causes": [
+        "yield_revision",
+        "area_revision",
+        "method_revision"
+      ],
+      "causal_status": "unverified_candidates",
+      "detected_at": "2026-01-16T12:00:00-05:00",
+      "event_id": "K2-REVISION-v1-v2",
+      "event_type": "synthetic_stockflow_revision",
+      "observation_ids": [
+        "SYN-v2-ending_stocks"
+      ],
+      "schema_version": "1.0"
+    },
+    "observed_ending_stock_change": "-100",
+    "period": "MY2025/26",
+    "unit": "million_bushels",
+    "upstream_candidate_causes": [
+      {
+        "candidate_id": "yield_revision",
+        "proposed_mechanism": "單產預估調整使產量修訂",
+        "status": "UNTESTED_CANDIDATE",
+        "supporting_observation_ids": [],
+        "test_needed": "同一時點可得的單產預估、氣候及作物生長資料"
+      },
+      {
+        "candidate_id": "area_revision",
+        "proposed_mechanism": "面積修訂使產量預估改變",
+        "status": "UNTESTED_CANDIDATE",
+        "supporting_observation_ids": [],
+        "test_needed": "同一時點可得的種植與收穫面積修訂資料"
+      },
+      {
+        "candidate_id": "method_revision",
+        "proposed_mechanism": "統計或估計方法修訂",
+        "status": "UNTESTED_CANDIDATE",
+        "supporting_observation_ids": [],
+        "test_needed": "機構發布的修訂說明或方法學變動"
+      }
+    ],
+    "warning": "The stockflow identity explains how the bookkeeping changed, not why it changed. No causal reversal is proven."
+  }
+}

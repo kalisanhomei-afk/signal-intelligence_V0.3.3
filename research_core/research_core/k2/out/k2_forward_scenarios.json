@@ -1,0 +1,193 @@
+{
+  "as_of_state": {
+    "as_of": "2026-01-11T12:00:00-05:00",
+    "commodity": "corn",
+    "ending_stocks": "1625",
+    "frequency": "marketing_year",
+    "geography": "US",
+    "measurement_basis": "synthetic_US_corn_marketing_year_stockflow",
+    "observation_ids": {
+      "beginning_stocks": "SYN-v1-beginning_stocks",
+      "domestic_use": "SYN-v1-domestic_use",
+      "ending_stocks": "SYN-v1-ending_stocks",
+      "exports": "SYN-v1-exports",
+      "imports": "SYN-v1-imports",
+      "production": "SYN-v1-production"
+    },
+    "period": "MY2025/26",
+    "snapshot_ids": {
+      "beginning_stocks": "SYN-CORN-v1",
+      "domestic_use": "SYN-CORN-v1",
+      "ending_stocks": "SYN-CORN-v1",
+      "exports": "SYN-CORN-v1",
+      "imports": "SYN-CORN-v1",
+      "production": "SYN-CORN-v1"
+    },
+    "unit": "million_bushels",
+    "values": {
+      "beginning_stocks": "1700",
+      "domestic_use": "12300",
+      "ending_stocks": "1625",
+      "exports": "2800",
+      "imports": "25",
+      "production": "15000"
+    },
+    "vintage_id": "v1"
+  },
+  "data_type": "SYNTHETIC_ONLY_NOT_USDA",
+  "scenarios": [
+    {
+      "accounting_contributions": {
+        "beginning_stocks": "0",
+        "domestic_use": "-0",
+        "exports": "-0",
+        "imports": "0",
+        "production": "-80"
+      },
+      "as_of": "2026-01-11T12:00:00-05:00",
+      "base_components": {
+        "beginning_stocks": "1700",
+        "domestic_use": "12300",
+        "ending_stocks": "1625",
+        "exports": "2800",
+        "imports": "25",
+        "production": "15000"
+      },
+      "base_ending_stocks": "1625",
+      "base_observation_ids": {
+        "beginning_stocks": "SYN-v1-beginning_stocks",
+        "domestic_use": "SYN-v1-domestic_use",
+        "ending_stocks": "SYN-v1-ending_stocks",
+        "exports": "SYN-v1-exports",
+        "imports": "SYN-v1-imports",
+        "production": "SYN-v1-production"
+      },
+      "base_vintage": "v1",
+      "commodity": "corn",
+      "counterfactual_components": {
+        "beginning_stocks": "1700",
+        "domestic_use": "12300",
+        "exports": "2800",
+        "imports": "25",
+        "production": "14920"
+      },
+      "counterfactual_ending_stocks": "1545",
+      "data_type": "SYNTHETIC_ONLY_NOT_USDA",
+      "delta_ending_stocks": "-80",
+      "forecast_claim": false,
+      "identity": "ending_stocks = beginning_stocks + production + imports - domestic_use - exports",
+      "interpretation": "Accounting what-if only. The shock is user-declared; not an estimated real-world cause or investment signal.",
+      "period": "MY2025/26",
+      "probabilities_calibrated": false,
+      "rationale": "arbitrarily declared production shock; not statistical model",
+      "scenario_id": "K2-S1-production-minus-80",
+      "scenario_kind": "USER_DECLARED_SYNTHETIC_WHAT_IF",
+      "shocks": {
+        "production": "-80"
+      },
+      "unit": "million_bushels"
+    },
+    {
+      "accounting_contributions": {
+        "beginning_stocks": "0",
+        "domestic_use": "-100",
+        "exports": "-0",
+        "imports": "0",
+        "production": "0"
+      },
+      "as_of": "2026-01-11T12:00:00-05:00",
+      "base_components": {
+        "beginning_stocks": "1700",
+        "domestic_use": "12300",
+        "ending_stocks": "1625",
+        "exports": "2800",
+        "imports": "25",
+        "production": "15000"
+      },
+      "base_ending_stocks": "1625",
+      "base_observation_ids": {
+        "beginning_stocks": "SYN-v1-beginning_stocks",
+        "domestic_use": "SYN-v1-domestic_use",
+        "ending_stocks": "SYN-v1-ending_stocks",
+        "exports": "SYN-v1-exports",
+        "imports": "SYN-v1-imports",
+        "production": "SYN-v1-production"
+      },
+      "base_vintage": "v1",
+      "commodity": "corn",
+      "counterfactual_components": {
+        "beginning_stocks": "1700",
+        "domestic_use": "12400",
+        "exports": "2800",
+        "imports": "25",
+        "production": "15000"
+      },
+      "counterfactual_ending_stocks": "1525",
+      "data_type": "SYNTHETIC_ONLY_NOT_USDA",
+      "delta_ending_stocks": "-100",
+      "forecast_claim": false,
+      "identity": "ending_stocks = beginning_stocks + production + imports - domestic_use - exports",
+      "interpretation": "Accounting what-if only. The shock is user-declared; not an estimated real-world cause or investment signal.",
+      "period": "MY2025/26",
+      "probabilities_calibrated": false,
+      "rationale": "illustrative demand sensitivity; not predicted",
+      "scenario_id": "K2-S2-use-plus-100",
+      "scenario_kind": "USER_DECLARED_SYNTHETIC_WHAT_IF",
+      "shocks": {
+        "domestic_use": "100"
+      },
+      "unit": "million_bushels"
+    },
+    {
+      "accounting_contributions": {
+        "beginning_stocks": "0",
+        "domestic_use": "-0",
+        "exports": "-0",
+        "imports": "50",
+        "production": "0"
+      },
+      "as_of": "2026-01-11T12:00:00-05:00",
+      "base_components": {
+        "beginning_stocks": "1700",
+        "domestic_use": "12300",
+        "ending_stocks": "1625",
+        "exports": "2800",
+        "imports": "25",
+        "production": "15000"
+      },
+      "base_ending_stocks": "1625",
+      "base_observation_ids": {
+        "beginning_stocks": "SYN-v1-beginning_stocks",
+        "domestic_use": "SYN-v1-domestic_use",
+        "ending_stocks": "SYN-v1-ending_stocks",
+        "exports": "SYN-v1-exports",
+        "imports": "SYN-v1-imports",
+        "production": "SYN-v1-production"
+      },
+      "base_vintage": "v1",
+      "commodity": "corn",
+      "counterfactual_components": {
+        "beginning_stocks": "1700",
+        "domestic_use": "12300",
+        "exports": "2800",
+        "imports": "75",
+        "production": "15000"
+      },
+      "counterfactual_ending_stocks": "1675",
+      "data_type": "SYNTHETIC_ONLY_NOT_USDA",
+      "delta_ending_stocks": "50",
+      "forecast_claim": false,
+      "identity": "ending_stocks = beginning_stocks + production + imports - domestic_use - exports",
+      "interpretation": "Accounting what-if only. The shock is user-declared; not an estimated real-world cause or investment signal.",
+      "period": "MY2025/26",
+      "probabilities_calibrated": false,
+      "rationale": "illustrative trade sensitivity; not predicted",
+      "scenario_id": "K2-S3-imports-plus-50",
+      "scenario_kind": "USER_DECLARED_SYNTHETIC_WHAT_IF",
+      "shocks": {
+        "imports": "50"
+      },
+      "unit": "million_bushels"
+    }
+  ]
+}

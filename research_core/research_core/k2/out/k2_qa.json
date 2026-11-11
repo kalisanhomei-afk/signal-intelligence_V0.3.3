@@ -1,0 +1,21 @@
+{
+  "accounting_identity_verified": true,
+  "all_passed": true,
+  "api_calls": 0,
+  "causal_identification": false,
+  "criteria": {
+    "accounting_revision_equal": true,
+    "causality_unverified": true,
+    "later_vintage_visible_only_later": true,
+    "loop_residual_equal": true,
+    "no_future_data_in_early": true
+  },
+  "data_type": "SYNTHETIC_ONLY_NOT_USDA",
+  "forward_accounting_scenarios": 3,
+  "investment_signal": false,
+  "manual_review_required": true,
+  "mode": "SYNTHETIC_OFFLINE_NO_API",
+  "module": "SIGNAL-K2",
+  "price_forecast": false,
+  "reverse_unverified_candidates": 3
+}
