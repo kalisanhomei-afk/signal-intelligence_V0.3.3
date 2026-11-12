@@ -1,0 +1,54 @@
+{
+  "version": "K3.4.1-pit-cohort-v1",
+  "status": "COHORT_FROZEN_EXPLORATORY_PIT_NOT_CERTIFIED",
+  "input_snapshot": "User-supplied SIGNAL K3.4 Actions artifact, frozen locally in installer",
+  "source_archive_raw_reproduced": false,
+  "usda_actual_release_times_independently_verified": false,
+  "usda_actual_ingestion_times_independently_verified": false,
+  "official_schedule_policy_source": {
+    "NASS": "https://www.nass.usda.gov/Surveys/Guide_to_NASS_Surveys/Crop_Progress_and_Condition/",
+    "WASDE": "https://www.usda.gov/about-usda/general-information/staff-offices/office-chief-economist/commodity-markets/wasde-report"
+  },
+  "original_K34_status": "RESEARCH_ONLY_PIT_UNVERIFIED",
+  "total_transitions": 41,
+  "nass_observations": 81,
+  "wasde_vintages": 46,
+  "exploratory_eligible": 21,
+  "pit_independently_certified": 0,
+  "selected_observation_changes": 1,
+  "cohort_status_counts": {
+    "ELIGIBLE_EXPLORATORY_SCHEDULE_ONLY": 21,
+    "NO_IN_SEASON_NASS": 7,
+    "STALE_NASS": 13
+  },
+  "metrics": {
+    "all": {
+      "n": 41,
+      "persistence_mae_million_bushels": 72.365854
+    },
+    "eligible_exploratory": {
+      "n": 21,
+      "persistence_mae_million_bushels": 94.857143
+    }
+  },
+  "safety_hours": 24,
+  "max_age_days": 35,
+  "config": {
+    "safety_hours": 24,
+    "max_age_days": 35,
+    "forecast_origin_rule": "prior_WASDE_scheduled_noon_ET_plus_24h",
+    "nass_policy_availability_rule": "NASS_scheduled_4pm_ET_plus_safety_hours",
+    "nass_season_rule": "source calendar year matches marketing year start",
+    "feature_eligibility": "two prior condition reports, latest not older than max_age_days",
+    "evidence_certification": "NO historical per-release evidence - research only"
+  },
+  "input_sha256": {
+    "pit_join.csv": "c9edd031fb86dabd7c053b6deff8e560bfad387ea108a87d8bc7fe580aa12a3d",
+    "nass_corn_condition.csv": "0cc64661c023581c3b37115f442c8f0946f179ac47507186d364f4fb6b179893",
+    "wasde_corn_balance.csv": "32681de48478afc5a2db68342ba328a1a1746e4f5dabc1f5b1af8cc63ef166f8",
+    "audit.json": "50e720b962103c9b56b24be0ba4fbe966ad3ce89ae9a39536f274a0b6a001f66"
+  },
+  "frozen_cohort_content_sha256": "21a0f6ae629ace3f9f1950ede056bfff569752f9f3f997d6f2f3acdfbea187f3",
+  "comparison_requirement": "same_prediction_origins_and_target_cohort_for_any_future_model_comparison",
+  "errors": []
+}
