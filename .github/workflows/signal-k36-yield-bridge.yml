@@ -1,0 +1,32 @@
+name: SIGNAL K3.6 yield revision bridge (manual research only)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  yield-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout selected research branch
+        uses: actions/checkout@v4
+      - name: Display Python version
+        run: python3 --version
+      - name: Run 20 independent offline checks
+        run: python3 -m unittest discover -s research_core/k3_6/tests -p 'test_*.py' -v
+      - name: Run frozen K3.6 yield-bridge experiment
+        run: |
+          python3 research_core/k3_6/yield_bridge.py \
+            --inputs research_core/k3_6/inputs \
+            --out k36-review
+      - name: Upload K3.6 research artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k36-yield-bridge
+          path: k36-review/
+          if-no-files-found: warn
+          retention-days: 30
