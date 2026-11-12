@@ -19,6 +19,28 @@ class VintageTests(unittest.TestCase):
         months = [m for m,_ in manifest('2025-09','2025-11')]
         self.assertEqual(months,['2025-09','2025-11'])
 
+    def test_official_v2_manifest_for_may_june_2026(self):
+        releases = manifest('2026-05','2026-06')
+        self.assertEqual([month for month, _ in releases], ['2026-05', '2026-06'])
+        self.assertTrue(releases[0][1].endswith('oce-wasde-report-data-2026-05-V2.csv'))
+        self.assertTrue(releases[1][1].endswith('oce-wasde-report-data-2026-06-V2.csv'))
+        for month, url_path in releases:
+            validate_url(url_path, month)
+            validate_url(url_path.replace('www.usda.gov','usda.azureedge.us'), month)
+
+    def test_may_june_2026_non_v2_filenames_are_rejected(self):
+        for month in ('2026-05', '2026-06'):
+            with self.assertRaises(ValueError):
+                validate_url(url(month), month)
+
+    def test_october_2025_identified_as_no_release_not_download_failure(self):
+        def loader(u, m):
+            return sample(m, '09', '1800', year='2025/26')
+        # July only: no special behavior; one release is not enough for volume gate.
+        rows, audit = collect([('2025-09', url('2025-09')), ('2025-11', url('2025-11'))], loader)
+        self.assertEqual(audit['non_release_months'], ['2025-10'])
+        self.assertEqual(audit['missing_release_months'], [])
+
     def test_one_release_parses(self):
         rows, audit = parse_release_bytes(sample('2026-10','09','1849'), '2026-10', url('2026-10'))
         self.assertEqual(len(rows),1)

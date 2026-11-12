@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""SIGNAL K3.3: deterministic multi-release USDA WASDE corn-vintage collection.
+"""SIGNAL K3.3.2: deterministic multi-release USDA WASDE corn-vintage collection.
 
 Research-only data intake. No forecast, no trading, no claim of lookahead-free model.
 Uses an explicit USDA.gov URL manifest verified against the official archive listing.
@@ -22,7 +22,18 @@ from zoneinfo import ZoneInfo
 
 BASE = "https://www.usda.gov/sites/default/files/documents/"
 TITLE = "u.s. feed grain and corn supply and use"
-URL_PATH = re.compile(r"^/sites/default/files/documents/oce-wasde-report-data-(20\d{2})-(0[1-9]|1[0-2])\.csv$")
+# Official USDA Historical WASDE archive uses V2 filenames for the two 2026 releases.
+# Verified against USDA archive page link targets on 2026-11-12.
+OFFICIAL_FILENAME_OVERRIDES = {
+    "2026-05": "oce-wasde-report-data-2026-05-V2.csv",
+    "2026-06": "oce-wasde-report-data-2026-06-V2.csv",
+}
+
+
+def filename_for_month(month: str) -> str:
+    if not re.fullmatch(r"20\d{2}-(0[1-9]|1[0-2])", month):
+        raise ValueError(f"Invalid release month: {month}")
+    return OFFICIAL_FILENAME_OVERRIDES.get(month, f"oce-wasde-report-data-{month}.csv")
 REQUIRED = {"ReleaseDate", "ReportTitle", "Commodity", "Region", "MarketYear", "Attribute", "Value", "Unit", "ProjEstFlag"}
 FIELDS = ["release_at", "marketing_year", "metric", "value", "unit", "source_url", "verification"]
 MAX_DOWNLOAD = 35 * 1024 * 1024
@@ -40,21 +51,22 @@ def validate_url(url: str, expected_month: str) -> None:
     u = urlsplit(url)
     if u.scheme != "https" or u.netloc not in ("www.usda.gov", "usda.azureedge.us") or u.query or u.fragment or u.username or u.password:
         raise ValueError(f"Not an approved USDA URL: {url}")
-    m = URL_PATH.fullmatch(u.path)
-    if not m or f"{m.group(1)}-{m.group(2)}" != expected_month:
-        raise ValueError(f"USDA URL does not match expected {expected_month}: {url}")
+    expected_path = f"/sites/default/files/documents/{filename_for_month(expected_month)}"
+    if u.path != expected_path:
+        raise ValueError(f"USDA URL does not match official manifest for {expected_month}: {url}")
 
 
 def manifest(start: str, end: str) -> list[tuple[str, str]]:
     # USDA Archive page at https://www.usda.gov/historical-wasde-report-data-3
-    # Explicit missing month: 2025-10 is not listed on the USDA archive page (as of 2026-11-11).
+    # Non-release month: 2025-10, due to federal shutdown; no official WASDE.
+    # May/June 2026 filenames differ from naive template; see overrides above.
     months = []
     for year in (2023, 2024, 2025, 2026):
         for month in range(1, 13):
             ym = f"{year}-{month:02d}"
             if ym < start or ym > end or ym > LATEST_CURATED or ym == "2025-10":
                 continue
-            u = f"{BASE}oce-wasde-report-data-{ym}.csv"
+            u = f"{BASE}{filename_for_month(ym)}"
             validate_url(u, ym)
             months.append((ym, u))
     if not months:
@@ -198,7 +210,7 @@ def collect(sources: list[tuple[str, str]], loader) -> tuple[list[dict], dict]:
     for r in ordered:
         years[r["marketing_year"]].append((datetime.fromisoformat(r["release_at"]), r["value"]))
     transitions = sum(max(0, len(x) - 1) for x in years.values())
-    known_missing = ["2025-10"] if sources[0][0] <= "2025-10" <= sources[-1][0] else []
+    non_release = ["2025-10"] if sources[0][0] <= "2025-10" <= sources[-1][0] else []
     unavailable = [f["month"] for f in failures]
     volume_gate = transitions >= 24 and len(years) >= 3
     serious_error = any(f["category"] != "HTTP_404_MISSING" for f in failures)
@@ -210,13 +222,14 @@ def collect(sources: list[tuple[str, str]], loader) -> tuple[list[dict], dict]:
         status = "PARTIAL_HISTORY_REQUIRES_MISSING_MONTH_REVIEW"
     else:
         status = "COLLECTED_NEEDS_SPOTCHECK"
-    audit = {"version": "K3.3.1", "status": status,
+    audit = {"version": "K3.3.2", "status": status,
              "release_files_requested": len(sources), "release_files_collected": len(sources_audit),
              "records": len(ordered), "marketing_years": sorted(years), "transitions": transitions,
              "meets_volume_gate": volume_gate, "serious_source_error": serious_error,
              "sources": sources_audit, "download_failures": failures,
-             "missing_release_months": known_missing + unavailable,
-             "warning": "A 404 is a documented missing USDA download; gaps must be reviewed and cannot be imputed. "
+             "non_release_months": non_release,
+             "missing_release_months": unavailable,
+             "warning": "A 404 is a documented missing USDA download (not proof that no WASDE report was issued); gaps must be reviewed and cannot be imputed. "
                         "12:00 ET is a convention, NOT independent proof of exact web availability or a backtest. "
                         "K3.2 balance validation does not prove investment-model predictive power."}
     return ordered, audit
