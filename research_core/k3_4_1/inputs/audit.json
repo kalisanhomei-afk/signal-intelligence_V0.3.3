@@ -1,0 +1,359 @@
+{
+  "version": "K3.4-history-integration-v1",
+  "classification": "DATA_ENGINEERING_ONLY_NOT_TRAINED_MODEL",
+  "base_K33_stocks": 46,
+  "base_K33_transitions": 41,
+  "persistence_baseline_MAE_million_bushels": 72.3659,
+  "k31_manual_observations": 4,
+  "nass_official_discovered": 128,
+  "nass_official_parsed": 81,
+  "nass_total_usable": 81,
+  "nass_year_counts": {
+    "2023": 21,
+    "2024": 20,
+    "2025": 19,
+    "2026": 21
+  },
+  "nass_official_year_counts": {
+    "2023": 21,
+    "2024": 20,
+    "2025": 19,
+    "2026": 21
+  },
+  "nass_releases_without_corn_condition": 47,
+  "nonreported_releases": [
+    {
+      "release_date": "2023-04-03",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/2801qw80p/qz20v734f/prog1323.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2023-04-10",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/hq37x260r/wh2485534/prog1423.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2023-04-17",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/5138kw15k/q237k727x/prog1523.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2023-04-24",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/zp38xs846/rx9154745/prog1623.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2023-05-01",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/7m01d1172/3x818272z/prog1723.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2023-05-08",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/q811n102j/2j62tk559/prog1823.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2023-05-15",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/4q77h5325/s4656v94v/prog1923.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2023-05-22",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/7m01d174p/5m60s6253/prog2023.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2023-10-23",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/xd07jc25m/73667p05m/prog4223.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2023-10-30",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/7w62gv00h/m326nm00v/prog4323.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2023-11-06",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/p841b7017/4t64j711p/prog4423.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2023-11-13",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/0v839k77n/sq87dc48j/prog4523.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2023-11-20",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/7p88f363p/x633gm09p/prog4623.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2023-11-27",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/1z40nc415/6108wx78b/prog4723.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2024-04-01",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/st74fc296/cj82mx44b/prog1324.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2024-04-08",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/w6635r84s/5425n031m/prog1424.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2024-04-15",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/jq0877143/cr56pp13w/prog1524.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2024-04-22",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/vq281b20b/hd76tn68m/prog1624.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2024-04-29",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/g158d508g/5999ps978/prog1724.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2024-05-06",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/8623kn58k/w3764z179/prog1824.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2024-05-13",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/0v839q40t/xs55p3233/prog1924.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2024-05-20",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/j3861x137/rf560x35p/prog2024.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2024-05-28",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/th83np421/6t0556026/prog2124.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2024-10-21",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/vx023742g/c534hf413/prog4224.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2024-10-28",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/3x818f49f/t148hb58g/prog4324.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2024-11-04",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/x633gv10w/00001t58j/prog4424.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2024-11-12",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/34851c213/2f75t3004/prog4524.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2024-11-18",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/r494xf146/dr270q81n/prog4624.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2024-11-25",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/00001v035/1v53mr04f/prog4724.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2025-04-07",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/1v53mt21h/1z40np70g/prog1425.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2025-04-14",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/tb09m351z/vh53zs924/prog1525.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2025-04-21",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/q524mk81n/zg64wj06j/prog1625.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2025-04-28",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/rr173t277/f76259308/prog1725.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2025-05-05",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/hh63vq35b/h702s3987/prog1825.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2025-05-12",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/9k421b436/xp68nf89d/prog1925.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2025-05-19",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/8336h188j/np1957469/q524mm26s/prog2025.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2025-11-24",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/795662/prog4725.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2026-04-06",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/795850/prog1426.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2026-04-13",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/795859/prog1526.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2026-04-20",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/795867/prog1626.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2026-04-27",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/795878/prog1726.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2026-05-04",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/795893/prog1826.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2026-05-11",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/795898/prog1926.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2026-05-18",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/795908/prog2026.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2026-05-26",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/795918/prog2126.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2026-11-02",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/796135/prog4426.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    },
+    {
+      "release_date": "2026-11-09",
+      "url": "https://esmis.nal.usda.gov/sites/default/release-files/796141/prog4526.txt",
+      "reason": "CORN_CONDITION_NOT_REPORTED"
+    }
+  ],
+  "nass_conflicts": 0,
+  "wasde_balance_verified": 46,
+  "wasde_balance_error_count": 0,
+  "join_has_nass": 34,
+  "join_has_two_nass": 21,
+  "join_pit_verified": 0,
+  "join_target_in_future": 41,
+  "source_discovery_status": "OK",
+  "time_evidence": "K31_NEXT_DAY_NOON_UTC_PROXY; WASDE_REPORT_TIME_CONVENTION; NO_VERIFIED_INGESTION",
+  "pit_evidence_certified": false,
+  "source_archive_pages": [
+    {
+      "page": 0,
+      "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+      "links": 10,
+      "status": "OK"
+    },
+    {
+      "page": 1,
+      "url": "https://esmis.nal.usda.gov/publication/crop-progress?page=1",
+      "links": 11,
+      "status": "OK"
+    },
+    {
+      "page": 2,
+      "url": "https://esmis.nal.usda.gov/publication/crop-progress?page=2",
+      "links": 11,
+      "status": "OK"
+    },
+    {
+      "page": 3,
+      "url": "https://esmis.nal.usda.gov/publication/crop-progress?page=3",
+      "links": 10,
+      "status": "OK"
+    },
+    {
+      "page": 4,
+      "url": "https://esmis.nal.usda.gov/publication/crop-progress?page=4",
+      "links": 11,
+      "status": "OK"
+    },
+    {
+      "page": 5,
+      "url": "https://esmis.nal.usda.gov/publication/crop-progress?page=5",
+      "links": 11,
+      "status": "OK"
+    },
+    {
+      "page": 6,
+      "url": "https://esmis.nal.usda.gov/publication/crop-progress?page=6",
+      "links": 11,
+      "status": "OK"
+    },
+    {
+      "page": 7,
+      "url": "https://esmis.nal.usda.gov/publication/crop-progress?page=7",
+      "links": 11,
+      "status": "OK"
+    },
+    {
+      "page": 8,
+      "url": "https://esmis.nal.usda.gov/publication/crop-progress?page=8",
+      "links": 11,
+      "status": "OK"
+    },
+    {
+      "page": 9,
+      "url": "https://esmis.nal.usda.gov/publication/crop-progress?page=9",
+      "links": 11,
+      "status": "OK"
+    },
+    {
+      "page": 10,
+      "url": "https://esmis.nal.usda.gov/publication/crop-progress?page=10",
+      "links": 11,
+      "status": "OK"
+    },
+    {
+      "page": 11,
+      "url": "https://esmis.nal.usda.gov/publication/crop-progress?page=11",
+      "links": 11,
+      "status": "OK"
+    },
+    {
+      "page": 12,
+      "url": "https://esmis.nal.usda.gov/publication/crop-progress?page=12",
+      "links": 11,
+      "status": "OK"
+    },
+    {
+      "page": 13,
+      "url": "https://esmis.nal.usda.gov/publication/crop-progress?page=13",
+      "links": 11,
+      "status": "OK"
+    }
+  ],
+  "errors": [],
+  "status": "RESEARCH_ONLY_PIT_UNVERIFIED"
+}

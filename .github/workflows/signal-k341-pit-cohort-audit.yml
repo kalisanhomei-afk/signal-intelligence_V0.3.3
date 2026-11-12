@@ -1,0 +1,49 @@
+name: SIGNAL K3.4.1 PIT cohort audit (research only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      safety_hours:
+        description: 'Safety delay after official scheduled release; not proof of actual release (hours)'
+        required: true
+        default: '24'
+        type: choice
+        options: ['24', '48']
+      max_age_days:
+        description: 'Max NASS observation age at forecast origin (days)'
+        required: true
+        default: '35'
+        type: choice
+        options: ['21', '35', '42']
+
+permissions:
+  contents: read
+
+jobs:
+  k341-pit-cohort-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout selected research branch
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Unit tests offline
+        run: python -m unittest discover -s research_core/k3_4_1/tests -p 'test_*.py' -v
+      - name: Freeze PIT evidence grades and cohort from K3.4 snapshot
+        run: |
+          python research_core/k3_4_1/pit_cohort.py \
+            --input-root research_core/k3_4_1/inputs \
+            --output k341-review \
+            --safety-hours '${{ inputs.safety_hours }}' \
+            --max-age-days '${{ inputs.max_age_days }}'
+      - name: Upload audit outputs even if validation fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k341-pit-cohort-audit
+          path: k341-review/
+          if-no-files-found: warn
+          retention-days: 30
