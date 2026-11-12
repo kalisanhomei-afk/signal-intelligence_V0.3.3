@@ -1,0 +1,39 @@
+{
+  "schema_version": "signal-k31-manual-nass-corn-condition-v1",
+  "data_status": "OFFICIAL_NASS_NUMBERS_MANUALLY_TRANSCRIBED_EXCERPTS_NOT_FULL_SOURCE_FILES",
+  "purpose": "RETROSPECTIVE_PUBLIC_RELEASE_REPLAY_ONLY",
+  "retrieved_by_project_at": null,
+  "historical_transcription_preparation_date": "2026-11-11",
+  "coverage": "US, 18 selected states, representing 91% of 2025 planted corn acreage (not all US acres)",
+  "series": "CORN_CONDITION_NASS_18_STATES_PCT",
+  "records": [
+    {
+      "source_date": "2026-07-06", "week_ending": "2026-07-05",
+      "available_at_proxy_utc": "2026-07-07T12:00:00+00:00",
+      "source_uri": "https://esmis.nal.usda.gov/sites/default/release-files/795970/prog2726.txt",
+      "source_row": "18 States .......:     2          6          25          53          14",
+      "very_poor": 2, "poor": 6, "fair": 25, "good": 53, "excellent": 14
+    },
+    {
+      "source_date": "2026-08-10", "week_ending": "2026-08-09",
+      "available_at_proxy_utc": "2026-08-11T12:00:00+00:00",
+      "source_uri": "https://esmis.nal.usda.gov/sites/default/release-files/796012/prog3226.txt",
+      "source_row": "18 States ......:     4          10          25          48          13",
+      "very_poor": 4, "poor": 10, "fair": 25, "good": 48, "excellent": 13
+    },
+    {
+      "source_date": "2026-09-08", "week_ending": "2026-09-06",
+      "available_at_proxy_utc": "2026-09-09T12:00:00+00:00",
+      "source_uri": "https://esmis.nal.usda.gov/sites/default/release-files/796051/prog3626.txt",
+      "source_row": "18 States ......:     6          11          27          42          14",
+      "very_poor": 6, "poor": 11, "fair": 27, "good": 42, "excellent": 14
+    },
+    {
+      "source_date": "2026-10-05", "week_ending": "2026-10-04",
+      "available_at_proxy_utc": "2026-10-06T12:00:00+00:00",
+      "source_uri": "https://esmis.nal.usda.gov/sites/default/release-files/796095/prog4026.txt",
+      "source_row": "18 States ......:     6          12          28          42          12",
+      "very_poor": 6, "poor": 12, "fair": 28, "good": 42, "excellent": 12
+    }
+  ]
+}

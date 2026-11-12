@@ -1,0 +1,715 @@
+{
+  "version": "K3.3.2",
+  "status": "COLLECTED_NEEDS_SPOTCHECK",
+  "release_files_requested": 46,
+  "release_files_collected": 46,
+  "records": 46,
+  "marketing_years": [
+    "2022/23",
+    "2023/24",
+    "2024/25",
+    "2025/26",
+    "2026/27"
+  ],
+  "transitions": 41,
+  "meets_volume_gate": true,
+  "serious_source_error": false,
+  "sources": [
+    {
+      "release_month": "2023-01",
+      "release_date": "2023-01-12",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-01.csv",
+      "sha256": "232299f407b45aff9030a071cebc85cfb9bc342ccb77d8928c1b9df52ff3b549",
+      "input_bytes": 983553,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4922,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-01.csv"
+    },
+    {
+      "release_month": "2023-02",
+      "release_date": "2023-02-08",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-02.csv",
+      "sha256": "4d8426eeb40bcc8a820f7411e90cec7a33b7e2e03088f5e5626f83db6c4619e4",
+      "input_bytes": 989162,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4922,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-02.csv"
+    },
+    {
+      "release_month": "2023-03",
+      "release_date": "2023-03-08",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-03.csv",
+      "sha256": "9b8842bb335103beb2270ebc66aa5abba00f739cbdfbbcfffc9a2f3bdf6a15be",
+      "input_bytes": 972374,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4922,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-03.csv"
+    },
+    {
+      "release_month": "2023-04",
+      "release_date": "2023-04-11",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-04.csv",
+      "sha256": "f705b2e8f5388159812317508771ce9433c75704e6c84fe4611b93b8c4de4f71",
+      "input_bytes": 972340,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4922,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-04.csv"
+    },
+    {
+      "release_month": "2023-05",
+      "release_date": "2023-05-12",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-05.csv",
+      "sha256": "e7384e79f0a4ceaa59bb06c808c15e58e31c9a732922cd574c730c5a8c92be68",
+      "input_bytes": 957401,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4904,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-05.csv"
+    },
+    {
+      "release_month": "2023-06",
+      "release_date": "2023-06-09",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-06.csv",
+      "sha256": "486fa51ae524086cff1f91a9b9e055d7e54dd0bc0ce2ab0c916c9881a54947ee",
+      "input_bytes": 963023,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4904,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-06.csv"
+    },
+    {
+      "release_month": "2023-07",
+      "release_date": "2023-07-12",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-07.csv",
+      "sha256": "abdbfa20a79be73a04bb5b0484ff9bb63a3a8eae953e45889563a599e50e5307",
+      "input_bytes": 976528,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-07.csv"
+    },
+    {
+      "release_month": "2023-08",
+      "release_date": "2023-08-11",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-08.csv",
+      "sha256": "2397541413967847a06bb49e9129e56d24839eeda2d47b9287643879b91a29dd",
+      "input_bytes": 987907,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-08.csv"
+    },
+    {
+      "release_month": "2023-09",
+      "release_date": "2023-09-12",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-09.csv",
+      "sha256": "ffbdfce60e7b02c6d0bb407ae52e1872918bccd56473921223c36ce2885a8ec1",
+      "input_bytes": 1004942,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-09.csv"
+    },
+    {
+      "release_month": "2023-10",
+      "release_date": "2023-10-12",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-10.csv",
+      "sha256": "59905f5c4ebe6f247c6d2c92a2f2c2e697e15013a9da4a3f31402c5e32c9e6d0",
+      "input_bytes": 998596,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-10.csv"
+    },
+    {
+      "release_month": "2023-11",
+      "release_date": "2023-11-09",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-11.csv",
+      "sha256": "6eaeec7577af66c16d8950ec4adca815f69eb502697a1f229e5065da39491da9",
+      "input_bytes": 1004265,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-11.csv"
+    },
+    {
+      "release_month": "2023-12",
+      "release_date": "2023-12-08",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-12.csv",
+      "sha256": "dc54139bc20db03f780d453d176a7e449652f3d8586bd5864beb1f681136f12f",
+      "input_bytes": 1004265,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-12.csv"
+    },
+    {
+      "release_month": "2024-01",
+      "release_date": "2024-01-12",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-01.csv",
+      "sha256": "72ca5de6f01c0529718b685af9d09593f1ab6f15a83bcd6b86fa43a00612cd36",
+      "input_bytes": 993414,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-01.csv"
+    },
+    {
+      "release_month": "2024-02",
+      "release_date": "2024-02-08",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-02.csv",
+      "sha256": "27a4d80ec703cc29a2604e7ae5b78fb04213bcad480c1c4ee18caee0bd112887",
+      "input_bytes": 999070,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-02.csv"
+    },
+    {
+      "release_month": "2024-03",
+      "release_date": "2024-03-08",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-03.csv",
+      "sha256": "878516fd1bd948c5d34920828cea7e715a99d90751170c6e9ea09495cc1f0041",
+      "input_bytes": 982010,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-03.csv"
+    },
+    {
+      "release_month": "2024-04",
+      "release_date": "2024-04-11",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-04.csv",
+      "sha256": "66fb4c3fadc703b9bfde8d28ddc3b2de1336c3e3f77cfc5eab2a03cb570860e4",
+      "input_bytes": 981987,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-04.csv"
+    },
+    {
+      "release_month": "2024-05",
+      "release_date": "2024-05-10",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-05.csv",
+      "sha256": "510ddacd5cf632b35846c5c6f2b06c425f703aee69bddcb0312f33b0fb073457",
+      "input_bytes": 957434,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4904,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-05.csv"
+    },
+    {
+      "release_month": "2024-06",
+      "release_date": "2024-06-12",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-06.csv",
+      "sha256": "d161c65be2ff79e2c8f9807a2808cd14895b719fa67bc446106233f8fbc9b089",
+      "input_bytes": 963055,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4904,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-06.csv"
+    },
+    {
+      "release_month": "2024-07",
+      "release_date": "2024-07-12",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-07.csv",
+      "sha256": "f995201cc9cec8fd0284a49193f563c7fb9a434d1d2a83a3a229f23865c2b468",
+      "input_bytes": 976547,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-07.csv"
+    },
+    {
+      "release_month": "2024-08",
+      "release_date": "2024-08-12",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-08.csv",
+      "sha256": "393b60eb447e1640280ecb2243516457dd3292de3ca03c758bb5019bd15dd13c",
+      "input_bytes": 987912,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-08.csv"
+    },
+    {
+      "release_month": "2024-09",
+      "release_date": "2024-09-12",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-09.csv",
+      "sha256": "a23fb1c975bbb71d63236533bd91fffd2f08780117332ecd69b4587fdf34c2a8",
+      "input_bytes": 1004937,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-09.csv"
+    },
+    {
+      "release_month": "2024-10",
+      "release_date": "2024-10-11",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-10.csv",
+      "sha256": "2dbf75cf111749da6cce25d74fcab1d444afbf14efbcb0e02e06b832d7c4ca5d",
+      "input_bytes": 998608,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-10.csv"
+    },
+    {
+      "release_month": "2024-11",
+      "release_date": "2024-11-08",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-11.csv",
+      "sha256": "9167822a972211e246e763ba628748697e4a0dfe98ebb2b7aacd3c4a6c8b729d",
+      "input_bytes": 1004267,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-11.csv"
+    },
+    {
+      "release_month": "2024-12",
+      "release_date": "2024-12-10",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-12.csv",
+      "sha256": "29e8bfbfe57e72f1e70e8f8367498f35f3cb8ccd6b33e0ec683e66d40e332a74",
+      "input_bytes": 1004269,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-12.csv"
+    },
+    {
+      "release_month": "2025-01",
+      "release_date": "2025-01-10",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-01.csv",
+      "sha256": "7a7be1d6d9b74f87e16b2c777db57d4c2834f1741ba73696be939bf52dcb58eb",
+      "input_bytes": 993417,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-01.csv"
+    },
+    {
+      "release_month": "2025-02",
+      "release_date": "2025-02-11",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-02.csv",
+      "sha256": "d6ff919eca4cbc809a71a6fc962cf082cbf76d0fc2041a1a8d45a94cc89bfbe2",
+      "input_bytes": 999079,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-02.csv"
+    },
+    {
+      "release_month": "2025-03",
+      "release_date": "2025-03-11",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-03.csv",
+      "sha256": "a982e6bdfe5c1603b0f24b814c3d90e424e8ee4dece0f78e64163fb21fb34ce4",
+      "input_bytes": 982025,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-03.csv"
+    },
+    {
+      "release_month": "2025-04",
+      "release_date": "2025-04-10",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-04.csv",
+      "sha256": "1549593e0d3c5c8afa538decc118fd4e283491652ecdbfc326ac4e1e69747262",
+      "input_bytes": 982004,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-04.csv"
+    },
+    {
+      "release_month": "2025-05",
+      "release_date": "2025-05-12",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-05.csv",
+      "sha256": "4c08fdf3657a854d2100bb7dfead186fb1ea26be208e137c52619707cc060987",
+      "input_bytes": 957445,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4904,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-05.csv"
+    },
+    {
+      "release_month": "2025-06",
+      "release_date": "2025-06-12",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-06.csv",
+      "sha256": "e0bed22b0b08eaa361e16649918952a5b13b388a300c9fc528636ebda7e86924",
+      "input_bytes": 963058,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4904,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-06.csv"
+    },
+    {
+      "release_month": "2025-07",
+      "release_date": "2025-07-11",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-07.csv",
+      "sha256": "af215ba7ca48302779756b07a65e29473f86437d6cda9fbe16f1bcd66f83708c",
+      "input_bytes": 976568,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-07.csv"
+    },
+    {
+      "release_month": "2025-08",
+      "release_date": "2025-08-12",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-08.csv",
+      "sha256": "c3124dcf818a156da19ce03af365c18e0d0eaa3348a03f6188a5d8fdd3da7d8f",
+      "input_bytes": 987928,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-08.csv"
+    },
+    {
+      "release_month": "2025-09",
+      "release_date": "2025-09-12",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-09.csv",
+      "sha256": "2e5dfdb0d31f1619ceeba99122369514497c6bfa63522900b89e7af2ae675649",
+      "input_bytes": 1004960,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-09.csv"
+    },
+    {
+      "release_month": "2025-11",
+      "release_date": "2025-11-14",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-11.csv",
+      "sha256": "896385bbf592ec74e9b9b581bc5969597f719b5dbf84d59905cc6cc1c5587156",
+      "input_bytes": 1004315,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-11.csv"
+    },
+    {
+      "release_month": "2025-12",
+      "release_date": "2025-12-09",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-12.csv",
+      "sha256": "cfad35ab09e17453509606dfa224ebf18af26536220397180c610000160d0188",
+      "input_bytes": 1004318,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-12.csv"
+    },
+    {
+      "release_month": "2026-01",
+      "release_date": "2026-01-12",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-01.csv",
+      "sha256": "8dce8b1f4cbbe6e98bd320b9ad03a279ee30194b11481de11fb7c78d2791981a",
+      "input_bytes": 993460,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-01.csv"
+    },
+    {
+      "release_month": "2026-02",
+      "release_date": "2026-02-10",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-02.csv",
+      "sha256": "aca52f3e755c678a7c584b84bd3bd806b7771247bb90e0c67dd675d570714d5e",
+      "input_bytes": 999122,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-02.csv"
+    },
+    {
+      "release_month": "2026-03",
+      "release_date": "2026-03-10",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-03.csv",
+      "sha256": "b2fbd43ecb19874489026a5adad3754105a090db5f73d442561e32d8bfe320eb",
+      "input_bytes": 982061,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-03.csv"
+    },
+    {
+      "release_month": "2026-04",
+      "release_date": "2026-04-09",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-04.csv",
+      "sha256": "e544c0008457894ce4895078afc62874c423c945837cb968d61536231c9b2574",
+      "input_bytes": 982032,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-04.csv"
+    },
+    {
+      "release_month": "2026-05",
+      "release_date": "2026-05-13",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-05-V2.csv",
+      "sha256": "95bb5b04c02c174442c399c3be5785b181bc6e9606f0cbd44cd59e45d9422973",
+      "input_bytes": 957471,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4904,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-05-V2.csv"
+    },
+    {
+      "release_month": "2026-06",
+      "release_date": "2026-06-11",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-06-V2.csv",
+      "sha256": "4dc308e0aefe4582e39a28f276f4ba3bafcbf4c343342f7ada3ed18feeab51f4",
+      "input_bytes": 963095,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4904,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-06-V2.csv"
+    },
+    {
+      "release_month": "2026-07",
+      "release_date": "2026-07-10",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-07.csv",
+      "sha256": "468a6b27a832c05054a73a4ac0fe68e6278f1e89bf25f9327c806b95bf54c4b8",
+      "input_bytes": 976608,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-07.csv"
+    },
+    {
+      "release_month": "2026-08",
+      "release_date": "2026-08-12",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-08.csv",
+      "sha256": "7611d70293fdfe403b53cb42a9fd16fbbc760584e52843917aca4b05750584d9",
+      "input_bytes": 987981,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-08.csv"
+    },
+    {
+      "release_month": "2026-09",
+      "release_date": "2026-09-11",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-09.csv",
+      "sha256": "8b492fe4a50b5b1de1601856acbecdc88e9f859bb1ec5ab15518f40ae4682344",
+      "input_bytes": 1005019,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-09.csv"
+    },
+    {
+      "release_month": "2026-10",
+      "release_date": "2026-10-09",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+      "sha256": "8695eab7454f9a445ae3c23d699c8f9bb681461839c1ea038bd15d45f7037638",
+      "input_bytes": 998693,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv"
+    },
+    {
+      "release_month": "2026-11",
+      "release_date": "2026-11-10",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-11.csv",
+      "sha256": "1a28972ac0c727ce974e0f8217b3cae9e892f6e974f6927033eaffbd5890a8da",
+      "input_bytes": 1004365,
+      "records": 1,
+      "excluded": {
+        "wrong_table": 4970,
+        "wrong_attribute": 42,
+        "not_projection": 2,
+        "wrong_product_or_region": 39
+      },
+      "retrieved_from": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-11.csv"
+    }
+  ],
+  "download_failures": [],
+  "non_release_months": [
+    "2025-10"
+  ],
+  "missing_release_months": [],
+  "warning": "A 404 is a documented missing USDA download (not proof that no WASDE report was issued); gaps must be reviewed and cannot be imputed. 12:00 ET is a convention, NOT independent proof of exact web availability or a backtest. K3.2 balance validation does not prove investment-model predictive power."
+}
