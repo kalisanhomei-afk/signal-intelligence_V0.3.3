@@ -1,0 +1,85 @@
+name: SIGNAL K3.4 official history integration (research only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_year:
+        description: 'First NASS history year (inclusive)'
+        required: true
+        default: '2023'
+        type: string
+      end_year:
+        description: 'Last NASS history year (inclusive)'
+        required: true
+        default: '2026'
+        type: string
+      fetch_nass:
+        description: 'Download NASS weekly Crop Progress historical reports'
+        required: true
+        default: true
+        type: boolean
+      fetch_wasde:
+        description: 'Download K3.3 official WASDE source CSV and validate corn balance'
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  k34-history-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout selected research branch
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Install Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Offline unit tests (no third-party libraries)
+        run: python -m unittest discover -s research_core/k3_4/tests -v
+      - name: Collect official historical evidence and write audit files
+        env:
+          START_YEAR: ${{ inputs.start_year }}
+          END_YEAR: ${{ inputs.end_year }}
+          FETCH_NASS: ${{ inputs.fetch_nass }}
+          FETCH_WASDE: ${{ inputs.fetch_wasde }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          OPTS=(--start-year "$START_YEAR" --end-year "$END_YEAR" --output k34-review)
+          if [[ "$FETCH_NASS" == "true" ]]; then OPTS+=(--fetch-nass); fi
+          if [[ "$FETCH_WASDE" == "true" ]]; then OPTS+=(--fetch-wasde); fi
+          python research_core/k3_4/integrate.py "${OPTS[@]}"
+      - name: Preserve artifacts even when collection or tests fail
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: signal-k34-historical-integration
+          path: k34-review/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Check historical engineering coverage (not PIT certification)
+        if: ${{ inputs.fetch_nass && inputs.fetch_wasde }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json,sys
+          a=json.load(open('k34-review/audit.json',encoding='utf-8'))
+          years={str(x):a['nass_official_year_counts'].get(str(x),0) for x in range(2023,2027)}
+          problems=[]
+          if a['source_discovery_status']!='OK':problems.append('NASS discovery incomplete')
+          if any(n < 8 for n in years.values()):problems.append(f'NASS official weekly coverage inadequate: {years}')
+          if a['wasde_balance_verified']!=a['base_K33_stocks']:
+              problems.append(f'WASDE supply tables {a["wasde_balance_verified"]}/{a["base_K33_stocks"]}')
+          if a['nass_conflicts']>0:problems.append('K31 manual vs official NASS mismatch')
+          if a['errors']:problems.append(f'{len(a["errors"])} nontrivial source errors (see audit.json)')
+          if problems:
+              print('SOURCE COVERAGE INCOMPLETE: '+'; '.join(problems))
+              sys.exit(1)
+          print('SOURCE COLLECTION COVERAGE PASS — PIT remains proxy-only; no predictive edge claimed.')
+          PY
