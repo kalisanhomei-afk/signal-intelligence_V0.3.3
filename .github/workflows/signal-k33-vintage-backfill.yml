@@ -1,0 +1,53 @@
+name: SIGNAL K3.3 USDA vintage history backfill (manual research only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_month:
+        description: 'First archive month (YYYY-MM; curated 2023-01 onward)'
+        type: string
+        required: true
+        default: '2023-01'
+      end_month:
+        description: 'Last archive month (YYYY-MM; latest curated 2026-11)'
+        type: string
+        required: true
+        default: '2026-11'
+
+permissions:
+  contents: read
+
+jobs:
+  k33-vintage-collection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout selected branch
+        uses: actions/checkout@v4
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Unit tests (offline)
+        run: python -m unittest discover -s research_core/k3_3/tests -v
+      - name: Collect official USDA monthly vintages
+        env:
+          FIRST_MONTH: ${{ inputs.start_month }}
+          LAST_MONTH: ${{ inputs.end_month }}
+        run: |
+          python research_core/k3_3/vintage_backfill.py \
+            --start "$FIRST_MONTH" --end "$LAST_MONTH" \
+            --output research_core/k3_2/inputs/historical_vintages.csv \
+            --audit k33-review/vintage_archive_audit.json
+      - name: Run K3.2 reconciler over multi-vintage data (no model trained)
+        run: python research_core/k3_2/pipeline.py --output k33-review
+      - name: Include compact historical CSV for inspection
+        run: cp research_core/k3_2/inputs/historical_vintages.csv k33-review/historical_vintages.csv
+      - name: Upload research-only evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k33-vintage-backfill
+          path: k33-review/
+          if-no-files-found: warn
+          retention-days: 14
