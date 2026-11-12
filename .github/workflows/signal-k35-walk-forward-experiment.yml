@@ -1,0 +1,35 @@
+name: SIGNAL K3.5 blocked walk-forward experiment (research only)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  k35-year-blocked-backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout selected research branch
+        uses: actions/checkout@v4
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run K3.5 offline unit tests
+        run: python -m unittest discover -s research_core/k3_5/tests -p 'test_*.py' -v
+      - name: Freeze exploratory year-blocked forecasts and evaluate matched samples
+        run: |
+          python research_core/k3_5/walk_forward.py \
+            --input research_core/k3_5/inputs/exploratory_fixed_cohort.csv \
+            --source-review research_core/k3_5/inputs/k341_source_review.json \
+            --output k35-review
+      - name: Upload K3.5 research audit artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k35-walk-forward-experiment
+          path: k35-review/
+          if-no-files-found: warn
+          retention-days: 30
