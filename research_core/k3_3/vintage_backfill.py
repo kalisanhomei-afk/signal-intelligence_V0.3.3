@@ -12,11 +12,11 @@ import hashlib
 import io
 import json
 import re
-import tempfile
 from collections import Counter, defaultdict
 from datetime import date, datetime, time
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.error import HTTPError, URLError
+from urllib.parse import urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
 
@@ -27,6 +27,9 @@ REQUIRED = {"ReleaseDate", "ReportTitle", "Commodity", "Region", "MarketYear", "
 FIELDS = ["release_at", "marketing_year", "metric", "value", "unit", "source_url", "verification"]
 MAX_DOWNLOAD = 35 * 1024 * 1024
 LATEST_CURATED = "2026-11"  # dated manifest; not an auto-updated archive crawler
+
+# Source fallback is a USDA-owned mirror only. The actual download URL is recorded in the audit.
+MIRROR_HOST = "usda.azureedge.us"
 
 
 def clean(s: str) -> str:
@@ -59,10 +62,10 @@ def manifest(start: str, end: str) -> list[tuple[str, str]]:
     return months
 
 
-def fetch(url: str, expected_month: str) -> bytes:
+def _fetch_once(url: str, expected_month: str) -> bytes:
     validate_url(url, expected_month)
-    req = Request(url, headers={"User-Agent": "SIGNAL-K3.3-research-vintage/1.0"})
-    with urlopen(req, timeout=60) as resp:
+    req = Request(url, headers={"User-Agent": "Mozilla/5.0 SIGNAL-K3.3-vintage-research/1.1"})
+    with urlopen(req, timeout=22) as resp:
         validate_url(resp.geturl(), expected_month)
         out = io.BytesIO()
         while True:
@@ -73,6 +76,27 @@ def fetch(url: str, expected_month: str) -> bytes:
                 raise ValueError(f"{expected_month} exceeds 35MB download cap")
             out.write(data)
         return out.getvalue()
+
+
+def fetch(url: str, expected_month: str) -> tuple[bytes, str]:
+    """Retrieve from canonical USDA host; on a 404 try one USDA-hosted mirror.
+
+    Never pretend a missing file was retrieved. Both failed URLs remain in the audit.
+    """
+    validate_url(url, expected_month)
+    try:
+        return _fetch_once(url, expected_month), url
+    except HTTPError as e:
+        if e.code != 404 or urlsplit(url).netloc != "www.usda.gov":
+            raise
+        alt = urlunsplit(("https", MIRROR_HOST, urlsplit(url).path, "", ""))
+        print(f"[WARN] {expected_month}: USDA primary returned HTTP 404; checking official mirror {alt}", flush=True)
+        try:
+            return _fetch_once(alt, expected_month), alt
+        except (HTTPError, URLError) as mirror_error:
+            raise FileNotFoundError(
+                f"{expected_month}: canonical {url} HTTP 404; mirror {alt} -> {mirror_error}"
+            ) from mirror_error
 
 
 def parse_release_bytes(raw: bytes, expected_month: str, source_url: str) -> tuple[list[dict], dict]:
@@ -137,27 +161,64 @@ def parse_release_bytes(raw: bytes, expected_month: str, source_url: str) -> tup
 
 
 def collect(sources: list[tuple[str, str]], loader) -> tuple[list[dict], dict]:
+    """Partial success is retained with explicit gaps, never invented values."""
     all_rows: dict[tuple[str, str], dict] = {}
-    sources_audit = []
-    for month, url in sources:
-        rows, entry = parse_release_bytes(loader(url, month), month, url)
-        sources_audit.append(entry)
-        for row in rows:
-            key = (row["release_at"], row["marketing_year"])
-            if key in all_rows:
-                raise ValueError(f"Duplicate cross-source release+crop-year: {key}")
-            all_rows[key] = row
+    sources_audit, failures = [], []
+    for index, (month, url) in enumerate(sources, 1):
+        print(f"[K3.3] ({index}/{len(sources)}) Fetching vintage {month}: {url}", flush=True)
+        try:
+            loaded = loader(url, month)
+            if isinstance(loaded, tuple) and len(loaded) == 2:
+                raw, retrieved_from = loaded
+            else:  # backwards compatible with offline unit-test loaders
+                raw, retrieved_from = loaded, url
+            validate_url(retrieved_from, month)
+            rows, entry = parse_release_bytes(raw, month, url)
+            entry["retrieved_from"] = retrieved_from
+            sources_audit.append(entry)
+            for row in rows:
+                key = (row["release_at"], row["marketing_year"])
+                if key in all_rows:
+                    raise ValueError(f"Duplicate cross-source release+crop-year: {key}")
+                all_rows[key] = row
+            print(f"[OK] {month}: {len(rows)} U.S. corn vintage row(s)", flush=True)
+        except (HTTPError, URLError, FileNotFoundError, ValueError, UnicodeError, OSError) as e:
+            if isinstance(e, HTTPError) and e.code == 404 or isinstance(e, FileNotFoundError):
+                category = "HTTP_404_MISSING"
+            elif isinstance(e, (HTTPError, URLError, OSError)):
+                category = "NETWORK_ERROR"
+            else:
+                category = "PARSE_OR_VALIDATION_ERROR"
+            failure = {"month": month, "url": url, "category": category,
+                       "error": f"{type(e).__name__}: {e}"}
+            failures.append(failure)
+            print(f"[ERROR] {month} {category}: {failure['error']}", flush=True)
     ordered = sorted(all_rows.values(), key=lambda r: (r["release_at"], r["marketing_year"]))
     years = defaultdict(list)
     for r in ordered:
         years[r["marketing_year"]].append((datetime.fromisoformat(r["release_at"]), r["value"]))
     transitions = sum(max(0, len(x) - 1) for x in years.values())
-    audit = {"version": "K3.3", "status": "COLLECTED_NEEDS_SPOTCHECK", "release_files": len(sources),
+    known_missing = ["2025-10"] if sources[0][0] <= "2025-10" <= sources[-1][0] else []
+    unavailable = [f["month"] for f in failures]
+    volume_gate = transitions >= 24 and len(years) >= 3
+    serious_error = any(f["category"] != "HTTP_404_MISSING" for f in failures)
+    if not volume_gate:
+        status = "FAILED_INSUFFICIENT_HISTORY"
+    elif serious_error:
+        status = "FAILED_NON_404_SOURCE_ERRORS"
+    elif failures:
+        status = "PARTIAL_HISTORY_REQUIRES_MISSING_MONTH_REVIEW"
+    else:
+        status = "COLLECTED_NEEDS_SPOTCHECK"
+    audit = {"version": "K3.3.1", "status": status,
+             "release_files_requested": len(sources), "release_files_collected": len(sources_audit),
              "records": len(ordered), "marketing_years": sorted(years), "transitions": transitions,
-             "meets_volume_gate": transitions >= 24 and len(years) >= 3,
-             "sources": sources_audit,
-             "missing_release_months": ["2025-10"] if sources[0][0] <= "2025-10" <= sources[-1][0] else [],
-             "warning": "Dataset collection != backtest success. 12:00 ET is a convention, NOT an independent release-time proof. Must verify point-in-time and avoid future covariates."}
+             "meets_volume_gate": volume_gate, "serious_source_error": serious_error,
+             "sources": sources_audit, "download_failures": failures,
+             "missing_release_months": known_missing + unavailable,
+             "warning": "A 404 is a documented missing USDA download; gaps must be reviewed and cannot be imputed. "
+                        "12:00 ET is a convention, NOT independent proof of exact web availability or a backtest. "
+                        "K3.2 balance validation does not prove investment-model predictive power."}
     return ordered, audit
 
 
@@ -179,14 +240,21 @@ def main():
     a = p.parse_args()
     if not re.fullmatch(r"20\d{2}-(0[1-9]|1[0-2])", a.start) or not re.fullmatch(r"20\d{2}-(0[1-9]|1[0-2])", a.end):
         p.error("Invalid YYYY-MM format")
+    if a.start > a.end:
+        p.error("Start must not be after end")
     sources = manifest(a.start, a.end)
     rows, audit = collect(sources, fetch)
+    # Always write the diagnostic files, including when all source downloads fail.
     write_csv(rows, a.output)
     a.audit.parent.mkdir(parents=True, exist_ok=True)
     a.audit.write_text(json.dumps(audit, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(json.dumps({k: v for k,v in audit.items() if k != "sources"}, ensure_ascii=False, indent=2))
+    print(json.dumps({k: v for k, v in audit.items() if k != "sources"}, ensure_ascii=False, indent=2), flush=True)
     if audit["transitions"] < a.min_transitions or len(audit["marketing_years"]) < 3:
-        raise SystemExit("FAILED VOLUME GATE: collection completed but insufficient revisions/harvest-years; inspect artifact audit.")
+        raise SystemExit("FAILED VOLUME GATE: inspect k33-review/vintage_archive_audit.json")
+    if audit["serious_source_error"]:
+        raise SystemExit("FAILED SOURCE QUALITY GATE: non-404 download or parsing error; inspect audit")
+    if audit["download_failures"]:
+        print("[WARN] Some USDA releases are unavailable. Data are PARTIAL; check months before backtest.", flush=True)
 
 
 if __name__ == "__main__":

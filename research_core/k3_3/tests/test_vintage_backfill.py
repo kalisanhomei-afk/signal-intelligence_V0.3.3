@@ -41,5 +41,76 @@ class VintageTests(unittest.TestCase):
         self.assertEqual(audit['transitions'], 1)
         self.assertEqual(audit['marketing_years'], ['2026/27'])
 
+# The tests below explicitly prevent a missing public URL from destroying
+# diagnostics; source gaps must remain auditable.
+class ResilienceTests(unittest.TestCase):
+    def test_http_404_is_captured_with_month_and_url(self):
+        from urllib.error import HTTPError
+        def loader(u, m):
+            if m == '2026-09':
+                raise HTTPError(u, 404, 'Not Found', {}, None)
+            return sample('2026-10', '09', '1849')
+        rows, audit = collect([('2026-09',url('2026-09')),('2026-10',url('2026-10'))],loader)
+        self.assertEqual(len(rows),1)
+        self.assertEqual(audit['download_failures'][0]['month'],'2026-09')
+        self.assertEqual(audit['download_failures'][0]['url'],url('2026-09'))
+        self.assertEqual(audit['download_failures'][0]['category'],'HTTP_404_MISSING')
+        self.assertEqual(audit['status'],'FAILED_INSUFFICIENT_HISTORY')
+
+    def test_parser_error_is_not_silently_treated_as_404(self):
+        def loader(u, m):
+            return b'not-a-wasde-csv'
+        rows, audit = collect([('2026-10', url('2026-10'))], loader)
+        self.assertEqual(rows, [])
+        self.assertEqual(audit['download_failures'][0]['category'],'PARSE_OR_VALIDATION_ERROR')
+        self.assertTrue(audit['serious_source_error'])
+
+    def test_primary_404_uses_official_usda_mirror(self):
+        from urllib.error import HTTPError
+        from unittest.mock import patch
+        from vintage_backfill import fetch
+        def fake_once(u, m):
+            if 'www.usda.gov' in u:
+                raise HTTPError(u,404,'Not Found',{},None)
+            return sample('2026-10','09','1849')
+        with patch('vintage_backfill._fetch_once', side_effect=fake_once):
+            content, retrieved = fetch(url('2026-10'),'2026-10')
+        self.assertIn(b'Ending Stocks',content)
+        self.assertEqual(retrieved,'https://usda.azureedge.us/sites/default/files/documents/oce-wasde-report-data-2026-10.csv')
+
+    def test_complete_404_mirror_failure_reports_both_paths(self):
+        from urllib.error import HTTPError
+        from unittest.mock import patch
+        from vintage_backfill import fetch
+        def fail_once(u, m):
+            raise HTTPError(u,404,'Not Found',{},None)
+        with patch('vintage_backfill._fetch_once', side_effect=fail_once):
+            with self.assertRaises(FileNotFoundError) as ctx:
+                fetch(url('2026-10'),'2026-10')
+        self.assertIn('www.usda.gov',str(ctx.exception))
+        self.assertIn('usda.azureedge.us',str(ctx.exception))
+
+    def test_cli_failure_still_writes_audit_and_csv(self):
+        import json
+        import tempfile
+        from unittest.mock import patch
+        from vintage_backfill import main
+        from urllib.error import HTTPError
+        def broken(u,m):
+            raise HTTPError(u,404,'Not Found',{},None)
+        with tempfile.TemporaryDirectory() as d:
+            dst=Path(d)/'k33-review'/'historical_vintages.csv'
+            audit_file=Path(d)/'k33-review'/'vintage_archive_audit.json'
+            args=['vintage_backfill.py','--start','2026-10','--end','2026-10',
+                  '--output',str(dst),'--audit',str(audit_file)]
+            with patch('vintage_backfill.fetch',side_effect=broken), patch.object(sys,'argv',args):
+                with self.assertRaises(SystemExit):
+                    main()
+            self.assertTrue(dst.exists())
+            self.assertTrue(audit_file.exists())
+            data=json.loads(audit_file.read_text(encoding='utf-8'))
+            self.assertEqual(data['download_failures'][0]['month'],'2026-10')
+            self.assertEqual(data['status'],'FAILED_INSUFFICIENT_HISTORY')
+
 if __name__ == '__main__':
     unittest.main()
