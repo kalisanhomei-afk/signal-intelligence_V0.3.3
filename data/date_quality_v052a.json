@@ -2,12 +2,12 @@
   "meta": {
     "version": "0.5.2a",
     "type": "publication_date_quality_only",
-    "generated_at": "2026-11-12T01:42:48+00:00",
+    "generated_at": "2026-11-12T13:41:22+00:00",
     "rights_scope": "descriptive_public_metadata_only",
-    "total_checked": 300,
+    "total_checked": 308,
     "counts": {
-      "recent_7_days": 259,
-      "older_than_7_days": 40,
+      "recent_7_days": 221,
+      "older_than_7_days": 86,
       "missing_date": 1,
       "future_date": 0
     },
