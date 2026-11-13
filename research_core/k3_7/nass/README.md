@@ -1,5 +1,12 @@
 # SIGNAL K3.7 Agent B：USDA NASS 州別玉米狀況
 
+## 2026-11-14：修訂標記誤判更正
+
+原始解析器使用全文關鍵字 `Revision` 判定修訂版本，因此將官方報告的制式 `Revision Policy:` 也誤判為個別報告修訂。修正版僅辨識行首特定的修訂／更正通知（例如 `Revised edition`、`Correction Notice`）。**未出現通知不等於證明該檔為歷史首次公開版本**；`source_version_status=ARCHIVE_RETRIEVED_EDITION_ORIGINALITY_UNVERIFIED`、PIT 日期空白與 `PIT_UNVERIFIED` 仍保持。
+
+既有 GitHub Actions 原始 Artifact 保留原始舊結果作為稽核；需用修正版 `pipeline build` 對原始資料包離線重建，產生新的 CSV 與報告，不得將舊檔原地更改或回填歷史時間。
+
+
 本次交付為**標準函式庫程式、離線測試與來源受阻報告**，尚未完成歷史資料驗收。
 2016、2020、2022 三年目前均為 **0 筆官方觀測**；`out/nass_state_weekly.csv` 僅有欄名。
 官方來源遭環境代理拒絕（CONNECT 403），不是 USDA 回報沒有資料，也不是解析成功但沒有州別數據。
