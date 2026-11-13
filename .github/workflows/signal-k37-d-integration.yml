@@ -1,0 +1,97 @@
+name: SIGNAL K3.7 Agent D real-data integration QA (research only)
+
+on:
+  pull_request:
+    branches: [codex/k37-orchestration]
+    paths:
+      - '.github/workflows/signal-k37-d-integration.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  k37-exploratory-integration:
+    name: Verify source artifacts and run D research-only alignment
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout approved CI provenance checker
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Checkout immutable Agent D integration implementation
+        uses: actions/checkout@v4
+        with:
+          ref: 8de525657ec1d0529f394ddb486047654bcb5fc0
+          path: d-src
+          persist-credentials: false
+      - name: Configure Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download upstream WASDE immutable research artifact
+        uses: actions/download-artifact@v4
+        with:
+          repository: ${{ github.repository }}
+          run-id: 43448555468
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: signal-k37-wasde-online-source
+          path: inputs/wasde
+      - name: Download upstream NASS immutable research artifact
+        uses: actions/download-artifact@v4
+        with:
+          repository: ${{ github.repository }}
+          run-id: 43448555468
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: signal-k37-nass-online-source
+          path: inputs/nass
+      - name: Download upstream PIT locator evidence (not PIT certified)
+        uses: actions/download-artifact@v4
+        with:
+          repository: ${{ github.repository }}
+          run-id: 43448555468
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: signal-k37-pit-locator-probe
+          path: inputs/pit
+      - name: Verify actual original source raw SHA-256 and producer manifests
+        run: python -B ci/k37/verify_source_bundles.py --input inputs --output audited
+      - name: Run independent Agent D deterministic guard tests
+        run: |
+          cd d-src
+          python -B -m unittest discover -s research_core/k3_7/integration/tests -p 'test_*.py' -v
+      - name: Execute true official-source exploratory structural alignment
+        run: python -B d-src/research_core/k3_7/integration/verify_and_join.py --input inputs --output integrated
+      - name: Enforce fail-closed research-only data acceptance
+        run: |
+          python - <<'PY'
+          import csv,json
+          from pathlib import Path
+          a=json.loads(Path('audited/source_artifact_audit.json').read_text())
+          b=json.loads(Path('integrated/integration_quality.json').read_text())
+          with Path('integrated/structural_alignment_NOT_PIT.csv').open(newline='') as f:
+              rows=list(csv.DictReader(f))
+          assert a['status']=='SOURCE_RAW_BYTES_VERIFIED_PIT_UNVERIFIED'
+          assert b['status']=='STRUCTURAL_ALIGNMENT_PIT_UNVERIFIED'
+          assert b['pit_certified'] is False and b['certified_join_rows']==0
+          assert len(rows)==b['alignment']['rows']
+          assert all(r['pit_certified']=='false' and r['timestamp_quality']=='PIT_UNVERIFIED' for r in rows)
+          assert all(b['alignment']['by_pilot_year'][str(y)]['nass_state_week_rows'] > 0 for y in (2016,2020,2022))
+          print('OFFICIAL_RAW_INPUT_QA_PASS; EXPLORATORY_ALIGNMENT_PASS; PIT_CERTIFICATION=FALSE')
+          print('Aligned research-only rows:', len(rows))
+          PY
+      - name: Preserve result reports even when QA fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k37-agent-d-real-source-QA
+          path: |
+            audited/
+            integrated/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Data-governance boundary
+        if: always()
+        run: |
+          echo 'No historical publication timestamp certified; no backtest or trading output.'
+          echo 'Input artifacts from run 43448555468 expire on 2026-11-27 UTC.'
