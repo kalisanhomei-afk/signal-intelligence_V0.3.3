@@ -27,6 +27,12 @@ jobs:
           ref: 423835e7c0df1d7d2e8f729d76ac07ee41179809
           path: b-src
           persist-credentials: false
+      - name: Checkout independently verified Agent D research-only alignment
+        uses: actions/checkout@v4
+        with:
+          ref: dbf150322d962efbc39475c773fbd295b65b1772
+          path: d-src
+          persist-credentials: false
       - name: Set up Python 3.12
         uses: actions/setup-python@v5
         with:
@@ -73,6 +79,26 @@ jobs:
           python -B ci/k37/audit_source_semantics.py \
             --input inputs --rebuilt-nass rebuilt-nass --output audited
           echo 'SOURCE_SEMANTICS_QA_PASS; PIT_CERTIFIED=0'
+      - name: Recheck Agent D alignment with revised-but-not-certified NASS semantics
+        shell: bash
+        run: |
+          mkdir -p corrected-inputs/nass/nass-out
+          ln -s "$GITHUB_WORKSPACE/inputs/wasde" corrected-inputs/wasde
+          cp rebuilt-nass/nass_state_weekly.csv corrected-inputs/nass/nass-out/nass_state_weekly.csv
+          python -B d-src/research_core/k3_7/integration/verify_and_join.py \
+            --input corrected-inputs --output audited/d-corrected-semantic-join
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('audited/d-corrected-semantic-join/integration_quality.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          assert d['alignment']['rows']==568, 'Research alignment changed after semantics-only repair'
+          assert d['quality_warnings'].get('NASS_REVISION_MARKER_TRUE_ORIGINALITY_UNVERIFIED',0)==0
+          assert d['quality_warnings']['YIELD_UNIT_LABEL_AMBIGUOUS_BUSHELS_VS_PER_ACRE']==108
+          assert d['certified_join_rows']==0 and d['pit_certified'] is False
+          assert d['source_version_originality_unverified'] is True
+          print('D_ALIGNMENT_REPLAY_PASS: 568 structural rows unchanged; 0 false revised-flag rows; PIT=0')
+          PY
       - name: Save source audit, corrected NASS and uncertainty warnings
         if: always()
         uses: actions/upload-artifact@v4
