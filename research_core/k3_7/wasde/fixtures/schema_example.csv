@@ -1,0 +1,15 @@
+ReportTitle,Attribute,Commodity,Region,MarketYear,Value,Unit,ReleaseDate,AnnualQuarterFlag,ProjEstFlag
+U.S. Feed Grain and Corn Supply and Use,Area Planted,Corn,United States,2021/22,11,Million Acres,2022-01-12,Annual,Proj.
+U.S. Feed Grain and Corn Supply and Use,Area Harvested,Corn,United States,2021/22,10.0,Million Acres,2022-01-12,Annual,Proj.
+U.S. Feed Grain and Corn Supply and Use,Yield per Harvested Acre,Corn,United States,2021/22,100.0,Bushels,2022-01-12,Annual,Proj.
+U.S. Feed Grain and Corn Supply and Use,Beginning Stocks,Corn,United States,2021/22,100,Million Bushels,2022-01-12,Annual,Proj.
+U.S. Feed Grain and Corn Supply and Use,Production,Corn,United States,2021/22,1000,Million Bushels,2022-01-12,Annual,Proj.
+U.S. Feed Grain and Corn Supply and Use,Imports,Corn,United States,2021/22,10,Million Bushels,2022-01-12,Annual,Proj.
+U.S. Feed Grain and Corn Supply and Use,"Supply, Total",Corn,United States,2021/22,1110,Million Bushels,2022-01-12,Annual,Proj.
+U.S. Feed Grain and Corn Supply and Use,Feed and Residual,Corn,United States,2021/22,500,Million Bushels,2022-01-12,Annual,Proj.
+U.S. Feed Grain and Corn Supply and Use,"Food, Seed & Industrial",Corn,United States,2021/22,300,Million Bushels,2022-01-12,Annual,Proj.
+U.S. Feed Grain and Corn Supply and Use,Ethanol & by-products,Corn,United States,2021/22,200,Million Bushels,2022-01-12,Annual,Proj.
+U.S. Feed Grain and Corn Supply and Use,"Domestic, Total",Corn,United States,2021/22,800,Million Bushels,2022-01-12,Annual,Proj.
+U.S. Feed Grain and Corn Supply and Use,Exports,Corn,United States,2021/22,200,Million Bushels,2022-01-12,Annual,Proj.
+U.S. Feed Grain and Corn Supply and Use,"Use, Total",Corn,United States,2021/22,1000,Million Bushels,2022-01-12,Annual,Proj.
+U.S. Feed Grain and Corn Supply and Use,Ending Stocks,Corn,United States,2021/22,110,Million Bushels,2022-01-12,Annual,Proj.
