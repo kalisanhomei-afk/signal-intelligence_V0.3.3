@@ -1,0 +1,285 @@
+{
+  "archive": {
+    "attempted_at_utc": "2026-11-13T06:51:01.058649Z",
+    "error": "URLError: <urlopen error Tunnel connection failed: 403 Forbidden>",
+    "requested_url": "https://www.usda.gov/historical-wasde-report-data-3",
+    "status": "SOURCE_UNAVAILABLE"
+  },
+  "cohorts": [],
+  "coverage": [
+    {
+      "month": "2016-01",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2016-02",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2016-03",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2016-04",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2016-05",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2016-06",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2016-07",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2016-08",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2016-09",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2016-10",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2016-11",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2016-12",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2020-01",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2020-02",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2020-03",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2020-04",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2020-05",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2020-06",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2020-07",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2020-08",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2020-09",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2020-10",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2020-11",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2020-12",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2022-01",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2022-02",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2022-03",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2022-04",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2022-05",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2022-06",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2022-07",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2022-08",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2022-09",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2022-10",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2022-11",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "month": "2022-12",
+      "note": "MISSING means not observed in inspected sources; never proof no report was issued",
+      "observed_release_dates": [],
+      "records": 0,
+      "status": "SOURCE_UNAVAILABLE"
+    }
+  ],
+  "coverage_counts": {
+    "SOURCE_UNAVAILABLE": 36
+  },
+  "limitations": [
+    "USDA consolidated vintages, not proof of original-file historical availability",
+    "No imputation; individual WASDE publications remain the official data of record"
+  ],
+  "mode": "ONLINE",
+  "pilot_years": [
+    2016,
+    2020,
+    2022
+  ],
+  "records": 0,
+  "run_completed_at_utc": "2026-11-13T06:51:01.058748Z",
+  "run_started_at_utc": "2026-11-13T06:51:01.035176Z",
+  "schema_version": "K3.7-WASDE-1",
+  "source_version_conflicts": [],
+  "sources": [],
+  "status": "PARTIAL_OR_BLOCKED",
+  "timestamp_policy": "UNKNOWN: no verified historical publication or availability evidence",
+  "verified_pit_records": 0
+}

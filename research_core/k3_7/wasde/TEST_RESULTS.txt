@@ -1,0 +1,277 @@
+Observed test output; fixtures are artificial schema examples, not USDA observations.
+
+$ PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s research_core/k31/tests -v
+test_2026_yields_from_k3 (test_k31.TestK31.test_2026_yields_from_k3) ... ok
+test_all_usda_links (test_k31.TestK31.test_all_usda_links) ... ok
+test_baseline_mae (test_k31.TestK31.test_baseline_mae) ... ok
+test_conservative_public_proxy (test_k31.TestK31.test_conservative_public_proxy) ... ok
+test_direction_signals (test_k31.TestK31.test_direction_signals) ... ok
+test_duplicate_rejected (test_k31.TestK31.test_duplicate_rejected) ... ok
+test_fake_source_rejected (test_k31.TestK31.test_fake_source_rejected) ... ok
+test_four_leads_preserved (test_k31.TestK31.test_four_leads_preserved) ... ok
+test_good_excellent_by_source (test_k31.TestK31.test_good_excellent_by_source) ... ok
+test_just_before_sep_proxy_previous (test_k31.TestK31.test_just_before_sep_proxy_previous) ... ok
+test_latest_unscored_not_claimed_success (test_k31.TestK31.test_latest_unscored_not_claimed_success) ... ok
+test_mode_rejected (test_k31.TestK31.test_mode_rejected) ... ok
+test_no_early_availability (test_k31.TestK31.test_no_early_availability) ... ok
+test_no_fabricated_system_retrieval_time (test_k31.TestK31.test_no_fabricated_system_retrieval_time) ... ok
+test_no_false_outperformance (test_k31.TestK31.test_no_false_outperformance) ... ok
+test_no_param_fit (test_k31.TestK31.test_no_param_fit) ... ok
+test_no_trading (test_k31.TestK31.test_no_trading) ... ok
+test_oct_after_september_origin_blocked (test_k31.TestK31.test_oct_after_september_origin_blocked) ... ok
+test_one_abstention (test_k31.TestK31.test_one_abstention) ... ok
+test_one_hit_one_miss (test_k31.TestK31.test_one_hit_one_miss) ... ok
+test_only_two_comparables (test_k31.TestK31.test_only_two_comparables) ... ok
+test_provenance_rejected (test_k31.TestK31.test_provenance_rejected) ... ok
+test_proxy_backdating_rejected (test_k31.TestK31.test_proxy_backdating_rejected) ... ok
+test_real_four_editions (test_k31.TestK31.test_real_four_editions) ... ok
+test_release_available_at_proxy (test_k31.TestK31.test_release_available_at_proxy) ... ok
+test_row_numbers_rejected (test_k31.TestK31.test_row_numbers_rejected) ... ok
+test_scope_rejected (test_k31.TestK31.test_scope_rejected) ... ok
+test_sep_proxy_enabled (test_k31.TestK31.test_sep_proxy_enabled) ... ok
+test_source_percent_rejected (test_k31.TestK31.test_source_percent_rejected) ... ok
+test_target_is_next_wasde_not_final (test_k31.TestK31.test_target_is_next_wasde_not_final) ... ok
+test_three_origins (test_k31.TestK31.test_three_origins) ... ok
+test_unit_percent_sums (test_k31.TestK31.test_unit_percent_sums) ... ok
+test_unreasonable_week_rejected (test_k31.TestK31.test_unreasonable_week_rejected) ... ok
+test_unreleased_future_wasde_not_used (test_k31.TestK31.test_unreleased_future_wasde_not_used) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 0.065s
+
+OK
+
+
+$ PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s research_core/k3_2/tests -v
+test_bad_unit_value_fails (test_pipeline.BalanceSheetTests.test_bad_unit_value_fails) ... ok
+test_break_balance_fails_closed (test_pipeline.BalanceSheetTests.test_break_balance_fails_closed) ... ok
+test_cross_marketing_year_bridge_forbidden (test_pipeline.BalanceSheetTests.test_cross_marketing_year_bridge_forbidden) ... ok
+test_duplicate_release_fails (test_pipeline.BalanceSheetTests.test_duplicate_release_fails) ... ok
+test_generate_html_is_static_and_nontrading (test_pipeline.BalanceSheetTests.test_generate_html_is_static_and_nontrading) ... ok
+test_history_does_not_claim_ready_for_two_vintages (test_pipeline.BalanceSheetTests.test_history_does_not_claim_ready_for_two_vintages) ... ok
+test_k31_crosscheck_does_not_promote_samples_to_official (test_pipeline.BalanceSheetTests.test_k31_crosscheck_does_not_promote_samples_to_official) ... skipped 'K3.1 not installed in local fixture'
+test_oct_to_nov_stock_bridge (test_pipeline.BalanceSheetTests.test_oct_to_nov_stock_bridge) ... ok
+test_timezone_must_be_present (test_pipeline.BalanceSheetTests.test_timezone_must_be_present) ... ok
+test_two_official_releases_reconcile (test_pipeline.BalanceSheetTests.test_two_official_releases_reconcile) ... ok
+test_conflicting_duplicate_is_rejected (test_pipeline.OfficialCsvIntakeTests.test_conflicting_duplicate_is_rejected) ... ok
+test_import_filters_table_region_and_projection (test_pipeline.OfficialCsvIntakeTests.test_import_filters_table_region_and_projection) ... ok
+test_official_url_restricted (test_pipeline.OfficialCsvIntakeTests.test_official_url_restricted) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.021s
+
+OK (skipped=1)
+
+
+$ PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s research_core/k3_3/tests -v
+test_cli_failure_still_writes_audit_and_csv (test_vintage_backfill.ResilienceTests.test_cli_failure_still_writes_audit_and_csv) ... [K3.3] (1/1) Fetching vintage 2026-10: https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv
+[ERROR] 2026-10 HTTP_404_MISSING: HTTPError: HTTP Error 404: Not Found
+{
+  "version": "K3.3.2",
+  "status": "FAILED_INSUFFICIENT_HISTORY",
+  "release_files_requested": 1,
+  "release_files_collected": 0,
+  "records": 0,
+  "marketing_years": [],
+  "transitions": 0,
+  "meets_volume_gate": false,
+  "serious_source_error": false,
+  "download_failures": [
+    {
+      "month": "2026-10",
+      "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+      "category": "HTTP_404_MISSING",
+      "error": "HTTPError: HTTP Error 404: Not Found"
+    }
+  ],
+  "non_release_months": [],
+  "missing_release_months": [
+    "2026-10"
+  ],
+  "warning": "A 404 is a documented missing USDA download (not proof that no WASDE report was issued); gaps must be reviewed and cannot be imputed. 12:00 ET is a convention, NOT independent proof of exact web availability or a backtest. K3.2 balance validation does not prove investment-model predictive power."
+}
+ok
+test_complete_404_mirror_failure_reports_both_paths (test_vintage_backfill.ResilienceTests.test_complete_404_mirror_failure_reports_both_paths) ... [WARN] 2026-10: USDA primary returned HTTP 404; checking official mirror https://usda.azureedge.us/sites/default/files/documents/oce-wasde-report-data-2026-10.csv
+ok
+test_http_404_is_captured_with_month_and_url (test_vintage_backfill.ResilienceTests.test_http_404_is_captured_with_month_and_url) ... [K3.3] (1/2) Fetching vintage 2026-09: https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-09.csv
+[ERROR] 2026-09 HTTP_404_MISSING: HTTPError: HTTP Error 404: Not Found
+[K3.3] (2/2) Fetching vintage 2026-10: https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv
+[OK] 2026-10: 1 U.S. corn vintage row(s)
+ok
+test_parser_error_is_not_silently_treated_as_404 (test_vintage_backfill.ResilienceTests.test_parser_error_is_not_silently_treated_as_404) ... [K3.3] (1/1) Fetching vintage 2026-10: https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv
+[ERROR] 2026-10 PARSE_OR_VALIDATION_ERROR: ValueError: USDA schema drift for 2026-10: missing ['Attribute', 'Commodity', 'MarketYear', 'ProjEstFlag', 'Region', 'ReleaseDate', 'ReportTitle', 'Unit', 'Value']
+ok
+test_primary_404_uses_official_usda_mirror (test_vintage_backfill.ResilienceTests.test_primary_404_uses_official_usda_mirror) ... [WARN] 2026-10: USDA primary returned HTTP 404; checking official mirror https://usda.azureedge.us/sites/default/files/documents/oce-wasde-report-data-2026-10.csv
+ok
+test_manifest_has_gap_explicit (test_vintage_backfill.VintageTests.test_manifest_has_gap_explicit) ... ok
+test_may_june_2026_non_v2_filenames_are_rejected (test_vintage_backfill.VintageTests.test_may_june_2026_non_v2_filenames_are_rejected) ... ok
+test_month_mismatch_rejected (test_vintage_backfill.VintageTests.test_month_mismatch_rejected) ... ok
+test_october_2025_identified_as_no_release_not_download_failure (test_vintage_backfill.VintageTests.test_october_2025_identified_as_no_release_not_download_failure) ... [K3.3] (1/2) Fetching vintage 2025-09: https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-09.csv
+[OK] 2025-09: 1 U.S. corn vintage row(s)
+[K3.3] (2/2) Fetching vintage 2025-11: https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-11.csv
+[OK] 2025-11: 1 U.S. corn vintage row(s)
+ok
+test_official_v2_manifest_for_may_june_2026 (test_vintage_backfill.VintageTests.test_official_v2_manifest_for_may_june_2026) ... ok
+test_one_release_parses (test_vintage_backfill.VintageTests.test_one_release_parses) ... ok
+[K3.3] (1/2) Fetching vintage 2026-10: https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv
+test_two_reports_same_crop_year_transition (test_vintage_backfill.VintageTests.test_two_reports_same_crop_year_transition) ... [OK] 2026-10: 1 U.S. corn vintage row(s)
+[K3.3] (2/2) Fetching vintage 2026-11: https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-11.csv
+[OK] 2026-11: 1 U.S. corn vintage row(s)
+ok
+test_url_allowlist_blocks_non_usda (test_vintage_backfill.VintageTests.test_url_allowlist_blocks_non_usda) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.069s
+
+OK
+
+
+$ PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s research_core/k3_4/tests -v
+test_archive_links (test_integrate.K34Test.test_archive_links) ... ok
+test_archive_page_traversal_stops_at_older_year (test_integrate.K34Test.test_archive_page_traversal_stops_at_older_year) ... ok
+test_bad_host_rejected (test_integrate.K34Test.test_bad_host_rejected) ... ok
+test_balance_columns_and_mass_balance (test_integrate.K34Test.test_balance_columns_and_mass_balance) ... ok
+test_balance_missing_value_rejected (test_integrate.K34Test.test_balance_missing_value_rejected) ... ok
+test_join_never_uses_nass_after_origin (test_integrate.K34Test.test_join_never_uses_nass_after_origin) ... ok
+test_k31_four_records (test_integrate.K34Test.test_k31_four_records) ... ok
+test_k31_vs_official_conflict (test_integrate.K34Test.test_k31_vs_official_conflict) ... ok
+test_nass_discard_wrong_crop (test_integrate.K34Test.test_nass_discard_wrong_crop) ... ok
+test_nass_real_oct_excerpt (test_integrate.K34Test.test_nass_real_oct_excerpt) ... ok
+test_nass_reject_missing_or_bad_row (test_integrate.K34Test.test_nass_reject_missing_or_bad_row) ... ok
+test_nass_unreleased_condition_is_explicit_skip (test_integrate.K34Test.test_nass_unreleased_condition_is_explicit_skip) ... ok
+test_no_wrong_release_date (test_integrate.K34Test.test_no_wrong_release_date) ... ok
+test_offline_job_artifacts (test_integrate.K34Test.test_offline_job_artifacts) ... ok
+test_stock_records_46 (test_integrate.K34Test.test_stock_records_46) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.049s
+
+OK
+
+
+$ PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s research_core/k3_4_1/tests -v
+test_01_nass_est_and_edt (test_pit_cohort.PITTests.test_01_nass_est_and_edt) ... ok
+test_02_wasde_est_and_edt (test_pit_cohort.PITTests.test_02_wasde_est_and_edt) ... ok
+test_03_no_naive_datetime (test_pit_cohort.PITTests.test_03_no_naive_datetime) ... ok
+test_04_invalid_nonexistent_kind (test_pit_cohort.PITTests.test_04_invalid_nonexistent_kind) ... ok
+test_05_cohort_count (test_pit_cohort.PITTests.test_05_cohort_count) ... ok
+test_06_no_independent_time_certs (test_pit_cohort.PITTests.test_06_no_independent_time_certs) ... ok
+test_07_no_future_feature_in_selection (test_pit_cohort.PITTests.test_07_no_future_feature_in_selection) ... ok
+test_08_conservative_selection_differs_once (test_pit_cohort.PITTests.test_08_conservative_selection_differs_once) ... ok
+test_09_freeze_offline (test_pit_cohort.PITTests.test_09_freeze_offline) ... ok
+test_10_metrics_fair_same_cohort (test_pit_cohort.PITTests.test_10_metrics_fair_same_cohort) ... ok
+test_11_integrity_rejects_stock_tamper (test_pit_cohort.PITTests.test_11_integrity_rejects_stock_tamper) ... ok
+test_12_timeline_rejects_origin_at_target (test_pit_cohort.PITTests.test_12_timeline_rejects_origin_at_target) ... ok
+test_13_duplicate_nass_detection (test_pit_cohort.PITTests.test_13_duplicate_nass_detection) ... ok
+test_14_duplicate_wasde_detection (test_pit_cohort.PITTests.test_14_duplicate_wasde_detection) ... ok
+test_15_safety_buffer_avoids_same_day (test_pit_cohort.PITTests.test_15_safety_buffer_avoids_same_day) ... ok
+test_16_invalid_config_fails_closed (test_pit_cohort.PITTests.test_16_invalid_config_fails_closed) ... ok
+test_17_missing_input_error_artifact (test_pit_cohort.PITTests.test_17_missing_input_error_artifact) ... ok
+test_18_reproducible_lock (test_pit_cohort.PITTests.test_18_reproducible_lock) ... ok
+test_19_no_current_future_lookahead (test_pit_cohort.PITTests.test_19_no_current_future_lookahead) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.097s
+
+OK
+
+
+$ PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s research_core/k3_5/tests -v
+test_21_rows (test_walk_forward.FrozenInputTests.test_21_rows) ... ok
+test_all_asof (test_walk_forward.FrozenInputTests.test_all_asof) ... ok
+test_all_not_pit_certified (test_walk_forward.FrozenInputTests.test_all_not_pit_certified) ... ok
+test_claimed_pit_certified_rejected (test_walk_forward.FrozenInputTests.test_claimed_pit_certified_rejected) ... ok
+test_cohort_counts (test_walk_forward.FrozenInputTests.test_cohort_counts) ... ok
+test_duplicate_origin_rejected (test_walk_forward.FrozenInputTests.test_duplicate_origin_rejected) ... ok
+test_expected_frozen_checksum (test_walk_forward.FrozenInputTests.test_expected_frozen_checksum) ... ok
+test_future_nass_rejected (test_walk_forward.FrozenInputTests.test_future_nass_rejected) ... ok
+test_raw_input_line_ending_normalization (test_walk_forward.FrozenInputTests.test_raw_input_line_ending_normalization) ... ok
+test_tampering_hash_rejected (test_walk_forward.FrozenInputTests.test_tampering_hash_rejected) ... ok
+test_wrong_delta_rejected (test_walk_forward.FrozenInputTests.test_wrong_delta_rejected) ... ok
+test_15_test_rows (test_walk_forward.ModelTests.test_15_test_rows) ... ok
+test_alpha_preset (test_walk_forward.ModelTests.test_alpha_preset) ... ok
+test_frozen_output_files (test_walk_forward.ModelTests.test_frozen_output_files) ... ok
+test_locked_baseline_mae (test_walk_forward.ModelTests.test_locked_baseline_mae) ... ok
+test_mean_model_uses_training_only (test_walk_forward.ModelTests.test_mean_model_uses_training_only) ... ok
+test_no_heldout_label_leakage (test_walk_forward.ModelTests.test_no_heldout_label_leakage) ... ok
+test_predictions_are_finite (test_walk_forward.ModelTests.test_predictions_are_finite) ... ok
+test_ridge_no_training_labels_from_holdout (test_walk_forward.ModelTests.test_ridge_no_training_labels_from_holdout) ... ok
+test_source_status_guard (test_walk_forward.ModelTests.test_source_status_guard) ... ok
+test_test_year_counts (test_walk_forward.ModelTests.test_test_year_counts) ... ok
+test_three_years_evaluated (test_walk_forward.ModelTests.test_three_years_evaluated) ... ok
+test_training_counts (test_walk_forward.ModelTests.test_training_counts) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.011s
+
+OK
+
+
+$ PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s research_core/k3_6/tests -v
+test_15_predictions_and_three_folds (test_yield_bridge.TestK36.test_15_predictions_and_three_folds) ... ok
+test_2023_area_counterexample (test_yield_bridge.TestK36.test_2023_area_counterexample) ... ok
+test_area_yield_bridge_identity (test_yield_bridge.TestK36.test_area_yield_bridge_identity) ... ok
+test_expected_input_hashes (test_yield_bridge.TestK36.test_expected_input_hashes) ... ok
+test_fixed_cohort_size (test_yield_bridge.TestK36.test_fixed_cohort_size) ... ok
+test_four_marketing_years (test_yield_bridge.TestK36.test_four_marketing_years) ... ok
+test_frozen_hash_tamper_detected (test_yield_bridge.TestK36.test_frozen_hash_tamper_detected) ... ok
+test_irregular_report_interval_is_explicit (test_yield_bridge.TestK36.test_irregular_report_interval_is_explicit) ... ok
+test_no_future_nass_in_fixed_cohort (test_yield_bridge.TestK36.test_no_future_nass_in_fixed_cohort) ... ok
+test_no_pit_claim (test_yield_bridge.TestK36.test_no_pit_claim) ... ok
+test_reference_oct_nov_2026 (test_yield_bridge.TestK36.test_reference_oct_nov_2026) ... ok
+test_refuses_future_nass (test_yield_bridge.TestK36.test_refuses_future_nass) ... ok
+test_refuses_naive_datetime (test_yield_bridge.TestK36.test_refuses_naive_datetime) ... ok
+test_refuses_target_mismatch (test_yield_bridge.TestK36.test_refuses_target_mismatch) ... ok
+test_rerun_identical_outputs (test_yield_bridge.TestK36.test_rerun_identical_outputs) ... ok
+test_ridge_predicts_finite (test_yield_bridge.TestK36.test_ridge_predicts_finite) ... ok
+test_same_year_release_edges (test_yield_bridge.TestK36.test_same_year_release_edges) ... ok
+test_stock_flow_bridge_identity (test_yield_bridge.TestK36.test_stock_flow_bridge_identity) ... ok
+test_yield_nonzero_counts (test_yield_bridge.TestK36.test_yield_nonzero_counts) ... ok
+test_yield_persistence_baseline (test_yield_bridge.TestK36.test_yield_persistence_baseline) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.022s
+
+OK
+
+
+$ PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s research_core/k3_7/wasde/tests -v
+test_complete_fixture_pilot_and_all_months (test_pipeline.CollectionTests.test_complete_fixture_pilot_and_all_months) ... ok
+test_http_200_error_page_is_not_proof_of_missing_releases (test_pipeline.CollectionTests.test_http_200_error_page_is_not_proof_of_missing_releases) ... ok
+test_incomplete_cohort_does_not_pass_coverage_gate (test_pipeline.CollectionTests.test_incomplete_cohort_does_not_pass_coverage_gate) ... ok
+test_missing_link_unavailable_and_404_are_distinct (test_pipeline.CollectionTests.test_missing_link_unavailable_and_404_are_distinct) ... ok
+test_offline_replay_is_deterministic_and_has_no_network (test_pipeline.CollectionTests.test_offline_replay_is_deterministic_and_has_no_network) ... ok
+test_output_never_overwritten (test_pipeline.CollectionTests.test_output_never_overwritten) ... ok
+test_parse_error_preserves_raw_hash_receipt_and_no_data (test_pipeline.CollectionTests.test_parse_error_preserves_raw_hash_receipt_and_no_data) ... ok
+test_replay_detects_tampering (test_pipeline.CollectionTests.test_replay_detects_tampering) ... ok
+test_source_unavailable_has_36_gaps_no_fake_provenance (test_pipeline.CollectionTests.test_source_unavailable_has_36_gaps_no_fake_provenance) ... ok
+test_source_versions_retained_and_flagged (test_pipeline.CollectionTests.test_source_versions_retained_and_flagged) ... ok
+test_all_marketing_years_in_one_release_preserved (test_pipeline.ParserTests.test_all_marketing_years_in_one_release_preserved) ... ok
+test_area_yield_product_check (test_pipeline.ParserTests.test_area_yield_product_check) ... ok
+test_bad_units_quarantine_entire_cohort (test_pipeline.ParserTests.test_bad_units_quarantine_entire_cohort) ... ok
+test_balance_mismatch_quarantines_cohort (test_pipeline.ParserTests.test_balance_mismatch_quarantines_cohort) ... ok
+test_bom_crlf_date_and_marketing_year_formats (test_pipeline.ParserTests.test_bom_crlf_date_and_marketing_year_formats) ... ok
+test_domestic_components_and_reported_totals_checked (test_pipeline.ParserTests.test_domestic_components_and_reported_totals_checked) ... ok
+test_duplicate_metric_even_identical_is_rejected (test_pipeline.ParserTests.test_duplicate_metric_even_identical_is_rejected) ... ok
+test_extra_nonpilot_attributes_are_logged (test_pipeline.ParserTests.test_extra_nonpilot_attributes_are_logged) ... ok
+test_minimum_metrics_units_and_empty_pit (test_pipeline.ParserTests.test_minimum_metrics_units_and_empty_pit) ... ok
+test_missing_nonfinite_negative_and_malformed_numbers_rejected (test_pipeline.ParserTests.test_missing_nonfinite_negative_and_malformed_numbers_rejected) ... ok
+test_only_pilot_annual_us_corn_table_selected (test_pipeline.ParserTests.test_only_pilot_annual_us_corn_table_selected) ... ok
+test_required_missing_metric_is_explicit_not_filled (test_pipeline.ParserTests.test_required_missing_metric_is_explicit_not_filled) ... ok
+test_revisions_and_estimates_never_overwritten (test_pipeline.ParserTests.test_revisions_and_estimates_never_overwritten) ... ok
+test_rounding_tolerance_does_not_impute (test_pipeline.ParserTests.test_rounding_tolerance_does_not_impute) ... ok
+test_schema_drift_and_malformed_csv_fail_closed (test_pipeline.ParserTests.test_schema_drift_and_malformed_csv_fail_closed) ... ok
+test_source_date_and_marketing_year_fail_closed (test_pipeline.ParserTests.test_source_date_and_marketing_year_fail_closed) ... ok
+test_cache_preserves_versions_and_new_acquisition_times (test_pipeline.SourceTests.test_cache_preserves_versions_and_new_acquisition_times) ... ok
+test_discovery_only_uses_observed_official_pilot_links (test_pipeline.SourceTests.test_discovery_only_uses_observed_official_pilot_links) ... ok
+test_download_enforces_size_url_and_actual_clock (test_pipeline.SourceTests.test_download_enforces_size_url_and_actual_clock) ... ok
+test_duplicate_metric_across_zip_members_rejected (test_pipeline.SourceTests.test_duplicate_metric_across_zip_members_rejected) ... ok
+test_urls_and_redirects_checked_before_request (test_pipeline.SourceTests.test_urls_and_redirects_checked_before_request) ... ok
+test_versioned_csv_links_are_discovered_separately (test_pipeline.SourceTests.test_versioned_csv_links_are_discovered_separately) ... ok
+test_zip_filters_nonpilot_years_and_preserves_raw_and_member_hashes (test_pipeline.SourceTests.test_zip_filters_nonpilot_years_and_preserves_raw_and_member_hashes) ... ok
+test_zip_invalid_unsafe_duplicate_and_oversized_rejected (test_pipeline.SourceTests.test_zip_invalid_unsafe_duplicate_and_oversized_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 0.184s
+
+OK
