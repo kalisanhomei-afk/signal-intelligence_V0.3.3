@@ -1,0 +1,197 @@
+name: SIGNAL K3.7 official-source online pilot (research only)
+
+# Read-only and intentionally separate from the already-passed offline CI.
+# Runs on a PR so no workflow registration on main is required.
+on:
+  pull_request:
+    branches:
+      - codex/k37-orchestration
+    paths:
+      - '.github/workflows/signal-k37-source-pilot.yml'
+  push:
+    branches:
+      - codex/k37-orchestration
+    paths:
+      - '.github/workflows/signal-k37-source-pilot.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  wasde-online:
+    name: WASDE real source/pilot parse (not PIT certification)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout immutable Agent A deliverable
+        uses: actions/checkout@v4
+        with:
+          ref: 557d8783cd5d711cea1bee47c0d698f0a03cdff8
+          persist-credentials: false
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Online WASDE collection, preserve raw proof and exit code
+        shell: bash
+        run: |
+          mkdir -p k37-pilot/wasde k37-pilot/wasde_raw k37-pilot/logs
+          set +e
+          python - > k37-pilot/logs/wasde.log 2>&1 <<'PY'
+          import json,sys
+          from pathlib import Path
+          from research_core.k3_7.wasde.pipeline import collect,write_outputs
+          output=Path('k37-pilot/wasde')
+          raw_dir=Path('k37-pilot/wasde_raw')
+          rows,audit=collect(raw_dir=raw_dir,archive_url='https://usda.azureedge.us/historical-wasde-report-data-3')
+          write_outputs(output,rows,audit)
+          print(json.dumps({k:audit[k] for k in ('status','records','coverage_counts','verified_pit_records')},sort_keys=True))
+          sys.exit(0 if audit['status']=='COLLECTED_PIT_UNVERIFIED' else 2)
+          PY
+          code=$?
+          set -e
+          echo "$code" > k37-pilot/logs/wasde_exit_code.txt
+          tail -c 12000 k37-pilot/logs/wasde.log || true
+          echo "EXIT_CODE=$code (0 means collector's own coverage gate; not PIT)"
+      - name: Preserve WASDE audit whether source succeeds or fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k37-wasde-online-source
+          path: k37-pilot/
+          retention-days: 14
+          if-no-files-found: warn
+          compression-level: 6
+      - name: Strict real-source feasibility gate (three pilot years)
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv,json,sys
+          from pathlib import Path
+          out=Path('k37-pilot/wasde')
+          manifest=out/'manifest.json'
+          csvfile=out/'wasde_vintages.csv'
+          if not manifest.is_file() or not csvfile.is_file():
+              sys.exit('SOURCE_RESULT_MISSING: inspect online source artifact')
+          a=json.loads(manifest.read_text(encoding='utf-8'))
+          with csvfile.open(encoding='utf-8',newline='') as f: rows=list(csv.DictReader(f))
+          years={int(r['release_date'][:4]) for r in rows}
+          print(json.dumps({'records':len(rows),'pilot_years_observed':sorted(years),'coverage_counts':a.get('coverage_counts'),'collection_status':a.get('status'),'pit_certified':False},sort_keys=True))
+          if not {2016,2020,2022}.issubset(years):
+              sys.exit('SOURCE_PILOT_INCOMPLETE: missing successful parsed records in >=1 pilot year; no DATA_VERIFIED claim')
+          print('RETRIEVAL_AND_PARSE_PILOT_SUCCESS; NOT complete coverage, NOT PIT certification')
+          PY
+
+  nass-online:
+    name: NASS bounded source discovery/pilot parse (not PIT certification)
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - name: Checkout immutable Agent B deliverable
+        uses: actions/checkout@v4
+        with:
+          ref: a84e691ae7bdb7537cb172906384568ed7b70966
+          persist-credentials: false
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Online bounded NASS discovery and deterministic build
+        shell: bash
+        run: |
+          mkdir -p k37-pilot/logs
+          set +e
+          python -B -m research_core.k3_7.nass.pipeline fetch --bundle k37-pilot/nass-bundle --max-pages 240 > k37-pilot/logs/nass_fetch.log 2>&1
+          code=$?
+          python -B -m research_core.k3_7.nass.pipeline build --bundle k37-pilot/nass-bundle --output k37-pilot/nass-out > k37-pilot/logs/nass_build.log 2>&1
+          build_code=$?
+          set -e
+          echo "$code" > k37-pilot/logs/nass_fetch_exit_code.txt
+          echo "$build_code" > k37-pilot/logs/nass_build_exit_code.txt
+          tail -c 12000 k37-pilot/logs/nass_fetch.log || true
+          tail -c 12000 k37-pilot/logs/nass_build.log || true
+          echo 'The 240-page cap is deliberately preliminary: a page limit is not completeness.'
+      - name: Preserve NASS source receipts, outputs and failure reasons
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k37-nass-online-source
+          path: k37-pilot/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Strict real-source feasibility gate (three pilot years)
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json,sys
+          from pathlib import Path
+          p=Path('k37-pilot/nass-out/quality_report.json')
+          if not p.is_file():
+              sys.exit('SOURCE_RESULT_MISSING: inspect online source artifact')
+          a=json.loads(p.read_text(encoding='utf-8'))
+          counts={str(row['year']):row['observation_rows_including_editions'] for row in a.get('seasonal_coverage',[])}
+          print(json.dumps({'observation_rows':a.get('observation_rows'),'per_pilot_year':counts,'status':a.get('status'),'verified_public_timestamp_rows':a.get('verified_public_timestamp_rows')},sort_keys=True))
+          if not all(counts.get(str(y),0)>0 for y in (2016,2020,2022)):
+              sys.exit('SOURCE_PILOT_INCOMPLETE: 2016/2020/2022 all need real parsed rows; 240-page cap may be limiting; no DATA_VERIFIED claim')
+          print('RETRIEVAL_AND_PARSE_PILOT_SUCCESS; NOT complete coverage, NOT PIT certification')
+          PY
+
+  pit-connectivity:
+    name: Official locator network probe (NOT historical PIT)
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout immutable Agent C deliverable
+        uses: actions/checkout@v4
+        with:
+          ref: 1305d9f362dc2331061f608e9537821a7988722b
+          persist-credentials: false
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Probe three official locators without inferring PIT
+        shell: bash
+        run: |
+          mkdir -p k37-pilot/logs
+          set +e
+          python -B -m research_core.k3_7.pit.collect --output k37-pilot/pit-locators > k37-pilot/logs/locator_probe.log 2>&1
+          code=$?
+          set -e
+          echo "$code" > k37-pilot/logs/locator_probe_exit_code.txt
+          cat k37-pilot/logs/locator_probe.log || true
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from research_core.k3_7.pit.collect import capture
+          out=Path('k37-pilot/pit-locators')
+          mirror=capture('https://usda.azureedge.us/historical-wasde-report-data-3',out,'usda-official-mirror')
+          (out/'official_mirror_probe.json').write_text(json.dumps(mirror,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps({'mirror_status':mirror['status'],'mirror_error':mirror.get('error','')}))
+          PY
+          echo 'Current HTTP retrieval is NOT historical public availability evidence.'
+      - name: Preserve network source evidence, including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k37-pit-locator-probe
+          path: k37-pilot/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Connectivity result gate, not PIT certification
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json,sys
+          from pathlib import Path
+          p=Path('k37-pilot/pit-locators/source_access.json')
+          if not p.is_file():sys.exit('LOCATOR_PROBE_MISSING')
+          arr=json.loads(p.read_text(encoding='utf-8'))
+          print(json.dumps([{'url':x['url'],'status':x['status'],'error':x.get('error','')} for x in arr],ensure_ascii=False))
+          mirror=json.loads(Path('k37-pilot/pit-locators/official_mirror_probe.json').read_text(encoding='utf-8'))
+          nass_ok=all(x['status']=='FETCHED_LOCATOR_NOT_TIME_EVIDENCE' for x in arr[1:])
+          wasde_ok=(arr[0]['status']=='FETCHED_LOCATOR_NOT_TIME_EVIDENCE' or mirror['status']=='FETCHED_LOCATOR_NOT_TIME_EVIDENCE')
+          if not (len(arr)==3 and nass_ok and wasde_ok):
+              sys.exit('OFFICIAL_LOCATOR_REACHABILITY_INCOMPLETE; NOT PIT')
+          print('OFFICIAL_LOCATOR_REACHABILITY_WITH_EXPLICIT_MIRROR_PASS; PIT_CERTIFIED=FALSE')
+          PY
