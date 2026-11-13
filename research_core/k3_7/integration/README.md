@@ -1,5 +1,12 @@
 # SIGNAL K3.7 Agent D — Exploratory Integration (PIT_UNVERIFIED)
 
+## Follow-up official-source semantics correction (2026-11-13)
+
+[Independent successful QA run 43462897263](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/43462897263) compares all **1,006 NASS** condition rows and **108 WASDE yield** rows directly with original official downloaded source bytes. The original Agent B marker `revision_marker=true` on all 1,006 rows was a false positive caused by generic `Revision Policy:` text in 105/106 official report files; corrected Agent B now reports **0 explicit edition revisions** while preserving `PIT_UNVERIFIED` and **original edition authenticity unverified**. WASDE's raw `Attribute=Yield per Harvested Acre`, `Unit=Bushels` means display quantity is `bushels/harvested-acre`; no numeric conversion.
+
+Agent D rerun with the corrected NASS CSV retained **568 research-only rows**; all 0 PIT-certified. Its previous raw QA run truthfully reported the *pre-correction* revision-marker values; that prior artifact remains historical and is not rewritten. Source evidence timestamps remain unauthenticated: **all 36 archived NASS 2016 reports returned HTTP Last-Modified in September 2018**, never interpreted as 2016 public release time. [Issue #3](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/issues/3) tracks independent PIT evidence.
+
+
 ## Current verified status (2026-11-13)
 
 **EXPLORATORY_INTEGRATION_PASS_PIT_UNVERIFIED.** The original Codex **BLOCKED** report was valid when produced, but has since been resolved by the GitHub Actions cross-run artifact bridge; historical blocked JSON/HTML preserved in `initial_blocked/`.
