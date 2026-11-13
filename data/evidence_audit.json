@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.1",
-    "generated_at": "2026-11-13T01:36:57+00:00",
+    "generated_at": "2026-11-13T13:38:07+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "status": "metadata_gap_audit_only",
     "candidate_count": 12,
@@ -32,13 +32,13 @@
   },
   "items": [
     {
-      "id": "rss-fb1f6b428cbc85b9099709",
-      "source_id": "arxiv-robotics",
+      "id": "rss-ffa1f59686fc24d77182db",
+      "source_id": "arxiv-ai",
       "publisher_id": "arxiv",
-      "title": "RaMOD: Moving-Object Detection from Raw mmWave Radar Cubes under Ego Motion",
+      "title": "MuEdit: An efficient multi-task editing method towards inter-domain knowledge conflicts",
       "category": "知識",
-      "published_at": "2026-11-11T05:00:00+00:00",
-      "url": "https://arxiv.org/abs/2611.13271",
+      "published_at": "2026-11-13T05:00:00+00:00",
+      "url": "https://arxiv.org/abs/2611.14910",
       "source_role": "研究預印本儲存平台",
       "evidence_kind": "未確認同儕審查之預印本元資料",
       "evidence_level": "M0",
@@ -54,7 +54,7 @@
         "有沒有實際部署、效能基準及限制證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "9a3254491fdeafaebf1f8a64"
+      "fingerprint": "7bcde059f3aee1d67c3fb653"
     },
     {
       "id": "rss-9cc53e9eda9e7cde360497",
@@ -107,13 +107,13 @@
       "fingerprint": "14b7d349932ea5bf0627118d"
     },
     {
-      "id": "rss-8d68a3c33012c205191cfe",
+      "id": "rss-b3cadfec94cdc44d4199ed",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Opening and closing remarks of Executive Vice-President Virkkunen at the MSS Stakeholder Forum",
+      "title": "Commissioner Roswall's address at the Circular Valley Forum",
       "category": "政治",
-      "published_at": "2026-11-12T14:32:38+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2428",
+      "published_at": "2026-11-13T12:24:19+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2437",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -129,7 +129,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "b715ad52f2995e57434a8abc"
+      "fingerprint": "20aeca199cc7a4ea5274a137"
     },
     {
       "id": "rss-87a784bdd6110f05671301",
@@ -157,13 +157,13 @@
       "fingerprint": "d3cbcd0dd970b250a2172d47"
     },
     {
-      "id": "rss-f44a902adb63ac775a9042",
+      "id": "rss-fbae7cd0ca9331b4f9bf09",
       "source_id": "mit-research",
       "publisher_id": "mit_news",
-      "title": "Q&A: From seed funding to scientific breakthroughs",
+      "title": "Waves that clear waste from the brain during sleep are impaired in older adults",
       "category": "科技",
-      "published_at": "2026-11-12T21:45:00+00:00",
-      "url": "https://news.mit.edu/2026/from-seed-funding-to-scientific-breakthroughs-1112",
+      "published_at": "2026-11-13T10:00:00+00:00",
+      "url": "https://news.mit.edu/2026/waste-clearing-waves-in-brain-during-sleep-are-impaired-in-older-adults-1113",
       "source_role": "研究機構自有新聞編輯室",
       "evidence_kind": "MIT 自有研究報導標題元資料",
       "evidence_level": "M0",
@@ -179,16 +179,16 @@
         "研究結果與商業部署或規模化是否有證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "61223bd26387c017807afbd3"
+      "fingerprint": "c2a01a342f9dacc3c0b03f8a"
     },
     {
-      "id": "rss-da9b1cc7c4c966319bebd2",
+      "id": "rss-f12f2eb953e579e83deb76",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
-      "title": "I Am Artemis Katie Spicer",
+      "title": "APOD: 2026 November 13 – NGC 206 and the Star Clouds of Andromeda",
       "category": "科技",
-      "published_at": "2026-11-12T20:10:02+00:00",
-      "url": "https://www.nasa.gov/missions/artemis/i-am-artemis-katie-spicer",
+      "published_at": "2026-11-13T05:05:00+00:00",
+      "url": "https://science.nasa.gov/image-article/apod-2026-november-13-ngc-206-and-the-star-clouds-of-andromeda",
       "source_role": "第一手航太科研機構",
       "evidence_kind": "航太與技術機構公開消息標題元資料",
       "evidence_level": "M0",
@@ -204,16 +204,16 @@
         "相關成果有無獨立測試或第三方研究？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "1b7642e15ed7a0768ca77af8"
+      "fingerprint": "e1c64a6f77ab809aca35a2ab"
     },
     {
-      "id": "rss-f63659155352269baf261f",
-      "source_id": "arxiv-ai",
+      "id": "rss-f7a5cfbb5874782a058a93",
+      "source_id": "arxiv-robotics",
       "publisher_id": "arxiv",
-      "title": "Auditable Human-Agent Teams for Autonomous X-ray Experimentation",
+      "title": "Scaling VLA Serving Under Robotic Execution Constraints",
       "category": "知識",
-      "published_at": "2026-11-11T05:00:00+00:00",
-      "url": "https://arxiv.org/abs/2611.12933",
+      "published_at": "2026-11-13T05:00:00+00:00",
+      "url": "https://arxiv.org/abs/2611.14969",
       "source_role": "研究預印本儲存平台",
       "evidence_kind": "未確認同儕審查之預印本元資料",
       "evidence_level": "M0",
@@ -229,7 +229,7 @@
         "有沒有實際部署、效能基準及限制證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "900aa0b35e1c58f3bdce14c7"
+      "fingerprint": "af8d7b0d4b240962030f776c"
     },
     {
       "id": "rss-ed83cb0bc28656a36c6f39",
@@ -282,13 +282,13 @@
       "fingerprint": "0c3e581145b6fa39bee4e812"
     },
     {
-      "id": "rss-24f5ddc4fe6f1753430b86",
+      "id": "rss-efd033d8f6309301b8549a",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Keynote speech by Commissioner Serafin at the ECA conference: Shaping the next MFF – Performance and accountability",
+      "title": "Daily News 13 / 11 / 2026",
       "category": "政治",
-      "published_at": "2026-11-12T14:23:11+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2426",
+      "published_at": "2026-11-13T11:14:23+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/mex_26_2434",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -304,7 +304,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "6c1bbe60f40b7aa9a6613a7f"
+      "fingerprint": "2cb40b1240cc65549d07b041"
     },
     {
       "id": "rss-a0c3e1be77e8b5a27f797a",
