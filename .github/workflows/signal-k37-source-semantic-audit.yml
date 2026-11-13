@@ -1,0 +1,119 @@
+name: SIGNAL K3.7 independent source semantics audit (research only)
+
+on:
+  pull_request:
+    branches: [codex/k37-orchestration]
+    paths:
+      - '.github/workflows/signal-k37-source-semantic-audit.yml'
+      - 'ci/k37/audit_source_semantics.py'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  official-source-semantic-check:
+    name: Audit original bytes and corrected NASS version classification
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout QA code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Checkout patched Agent B parser
+        uses: actions/checkout@v4
+        with:
+          ref: 423835e7c0df1d7d2e8f729d76ac07ee41179809
+          path: b-src
+          persist-credentials: false
+      - name: Checkout independently verified Agent D research-only alignment
+        uses: actions/checkout@v4
+        with:
+          ref: dbf150322d962efbc39475c773fbd295b65b1772
+          path: d-src
+          persist-credentials: false
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch immutable official WASDE artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: signal-k37-wasde-online-source
+          path: inputs/wasde
+          repository: ${{ github.repository }}
+          run-id: 43448555468
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Fetch immutable official NASS artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: signal-k37-nass-online-source
+          path: inputs/nass
+          repository: ${{ github.repository }}
+          run-id: 43448555468
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Fetch immutable PIT locator-only artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: signal-k37-pit-locator-probe
+          path: inputs/pit
+          repository: ${{ github.repository }}
+          run-id: 43448555468
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify original content-addressed source bytes
+        run: python -B ci/k37/verify_source_bundles.py --input inputs --output audited
+      - name: Test corrected NASS classifier plus legacy research regression
+        run: |
+          cd b-src
+          python -B -m unittest discover -s research_core/k3_7/nass/tests -p 'test_*.py' -v
+          python -B -m unittest discover -s research_core/k31/tests -p 'test_*.py' -v
+      - name: Deterministic corrected NASS rebuild from original immutable raw reports
+        run: |
+          cd b-src
+          python -B -m research_core.k3_7.nass.pipeline build \
+            --bundle "$GITHUB_WORKSPACE/inputs/nass/nass-bundle" \
+            --output "$GITHUB_WORKSPACE/rebuilt-nass"
+      - name: Independent 1006-row NASS and 108-row WASDE source-to-value audit
+        run: |
+          python -B ci/k37/audit_source_semantics.py \
+            --input inputs --rebuilt-nass rebuilt-nass --output audited
+          echo 'SOURCE_SEMANTICS_QA_PASS; PIT_CERTIFIED=0'
+      - name: Recheck Agent D alignment with revised-but-not-certified NASS semantics
+        shell: bash
+        run: |
+          mkdir -p corrected-inputs/nass/nass-out
+          ln -s "$GITHUB_WORKSPACE/inputs/wasde" corrected-inputs/wasde
+          cp rebuilt-nass/nass_state_weekly.csv corrected-inputs/nass/nass-out/nass_state_weekly.csv
+          python -B d-src/research_core/k3_7/integration/verify_and_join.py \
+            --input corrected-inputs --output audited/d-corrected-semantic-join
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('audited/d-corrected-semantic-join/integration_quality.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          assert d['alignment']['rows']==568, 'Research alignment changed after semantics-only repair'
+          assert d['quality_warnings'].get('NASS_REVISION_MARKER_TRUE_ORIGINALITY_UNVERIFIED',0)==0
+          assert d['quality_warnings']['YIELD_UNIT_LABEL_AMBIGUOUS_BUSHELS_VS_PER_ACRE']==108
+          assert d['certified_join_rows']==0 and d['pit_certified'] is False
+          assert d['source_version_originality_unverified'] is True
+          print('D_ALIGNMENT_REPLAY_PASS: 568 structural rows unchanged; 0 false revised-flag rows; PIT=0')
+          PY
+      - name: Save source audit, corrected NASS and uncertainty warnings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k37-semantic-source-audit
+          path: |
+            audited/
+            rebuilt-nass/nass_state_weekly.csv
+            rebuilt-nass/quality_report.json
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Guardrail
+        if: always()
+        run: |
+          echo 'No explicit revision notice does not establish original historical edition.'
+          echo 'WASDE original Bushels label retained; canonical display yield = bushels/harvested-acre.'
+          echo 'All observation times remain PIT_UNVERIFIED.'
+          echo 'Original source artifacts expire 2026-11-27 UTC; durable archive separately required.'
