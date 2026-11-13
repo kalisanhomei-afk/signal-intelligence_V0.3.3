@@ -2,6 +2,7 @@ name: SIGNAL K3.7 agent offline CI (research only)
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, edited, ready_for_review]
     branches:
       - codex/k37-orchestration
     paths:
