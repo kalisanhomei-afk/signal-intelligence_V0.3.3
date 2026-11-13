@@ -1,0 +1,161 @@
+{
+  "version": "K3.7-PIT-v1",
+  "status": "SOURCE_FEASIBILITY_BLOCKED",
+  "manifest_sha256": "86d19db7651abfc5f8e8171c7961a0b368edf79f44b7b20a2dd9338effd0c72c",
+  "input_record_count": 0,
+  "ledger_record_count": 0,
+  "rejected_record_count": 0,
+  "validation_error_count": 0,
+  "counts": {
+    "VERIFIED_PUBLIC_TIMESTAMP": 0,
+    "OFFICIAL_SCHEDULE_PROXY": 0,
+    "UNKNOWN": 0
+  },
+  "asof_certified_count": 0,
+  "coverage": [
+    {
+      "source_type": "WASDE",
+      "year": 2016,
+      "record_count": 0,
+      "counts": {
+        "VERIFIED_PUBLIC_TIMESTAMP": 0,
+        "OFFICIAL_SCHEDULE_PROXY": 0,
+        "UNKNOWN": 0
+      },
+      "status": "NO_RELEASE_INVENTORY",
+      "expected_release_count": null
+    },
+    {
+      "source_type": "WASDE",
+      "year": 2020,
+      "record_count": 0,
+      "counts": {
+        "VERIFIED_PUBLIC_TIMESTAMP": 0,
+        "OFFICIAL_SCHEDULE_PROXY": 0,
+        "UNKNOWN": 0
+      },
+      "status": "NO_RELEASE_INVENTORY",
+      "expected_release_count": null
+    },
+    {
+      "source_type": "WASDE",
+      "year": 2022,
+      "record_count": 0,
+      "counts": {
+        "VERIFIED_PUBLIC_TIMESTAMP": 0,
+        "OFFICIAL_SCHEDULE_PROXY": 0,
+        "UNKNOWN": 0
+      },
+      "status": "NO_RELEASE_INVENTORY",
+      "expected_release_count": null
+    },
+    {
+      "source_type": "NASS",
+      "year": 2016,
+      "record_count": 0,
+      "counts": {
+        "VERIFIED_PUBLIC_TIMESTAMP": 0,
+        "OFFICIAL_SCHEDULE_PROXY": 0,
+        "UNKNOWN": 0
+      },
+      "status": "NO_RELEASE_INVENTORY",
+      "expected_release_count": null
+    },
+    {
+      "source_type": "NASS",
+      "year": 2020,
+      "record_count": 0,
+      "counts": {
+        "VERIFIED_PUBLIC_TIMESTAMP": 0,
+        "OFFICIAL_SCHEDULE_PROXY": 0,
+        "UNKNOWN": 0
+      },
+      "status": "NO_RELEASE_INVENTORY",
+      "expected_release_count": null
+    },
+    {
+      "source_type": "NASS",
+      "year": 2022,
+      "record_count": 0,
+      "counts": {
+        "VERIFIED_PUBLIC_TIMESTAMP": 0,
+        "OFFICIAL_SCHEDULE_PROXY": 0,
+        "UNKNOWN": 0
+      },
+      "status": "NO_RELEASE_INVENTORY",
+      "expected_release_count": null
+    }
+  ],
+  "source_year_gaps": [
+    {
+      "source_type": "WASDE",
+      "year": 2016,
+      "missing": "official release inventory, original bytes, historical exact public-time evidence, SIGNAL retrieval receipts"
+    },
+    {
+      "source_type": "WASDE",
+      "year": 2020,
+      "missing": "official release inventory, original bytes, historical exact public-time evidence, SIGNAL retrieval receipts"
+    },
+    {
+      "source_type": "WASDE",
+      "year": 2022,
+      "missing": "official release inventory, original bytes, historical exact public-time evidence, SIGNAL retrieval receipts"
+    },
+    {
+      "source_type": "NASS",
+      "year": 2016,
+      "missing": "official release inventory, original bytes, historical exact public-time evidence, SIGNAL retrieval receipts"
+    },
+    {
+      "source_type": "NASS",
+      "year": 2020,
+      "missing": "official release inventory, original bytes, historical exact public-time evidence, SIGNAL retrieval receipts"
+    },
+    {
+      "source_type": "NASS",
+      "year": 2022,
+      "missing": "official release inventory, original bytes, historical exact public-time evidence, SIGNAL retrieval receipts"
+    }
+  ],
+  "unverified_records": [],
+  "source_access": [
+    {
+      "url": "https://www.usda.gov/historical-wasde-report-data-3",
+      "attempted_at_utc": "2026-11-13T06:49:50.876827Z",
+      "completed_at_utc": "2026-11-13T06:49:50.910138Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "retrieved_at_utc": "",
+      "source_sha256": "",
+      "error": "URLError: <urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+      "attempted_at_utc": "2026-11-13T06:49:50.910322Z",
+      "completed_at_utc": "2026-11-13T06:49:50.920475Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "retrieved_at_utc": "",
+      "source_sha256": "",
+      "error": "URLError: <urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.nass.usda.gov/Surveys/Guide_to_NASS_Surveys/Crop_Progress_and_Condition/",
+      "attempted_at_utc": "2026-11-13T06:49:50.920743Z",
+      "completed_at_utc": "2026-11-13T06:49:50.928421Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "retrieved_at_utc": "",
+      "source_sha256": "",
+      "error": "URLError: <urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "A zero-row ledger is not six UNKNOWN releases; six source/year inventories are missing.",
+    "No missing dates, weeks or release counts are inferred.",
+    "Verified documentary time evidence still requires an explicit as-of gate and exact source-byte join.",
+    "Reviewed documentary interpretations trust the reviewer; hashes do not authenticate an issuer.",
+    "An archive capture is an upper bound, not first-publication proof.",
+    "SYSTEM_REPLAY additionally requires an authentic contemporaneous SIGNAL download receipt.",
+    "No producer A/B data is integrated; source URLs/dates/vintages/digests must match before use."
+  ]
+}

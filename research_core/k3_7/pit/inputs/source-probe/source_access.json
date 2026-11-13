@@ -1,0 +1,29 @@
+[
+  {
+    "url": "https://www.usda.gov/historical-wasde-report-data-3",
+    "attempted_at_utc": "2026-11-13T06:49:50.876827Z",
+    "completed_at_utc": "2026-11-13T06:49:50.910138Z",
+    "status": "SOURCE_UNAVAILABLE",
+    "retrieved_at_utc": "",
+    "source_sha256": "",
+    "error": "URLError: <urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+    "attempted_at_utc": "2026-11-13T06:49:50.910322Z",
+    "completed_at_utc": "2026-11-13T06:49:50.920475Z",
+    "status": "SOURCE_UNAVAILABLE",
+    "retrieved_at_utc": "",
+    "source_sha256": "",
+    "error": "URLError: <urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "url": "https://www.nass.usda.gov/Surveys/Guide_to_NASS_Surveys/Crop_Progress_and_Condition/",
+    "attempted_at_utc": "2026-11-13T06:49:50.920743Z",
+    "completed_at_utc": "2026-11-13T06:49:50.928421Z",
+    "status": "SOURCE_UNAVAILABLE",
+    "retrieved_at_utc": "",
+    "source_sha256": "",
+    "error": "URLError: <urlopen error Tunnel connection failed: 403 Forbidden>"
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "scope": {
+    "source_types": [
+      "WASDE",
+      "NASS"
+    ],
+    "years": [
+      2016,
+      2020,
+      2022
+    ]
+  },
+  "inventory_status": "SOURCE_FEASIBILITY_BLOCKED",
+  "records": [],
+  "source_access": {
+    "path": "source-probe/source_access.json",
+    "sha256": "cb1c1670bd858bca44cddb6cc9a897c2181241f0e95a93d5cdda2342ab6fead3"
+  },
+  "notes": [
+    "No historical release dates or URLs are inferred.",
+    "No 2016/2020/2022 records exist in the inspected frozen K3.4.1 inputs.",
+    "Three actual official-source locator requests were blocked by the Cloud proxy (CONNECT 403).",
+    "Synthetic fixtures are excluded from this real ledger."
+  ]
+}
