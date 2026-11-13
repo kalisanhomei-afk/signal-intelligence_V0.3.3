@@ -1,21 +1,43 @@
-# Agent D acceptance: BLOCKED / PIT_UNVERIFIED
+# SIGNAL K3.7 Agent D — Exploratory Integration (PIT_UNVERIFIED)
 
-Repository and D branch verified; isolated worktree starts at b3dd2b58f12c6e8b0f743c017d9a98c2133d5749. Root AGENTS.md, orchestration, data contract, and all three Issue #4 comments were read. Latest integration instruction (2026-11-13T15:07:46Z) requires BLOCKED and stop if artifacts cannot be acquired or verified.
+## Current verified status (2026-11-13)
 
-## Observed access checks
+**EXPLORATORY_INTEGRATION_PASS_PIT_UNVERIFIED.** The original Codex **BLOCKED** report was valid when produced, but has since been resolved by the GitHub Actions cross-run artifact bridge; historical blocked JSON/HTML preserved in `initial_blocked/`.
 
-- `git ls-remote --heads origin 'codex/k37*'` and fetch: successful; A/B/C tips match Issue #4 SHAs recorded in acceptance.json.
-- `gh issue view 4 --repo kalisanhomei-afk/signal-intelligence_V0.3.3 --comments`: GraphQL Forbidden. Public issue HTML was readable and its embedded issue/comments were inspected.
-- `gh run download 43448555468 --repo kalisanhomei-afk/signal-intelligence_V0.3.3 --dir /workspace/work/k37-artifacts`: REST Forbidden; API CONNECT probe returned HTTP 403.
-- All three exact artifact web URLs in acceptance.json returned HTTP 404. No archive acquired. Authentication, retention and deletion cannot be distinguished from these responses.
-- A/B/C Git diffs are confined to their respective owned directories. All three committed output CSVs contain headers only. Their SHA-256 digests are recorded explicitly as Git-file hashes, never official raw-source or artifact hashes. No upstream commits merged/cherry-picked and no original branches modified.
+- Verified source run: [43448555468](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/43448555468) using unchanged exact official-source bytes.
+- Independent cross-run SHA-256 and raw receipt checks: [bridge run 43452166061](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/43452166061).
+- **Real-source Agent D integration**: [run 43458650573](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/43458650573), Success.
+- Unit tests: **10/10 passed**; with raw/source SHA-256 checked and research-only join guard applied.
+- Inputs: WASDE **1,512** rows and NASS **1,006** state-week rows.
+- Exploratory alignment (NOT a PIT backtest): **568** rows, by year: 2016 **117**, 2020 **119**, 2022 **332**. Excluded **80** candidate alignments without a strictly earlier NASS report.
+- **0 historical public availability timestamps certified; 0 PIT-certified joins.**
 
-## Acceptance
+## Files and reproducibility
 
-Status BLOCKED. Annual measured coverage, source dates, units, revisions, raw digests and retrieval receipt consistency are NOT ASSESSED. Issue-reported counts are separately labeled and must not substitute for artifact verification. Certified PIT rows remain 0; all intended integration remains PIT_UNVERIFIED. No integration tests or accounting residual checks ran because authentic required inputs are unavailable. No synthetic data used.
+- `verify_and_join.py`: read-only production-bundle structural assessment; all outputs have `pit_certified=false`.
+- `tests/test_verify_and_join.py`: synthetic **test-only** cases for same-day/future rejection, duplicates, vintage boundaries, percentages, certification refusal and unit warning.
+- `acceptance.json`, `acceptance.html`: **current** independently observed source and QA summary.
+- `initial_blocked/`: full historical preflight failure reports; retained for audit and not current.
+- Integration results from the runner: [data QA artifact](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/43458650573/artifacts/14054827483), including `integration_quality.json` and `structural_alignment_NOT_PIT.csv`.
+- The workflow for true source validation lives in Draft [PR #15](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/pull/15), separate from this Agent D code-only Draft PR #12. Do **not** merge to main.
 
-JSON/HTML structure and fail-closed report assertions were checked locally; these are report checks, not data/integration acceptance. The report provides no predictive, causal, certified historical or trading conclusions. Ten-year expansion is NO_GO pending artifact acquisition and QA.
+The job retrieves the three exact artifacts from upstream run 43448555468 with GitHub Actions `actions: read`, executes `ci/k37/verify_source_bundles.py` and then runs this module:
 
-## Resume
+```bash
+python -B -m unittest discover -s research_core/k3_7/integration/tests -v
+python -B research_core/k3_7/integration/verify_and_join.py \
+  --input inputs \
+  --output integrated
+```
 
-Provide authorized GitHub Actions artifact read access in the environment (including api.github.com and actual download redirect hosts), then download the three exact artifact IDs. Alternatively preserve the unchanged bundles with immutable digests and original run/artifact metadata in an approved durable archive before retention expires. Do not enter tokens in chat. Re-read Issue #4, verify bytes/receipts and schemas, run upstream offline suites and implement the exploratory join only after the provenance gate passes. Keep all new authored files in this directory and submit a Draft PR to codex/k37-orchestration; never self-merge.
+The `inputs/` folder must come from the verified GitHub Actions artifact bridge; do not substitute synthetic test fixtures.
+
+## Guardrails and unresolved risks
+
+1. Calendar ordering is **not** evidence of publication or availability when a trade was hypothetically placed. No model, causal claim, official PIT backtest or trading recommendation has been produced.
+2. **108** WASDE yield entries have the label `Bushels` despite metric `yield_bushels_per_acre`; verify dimension semantics before promotion.
+3. **1,006** NASS rows have a `revision_marker=true`; original historical released edition provenance is not verified.
+4. Complete issuance/weekly coverage and sample cross-checks against official printed original reports are outstanding.
+5. Original GitHub Actions artifact retention expires **2026-11-27 UTC**. Durable archive work is [Issue #14](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/issues/14), **not completed**.
+
+**Decision:** technical feasibility PASS, PIT-certified historical backtesting **NO-GO**, pending source/version/time quality evidence.
