@@ -1,0 +1,87 @@
+name: SIGNAL K3.7 agent offline CI (research only)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited, ready_for_review]
+    branches:
+      - codex/k37-orchestration
+    paths:
+      - 'research_core/k3_7/**'
+      - '.github/workflows/signal-k37-agent-ci.yml'
+  push:
+    branches:
+      - codex/k37-orchestration
+    paths:
+      - 'research_core/k3_7/**'
+      - '.github/workflows/signal-k37-agent-ci.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: k37-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  offline-unit-tests:
+    name: K3.7 offline-only tests (not data verification)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout candidate branch or PR
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Configure Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: K3.7 agent tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p k37-ci
+          count=0
+          for module in wasde nass pit integration; do
+            suite="research_core/k3_7/${module}/tests"
+            if [[ -d "$suite" ]]; then
+              echo "=== Running ${suite} ==="
+              python -B -m unittest discover -s "$suite" -p 'test_*.py' -v 2>&1 | tee "k37-ci/${module}-tests.log"
+              count=$((count + 1))
+            else
+              echo "SKIP absent module: ${suite}" | tee "k37-ci/${module}-absent.txt"
+            fi
+          done
+          if [[ "$count" -eq 0 ]]; then
+            if [[ "${GITHUB_HEAD_REF:-}" == "codex/k37-ci-validation" ]] || [[ "${GITHUB_REF:-}" == "refs/heads/codex/k37-orchestration" ]]; then
+              echo 'CI_BOOTSTRAP_ONLY: no K3.7 agent code in baseline; not a test pass for A/B/C.' | tee k37-ci/bootstrap.txt
+            else
+              echo 'ERROR: no K3.7 agent tests present in a development PR' | tee k37-ci/ci-error.txt
+              exit 1
+            fi
+          fi
+          echo "Offline suites executed: $count" | tee k37-ci/suite-count.txt
+      - name: Existing research regression suites
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p k37-ci
+          for suite in research_core/k31/tests research_core/k3_4/tests research_core/k3_4_1/tests research_core/k3_6/tests; do
+            echo "=== Running ${suite} ==="
+            python -B -m unittest discover -s "$suite" -p 'test_*.py' -v 2>&1 | tee "k37-ci/$(echo "$suite" | tr '/' '_').log"
+          done
+      - name: Record strict acceptance boundary
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p k37-ci
+          echo "CODE_TEST_ONLY: This workflow does not download official USDA historical source records." > k37-ci/STATUS.txt
+          echo "Never classify this CI as DATA_VERIFIED or PIT_CERTIFIED." >> k37-ci/STATUS.txt
+      - name: Upload offline test logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k37-offline-ci-${{ github.run_id }}
+          path: k37-ci/
+          retention-days: 14
+          if-no-files-found: warn
