@@ -1,0 +1,97 @@
+{
+  "status": "BLOCKED",
+  "pit_status": "PIT_UNVERIFIED",
+  "generated_at_utc": "2026-11-13T15:14:09.297588+00:00",
+  "repository": "kalisanhomei-afk/signal-intelligence_V0.3.3",
+  "branch": "codex/k37-agent-d-qa",
+  "base_commit": "b3dd2b58f12c6e8b0f743c017d9a98c2133d5749",
+  "target_branch": "codex/k37-orchestration",
+  "run_id": "43448555468",
+  "issue_url": "https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/issues/4",
+  "issue_updated_at": "2026-11-13T15:07:46Z",
+  "inputs": [
+    {
+      "agent": "A",
+      "commit": "557d8783cd5d711cea1bee47c0d698f0a03cdff8",
+      "artifact_id": "14049815789",
+      "artifact_url": "https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/43448555468/artifacts/14049815789",
+      "artifact_http_status": 404,
+      "artifact_sha256": null,
+      "raw_source_sha256_verified": false,
+      "git_output_path": "research_core/k3_7/wasde/out/wasde_vintages.csv",
+      "git_output_sha256": "cab3d05229db62d0de3f363eea125651d78865cf654ccbde35992893cc9aa679",
+      "git_output_data_rows": 0,
+      "git_output_header": "release_date,marketing_year,commodity,region,metric,value,unit,projection_estimate_flag,source_url,source_sha256,source_member,source_member_sha256,retrieved_at_utc,published_at_utc,available_at_utc,timestamp_quality,evidence_url,quality_status"
+    },
+    {
+      "agent": "B",
+      "commit": "a84e691ae7bdb7537cb172906384568ed7b70966",
+      "artifact_id": "14049291864",
+      "artifact_url": "https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/43448555468/artifacts/14049291864",
+      "artifact_http_status": 404,
+      "artifact_sha256": null,
+      "raw_source_sha256_verified": false,
+      "git_output_path": "research_core/k3_7/nass/out/nass_state_weekly.csv",
+      "git_output_sha256": "9237c2ea075866c2fe243b24988879b90d307c16ba8f3882eba6e8d80bd9e78d",
+      "git_output_data_rows": 0,
+      "git_output_header": "report_date,week_ending,calendar_year,iso_week,marketing_year,state,crop,very_poor_pct,poor_pct,fair_pct,good_pct,excellent_pct,good_excellent_pct,percentage_sum,percentage_quality,source_url,source_sha256,source_version_id,source_version_status,revision_marker,retrieved_at_utc,published_at_utc,available_at_utc,timestamp_quality,evidence_url,scheduled_release_at_utc,schedule_evidence_url,schedule_evidence_sha256,quality_status"
+    },
+    {
+      "agent": "C",
+      "commit": "1305d9f362dc2331061f608e9537821a7988722b",
+      "artifact_id": "14049231951",
+      "artifact_url": "https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/43448555468/artifacts/14049231951",
+      "artifact_http_status": 404,
+      "artifact_sha256": null,
+      "raw_source_sha256_verified": false,
+      "git_output_path": "research_core/k3_7/pit/out/pit_evidence_ledger.csv",
+      "git_output_sha256": "adba4ebf5ad7388c12c60cf5b35cec683b4e58f886bba74282569151cdd44475",
+      "git_output_data_rows": 0,
+      "git_output_header": "source_type,source_release_date,source_url,source_sha256,vintage_id,revision_kind,supersedes_vintage_id,published_at_utc,available_at_utc,first_published_at_utc,corrected_at_utc,retrieved_at_utc,retrieval_receipt_sha256,official_schedule_utc,observed_public_by_utc,timestamp_quality,quality_status,evidence_url,evidence_sha256,evidence_format,documentary_evidence,reason,pit_certified"
+    }
+  ],
+  "blockers": [
+    "GitHub API CONNECT tunnel HTTP 403 Forbidden; gh issue view and gh run download failed.",
+    "All three artifact web URLs returned HTTP 404; this does not establish expiry or deletion.",
+    "No artifact bundle acquired; raw hashes, retrieval receipts, versions, units, dates and data quality remain unverified."
+  ],
+  "annual_coverage": [
+    {
+      "year": 2016,
+      "verified_wasde_months": null,
+      "verified_nass_rows": null,
+      "coverage_rate": null,
+      "status": "NOT_ASSESSED_ARTIFACT_UNAVAILABLE"
+    },
+    {
+      "year": 2020,
+      "verified_wasde_months": null,
+      "verified_nass_rows": null,
+      "coverage_rate": null,
+      "status": "NOT_ASSESSED_ARTIFACT_UNAVAILABLE"
+    },
+    {
+      "year": 2022,
+      "verified_wasde_months": null,
+      "verified_nass_rows": null,
+      "coverage_rate": null,
+      "status": "NOT_ASSESSED_ARTIFACT_UNAVAILABLE"
+    }
+  ],
+  "issue_reported_only": {
+    "wasde_rows": 1512,
+    "wasde_months": 36,
+    "nass_reports": 106,
+    "nass_rows_by_year": {
+      "2016": 331,
+      "2020": 360,
+      "2022": 315
+    },
+    "verified_historic_public_timestamps": 0
+  },
+  "pit_certified_rows": 0,
+  "join_status": "NOT_RUN",
+  "offline_integration_tests": "NOT_RUN_MISSING_REQUIRED_ARTIFACTS",
+  "decision": "NO_GO_PENDING_ARTIFACT_ACCESS_AND_PROVENANCE_QA",
+  "limitations": "Issue counts are unverified coordination claims, not measured coverage. No joined dataset, backtest, model or trading advice produced. Git output hashes identify header-only repository files, not official artifact or raw-source hashes."
+}
