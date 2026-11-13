@@ -132,7 +132,7 @@ def archive_links(raw: bytes, page_url: str) -> tuple[list[dict], str | None, li
             checked_url(url)
         except (SourceError, ValueError):
             continue
-        if re.search(r"/prog\d{4}\.txt$", urlsplit(url).path, re.I):
+        if re.search(r"/(?:prog\d{4}|CropProg-\d{2}-\d{2}-20\d{2})\.txt$", urlsplit(url).path, re.I):
             try:
                 day = parse_date(label + " " + attrs.get("title", ""))
             except (SourceError, ValueError):
