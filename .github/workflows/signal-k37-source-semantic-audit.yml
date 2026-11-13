@@ -64,8 +64,10 @@ jobs:
           python -B -m unittest discover -s research_core/k31/tests -p 'test_*.py' -v
       - name: Deterministic corrected NASS rebuild from original immutable raw reports
         run: |
-          PYTHONPATH="$PWD/b-src" python -B -m research_core.k3_7.nass.pipeline build \
-            --bundle "$PWD/inputs/nass/nass-bundle" --output "$PWD/rebuilt-nass"
+          cd b-src
+          python -B -m research_core.k3_7.nass.pipeline build \
+            --bundle "$GITHUB_WORKSPACE/inputs/nass/nass-bundle" \
+            --output "$GITHUB_WORKSPACE/rebuilt-nass"
       - name: Independent 1006-row NASS and 108-row WASDE source-to-value audit
         run: |
           python -B ci/k37/audit_source_semantics.py \
