@@ -1,0 +1,71 @@
+name: SIGNAL K3.7 cross-run artifact bridge (read-only research)
+
+on:
+  pull_request:
+    branches: [codex/k37-orchestration]
+    paths:
+      - '.github/workflows/signal-k37-artifact-bridge.yml'
+      - 'ci/k37/verify_source_bundles.py'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  verify-cross-run-source-evidence:
+    name: Fetch signed inputs and audit raw SHA-256 (NOT historical PIT)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout bridge verification code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch WASDE from original approved run
+        uses: actions/download-artifact@v4
+        with:
+          name: signal-k37-wasde-online-source
+          path: inputs/wasde
+          repository: ${{ github.repository }}
+          run-id: 43448555468
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Fetch NASS from original approved run
+        uses: actions/download-artifact@v4
+        with:
+          name: signal-k37-nass-online-source
+          path: inputs/nass
+          repository: ${{ github.repository }}
+          run-id: 43448555468
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Fetch PIT locator evidence from original approved run
+        uses: actions/download-artifact@v4
+        with:
+          name: signal-k37-pit-locator-probe
+          path: inputs/pit
+          repository: ${{ github.repository }}
+          run-id: 43448555468
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify immutable raw content and producer reports
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B ci/k37/verify_source_bundles.py --input inputs --output audited
+          echo 'Raw SHA-256 and current receipts verified; historical PIT certification remains ZERO'
+      - name: Preserve audit reports and evidence for Agent D
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k37-cross-run-handoff
+          path: audited/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Explicit scope note
+        if: always()
+        run: |
+          echo 'This is an in-run artifact bridge, NOT long-term storage.'
+          echo 'Upstream source artifacts expire on November 27, 2026 UTC.'
+          echo 'No official public availability timestamp is certified by this job.'
