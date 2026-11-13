@@ -1,0 +1,3 @@
+# Evidence hashes cover raw bytes; Git must never rewrite their line endings.
+inputs/** -text
+fixtures/** -text

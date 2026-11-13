@@ -1,0 +1,113 @@
+{
+  "scope": "research_core/k3_7/pit/** only",
+  "new_tests": {
+    "command": "python -m unittest discover -s research_core/k3_7/pit/tests -v",
+    "ran": 49,
+    "passed": 49,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  "regression_suites": [
+    {
+      "command": "python -m unittest discover -s research_core/tests -v",
+      "ran": 80,
+      "passed": 80,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s research_core/k2/tests -v",
+      "ran": 42,
+      "passed": 42,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s research_core/k31/tests -v",
+      "ran": 34,
+      "passed": 34,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s research_core/k3/tests -v",
+      "ran": 42,
+      "passed": 42,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s research_core/k3_2/tests -v",
+      "ran": 13,
+      "passed": 12,
+      "skipped": 1,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s research_core/k3_3/tests -v",
+      "ran": 13,
+      "passed": 13,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s research_core/k3_4/tests -v",
+      "ran": 15,
+      "passed": 15,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s research_core/k3_4_1/tests -v",
+      "ran": 19,
+      "passed": 19,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s research_core/k3_5/tests -v",
+      "ran": 23,
+      "passed": 23,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s research_core/k3_6/tests -v",
+      "ran": 20,
+      "passed": 20,
+      "skipped": 0,
+      "exit_code": 0
+    }
+  ],
+  "regression_totals": {
+    "ran": 301,
+    "passed": 300,
+    "skipped": 1,
+    "failed": 0
+  },
+  "skip_reason": "research_core/k3_2/tests: test_k31_crosscheck_does_not_promote_samples_to_official: K3.1 not installed in local fixture",
+  "online_probe": {
+    "command": "python -m research_core.k3_7.pit.collect --output research_core/k3_7/pit/inputs/source-probe",
+    "exit_code": 2,
+    "attempts": 3,
+    "successful_downloads": 0,
+    "result": "Cloud proxy CONNECT 403; no historical source content acquired"
+  },
+  "offline_audit": {
+    "command": "python -m research_core.k3_7.pit.audit",
+    "exit_code": 0,
+    "status": "SOURCE_FEASIBILITY_BLOCKED",
+    "counts": {
+      "VERIFIED_PUBLIC_TIMESTAMP": 0,
+      "OFFICIAL_SCHEDULE_PROXY": 0,
+      "UNKNOWN": 0
+    },
+    "source_year_inventory_gaps": 6,
+    "asof_certified_count": 0
+  },
+  "limitations": [
+    "No online official-source correctness test passed: all three probes were blocked.",
+    "Synthetic proof fixtures test policy only, never certify real historical records.",
+    "No integration with Agent A/B outputs and no model/backtest/deployment."
+  ]
+}

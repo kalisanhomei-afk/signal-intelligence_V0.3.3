@@ -1,0 +1,13 @@
+{
+  "notice": "SYNTHETIC TEST DATA ONLY. URLs, observations and time attestations below are fictional. Never merge these into a real historical evidence ledger.",
+  "source_url": "https://www.usda.gov/synthetic-pit-test.txt",
+  "independent_url": "https://independent.example.org/synthetic-release-log",
+  "source_bytes": "SYNTHETIC initial USDA report; not a real observation.\n",
+  "correction_bytes": "SYNTHETIC corrected USDA report; not a real observation.\n",
+  "published": "2020-06-08T16:00:00Z",
+  "available": "2020-06-08T16:00:01Z",
+  "correction_published": "2020-06-09T16:00:00Z",
+  "correction_available": "2020-06-09T16:00:01Z",
+  "retrieved": "2026-11-13T12:00:00Z",
+  "reviewed": "2026-11-13T13:00:00Z"
+}
