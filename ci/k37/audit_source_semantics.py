@@ -6,6 +6,8 @@ Classify generic NASS Revision Policy separately from report-specific revisions.
 """
 import argparse
 import csv
+from datetime import date
+from email.utils import parsedate_to_datetime
 from collections import Counter
 from decimal import Decimal
 import io
@@ -55,6 +57,22 @@ def nass_audit(root, fixed_dir):
     ledger = [json.loads(l) for l in (root / "nass-bundle/source_manifest.jsonl").read_text().splitlines() if l.strip()]
     report_sources = [x for x in ledger if x.get("role") == "report" and x.get("status") == "DOWNLOADED"]
     require(len(report_sources) == 106, "Unexpected official NASS source count")
+    # HTTP Last-Modified describes a server resource, NOT first public release.
+    # An archive migration can post-date the historical report by years.
+    modified_date_audit = {}
+    for item in report_sources:
+        year = item["expected_report_date"][:4]
+        group = modified_date_audit.setdefault(year, {"SAME_CALENDAR_DATE": 0, "LATER_DATE": 0,
+                                                      "EARLIER_DATE": 0, "HEADER_MISSING": 0})
+        raw_header = item.get("last_modified", "")
+        if not raw_header:
+            group["HEADER_MISSING"] += 1
+            continue
+        modified = parsedate_to_datetime(raw_header).date()
+        original = date.fromisoformat(item["expected_report_date"])
+        label = "SAME_CALENDAR_DATE" if modified == original else (
+            "LATER_DATE" if modified > original else "EARLIER_DATE")
+        group[label] += 1
     blocks = {}
     policy_count = explicit_count = 0
     for item in report_sources:
@@ -81,6 +99,8 @@ def nass_audit(root, fixed_dir):
     return {"source_reports": len(report_sources),
             "reports_containing_boilerplate_revision_policy": policy_count,
             "reports_containing_explicit_revision_notice": explicit_count,
+            "http_last_modified_metadata_by_report_year": modified_date_audit,
+            "http_last_modified_not_publication_evidence": True,
             "old_revision_marked_rows": len(old),
             "corrected_release_revision_marked_rows": 0,
             "independently_text_matched_state_week_rows": matched,
