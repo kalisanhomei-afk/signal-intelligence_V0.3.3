@@ -179,7 +179,7 @@ def parse_report(raw: bytes, expected_date: str | None = None) -> dict:
         raise SourceError(f"RELEASE_DATE_MISMATCH: {report_day} vs {expected_date}")
     result = {"report_date": report_day.isoformat(), "week_ending": "", "rows": [],
               "issues": [], "listed_states": [], "declared_state_count": None,
-              "revision_marker": bool(re.search(r"\b(?:Revised|Revision|Corrected|Correction)\b", text, re.I)),
+              "revision_marker": bool(re.search(r"(?im)^[ \t]*(?:Revised\b|Corrected\b|Correction[ \t]+(?:Notice|to|of)\b|Revision[ \t]+(?:Notice|to|of)\b)", text)),
               "status": "PARSED"}
     heads = list(re.finditer(
         r"(?im)^\s*Corn Condition\s*-\s*Selected States\s*:\s*Week Ending\s*([^\r\n]+)", text))
