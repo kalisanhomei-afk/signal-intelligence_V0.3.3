@@ -16,7 +16,10 @@
     "integration_actions_run_id": 43458650573,
     "job_log_url": "https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/43458650573/job/131999389374",
     "integration_artifact_id": 14054827483,
-    "source_artifacts_expire_utc": "2026-11-27"
+    "source_artifacts_expire_utc": "2026-11-27",
+    "semantic_qa_run_id": 43462897263,
+    "semantic_qa_artifact_id": 14055904250,
+    "corrected_agent_b_branch_commit": "423835e7c0df1d7d2e8f729d76ac07ee41179809"
   },
   "source_integrity": {
     "raw_content_sha256_verified": true,
@@ -65,13 +68,20 @@
     "d_guard_tests_passed": 10,
     "d_guard_tests_failed": 0,
     "github_online_integration_ci": "success",
-    "status": "PASS_RESEARCH_ONLY"
+    "status": "PASS_RESEARCH_ONLY",
+    "corrected_semantics_source_raw_matches": 1006,
+    "corrected_semantics_wasde_yield_matches": 108,
+    "corrected_d_alignment_rows": 568,
+    "corrected_qa_ci": "success"
   },
   "quality_warnings": {
     "yield_unit_label_ambiguous_rows": 108,
-    "nass_revision_marker_true_rows": 1006,
+    "nass_revision_marker_true_rows": 0,
     "source_version_originality_unverified": true,
-    "full_release_coverage_unverified": true
+    "full_release_coverage_unverified": true,
+    "nass_explicit_revision_notice_seen_reports": 0,
+    "original_source_revision_marker_false_positives_corrected": 1006,
+    "yield_original_source_value_unit_verified_rows": 108
   },
   "pit": {
     "historical_available_at_verified": 0,
@@ -81,10 +91,10 @@
   },
   "pending": [
     "Independent official report spot checks",
-    "Resolve WASDE yield units and NASS revised edition semantics",
+    "Verify earliest-issued edition provenance independently; source semantic labelling repaired",
     "Check complete official reporting coverage each pilot year",
     "Establish independently verifiable historical availability evidence",
     "Archive original source bundles durably before artifact retention expiry"
   ],
-  "notes": "Source artifact byte hashes and program-level rows passed independent GitHub Actions; calendar structural alignment is not history-time availability certification. No predictive or trading conclusion."
+  "notes": "Source artifact byte hashes and program-level rows passed independent GitHub Actions; calendar structural alignment is not history-time availability certification. No predictive or trading conclusion. Follow-up raw-source semantic audit confirms all 1,006 NASS condition table rows and 108 WASDE yield values; NASS generic Revision Policy false positives corrected (0 explicit revision notices), but first-issued version and PIT remain unverified. The 2016 archive HTTP Last-Modified reflects 2018 server updates and is not public-time evidence."
 }
