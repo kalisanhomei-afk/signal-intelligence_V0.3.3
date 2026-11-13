@@ -1,0 +1,100 @@
+{
+  "schema_version": "signal-k37-agent-d-acceptance-v2",
+  "status": "EXPLORATORY_INTEGRATION_PASS_PIT_UNVERIFIED",
+  "decision": "NO_GO_FOR_PIT_BACKTEST_OR_TRADING",
+  "context": "K3.7 pilot calendar years 2016, 2020, 2022; original BLOCKED snapshot retained in initial_blocked/",
+  "provenance": {
+    "repository": "kalisanhomei-afk/signal-intelligence_V0.3.3",
+    "branch": "codex/k37-agent-d-qa",
+    "code_tested_commit": "8de525657ec1d0529f394ddb486047654bcb5fc0",
+    "source_actions_run_id": 43448555468,
+    "source_artifact_ids": {
+      "wasde": 14049815789,
+      "nass": 14049291864,
+      "pit": 14049231951
+    },
+    "integration_actions_run_id": 43458650573,
+    "job_log_url": "https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/43458650573/job/131999389374",
+    "integration_artifact_id": 14054827483,
+    "source_artifacts_expire_utc": "2026-11-27",
+    "semantic_qa_run_id": 43462897263,
+    "semantic_qa_artifact_id": 14055904250,
+    "corrected_agent_b_branch_commit": "423835e7c0df1d7d2e8f729d76ac07ee41179809"
+  },
+  "source_integrity": {
+    "raw_content_sha256_verified": true,
+    "wasde_raw_objects": 14,
+    "nass_raw_objects": 219,
+    "pit_historical_public_timestamps_verified": 0
+  },
+  "input_data": {
+    "wasde_metric_rows": 1512,
+    "nass_state_week_rows": 1006,
+    "nass_downloaded_official_reports": 106
+  },
+  "yearly": [
+    {
+      "year": 2016,
+      "wasde_metric_rows": 504,
+      "wasde_months": 12,
+      "nass_state_week_rows": 331,
+      "nass_report_dates": 21,
+      "exploratory_alignment_rows": 117
+    },
+    {
+      "year": 2020,
+      "wasde_metric_rows": 504,
+      "wasde_months": 12,
+      "nass_state_week_rows": 360,
+      "nass_report_dates": 22,
+      "exploratory_alignment_rows": 119
+    },
+    {
+      "year": 2022,
+      "wasde_metric_rows": 504,
+      "wasde_months": 12,
+      "nass_state_week_rows": 315,
+      "nass_report_dates": 20,
+      "exploratory_alignment_rows": 332
+    }
+  ],
+  "exploratory_alignment": {
+    "row_count": 568,
+    "strictly_earlier_nass_report_rule": true,
+    "excluded_no_earlier_nass_report": 80,
+    "all_rows_pit_unverified": true
+  },
+  "tests": {
+    "d_guard_tests_passed": 10,
+    "d_guard_tests_failed": 0,
+    "github_online_integration_ci": "success",
+    "status": "PASS_RESEARCH_ONLY",
+    "corrected_semantics_source_raw_matches": 1006,
+    "corrected_semantics_wasde_yield_matches": 108,
+    "corrected_d_alignment_rows": 568,
+    "corrected_qa_ci": "success"
+  },
+  "quality_warnings": {
+    "yield_unit_label_ambiguous_rows": 108,
+    "nass_revision_marker_true_rows": 0,
+    "source_version_originality_unverified": true,
+    "full_release_coverage_unverified": true,
+    "nass_explicit_revision_notice_seen_reports": 0,
+    "original_source_revision_marker_false_positives_corrected": 1006,
+    "yield_original_source_value_unit_verified_rows": 108
+  },
+  "pit": {
+    "historical_available_at_verified": 0,
+    "certified_rows": 0,
+    "status": "PIT_UNVERIFIED",
+    "formal_backtest_eligible": false
+  },
+  "pending": [
+    "Independent official report spot checks",
+    "Verify earliest-issued edition provenance independently; source semantic labelling repaired",
+    "Check complete official reporting coverage each pilot year",
+    "Establish independently verifiable historical availability evidence",
+    "Archive original source bundles durably before artifact retention expiry"
+  ],
+  "notes": "Source artifact byte hashes and program-level rows passed independent GitHub Actions; calendar structural alignment is not history-time availability certification. No predictive or trading conclusion. Follow-up raw-source semantic audit confirms all 1,006 NASS condition table rows and 108 WASDE yield values; NASS generic Revision Policy false positives corrected (0 explicit revision notices), but first-issued version and PIT remain unverified. The 2016 archive HTTP Last-Modified reflects 2018 server updates and is not public-time evidence."
+}
