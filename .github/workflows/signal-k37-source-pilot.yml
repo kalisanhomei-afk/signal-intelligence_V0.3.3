@@ -101,7 +101,7 @@ jobs:
         run: |
           mkdir -p k37-pilot/logs
           set +e
-          python -B -m research_core.k3_7.nass.pipeline fetch --bundle k37-pilot/nass-bundle --max-pages 100 > k37-pilot/logs/nass_fetch.log 2>&1
+          python -B -m research_core.k3_7.nass.pipeline fetch --bundle k37-pilot/nass-bundle --max-pages 240 > k37-pilot/logs/nass_fetch.log 2>&1
           code=$?
           python -B -m research_core.k3_7.nass.pipeline build --bundle k37-pilot/nass-bundle --output k37-pilot/nass-out > k37-pilot/logs/nass_build.log 2>&1
           build_code=$?
@@ -110,7 +110,7 @@ jobs:
           echo "$build_code" > k37-pilot/logs/nass_build_exit_code.txt
           tail -c 12000 k37-pilot/logs/nass_fetch.log || true
           tail -c 12000 k37-pilot/logs/nass_build.log || true
-          echo 'The 100-page cap is deliberately preliminary: a page limit is not completeness.'
+          echo 'The 240-page cap is deliberately preliminary: a page limit is not completeness.'
       - name: Preserve NASS source receipts, outputs and failure reasons
         if: always()
         uses: actions/upload-artifact@v4
@@ -132,7 +132,7 @@ jobs:
           counts={str(row['year']):row['observation_rows_including_editions'] for row in a.get('seasonal_coverage',[])}
           print(json.dumps({'observation_rows':a.get('observation_rows'),'per_pilot_year':counts,'status':a.get('status'),'verified_public_timestamp_rows':a.get('verified_public_timestamp_rows')},sort_keys=True))
           if not all(counts.get(str(y),0)>0 for y in (2016,2020,2022)):
-              sys.exit('SOURCE_PILOT_INCOMPLETE: 2016/2020/2022 all need real parsed rows; 100-page cap may be limiting; no DATA_VERIFIED claim')
+              sys.exit('SOURCE_PILOT_INCOMPLETE: 2016/2020/2022 all need real parsed rows; 240-page cap may be limiting; no DATA_VERIFIED claim')
           print('RETRIEVAL_AND_PARSE_PILOT_SUCCESS; NOT complete coverage, NOT PIT certification')
           PY
 
@@ -160,6 +160,15 @@ jobs:
           set -e
           echo "$code" > k37-pilot/logs/locator_probe_exit_code.txt
           cat k37-pilot/logs/locator_probe.log || true
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from research_core.k3_7.pit.collect import capture
+          out=Path('k37-pilot/pit-locators')
+          mirror=capture('https://usda.azureedge.us/historical-wasde-report-data-3',out,'usda-official-mirror')
+          (out/'official_mirror_probe.json').write_text(json.dumps(mirror,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps({'mirror_status':mirror['status'],'mirror_error':mirror.get('error','')}))
+          PY
           echo 'Current HTTP retrieval is NOT historical public availability evidence.'
       - name: Preserve network source evidence, including failures
         if: always()
@@ -179,7 +188,10 @@ jobs:
           if not p.is_file():sys.exit('LOCATOR_PROBE_MISSING')
           arr=json.loads(p.read_text(encoding='utf-8'))
           print(json.dumps([{'url':x['url'],'status':x['status'],'error':x.get('error','')} for x in arr],ensure_ascii=False))
-          if not all(x['status']=='FETCHED_LOCATOR_NOT_TIME_EVIDENCE' for x in arr):
-              sys.exit('PARTIAL_OR_BLOCKED_OFFICIAL_LOCATORS: this is only network feasibility, not PIT')
-          print('LOCATOR_HTTP_REACHABILITY_PASS; PIT_CERTIFIED=FALSE')
+          mirror=json.loads(Path('k37-pilot/pit-locators/official_mirror_probe.json').read_text(encoding='utf-8'))
+          nass_ok=all(x['status']=='FETCHED_LOCATOR_NOT_TIME_EVIDENCE' for x in arr[1:])
+          wasde_ok=(arr[0]['status']=='FETCHED_LOCATOR_NOT_TIME_EVIDENCE' or mirror['status']=='FETCHED_LOCATOR_NOT_TIME_EVIDENCE')
+          if not (len(arr)==3 and nass_ok and wasde_ok):
+              sys.exit('OFFICIAL_LOCATOR_REACHABILITY_INCOMPLETE; NOT PIT')
+          print('OFFICIAL_LOCATOR_REACHABILITY_WITH_EXPLICIT_MIRROR_PASS; PIT_CERTIFIED=FALSE')
           PY
