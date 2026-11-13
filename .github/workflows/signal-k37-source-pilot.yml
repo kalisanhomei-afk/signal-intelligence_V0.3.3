@@ -90,7 +90,7 @@ jobs:
       - name: Checkout immutable Agent B deliverable
         uses: actions/checkout@v4
         with:
-          ref: 4def2bfa075e775f61a4032ed84549159f353678
+          ref: a84e691ae7bdb7537cb172906384568ed7b70966
           persist-credentials: false
       - name: Setup Python 3.12
         uses: actions/setup-python@v5
