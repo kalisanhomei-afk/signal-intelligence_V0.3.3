@@ -1,0 +1,26 @@
+SYNTHETIC OFFLINE FIXTURE — NOT HISTORICAL OBSERVATIONS
+Crop Progress
+Released June 6, 2016, by the National Agricultural Statistics Service
+(NASS), Agricultural Statistics Board, United States Department of Agriculture.
+
+Corn Emerged - Selected States
+State : June 5, 2016 : May 29, 2016
+Colorado .......: 80 70
+
+Corn Condition - Selected States: Week Ending June 5, 2016
+[Two-state synthetic parser test; percentages do not describe real crops.]
+-------------------------------------------------------------
+               : Very :      :      :      :
+State          : poor : Poor : Fair : Good : Excellent
+-------------------------------------------------------------
+Colorado ......: 1 4 20 50 25
+North Carolina : 2 8 30 45 15
+2 States ......: 2 6 25 48 19
+Previous week .: 3 7 25 45 20
+Previous year .: 5 10 30 40 15
+-------------------------------------------------------------
+
+Soybean Condition - Selected States: Week Ending June 5, 2016
+State : Very poor : Poor : Fair : Good : Excellent
+Colorado ......: 10 10 30 30 20
+2 States ......: 10 10 30 30 20
