@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import argparse
 from dataclasses import dataclass
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, time, timedelta, timezone
 import hashlib
 import json
 import os
@@ -229,6 +229,12 @@ def validate_spec(source: str, url: str, release_date: str, not_before_utc: str,
     t = parse_utc(not_before_utc)
     # Guard against a run that predates the intended release. Caller must choose
     # conservative official-schedule barrier, not a timestamp printed on a PDF.
+    # Never allow an operator-supplied barrier earlier than the known regular
+    # USDA release-hour floor (special holiday delays must set a later barrier).
+    release_hour_et = 12 if source == "WASDE" else 16
+    regular_floor = datetime.combine(d, time(release_hour_et, 0), tzinfo=US_EAST).astimezone(UTC)
+    if t < regular_floor:
+        raise CaptureError("BARRIER_BEFORE_OFFICIAL_RELEASE_HOUR_FLOOR")
     if clock < t:
         raise CaptureError("PRE_RELEASE_CAPTURE_NOT_ALLOWED")
     # A human-input future date must not be disguised as a valid report from today.
@@ -276,11 +282,27 @@ def verify_saved(root: Path) -> dict:
         raise CaptureError("RAW_SHA256_REPLAY_MISMATCH")
     if len(raw) != receipt["source_size_bytes"]:
         raise CaptureError("RAW_LENGTH_REPLAY_MISMATCH")
-    report_identity(receipt["source"], raw, date.fromisoformat(receipt["release_date"]))
-    if receipt["timestamp_quality"] != "UNKNOWN" or receipt["published_at_utc"]:
+    identity = report_identity(receipt["source"], raw, date.fromisoformat(receipt["release_date"]))
+    if identity["report_id"] != receipt["report_id"] or man["report_id"] != receipt["report_id"]:
+        raise CaptureError("REPORT_ID_REPLAY_MISMATCH")
+    if man["source_sha256"] != receipt["source_sha256"]:
+        raise CaptureError("MANIFEST_SOURCE_SHA_MISMATCH")
+    expected_raw_path = "objects/{}/{}/{}.bin".format(
+        receipt["source"], receipt["release_date"], receipt["source_sha256"])
+    if receipt["raw_path"] != expected_raw_path:
+        raise CaptureError("RAW_PATH_OR_SOURCE_ID_MISMATCH")
+    if (receipt["timestamp_quality"] != "UNKNOWN" or receipt["published_at_utc"] or
+            receipt["available_at_utc"] or receipt["pit_certified_historical"] or
+            receipt["source_originality_certified"]):
         raise CaptureError("RETROACTIVE_PIT_PROMOTION_FORBIDDEN")
-    if parse_utc(receipt["safe_feature_not_before_utc"]) < parse_utc(receipt["response_finished_at_utc"]):
-        raise CaptureError("LOOKAHEAD_TIME_TRAVEL")
+    finish = parse_utc(receipt["response_finished_at_utc"])
+    if parse_utc(receipt["first_observed_at_utc"]) != finish:
+        raise CaptureError("FIRST_OBSERVED_CLOCK_MISMATCH")
+    if parse_utc(receipt["request_started_at_utc"]) > finish:
+        raise CaptureError("START_FINISH_CLOCK_MISMATCH")
+    if parse_utc(receipt["safe_feature_not_before_utc"]) != (
+            finish + timedelta(seconds=int(receipt["safety_latency_seconds"]))):
+        raise CaptureError("FEATURE_CUTOFF_MISMATCH")
     return {"verified": True, "source_sha256": receipt["source_sha256"],
             "report_id": receipt["report_id"], "pit_certified": False}
 
