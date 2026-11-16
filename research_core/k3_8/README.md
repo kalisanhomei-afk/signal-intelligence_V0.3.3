@@ -40,7 +40,7 @@ The PR's `pull_request` event runs only deterministic **offline** unit tests:
 python -B -m unittest discover -s research_core/k3_8/tests -p 'test_*.py' -v
 ```
 
-The `workflow_dispatch` input contract is already authored in `.github/workflows/signal-k38-manual-capture.yml`, but **GitHub only enables it after that workflow is registered on the repository default branch**. This Draft PR is isolated and has deliberately NOT been merged to `main`. Therefore a **manual Run workflow button should not yet be expected or used**. Registration is a separate explicit owner review/governance decision before future live collection.
+The `workflow_dispatch` input contract is already authored in `.github/workflows/signal-k38-manual-capture.yml`, but **GitHub only enables it after that workflow is registered on the repository default branch**. This Draft PR is isolated and has deliberately NOT been merged to `main`. Therefore a **manual Run workflow button should not yet be expected or used**. Registration is a separate explicit owner review/governance decision before future live collection. A narrowly scoped default-branch **registration-only Draft PR #20** is ready for that decision; its default-branch handler deliberately fails closed. Actual manual collection requires choosing exactly **codex/k38-forward-pit-capture** and executes pinned observer commit `43a3c627541ab70711527f5ae4e161bc5f393df2`. No manual collection has been run yet.
 
 Example only, after registration and selecting a freshly released **real** official resource URL:
 
@@ -57,7 +57,7 @@ python -B research_core/k3_8/capture.py --verify --output k38-capture
 
 The actual CLI command must replace the displayed URL placeholder; it is **not** an existing or valid URL. For WASDE use Dec 10 and 2026-12-10T17:00:00Z.
 
-The observed raw artifact has default **90-day retention**, not durable immutable archival and not global deduplication. **No public GitHub Release**, cross-run persistent storage, or recurring schedule without separate approval.
+Official prior-format smoke test: independent GitHub Runner checked 2026-08-03 NASS report (day-level source header) and 2026-07-10 WASDE report (month-level source header) directly from ESMIS, and both parsers passed. These are retrospective **format** checks only.\n\nThe observed raw artifact has default **90-day retention**, not durable immutable archival and not global deduplication. **No public GitHub Release**, cross-run persistent storage, or recurring schedule without separate approval.
 
 ## Release decision
 
