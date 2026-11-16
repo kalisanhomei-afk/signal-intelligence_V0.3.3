@@ -19,6 +19,8 @@ These are scheduled floors only, NOT the moment the first actual bytes were acce
 - a run before the conservative not-before floor, an operator barrier before regular official release hour, a future/old source date, stale report header, wrong document type, or no Corn reference in the report;
 - an existing output path, a previously observed identical digest in a *provided* ledger, missing or tampered raw/receipt bytes in replay.
 
+**Source-date precision warning (verified against USDA original July 2026 text):** NASS plain text contains an explicit `Released <month> <day>, <year>` line, which can be day-validated. WASDE ESMIS plain text instead shows headers such as `WASDE - 673 - 8     July 2026` and generally does **not** print the exact release day. We validate report ID plus original **month/year** and the U.S. Feed Grain and Corn table; the exact `--release-date` day remains an **operator assertion based on the official ESMIS release listing**, not a proven date extracted from WASDE bytes. `release_date_precision_from_body=MONTH` and `report_date_confirmed_from_body=null` make this explicit. Future review may add a hashed official listing snapshot to independently bind day-level metadata.
+
 One successful response outputs `receipt.json`, `manifest.json`, and `objects/SOURCE/YYYY-MM-DD/<sha256>.bin`; all source bytes and receipts are checked before the job can upload the artifact.
 
 Precise fields distinguish:
