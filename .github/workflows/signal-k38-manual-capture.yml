@@ -144,7 +144,7 @@ jobs:
       - name: Checkout pinned reviewed K3.8 observer commit
         uses: actions/checkout@v4
         with:
-          ref: 212c360396a7b542146e2a043937e38bc2afff62
+          ref: d325bd7955ec6fc69e95484276dabd348120d729
           persist-credentials: false
       - name: Python 3.12
         uses: actions/setup-python@v5
