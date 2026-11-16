@@ -111,16 +111,17 @@ jobs:
 
   one-off-real-capture:
     name: Manual one-report official capture (never scheduled)
-    if: github.event_name == 'workflow_dispatch' && startsWith(github.ref, 'refs/heads/codex/k38-')
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/codex/k38-forward-pit-capture'
     needs: offline-only-test
     runs-on: ubuntu-latest
     timeout-minutes: 6
     permissions:
       contents: read
     steps:
-      - name: Checkout specifically selected K3.8 branch
+      - name: Checkout pinned reviewed K3.8 observer commit
         uses: actions/checkout@v4
         with:
+          ref: 43a3c627541ab70711527f5ae4e161bc5f393df2
           persist-credentials: false
       - name: Python 3.12
         uses: actions/setup-python@v5
