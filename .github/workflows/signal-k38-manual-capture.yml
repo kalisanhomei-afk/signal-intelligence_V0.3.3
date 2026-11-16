@@ -103,6 +103,19 @@ jobs:
                     len(fetched.raw), sha256(fetched.raw).hexdigest(), 'FORMAT_COMPATIBLE')
           print('SOURCE_LAYOUT_SMOKE_PASS_NOT_FORWARD_PIT')
           PY
+      - name: Verify official ESMIS listing resolution using previously published reports only
+        shell: bash
+        run: |
+          python - <<'PY'
+          from datetime import date
+          from research_core.k3_8.discover import discover_exact_txt
+          for source, release in [('NASS', date(2026,11,9)), ('WASDE', date(2026,11,10))]:
+              url = discover_exact_txt(source, release)
+              assert url.startswith('https://esmis.nal.usda.gov/')
+              assert url.endswith('.txt')
+              print(source, release.isoformat(), url, 'OFFICIAL_CATALOG_MATCH')
+          print('SOURCE_DISCOVERY_LAYOUT_SMOKE_PASS; NOT NEW PIT')
+          PY
       - name: Enforce historical test-only boundary
         if: always()
         run: |
