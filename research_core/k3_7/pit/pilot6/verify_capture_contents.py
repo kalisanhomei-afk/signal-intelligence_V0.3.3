@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 from datetime import date, datetime, timezone
 import gzip
+from email.utils import parsedate_to_datetime
 import hashlib
 from html import unescape
 import json
@@ -96,6 +97,29 @@ def warc_content(raw):
     return decompressed
 
 
+def verify_warc_identity(body, expected_url, expected_utc):
+    text = body.split(b"\r\n\r\n", 1)[0].decode("utf-8", errors="replace")
+    headers = {}
+    for line in text.splitlines():
+        if ":" in line:
+            key, val = line.split(":", 1)
+            headers[key.lower().strip()] = val.strip()
+    if headers.get("warc-type", "").lower() != "response":
+        return False
+    target = urlparse(headers.get("warc-target-uri", ""))
+    expected = urlparse(expected_url)
+    if (target.hostname or "").removeprefix("www.") != (expected.hostname or "").removeprefix("www."):
+        return False
+    if target.path.rstrip("/") != expected.path.rstrip("/"):
+        return False
+    try:
+        observed = datetime.fromisoformat(headers["warc-date"].replace("Z", "+00:00")).astimezone(timezone.utc)
+        wanted = datetime.fromisoformat(expected_utc.replace("Z", "+00:00")).astimezone(timezone.utc)
+        return abs((observed - wanted).total_seconds()) <= 2
+    except (KeyError, ValueError):
+        return False
+
+
 def case_entries(case):
     found = set()
     for q in case["queries"]:
@@ -144,8 +168,22 @@ def inspect(case, typ, capture):
         if not match or match.group(1) != required:
             item["status"] = "ARCHIVED_CAPTURE_REDIRECT_TIME_MISMATCH"
             return item
+        # Require archive server's Memento record to agree with the replay instant.
+        header = result.get("memento_datetime_header", "")
+        try:
+            recorded = parsedate_to_datetime(header).astimezone(timezone.utc)
+            demanded = datetime.fromisoformat(observed.replace("Z", "+00:00"))
+            if abs((recorded - demanded).total_seconds()) > 1:
+                item["status"] = "MEMENTO_HEADER_TIMESTAMP_MISMATCH"
+                return item
+        except (TypeError, ValueError):
+            item["status"] = "MEMENTO_HEADER_MISSING_OR_INVALID"
+            return item
     try:
         body = warc_content(result["raw"]) if typ == "COMMON_CRAWL" else result["raw"]
+        if typ == "COMMON_CRAWL" and not verify_warc_identity(body, case["target_media_url"], observed):
+            item["status"] = "COMMON_CRAWL_WARC_IDENTITY_MISMATCH"
+            return item
         val = match_target_text(normalize_html(body), case["kind"], case["year"])
         item["value_matched"] = bool(val)
         item["status"] = "ARCHIVED_CAPTURE_VALUE_MATCH" if val else "ARCHIVED_CAPTURE_CONTENT_NOT_MATCHED"
