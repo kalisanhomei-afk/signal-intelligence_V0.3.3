@@ -100,6 +100,24 @@ jobs:
           assert r['strategy_return'] is None and r['price_effect_estimate'] is None
           print('K4_ACCOUNTING_REVIEW_PASS_RESEARCH_ONLY_NO_EDGE_PIT_UNVERIFIED')
           PY
+      - name: Fail-closed event-study evidence gate (no market data acquired)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.event_study_gate \
+            --case research_core/k4/cases/2026-11-10-event-study-evidence.json \
+            --output k4-review
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("k4-review/event_study_gate.json").read_text(encoding="utf-8"))
+          assert r["status"] == "BLOCKED_MISSING_EVIDENCE"
+          assert len(r["missing_evidence"]) == 12
+          assert r["formal_event_study_eligible"] is False
+          assert r["trade_eligible"] is False
+          assert r["strategy_return"] is None
+          print("K4_EVENT_STUDY_EVIDENCE_GATE_PASS_BLOCKED_NO_TRADING")
+          PY
       - name: Retain reviewer-readable hypothesis report, not source data archive
         if: always()
         uses: actions/upload-artifact@v4
