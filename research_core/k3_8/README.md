@@ -1,6 +1,6 @@
 # SIGNAL K3.8｜Forward-only Official Response Observation Pilot
 
-**CODE_ONLY until manual workflow registration is explicitly approved.** No background jobs, scheduled fetches, trading, strategy evaluation, site deployment, or changes to `main`. Reference: [Issue #18](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/issues/18).
+**Manual workflow registration has been approved and merged via PR #20. Real new-report capture has not yet run.** No background jobs, scheduled fetches, trading, strategy evaluation, site deployment, or changes to `main`. Reference: [Issue #18](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/issues/18).
 
 ## Exact pilot scope
 
@@ -10,11 +10,11 @@ Official calendar, as checked on 2026-11-16:
 - NASS next Crop Progress: **Nov 16, 2026 at 16:00 ET = Nov 16 21:00 UTC = Taiwan Nov 17 05:00**. Official [ESMIS Crop Progress](https://esmis.nal.usda.gov/publication/crop-progress) is the authoritative publication page. Holiday/change risk: check actual release there.
 - WASDE next report: **Dec 10, 2026 at 12:00 ET = Dec 10 17:00 UTC = Taiwan Dec 11 01:00**. Official [WASDE report page](https://usda.azureedge.us/about-usda/general-information/staff-offices/office-chief-economist/commodity-markets/wasde-report).
 
-These are scheduled floors only, NOT the moment the first actual bytes were accessible. The directly published `.txt` URL must be obtained from the **specific new official report** after publication and copied exactly; do NOT use current indexes, last month's files, the day-after-updated consolidated CSV, or invented URL paths.
+These are scheduled floors only, NOT the moment the first actual bytes were accessible. Use `AUTO` after the official release to locate exactly one report-date-matching `.txt` URL directly from the official ESMIS publication page. Discovery fails closed on missing or ambiguous links. The operator may alternatively provide the exact verified official `.txt` URL. Never guess filenames or reuse a past report.
 
 ## Current implementation and fail-closed record
 
-`capture.py` requires one explicitly operator-specified official `.txt` URL and report date. It rejects:
+`capture.py` requires an exact official `.txt` URL **or the sentinel `AUTO`** and a report date. `AUTO` does not contact ESMIS until the operator-supplied official UTC release barrier has passed; it selects only a uniquely date-matching official ESMIS `.txt` link. The receipt records `source_url_resolution_method` and final official URL. It rejects:
 - non-HTTPS, non-USDA/NASS hosts, unsupported formats, nonofficial redirects, 403/404, HTML error pages, zero/oversized/truncated responses;
 - a run before the conservative not-before floor, an operator barrier before regular official release hour, a future/old source date, stale report header, wrong document type, or no Corn reference in the report;
 - an existing output path, a previously observed identical digest in a *provided* ledger, missing or tampered raw/receipt bytes in replay.
@@ -40,24 +40,28 @@ The PR's `pull_request` event runs only deterministic **offline** unit tests:
 python -B -m unittest discover -s research_core/k3_8/tests -p 'test_*.py' -v
 ```
 
-The `workflow_dispatch` input contract is already authored in `.github/workflows/signal-k38-manual-capture.yml`, but **GitHub only enables it after that workflow is registered on the repository default branch**. This Draft PR is isolated and has deliberately NOT been merged to `main`. Therefore a **manual Run workflow button should not yet be expected or used**. Registration is a separate explicit owner review/governance decision before future live collection. A narrowly scoped default-branch **registration-only Draft PR #20** is ready for that decision; its default-branch handler deliberately fails closed. Actual manual collection requires choosing exactly **codex/k38-forward-pit-capture** and executes pinned observer commit `43a3c627541ab70711527f5ae4e161bc5f393df2`. No manual collection has been run yet.
+The `workflow_dispatch` registration file was merged into the default branch by [PR #20](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/pull/20). The `main` copy is deliberately a fail-closed stub; it **never** downloads a report. For manual capture select exactly branch `codex/k38-forward-pit-capture`, which runs the separately reviewed workflow and pins its observer implementation to commit `212c360396a7b542146e2a043937e38bc2afff62`. Choose `direct_txt_url=AUTO` to avoid copying filenames. **No future-report capture has been executed yet.**
 
-Example only, after registration and selecting a freshly released **real** official resource URL:
+Example only, **after the report is actually published** (pre-release invocation fails without contacting the catalog):
 
 ```bash
 python -B research_core/k3_8/capture.py \
   --source NASS \
   --release-date 2026-11-16 \
-  --url '<ACTUAL_OFFICIAL_NOV_16_NASS_TXT_URL>' \
+  --url AUTO \
   --not-before-utc 2026-11-16T21:00:00Z \
   --latency-seconds 120 \
   --output k38-capture
 python -B research_core/k3_8/capture.py --verify --output k38-capture
 ```
 
-The actual CLI command must replace the displayed URL placeholder; it is **not** an existing or valid URL. For WASDE use Dec 10 and 2026-12-10T17:00:00Z.
+`AUTO` looks for the uniquely matching official ESMIS link dated 2026-11-16. A missing report is an explicit failure, never a substitute with November 9 data. For WASDE use 2026-12-10 and 2026-12-10T17:00:00Z.
 
-Official prior-format smoke test: independent GitHub Runner checked 2026-08-03 NASS report (day-level source header) and 2026-07-10 WASDE report (month-level source header) directly from ESMIS, and both parsers passed. These are retrospective **format** checks only.\n\nThe observed raw artifact has default **90-day retention**, not durable immutable archival and not global deduplication. **No public GitHub Release**, cross-run persistent storage, or recurring schedule without separate approval.
+Official prior-format smoke test: independent GitHub Runner checked 2026-08-03 NASS report (day-level source header) and 2026-07-10 WASDE report (month-level source header) directly from ESMIS, and both parsers passed. These are retrospective **format** checks only.
+
+Additionally, GitHub Runner verified exact-date ESMIS HTML link resolution for the already published Nov 9 NASS and Nov 10 WASDE TXT resources, and 35 independent offline guard tests passed. These prior-report checks are NOT future-release observations.
+
+The observed raw artifact has default **90-day retention**, not durable immutable archival and not global deduplication. **No public GitHub Release**, cross-run persistent storage, or recurring schedule without separate approval.
 
 ## Release decision
 
