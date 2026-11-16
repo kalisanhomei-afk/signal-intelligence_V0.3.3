@@ -42,6 +42,34 @@ CME 官方玉米期貨規格：https://www.cmegroup.com/markets/agriculture/grai
 - 合約5,000蒲式耳；最小變動 **0.25美分／蒲式耳 = 每份合約12.50美元**。
 - 這是**合約機械規格**，不代表能以單一tick手續費/滑價成交。
 
+### 2.1 先用公開來源測試報告後的價格時間問題（2026-11-16）
+
+先不付費，就能用第三方文章取得**兩個描述性時間節點**：
+
+| 來源及資料類型 | 2026-11-09 日價格 | 2026-11-10 發布後 | 可說明／不可說明 |
+|---|---:|---:|---|
+| Tredas 事後市場報告所列 ZCZ6 報價 | 439.25美分／蒲式耳（前一日結算） | 11:01:05 CT：450.75；11:06:12 CT：452.50 | 同一篇報告所述兩時點差 **+1.75美分**；沒有原始逐筆撮合、交易所Bid/Ask或不可變當時快照 |
+| Barchart 合約 `ZCZ26` 公開歷史日資料 | 439.25 | 11/10日價449.00 | 日價相差 **+9.75美分**，但並非公布後五分鐘反應、並非精確收盤成交成本 |
+
+來源：
+- https://tools.gotredas.com/nov-wasde/
+- https://mnbl.websol.barchart.com/?1_selected=futureQuote&module=futureDetail&popup=1&region=US&symbol=ZCZ26
+- https://finance.yahoo.com/quote/ZC%3DF/history/ (日資料交叉查核，連續期貨代碼不得代替歷史逐月期約身分)。
+
+**絕不能用 450.75 − 439.25 = +11.50美分直接說「USDA 報告造成首分鐘上漲11.50美分」！** 分母是**前一日結算**，中間含夜盤與報告前交易；我們尚未取得 16:59 UTC 的同合約價格。因此目前甚至無法正確識別「新聞公布瞬間的增量價格反應」。
+
+另外，公開行情網站不同查詢 URL/合約識別碼出現不同價格結果。當年期約、連續合約、CFD、不同站點的可選日行情不得互相填補。Barchart 的 `ZCZ26` 與申購資料預定使用的 `ZCZ6` 需以原始供應商 instrument definition 驗證對應關係，不能只靠代碼形式假設。
+
+這些參考值已納入 `cases/2026-11-10-zcz6-public-price-scout.json`、`public_price_scout.py` 和獨立拒絕測試；僅產出 `price_scout_research_only.json`，`actual_trade_bid_ask_rows_acquired=0`、`trade_eligible=false`。**不用額外購買資料即可先取得「是否值得查證盤中時間」的研究線索，但無法做正式事件研究。**
+
+### 2.2 採購預算前先查官方費率、確定單日實際價格
+
+Databento [Pricing](https://databento.com/pricing) 目前列示 **US$125 新客戶歷史資料試用額度**與按用量計價選項；但依授權／客戶身份仍可能有不同費用，不表示使用者可以保證免費下載。
+
+官方歷史 API 可用 `Historical.metadata.get_cost(...)` 查詢成本。這是**已文件化的 API 能力，不是本系統已執行查詢或拿到的報價**：[get_cost 官方說明](https://databento.com/docs/api-historical)。
+
+向供應商帳戶查價時，範圍固定為 `dataset=GLBX.MDP3`、`symbols=["ZCZ6"]`、`stype_in="raw_symbol"`、`schema="ohlcv-1m"`、`start=2026-11-10T16:30:00Z`、`end=2026-11-10T19:30:00Z`，其後再對 `trades`、`tbbo` 分別詢價，且先確認該 symbol 真存在於歷史定義。**未經帳戶真實回傳，不提供任意估算的美元成本。** 不建議因一個實驗就訂每月US$199標準版或其它長約。
+
 ## 3. 事前確定的最小資料購置／驗收清單
 
 **第一筆市場數據只需單一日 × 單一合約 × 180分鐘左右。** 不要直接採購十年成交資料，因成本與授權風險遠高於驗證效益。
