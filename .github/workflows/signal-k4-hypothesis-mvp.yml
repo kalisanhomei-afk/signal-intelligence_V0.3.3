@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   hypothesis-contract-review:
-    name: K4 offline 20-case source/accounting/consensus integrity gate
+    name: K4 offline accounting/consensus/public-price source gating
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -58,6 +58,28 @@ jobs:
           assert x["transaction_cost_adjusted_tradable"] is False
           assert all(r["event_study_eligible"] is False for r in x["survey_results"])
           print("K4_CONSENSUS_VINTAGE_SENSITIVITY_PASS_NO_ASOF_NO_PRICE")
+          PY
+      - name: Review reported event-window ZCZ6 prices (NO genuine trade bars)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.public_price_scout \
+            --case research_core/k4/cases/2026-11-10-zcz6-public-price-scout.json \
+            --output k4-review
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("k4-review/price_scout_research_only.json").read_text(encoding="utf-8"))
+          assert r["first_to_second_claimed_quote_cents"] == "1.75"
+          assert r["prior_day_to_first_claimed_quote_cents"] == "11.50"
+          assert r["prior_day_to_event_day_publisher_last_cents"] == "9.75"
+          assert r["previous_day_to_event_quote_attribution_to_WASDE_permitted"] is False
+          assert r["live_or_independently_attested_quote_rows_acquired"] == 0
+          assert r["actual_trade_bid_ask_rows_acquired"] == 0
+          assert r["contemporaneous_pre_event_price_available"] is False
+          assert r["formal_intraday_event_study_eligible"] is False
+          assert r["trade_eligible"] is False
+          print("K4_PUBLIC_PRICE_SOURCE_SCOUT_PASS_NOT_INTRADAY_PIT_OR_EXECUTABLE")
           PY
       - name: Forbid trading, performance and historical PIT certification
         shell: bash
