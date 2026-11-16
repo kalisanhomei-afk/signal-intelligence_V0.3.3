@@ -19,9 +19,9 @@ These are scheduled floors only, NOT the moment the first actual bytes were acce
 - a run before the conservative not-before floor, an operator barrier before regular official release hour, a future/old source date, stale report header, wrong document type, or no Corn reference in the report;
 - an existing output path, a previously observed identical digest in a *provided* ledger, missing or tampered raw/receipt bytes in replay.
 
-**Source-date precision warning (verified against USDA original July 2026 text):** NASS plain text contains an explicit `Released <month> <day>, <year>` line, which can be day-validated. WASDE ESMIS plain text instead shows headers such as `WASDE - 673 - 8     July 2026` and generally does **not** print the exact release day. We validate report ID plus original **month/year** and the U.S. Feed Grain and Corn table; the exact `--release-date` day remains an **operator assertion based on the official ESMIS release listing**, not a proven date extracted from WASDE bytes. `release_date_precision_from_body=MONTH` and `report_date_confirmed_from_body=null` make this explicit. Future review may add a hashed official listing snapshot to independently bind day-level metadata.
+**Source-date precision warning (verified against USDA original July 2026 text):** NASS plain text contains an explicit `Released <month> <day>, <year>` line, which can be day-validated. WASDE ESMIS plain text instead shows headers such as `WASDE - 673 - 8     July 2026` and generally does **not** print the exact release day. We validate report ID plus original **month/year** and the U.S. Feed Grain and Corn table; the exact `--release-date` day remains an **operator assertion based on the official ESMIS release listing**, not a proven date extracted from WASDE bytes. `release_date_precision_from_body=MONTH` and `report_date_confirmed_from_body=null` make this explicit. **Implemented:** `AUTO` preserves the original official ESMIS listing HTML, its SHA-256, UTC request/response receipt and the date-exact TXT URL; replay rechecks those bytes against the receipt. The listing snapshot establishes what this system actually observed, not when USDA first made it public.
 
-One successful response outputs `receipt.json`, `manifest.json`, and `objects/SOURCE/YYYY-MM-DD/<sha256>.bin`; all source bytes and receipts are checked before the job can upload the artifact.
+One successful response outputs `receipt.json`, `manifest.json`, `objects/SOURCE/YYYY-MM-DD/<sha256>.bin` and, for `AUTO`, `catalog/SOURCE/YYYY-MM-DD/<sha256>.html`. Both official source bytes and official catalog snapshot bytes, SHA-256 hashes, selected release-date URL and UTC ordering are replay checked before the job can upload the artifact.
 
 Precise fields distinguish:
 - `response_finished_at_utc` = actual response completed **in this runner**;
@@ -40,7 +40,7 @@ The PR's `pull_request` event runs only deterministic **offline** unit tests:
 python -B -m unittest discover -s research_core/k3_8/tests -p 'test_*.py' -v
 ```
 
-The `workflow_dispatch` registration file was merged into the default branch by [PR #20](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/pull/20). The `main` copy is deliberately a fail-closed stub; it **never** downloads a report. For manual capture select exactly branch `codex/k38-forward-pit-capture`, which runs the separately reviewed workflow and pins its observer implementation to commit `212c360396a7b542146e2a043937e38bc2afff62`. Choose `direct_txt_url=AUTO` to avoid copying filenames. **No future-report capture has been executed yet.**
+The `workflow_dispatch` registration file was merged into the default branch by [PR #20](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/pull/20). The `main` copy is deliberately a fail-closed stub; it **never** downloads a report. For manual capture select exactly branch `codex/k38-forward-pit-capture`, which runs the separately reviewed workflow and pins its observer implementation to commit `d325bd7955ec6fc69e95484276dabd348120d729`. Choose `direct_txt_url=AUTO` to avoid copying filenames. **No future-report capture has been executed yet.**
 
 Example only, **after the report is actually published** (pre-release invocation fails without contacting the catalog):
 
@@ -59,7 +59,7 @@ python -B research_core/k3_8/capture.py --verify --output k38-capture
 
 Official prior-format smoke test: independent GitHub Runner checked 2026-08-03 NASS report (day-level source header) and 2026-07-10 WASDE report (month-level source header) directly from ESMIS, and both parsers passed. These are retrospective **format** checks only.
 
-Additionally, GitHub Runner verified exact-date ESMIS HTML link resolution for the already published Nov 9 NASS and Nov 10 WASDE TXT resources, and 35 independent offline guard tests passed. These prior-report checks are NOT future-release observations.
+Additionally, GitHub Runner verified exact-date ESMIS HTML link resolution for the already published Nov 9 NASS and Nov 10 WASDE TXT resources, and **37** independent offline guard tests passed, including catalog tamper detection and clock-order safeguards. These prior-report checks are NOT future-release observations.
 
 The observed raw artifact has default **90-day retention**, not durable immutable archival and not global deduplication. **No public GitHub Release**, cross-run persistent storage, or recurring schedule without separate approval.
 
