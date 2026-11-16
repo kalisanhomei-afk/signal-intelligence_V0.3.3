@@ -1,0 +1,71 @@
+name: SIGNAL K4 corn hypothesis accounting and leakage gate (research only)
+
+on:
+  pull_request:
+    branches: [codex/k37-orchestration]
+    paths:
+      - 'research_core/k4/**'
+      - '.github/workflows/signal-k4-hypothesis-mvp.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  hypothesis-contract-review:
+    name: K4 offline 20-case source/accounting/consensus integrity gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout K4 research-only branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python 3.12 (standard library only)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify H-CORN-001 unit, timing, balance and fail-closed tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest discover -s research_core/k4/tests -p 'test_*.py' -v
+      - name: Reproduce Nov 2026 real retrospective accounting reference
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B research_core/k4/hypothesis.py \
+            --case research_core/k4/cases/2026-11-corn-wasde-retrospective.json \
+            --output k4-review
+      - name: Forbid trading, performance and historical PIT certification
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('k4-review/hypothesis_review.json').read_text(encoding='utf-8'))
+          assert r['hypothesis_id']=='H-CORN-001'
+          assert r['stock_flow_identity_reconciled'] is True
+          assert r['market_consensus_surprise_million_bushels']=='-88'
+          assert r['prior_month_change_million_bushels']=='-91'
+          assert r['stocks_to_use_percent']=='10.82'
+          assert r['historical_original_source_pit_certified'] is False
+          assert r['investment_edge_verified'] is False
+          assert r['event_study_eligible'] is False
+          assert r['trade_eligible'] is False
+          assert r['strategy_return'] is None and r['price_effect_estimate'] is None
+          print('K4_ACCOUNTING_REVIEW_PASS_RESEARCH_ONLY_NO_EDGE_PIT_UNVERIFIED')
+          PY
+      - name: Retain reviewer-readable hypothesis report, not source data archive
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k4-h-corn-001-accounting-only
+          path: k4-review/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Explicit scope governance
+        if: always()
+        run: |
+          echo 'PR workflow contains no official USDA downloads, price feeds or trading signals.'
+          echo 'This report is retrospective accounting, not a future-knowledge or alpha proof.'
+          echo 'Never merge into main, enable schedule or mark investment hypothesis proven.'
