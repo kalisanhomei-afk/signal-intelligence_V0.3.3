@@ -1,0 +1,21 @@
+{
+  "schema": "signal-k45-ex-ante-registration-v1",
+  "hypothesis_id": "H-CORN-001",
+  "event_id": "USDA-WASDE-2026-11-10",
+  "release_scheduled_utc": "2026-11-10T17:00:00Z",
+  "forecast_created_utc": null,
+  "forecast_raw_sha256": null,
+  "forecast_value_mbu": null,
+  "forecast_method_id": null,
+  "forecast_inputs_cutoff_utc": null,
+  "forecast_inputs_manifest_sha256": null,
+  "forecast_independent_capture_utc": null,
+  "consensus_value_mbu": null,
+  "consensus_raw_sha256": null,
+  "consensus_provider": null,
+  "consensus_independent_capture_utc": null,
+  "consensus_methodology": null,
+  "target": "US_CORN_2026_27_ENDING_STOCKS_MBU",
+  "evaluation_rule": "compare_frozen_forecast_to_frozen_consensus_before_official_outcome",
+  "frozen_before_release": false
+}
