@@ -156,29 +156,40 @@ def report_identity(source: str, raw: bytes, expected: date) -> dict:
         report_id = f"NASS-CROP-PROGRESS-{observed_date.isoformat()}"
         crop_note = "CORN_MENTIONED" if re.search(r"\bcorn\b", text, re.I) else "CORN_NOT_REPORTED"
     elif source == "WASDE":
-        if not re.search(r"World\s+Agricultural\s+Supply\s+and\s+Demand\s+Estimates", leading, re.I):
+        # Real official ESMIS plain text begins with e.g. "WASDE - 673 - 8  July 2026".
+        # The DAY of month is not in many original TXT reports. Do not invent a
+        # source-confirmed full day merely from an operator-supplied release date.
+        if not re.search(r"U[.]S[.] Feed Grain and Corn Supply and Use", text, re.I):
             raise CaptureError("WASDE_WRONG_REPORT_TYPE")
-        m = WASDE_NAME.search(leading)
-        if not m:
-            raise CaptureError("WASDE_REPORT_NUMBER_MISSING")
-        candidates = set()
-        for rawdate in MONTH_DATE.findall(leading[:3500]):
-            try:
-                candidates.add(_norm_date(rawdate))
-            except CaptureError:
-                continue
-        if expected not in candidates:
-            raise CaptureError("WASDE_HEADER_DATE_MISMATCH")
-        observed_date = expected
-        report_id = "WASDE-" + m.group(1)
-        crop_note = "CORN_MENTIONED" if re.search(r"\bcorn\b", text, re.I) else "CORN_NOT_REPORTED"
+        nums = set(WASDE_NAME.findall(text))
+        if len(nums) != 1:
+            raise CaptureError("WASDE_REPORT_NUMBER_MISSING_OR_CONFLICTING")
+        match = re.search(
+            r"(?im)^\\s*WASDE\\s*[-–]\\s*\\d{3,4}\\s*[-–]\\s*\\d+"
+            r"\\s+([A-Za-z]+)\\s+(20\\d{2})\\s*$", text[:12000])
+        if not match:
+            raise CaptureError("WASDE_REPORT_MONTH_HEADER_MISSING")
+        month_name, year = match.groups()
+        try:
+            source_month = datetime.strptime(month_name, "%B").month
+        except ValueError as exc:
+            raise CaptureError("WASDE_HEADER_MONTH_INVALID") from exc
+        if (int(year), source_month) != (expected.year, expected.month):
+            raise CaptureError("WASDE_HEADER_MONTH_YEAR_MISMATCH")
+        observed_date = None
+        report_id = "WASDE-" + next(iter(nums))
+        crop_note = "CORN_MENTIONED"
+
     else:
         raise CaptureError("UNSUPPORTED_SOURCE")
-    if observed_date != expected:
+    if source == "NASS" and observed_date != expected:
         raise CaptureError("WRONG_RELEASE_DATE_STALE_OR_OTHER_EDITION")
     return {
         "report_id": report_id,
-        "report_date_confirmed_from_body": observed_date.isoformat(),
+        "report_date_confirmed_from_body": observed_date.isoformat() if observed_date else None,
+        "report_month_confirmed_from_body": expected.strftime("%Y-%m"),
+        "release_date_precision_from_body": "DAY" if observed_date else "MONTH",
+        "operator_expected_release_date": expected.isoformat(),
         "crop_status": crop_note,
         "report_format": "ORIGINAL_OFFICIAL_TEXT",
     }
