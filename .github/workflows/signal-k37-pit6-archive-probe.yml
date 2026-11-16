@@ -1,0 +1,73 @@
+name: SIGNAL K3.7 PIT6 independent archive-index preflight (NOT PIT certification)
+
+on:
+  pull_request:
+    branches: [codex/k37-orchestration]
+    paths:
+      - '.github/workflows/signal-k37-pit6-archive-probe.yml'
+      - 'research_core/k3_7/pit/pilot6/archive_capture_probe.py'
+      - 'research_core/k3_7/pit/tests/test_archive_capture_probe.py'
+  push:
+    branches: [codex/k37-orchestration]
+    paths:
+      - '.github/workflows/signal-k37-pit6-archive-probe.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  archive-index-preflight:
+    name: Find verifiable 2016/2020/2022 independent historical capture candidates
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout pilot6 exact official-source catalogue
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fail-closed archive candidate checker tests
+        run: |
+          python -B -m unittest discover -s research_core/k3_7/pit/tests -p 'test_*.py' -v
+      - name: Probe 6 exact third-party pages in Internet Archive / Common Crawl indexes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p k37-pit6-archive-audit
+          python -B research_core/k3_7/pit/pilot6/archive_capture_probe.py \
+            --catalog research_core/k3_7/pit/pilot6/evidence_candidates.json \
+            --output k37-pit6-archive-audit
+      - name: Enforce index-only evidence boundary
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('k37-pit6-archive-audit/historical_capture_index_probe.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          assert len(d['cases'])==6
+          assert d['pit_certified_rows']==0
+          assert d['historical_public_timestamp_certified']==0
+          assert d['verified_contemporaneous_page_values']==0
+          assert d['formal_backtest_eligible'] is False
+          assert all(x['pit_certified'] is False and x['timestamp_quality']=='UNKNOWN'
+                     and x['capture_body_verified'] is False for x in d['cases'])
+          print('ARCHIVE_INDEX_PREFLIGHT_COMPLETE; PIT=0; CAPTURE_BODY_VERIFIED=0')
+          PY
+      - name: Preserve only query metadata and evidence findings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k37-pit6-independent-archive-index-evidence
+          path: k37-pit6-archive-audit/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Study limitations
+        if: always()
+        run: |
+          echo 'A CDX timestamp or Common Crawl row alone DOES NOT show target value in the captured bytes.'
+          echo 'Unavailable and blocked archive indexes are not proof no historical capture exists.'
+          echo 'This job NEVER certifies a PIT public timestamp or a trading backtest.'
