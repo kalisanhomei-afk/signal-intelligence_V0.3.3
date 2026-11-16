@@ -1,0 +1,187 @@
+name: SIGNAL K3.8 manual future USDA source observation (research only)
+
+# IMPORTANT: workflow_dispatch only becomes triggerable if this workflow file
+# exists on the DEFAULT branch. This PR DOES NOT register it on main.
+# PR events run OFFLINE TESTS ONLY; no USDA requests occur during PR CI.
+on:
+  pull_request:
+    branches: [codex/k37-orchestration]
+    paths:
+      - 'research_core/k3_8/**'
+      - '.github/workflows/signal-k38-manual-capture.yml'
+  workflow_dispatch:
+    inputs:
+      source:
+        description: "Exactly one official source, WASDE or NASS"
+        type: choice
+        options: [NASS, WASDE]
+        required: true
+      release_date:
+        description: "Report date in US Eastern calendar, YYYY-MM-DD"
+        type: string
+        required: true
+      direct_txt_url:
+        description: "Type AUTO for exact-date official ESMIS lookup, or paste a specific official TXT URL"
+        type: string
+        required: true
+      not_before_utc:
+        description: "Conservative UTC barrier at/after official schedule (ISO8601 Z)"
+        type: string
+        required: true
+      latency_seconds:
+        description: "Extra conservative safety lag in seconds (0-3600)"
+        type: number
+        default: 120
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: signal-k38-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: false
+
+jobs:
+  offline-only-test:
+    name: K3.8 no-network validation and fail-closed unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout isolated candidate
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test dates, DST, official redirects, SHA256, revisions, and failure cases
+        run: |
+          set -euo pipefail
+          python -B -m unittest discover -s research_core/k3_8/tests -p 'test_*.py' -v
+      - name: Explicit acceptance
+        run: |
+          echo 'CODE_READY only. PR checks never fetch USDA and do not create a PIT dataset.'
+
+  official-prior-report-format-smoke:
+    name: Actual official historical TXT layout compatibility (NOT PIT capture)
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout source parser under review
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch and parse two historically published USDA official TXT samples
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from datetime import date
+          from hashlib import sha256
+          from research_core.k3_8.capture import fetch_official, report_identity
+          sources = [
+            ('NASS', 'https://esmis.nal.usda.gov/sites/default/release-files/796007/prog3126.txt',
+             date(2026, 8, 3), 'DAY'),
+            ('WASDE', 'https://esmis.nal.usda.gov/sites/default/release-files/795974/wasde0726.txt',
+             date(2026, 7, 10), 'MONTH'),
+          ]
+          for source, url, reported, precision in sources:
+              fetched = fetch_official(source, url)
+              claim = report_identity(source, fetched.raw, reported)
+              assert claim['release_date_precision_from_body'] == precision
+              assert claim['crop_status'] == 'CORN_MENTIONED'
+              assert claim['report_id']
+              print(source, claim['report_id'], claim['release_date_precision_from_body'],
+                    len(fetched.raw), sha256(fetched.raw).hexdigest(), 'FORMAT_COMPATIBLE')
+          print('SOURCE_LAYOUT_SMOKE_PASS_NOT_FORWARD_PIT')
+          PY
+      - name: Verify official ESMIS listing resolution using previously published reports only
+        shell: bash
+        run: |
+          python - <<'PY'
+          from datetime import date, datetime, timezone
+          from hashlib import sha256
+          from research_core.k3_8.discover import (
+              discover_exact_txt_with_evidence, extract_direct_txt
+          )
+          for source, release in [('NASS', date(2026,11,9)), ('WASDE', date(2026,11,10))]:
+              finding = discover_exact_txt_with_evidence(source, release)
+              url = finding['selected_url']
+              assert url.startswith('https://esmis.nal.usda.gov/')
+              assert url.endswith('.txt')
+              assert finding['catalog_sha256'] == sha256(finding['catalog_bytes']).hexdigest()
+              assert extract_direct_txt(finding['catalog_bytes'].decode('utf-8',errors='replace'),
+                                        source, release) == url
+              utc=lambda s: datetime.fromisoformat(s.replace('Z','+00:00'))
+              assert utc(finding['catalog_request_started_at_utc']) <= utc(finding['catalog_response_finished_at_utc'])
+              print(source, release.isoformat(), url, finding['catalog_sha256'],
+                    'OFFICIAL_CATALOG_SNAPSHOT_SHA256_PASS')
+          print('SOURCE_DISCOVERY_CATALOG_SNAPSHOT_SMOKE_PASS; NOT NEW PIT')
+          PY
+      - name: Enforce historical test-only boundary
+        if: always()
+        run: |
+          echo 'Previously released official documents tested for parser compatibility only.'
+          echo 'This job never records a new forward PIT observation and produces no data artifact.'
+
+  one-off-real-capture:
+    name: Manual one-report official capture (never scheduled)
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/codex/k38-forward-pit-capture'
+    needs: offline-only-test
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout pinned reviewed K3.8 observer commit
+        uses: actions/checkout@v4
+        with:
+          ref: d325bd7955ec6fc69e95484276dabd348120d729
+          persist-credentials: false
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Capture one freshly released official text report
+        env:
+          SOURCE: ${{ inputs.source }}
+          RELEASE_DATE: ${{ inputs.release_date }}
+          DIRECT_TXT_URL: ${{ inputs.direct_txt_url }}
+          NOT_BEFORE_UTC: ${{ inputs.not_before_utc }}
+          LATENCY_SECONDS: ${{ inputs.latency_seconds }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B research_core/k3_8/capture.py \
+            --source "$SOURCE" \
+            --release-date "$RELEASE_DATE" \
+            --url "$DIRECT_TXT_URL" \
+            --not-before-utc "$NOT_BEFORE_UTC" \
+            --latency-seconds "$LATENCY_SECONDS" \
+            --output k38-capture
+          python -B research_core/k3_8/capture.py --verify --output k38-capture
+          echo 'SOURCE_OBSERVED_BY_SYSTEM_UTC_ONLY; NOT ORIGINAL_USDA_PUBLICATION_INSTANT'
+      - name: Preserve exact official raw bytes, immutable receipt and manifest
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k38-manual-${{ inputs.source }}-${{ inputs.release_date }}-${{ github.run_id }}
+          path: k38-capture/
+          retention-days: 90
+          compression-level: 6
+          if-no-files-found: error
+      - name: Explicitly forbid production PIT/trading claims
+        if: always()
+        run: |
+          echo 'Manual, research-only observed-response record. No schedule, live trade or secret.'
+          echo 'Artifact is a temporary 90-day copy, not an immutable durable archive.'
+          echo 'No cross-run deduplication is guaranteed absent an authenticated prior ledger.'
+          echo 'Time eligibility is response-completion UTC + latency; original publication instant unknown.'
