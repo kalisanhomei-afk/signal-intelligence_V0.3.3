@@ -119,6 +119,14 @@ class ObserverGuards(unittest.TestCase):
             validate_spec("NASS", NASS_URL, NASS_DATE, NASS_BARRIER, 120,
                           dt("2026-11-16T20:59:59Z"))
 
+    def test_operator_cannot_move_not_before_earlier_than_official_hour(self):
+        with self.assertRaisesRegex(CaptureError, "BARRIER_BEFORE_OFFICIAL_RELEASE_HOUR_FLOOR"):
+            validate_spec("NASS", NASS_URL, NASS_DATE, "2026-11-16T20:00:00Z",
+                          120, dt("2026-11-16T21:01:00Z"))
+        with self.assertRaisesRegex(CaptureError, "BARRIER_BEFORE_OFFICIAL_RELEASE_HOUR_FLOOR"):
+            validate_spec("WASDE", WASDE_URL, WASDE_DATE, "2026-12-10T16:00:00Z",
+                          120, dt("2026-12-10T17:01:00Z"))
+
     def test_old_historical_backdating_blocked(self):
         with self.assertRaisesRegex(CaptureError, "HISTORICAL_BACKDATING_FORBIDDEN"):
             validate_spec("NASS", NASS_URL, "2016-11-16", NASS_BARRIER, 120,
