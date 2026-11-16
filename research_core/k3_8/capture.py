@@ -228,9 +228,13 @@ def validate_fetch(source: str, url: str, result: Fetch, expected: date,
     return identity
 
 
-def validate_spec(source: str, url: str, release_date: str, not_before_utc: str,
+def validate_spec(source: str, url: str | None, release_date: str, not_before_utc: str,
                   safety_seconds: int, clock: datetime):
-    checked_url(url, source)
+    if url is None:
+        if source not in HOSTS:
+            raise CaptureError("UNSUPPORTED_SOURCE")
+    else:
+        checked_url(url, source)
     try:
         d = date.fromisoformat(release_date)
     except ValueError as exc:
@@ -320,12 +324,15 @@ def verify_saved(root: Path) -> dict:
 
 def capture(source: str, url: str, release_date: str, not_before_utc: str,
             output: Path, *, safety_seconds: int = 120, prior: dict | None = None,
-            transport=fetch_official, preflight_now: datetime | None = None) -> dict:
+            transport=fetch_official, preflight_now: datetime | None = None,
+            source_resolution_method: str = "OPERATOR_DIRECT_SOURCE_URL") -> dict:
     preflight_now = preflight_now or now_utc()
     expected, barrier = validate_spec(source, url, release_date, not_before_utc,
                                       safety_seconds, preflight_now)
     result = transport(source, url)
     ident = validate_fetch(source, url, result, expected, barrier, safety_seconds)
+    if source_resolution_method not in ("OPERATOR_DIRECT_SOURCE_URL", "OFFICIAL_ESMIS_EXACT_DATE_LINK"):
+        raise CaptureError("INVALID_SOURCE_RESOLUTION_METHOD")
     raw_sha = hashlib.sha256(result.raw).hexdigest()
     release_id = ident["report_id"]
     compare = prior_comparison(source, release_id, raw_sha, prior)
@@ -338,7 +345,8 @@ def capture(source: str, url: str, release_date: str, not_before_utc: str,
     receipt = {
         "schema": "signal-k38-manual-official-response-receipt-v1",
         "source": source, "release_date": release_date, **ident,
-        "source_url": url, "resolved_url": result.resolved_url,
+        "source_url": url, "source_url_resolution_method": source_resolution_method,
+        "resolved_url": result.resolved_url,
         "redirect_chain": list(result.redirects), "http_status": result.status,
         "response_content_type": result.content_type,
         "source_size_bytes": len(result.raw), "source_sha256": raw_sha,
@@ -407,11 +415,25 @@ def main(argv=None) -> int:
         if not all([args.source, args.url, args.release_date, args.not_before_utc]):
             parser.error("Capture requires source, URL, release-date and not-before-utc")
         prior = json.loads(args.prior_ledger.read_text(encoding="utf-8")) if args.prior_ledger else None
-        receipt = capture(args.source, args.url, args.release_date, args.not_before_utc,
-                          args.output, safety_seconds=args.latency_seconds, prior=prior)
+        if args.url.strip().upper() == "AUTO":
+            # Fail before doing ANY network access if the intended future
+            # report has not reached the official release-time barrier.
+            expected, _ = validate_spec(args.source, None, args.release_date,
+                                        args.not_before_utc, args.latency_seconds, now_utc())
+            from research_core.k3_8.discover import discover_exact_txt
+            exact_url = discover_exact_txt(args.source, expected)
+            resolution_method = "OFFICIAL_ESMIS_EXACT_DATE_LINK"
+        else:
+            exact_url = args.url
+            resolution_method = "OPERATOR_DIRECT_SOURCE_URL"
+        receipt = capture(args.source, exact_url, args.release_date, args.not_before_utc,
+                          args.output, safety_seconds=args.latency_seconds, prior=prior,
+                          source_resolution_method=resolution_method)
         print(json.dumps({
             "status": receipt["status"], "source_sha256": receipt["source_sha256"],
             "report_id": receipt["report_id"],
+            "source_url": receipt["source_url"],
+            "source_url_resolution_method": receipt["source_url_resolution_method"],
             "response_finished_at_utc": receipt["response_finished_at_utc"],
             "safe_feature_not_before_utc": receipt["safe_feature_not_before_utc"],
             "pit_certified_historical": False, "global_dedup_verified": False,
