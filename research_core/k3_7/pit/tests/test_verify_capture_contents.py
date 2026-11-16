@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 from research_core.k3_7.pit.pilot6.verify_capture_contents import (
-    case_entries, inspect, match_target_text, normalize_html, run, warc_content
+    case_entries, inspect, match_target_text, normalize_html, run, verify_warc_identity, warc_content
 )
 
 
@@ -36,6 +36,31 @@ class ArchiveContentTests(unittest.TestCase):
                 {"capture_at_utc": "2016-06-11T13:03:24Z", "archived_url": "https://a", "capture_digest": "x"}]}]}
         self.assertEqual(len(list(case_entries(case))), 1)
 
+    def test_commoncrawl_warc_target_and_capture_date_must_match(self):
+        url = "https://www.dtnpf.com/agriculture/web/ag/news/article/2022/06/10/x"
+        body = (b"WARC/1.0\r\nWARC-Type: response\r\n"
+                b"WARC-Date: 2022-07-03T10:56:16Z\r\n"
+                b"WARC-Target-URI: " + url.encode() + b"\r\n\r\n"
+                b"HTTP/1.1 200 OK\r\n\r\nCorn ending stocks 1.485 billion bushels")
+        self.assertTrue(verify_warc_identity(body, url, "2022-07-03T10:56:16Z"))
+        self.assertFalse(verify_warc_identity(body, url, "2022-07-04T10:56:16Z"))
+        self.assertFalse(verify_warc_identity(body, url + "/other", "2022-07-03T10:56:16Z"))
+
+    def test_wayback_memento_header_time_disagreement_is_blocked(self):
+        case = {"kind": "WASDE", "year": 2016,
+                "target_media_url": "https://www.dtnpf.com/test"}
+        cap = {"capture_at_utc": "2016-06-11T13:03:24Z", "capture_digest": "a"}
+        response = {"status": "FETCHED", "raw": b"USDA corn ending stocks 2.008 billion bushels",
+                    "http_status": 200,
+                    "resolved_url": "https://web.archive.org/web/20160611130324id_/https://www.dtnpf.com/test",
+                    "memento_datetime_header": "Mon, 13 Jun 2016 13:03:24 GMT",
+                    "capture_sha256": "example"}
+        with patch("research_core.k3_7.pit.pilot6.verify_capture_contents.safe_open",
+                   return_value=response):
+            r = inspect(case, "WAYBACK", cap)
+        self.assertEqual(r["status"], "MEMENTO_HEADER_TIMESTAMP_MISMATCH")
+        self.assertFalse(r["value_matched"])
+
     def test_replay_redirect_to_another_capture_time_is_blocked(self):
         case = {"kind": "WASDE", "year": 2016,
                 "target_media_url": "https://www.dtnpf.com/test"}
@@ -57,6 +82,7 @@ class ArchiveContentTests(unittest.TestCase):
         response = {"status": "FETCHED", "raw": b"USDA corn ending stocks 2.008 billion bushels",
                     "http_status": 200,
                     "resolved_url": "https://web.archive.org/web/20160611130324id_/https://www.dtnpf.com/test",
+                    "memento_datetime_header": "Sat, 11 Jun 2016 13:03:24 GMT",
                     "capture_sha256": "example"}
         with patch("research_core.k3_7.pit.pilot6.verify_capture_contents.safe_open",
                    return_value=response):
