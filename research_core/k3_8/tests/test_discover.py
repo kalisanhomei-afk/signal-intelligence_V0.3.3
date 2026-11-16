@@ -104,7 +104,7 @@ class OfficialCatalogParserTests(unittest.TestCase):
                      "catalog_response_finished_at_utc": "2026-11-16T21:00:32Z"}
 
     def _fake_fetch(self, url):
-        body = b"Crop Progress\\nReleased November 16, 2026, by NASS\\nCorn Condition\\n"
+        body = b"Crop Progress\nReleased November 16, 2026, by NASS\nCorn Condition\n"
         return Fetch(body, url, url, 200, "text/plain", len(body),
                      datetime(2026, 11, 16, 21, 0, 35, tzinfo=timezone.utc),
                      datetime(2026, 11, 16, 21, 0, 40, tzinfo=timezone.utc))
