@@ -5,7 +5,8 @@ filenames. An empty, blocked, ambiguous, or stale listing fails closed.
 """
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, datetime, timezone
+import hashlib
 from html.parser import HTMLParser
 import re
 from urllib.error import HTTPError, URLError
@@ -94,27 +95,49 @@ def extract_direct_txt(html: str, source: str, release_day: date) -> str:
     return next(iter(candidates))
 
 
-def discover_exact_txt(source: str, release_day: date) -> str:
+def discover_exact_txt_with_evidence(source: str, release_day: date) -> dict:
+    """Observe original ESMIS listing bytes, not retrospective publication time.
+
+    The collected HTML SHA-256 and UTC response-finish time bind the selected
+    full-day TXT link to this runner's *contemporaneous* catalog observation.
+    """
     if source not in OFFICIAL_PUBLICATIONS:
         raise CaptureError("UNKNOWN_OFFICIAL_PUBLICATION")
     handler = CatalogRedirects()
-    request = Request(OFFICIAL_PUBLICATIONS[source], headers={
+    address = OFFICIAL_PUBLICATIONS[source]
+    request = Request(address, headers={
         "User-Agent": "SIGNAL-K38-ESMIS-exact-release-resolver/0.1",
         "Cache-Control": "no-cache", "Pragma": "no-cache",
         "Accept-Encoding": "identity",
     })
+    started = datetime.now(timezone.utc)
     try:
         with build_opener(handler).open(request, timeout=12) as response:
-            final = urlsplit(response.geturl())
+            final_url = response.geturl()
+            final = urlsplit(final_url)
             if final.hostname != "esmis.nal.usda.gov" or final.scheme != "https":
                 raise CaptureError("ESMIS_CATALOG_UNAPPROVED_FINAL_URL")
             if response.status != 200:
                 raise CaptureError("ESMIS_CATALOG_UNAVAILABLE")
             html = response.read(MAX_HTML_BYTES + 1)
+            finished = datetime.now(timezone.utc)
     except HTTPError as e:
         raise CaptureError(f"ESMIS_CATALOG_HTTP_{e.code}") from e
     except (URLError, TimeoutError, OSError) as e:
         raise CaptureError("ESMIS_CATALOG_UNAVAILABLE") from e
-    if len(html) > MAX_HTML_BYTES:
-        raise CaptureError("ESMIS_CATALOG_TOO_LARGE")
-    return extract_direct_txt(html.decode("utf-8", errors="replace"), source, release_day)
+    if not html or len(html) > MAX_HTML_BYTES:
+        raise CaptureError("ESMIS_CATALOG_EMPTY_OR_TOO_LARGE")
+    selected = extract_direct_txt(html.decode("utf-8", errors="replace"), source, release_day)
+    return {
+        "source": source, "release_date": release_day.isoformat(),
+        "selected_url": selected, "catalog_bytes": html,
+        "catalog_requested_url": address, "catalog_resolved_url": final_url,
+        "catalog_sha256": hashlib.sha256(html).hexdigest(),
+        "catalog_request_started_at_utc": started.isoformat().replace("+00:00", "Z"),
+        "catalog_response_finished_at_utc": finished.isoformat().replace("+00:00", "Z"),
+    }
+
+
+def discover_exact_txt(source: str, release_day: date) -> str:
+    """Backwards-compatible URL-only locator used by layout smoke tests."""
+    return discover_exact_txt_with_evidence(source, release_day)["selected_url"]
