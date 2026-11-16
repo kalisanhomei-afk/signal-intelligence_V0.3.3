@@ -80,6 +80,32 @@ Databento [Pricing](https://databento.com/pricing) 目前列示 **US$125 新客�
 4. 對比公告後5、30、180分鐘的描述性反應，**必須分開**：(a) 公布前已知共識數值與其證據；(b) 公告後SIGNAL實際取得 USDA 時刻；(c) 實際可交易的行情時刻與成交成本。
 5. 未購得可驗證的原始盤中資料前，`historical_intraday_price_rows_acquired=0`、`event_study_eligible=false`、`trade_eligible=false`。
 
+## 3.1 已完成可執行的「只查價、不購買」方案
+
+新增 `research_core/k4/vendor_quote_only.py` 與 `tests/test_vendor_quote_only.py`，根據 Databento 官方文件提供**固定單一查價規格**：
+
+- 先以 `Historical.symbology.resolve` 查 `dataset=GLBX.MDP3`、`symbols=["ZCZ6"]`、`stype_in=raw_symbol`、`stype_out=instrument_id`、`start_date=2026-11-10`、`end_date=2026-11-11`；若查無或有多個合約映射，即停止。
+- 接著只呼叫 `metadata.get_record_count` 與 `metadata.get_cost`，分別對 `ohlcv-1m`、`trades`、`tbbo` 查詢。
+- 每次查詢限定 `2026-11-10T16:30:00Z` 至 `19:30:00Z`；輸出私有 `databento_quote_only.json`，記錄供應商回報的資料筆數、美元費用、合約 instrument ID、查價 UTC。
+- **程式沒有 `timeseries.get_range`、批次購買、行情下載、交易下單的執行路徑**；測試使用假客戶端，確保任何行情下載接口不會被呼叫。
+- 官方文件明確說明 metadata、symbology 查詢不收資料費，但需要帳戶 API key。程式只從執行環境的 `DATABENTO_API_KEY` 讀取，不輸出憑證、不提交到 GitHub，也不在未授權情況下進行真實查價。
+- 此能力**目前只是工程準備完成**，尚無使用者授權的 Databento 帳戶／key，實際 `get_cost` 回傳美元金額仍為 **UNKNOWN**。原始行情行數取得仍為 **0**。
+
+官方來源：
+https://databento.com/docs/api-historical/basics/symbology
+https://databento.com/docs/api-historical/metadata/metadata-get-cost?lang=python
+https://databento.com/docs/quickstart?lang=python
+
+**單一帳戶接入後的最小操作**（由擁有憑證的受信環境執行，非 GitHub 公開 PR）：安裝官方 `databento` Python 套件、把 API key 設為執行環境變數，再執行 `python -B -m research_core.k4.vendor_quote_only --output local-private-k4-quote`。產出的 JSON 只包含來源編碼、費用與合約身分，不包含 API key。**不需要先付費下載任何市場資料。**
+
+## 3.2 本次實際封存查詢：三份調查的時間證據沒有晉級
+
+2026/11/16 使用 GitHub Actions 實際查詢三份預估文章在 2026/11/10 17:00 UTC **之前**的 Internet Archive Wayback CDX 歷史索引。三個來源索引回傳均無法解析；**這是查詢的技術限制，不代表一定不存在當時快照**。未取得「獨立封存時間＋當時包含指定市場預估數字」的雙重證據，因此 **3/3 仍是 `PUBLISHER_DATE_ONLY_PRE_RELEASE_UNVERIFIED`**，不得用於正式 PIT 回測。
+
+獨立執行／機器證據：GitHub Actions [Run #43814512194](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/43814512194)、[Artifact #14201887291](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/43814512194/artifacts/14201887291)。
+
+**停止規則：** 不再為這三個歷史網址無期限調查第三方封存索引。下一次 WASDE 正式公布前，以**當次系統實際抓取完成的 UTC + 原始內容 SHA256**建立事前市場預估快照；只允許在原始捕獲完成後的新事件上判定 as-of，不對過去回填。未經明確核准不啟用自動化或定期抓取。
+
 ## 4. 目前停止規則與下一步
 
 現在不是已完成投資模型；這個 MVP 的成效是**發現了同一研究問題對共識定義的敏感性**，並找到了可低成本驗證行情資料的途徑。
