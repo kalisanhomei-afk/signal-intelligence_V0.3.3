@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.1",
-    "generated_at": "2026-11-16T01:51:58+00:00",
+    "generated_at": "2026-11-16T15:33:03+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "status": "metadata_gap_audit_only",
     "candidate_count": 12,
@@ -32,13 +32,13 @@
   },
   "items": [
     {
-      "id": "rss-ffa1f59686fc24d77182db",
-      "source_id": "arxiv-ai",
+      "id": "rss-f765c18ee2038059114c9e",
+      "source_id": "arxiv-robotics",
       "publisher_id": "arxiv",
-      "title": "MuEdit: An efficient multi-task editing method towards inter-domain knowledge conflicts",
+      "title": "Natural Swing-Up of an Underpowered Double Pendulum",
       "category": "知識",
-      "published_at": "2026-11-13T05:00:00+00:00",
-      "url": "https://arxiv.org/abs/2611.14910",
+      "published_at": "2026-11-16T05:00:00+00:00",
+      "url": "https://arxiv.org/abs/2611.17575",
       "source_role": "研究預印本儲存平台",
       "evidence_kind": "未確認同儕審查之預印本元資料",
       "evidence_level": "M0",
@@ -54,7 +54,7 @@
         "有沒有實際部署、效能基準及限制證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "7bcde059f3aee1d67c3fb653"
+      "fingerprint": "a9035b5ec8f9d46de57c9c24"
     },
     {
       "id": "rss-9cc53e9eda9e7cde360497",
@@ -107,13 +107,13 @@
       "fingerprint": "6053e5a52186f5aabe39062f"
     },
     {
-      "id": "rss-742ddfea2daea0e322f2cc",
+      "id": "rss-4ffee92f5603cb723fb0d2",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Statement by President von der Leyen at the joint press conference with President Costa following the informal meeting of the European Council of November 2026",
+      "title": "Discurso da Comissária Albuquerque no IV Fórum da Gestão de Ativos e dos Fundos de Pensões (APFIPP)",
       "category": "政治",
-      "published_at": "2026-11-13T15:26:05+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2441",
+      "published_at": "2026-11-16T15:17:37+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/pt/speech_26_2462",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -129,7 +129,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "ffe851cff5e6e51a50b70f54"
+      "fingerprint": "22c381fa0447c187ae8bd257"
     },
     {
       "id": "rss-87a784bdd6110f05671301",
@@ -182,13 +182,13 @@
       "fingerprint": "c2a01a342f9dacc3c0b03f8a"
     },
     {
-      "id": "rss-48f4c41fb88a6ee287fd56",
+      "id": "rss-188e9640464d6e20df1ed9",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
-      "title": "Outbursts from a Massive Star",
+      "title": "Contractor to Civil Servant: NASA Welcomes Jim Mirandy",
       "category": "科技",
-      "published_at": "2026-11-13T16:39:33+00:00",
-      "url": "https://www.nasa.gov/image-article/outbursts-from-a-massive-star",
+      "published_at": "2026-11-16T15:22:09+00:00",
+      "url": "https://www.nasa.gov/centers-and-facilities/stennis/contractor-to-civil-servant-jim-mirandy",
       "source_role": "第一手航太科研機構",
       "evidence_kind": "航太與技術機構公開消息標題元資料",
       "evidence_level": "M0",
@@ -204,16 +204,16 @@
         "相關成果有無獨立測試或第三方研究？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "248b58500ee5625d493f3b01"
+      "fingerprint": "83f67992b2ca2d528ddcee05"
     },
     {
-      "id": "rss-f7a5cfbb5874782a058a93",
-      "source_id": "arxiv-robotics",
+      "id": "rss-f5dc4cd120b45659518fb5",
+      "source_id": "arxiv-ai",
       "publisher_id": "arxiv",
-      "title": "Scaling VLA Serving Under Robotic Execution Constraints",
+      "title": "When Should LLM Agents Forget? Memory Filtering Under Query-Critical Resolver Errors",
       "category": "知識",
-      "published_at": "2026-11-13T05:00:00+00:00",
-      "url": "https://arxiv.org/abs/2611.14969",
+      "published_at": "2026-11-16T05:00:00+00:00",
+      "url": "https://arxiv.org/abs/2611.17338",
       "source_role": "研究預印本儲存平台",
       "evidence_kind": "未確認同儕審查之預印本元資料",
       "evidence_level": "M0",
@@ -229,7 +229,7 @@
         "有沒有實際部署、效能基準及限制證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "af8d7b0d4b240962030f776c"
+      "fingerprint": "63beaa4ff7fbcd82ee5922c3"
     },
     {
       "id": "rss-ed83cb0bc28656a36c6f39",
@@ -282,13 +282,13 @@
       "fingerprint": "14b7d349932ea5bf0627118d"
     },
     {
-      "id": "rss-d77dea74bd4dcf44cb3335",
+      "id": "rss-62ea515fc9b47413bca943",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Speech by Commissioner Kos at the opening of 30 Years of Transparency International Switzerland",
+      "title": "Video message by President von der Leyen at the Reykjavik Global Forum",
       "category": "政治",
-      "published_at": "2026-11-13T14:50:21+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/de/speech_26_2439",
+      "published_at": "2026-11-16T15:13:27+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2461",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -304,7 +304,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "4934e73e24c62ddac705d0d1"
+      "fingerprint": "7fd5d94fbe7208635dc52ab3"
     },
     {
       "id": "rss-a0c3e1be77e8b5a27f797a",
