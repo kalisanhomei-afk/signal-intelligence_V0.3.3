@@ -48,6 +48,8 @@ def safe_open(url, *, request_headers=None, max_bytes=MAX_DOWNLOAD):
             if len(raw) > max_bytes:
                 return {"status": "ARCHIVE_PAYLOAD_OVERSIZED"}
             return {"status": "FETCHED", "http_status": code, "raw": raw,
+                    "resolved_url": r.geturl(),
+                    "memento_datetime_header": r.headers.get("Memento-Datetime", ""),
                     "capture_sha256": hashlib.sha256(raw).hexdigest()}
     except HTTPError as e:
         return {"status": "ARCHIVE_HTTP_ERROR", "http_status": e.code}
@@ -100,7 +102,7 @@ def case_entries(case):
         for c in q.get("capture_entries_in_180day_window", []):
             provider = q["provider"]
             typ = "COMMON_CRAWL" if provider.startswith("CC_") else "WAYBACK"
-            key = (typ, c["capture_at_utc"], c.get("archived_url", ""))
+            key = (typ, c["capture_at_utc"])
             if key in found:
                 continue
             found.add(key)
@@ -126,10 +128,22 @@ def inspect(case, typ, capture):
             "archive_index_digest": capture.get("capture_digest", ""),
             "status": result["status"], "http_status": result.get("http_status"),
             "archive_payload_sha256": result.get("capture_sha256", ""),
+            "resolved_capture_url": result.get("resolved_url", ""),
+            "memento_datetime_header": result.get("memento_datetime_header", ""),
             "value_matched": False, "pit_certified": False}
     if result["status"] != "FETCHED":
         item["error"] = result.get("error", "")
         return item
+    if typ == "WAYBACK":
+        # Wayback may silently redirect a request to another capture time.
+        # Never label content with the requested instant unless the actual
+        # replay URL resolves to the same 14-digit historical capture.
+        replay_path = urlparse(result.get("resolved_url", "")).path
+        match = re.match(r"^/web/(\d{14})(?:id_)?/", replay_path)
+        required = re.sub(r"[^0-9]", "", observed)
+        if not match or match.group(1) != required:
+            item["status"] = "ARCHIVED_CAPTURE_REDIRECT_TIME_MISMATCH"
+            return item
     try:
         body = warc_content(result["raw"]) if typ == "COMMON_CRAWL" else result["raw"]
         val = match_target_text(normalize_html(body), case["kind"], case["year"])
