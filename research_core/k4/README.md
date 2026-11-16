@@ -55,6 +55,14 @@ NASS 作物評級是領先觀察候選，不能直接等同因果或立即交易
 
 本案例的財報數值亦與 https://tools.gotredas.com/nov-wasde/ 相符，但 **CME 頁面目前可檢視 ≠ 已有原始資料的發布前不可竄改快照**；本案例沒有在發布前記錄該調查、也沒有歷史官方第一版的 PIT 時間認證。GitHub 的 Case JSON 保留 `survey_captured_at_utc=null`、`official_source_sha256=null`，不是資料缺陷可以自動補值。
 
+### 市場共識不是單一來源（2026-11-16 補充稽核）
+
+前述 **−88** 是 CME 頁面所列 **1,846** 的結果，不是唯一的市場共識。另從 StoneX 11/05 市場預估文取得 **1,840**（公布差 −82）、DTN 11/06 刊載的 Dow Jones 調查取得 **1,826**（公布差 −68），三個來源不可混合、不可事後挑選最好看的基準。它們是數值差異範例，**均尚未具有經獨立原始快照證實的公告前時間**。
+
+新增 `consensus_sensitivity.py`、`cases/2026-11-consensus-source-variants.json` 與 `tests/test_consensus_sensitivity.py`，自動輸出每個來源的差值與 −88 至 −68 百萬蒲式耳敏感度範圍（跨度20），在測試中強制 `independently_authenticated_pre_release_survey_count=0`、`historical_intraday_price_rows_acquired=0` 與 `transaction_cost_adjusted_tradable=false`。
+
+行情取得評估與建議的**單日、單合約**採購範圍見 [DATA_FEASIBILITY_2026-11.md](DATA_FEASIBILITY_2026-11.md)。首選先確認 Databento 低用量歷史分鐘線能否合法取得並報價，備援為 CME DataMine 官方 Time & Sales，**尚未購買或下載**，不應虛構測得的價格反應。
+
 ## 三、預先指定驗證方案（不准事後挑最好看的條件）
 
 **零假說 H0：** 在可靠的 pre-release consensus、可得時點及交易成本條件下，庫存預期差對「可實際進場之後」的價格變化沒有穩定的增量解釋／獲利能力。
