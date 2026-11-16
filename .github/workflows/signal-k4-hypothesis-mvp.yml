@@ -114,3 +114,47 @@ jobs:
           echo 'PR workflow contains no official USDA downloads, price feeds or trading signals.'
           echo 'This report is retrospective accounting, not a future-knowledge or alpha proof.'
           echo 'Never merge into main, enable schedule or mark investment hypothesis proven.'
+
+  pre-release-survey-archive-feasibility:
+    name: Independent pre-release poll archive inquiry (no historic PIT claims)
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout isolated K4 source evidence verifier
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Query only three URL-specific archived survey sources before WASDE
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.poll_archive_preflight --output k4-archive
+      - name: No certification from publisher datelines or unavailable archives
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("k4-archive/independent_survey_archive_preflight.json")
+          x=json.loads(p.read_text(encoding="utf-8"))
+          assert len(x["sources"])==3
+          assert x["source_pit_certified"] is False
+          assert x["formal_event_study_eligible"] is False
+          assert x["trading_allowed"] is False
+          assert all(row["trade_eligible"] is False for row in x["sources"])
+          print("K4_INDEPENDENT_PRE_RELEASE_ARCHIVE_FEASIBILITY_COMPLETE_PIT_UNVERIFIED")
+          PY
+      - name: Retain archive receipts, never archive copyrighted full pages here
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k4-nov10-pre-release-survey-archive-probe
+          path: k4-archive/
+          retention-days: 30
+          if-no-files-found: warn
