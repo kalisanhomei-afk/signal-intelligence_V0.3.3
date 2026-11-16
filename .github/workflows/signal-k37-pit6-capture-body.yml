@@ -1,0 +1,77 @@
+name: SIGNAL K3.7 PIT6 verify historical archive capture bodies (NOT PIT certification)
+
+on:
+  pull_request:
+    branches: [codex/k37-orchestration]
+    paths:
+      - '.github/workflows/signal-k37-pit6-capture-body.yml'
+      - 'research_core/k3_7/pit/pilot6/verify_capture_contents.py'
+      - 'research_core/k3_7/pit/tests/test_verify_capture_contents.py'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  archive-body-review:
+    name: Confirm actual archived article numerical content and historical capture timestamp
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout strict source-body verifier
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Configure Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch prior independent archive INDEX candidate inventory
+        uses: actions/download-artifact@v4
+        with:
+          repository: ${{ github.repository }}
+          run-id: 43783910029
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: signal-k37-pit6-independent-archive-index-evidence
+          path: index-proof
+      - name: Run offline negative tests for contents not merely index timestamp
+        run: |
+          python -B -m unittest discover -s research_core/k3_7/pit/tests -p 'test_*.py' -v
+      - name: Inspect only actually indexed capture bodies and match target values
+        shell: bash
+        run: |
+          python -B research_core/k3_7/pit/pilot6/verify_capture_contents.py \
+            --index index-proof/historical_capture_index_probe.json \
+            --output capture-review
+      - name: Require no false historical public timing certification
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('capture-review/archived_capture_value_evidence.json')
+          j=json.loads(p.read_text(encoding='utf-8'))
+          assert len(j['cases'])==6
+          assert j['pit_certified']==0
+          assert j['original_usda_file_byte_level_verified']==0
+          assert j['ready_for_certified_backtest'] is False
+          assert all(c['pit_certified'] is False and
+                     all(z['pit_certified'] is False for z in c['candidates'])
+                     for c in j['cases'])
+          print('HISTORICAL_CAPTURE_CONTENT_REVIEW_COMPLETED; PIT_CERTIFIED=0')
+          PY
+      - name: Retain archive hashes, attempted capture URLs and value-match flags
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k37-pit6-capture-body-content-review
+          path: capture-review/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: No false original-publication claims
+        if: always()
+        run: |
+          echo "An independently archived third-party ARTICLE may bound specific value availability at its capture instant."
+          echo "It does NOT prove the exact current USDA consolidated ZIP existed at that time."
+          echo "No article content is republished; only integrity hashes and value-match flags."
+          echo "All final PIT certification decisions remain blocked pending external evidence review."

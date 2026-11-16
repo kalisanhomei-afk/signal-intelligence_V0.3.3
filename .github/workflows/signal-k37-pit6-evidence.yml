@@ -1,0 +1,118 @@
+name: SIGNAL K3.7 PIT six release evidence gate + limited source preservation
+
+on:
+  pull_request:
+    branches: [codex/k37-orchestration]
+    paths:
+      - '.github/workflows/signal-k37-pit6-evidence.yml'
+      - 'research_core/k3_7/pit/**'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  six-release-pit-preflight:
+    name: Verify 6 original values; preserve raw evidence; NEVER certify PIT
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout six-case evidence catalog and shared raw source checker
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve original immutable WASDE evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: signal-k37-wasde-online-source
+          repository: ${{ github.repository }}
+          run-id: 43448555468
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: inputs/wasde
+      - name: Retrieve original immutable NASS evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: signal-k37-nass-online-source
+          repository: ${{ github.repository }}
+          run-id: 43448555468
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: inputs/nass
+      - name: Retrieve PIT locator evidence, which is NOT historical time proof
+        uses: actions/download-artifact@v4
+        with:
+          name: signal-k37-pit-locator-probe
+          repository: ${{ github.repository }}
+          run-id: 43448555468
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: inputs/pit
+      - name: Revalidate original SHA-256 raw objects and producer receipts
+        run: python -B ci/k37/verify_source_bundles.py --input inputs --output audited
+      - name: Run negative tests for release date and value mismatch
+        run: python -B -m unittest discover -s research_core/k3_7/pit/tests -p 'test_*.py' -v
+      - name: Check six exact original official report values from raw bytes
+        shell: bash
+        run: |
+          python -B research_core/k3_7/pit/pilot6/verify_pilot6.py \
+            --catalog research_core/k3_7/pit/pilot6/evidence_candidates.json \
+            --input inputs --output audited/pit6
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("audited/pit6/pit6_source_value_gate.json").read_text(encoding="utf-8"))
+          assert x["verified_current_archived_source_value_count"]==6
+          assert x["byte_identical_original_historical_vintage_certified"]==0
+          assert x["historical_public_timestamp_certified"]==0
+          assert x["pit_certified_rows"]==0 and x["ready_for_historical_pit_backtest"] is False
+          print("PIT6_RAW_SOURCE_VALUE_CHECK_PASS; HISTORICAL_TIMESTAMP_CERTIFIED=0")
+          PY
+      - name: Write extended storage evidence inventory with original artifact digests
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from datetime import datetime,timezone
+          inventory={
+            "schema":"signal-k37-expanded-raw-source-hold-v1",
+            "created_at_utc":datetime.now(timezone.utc).isoformat(),
+            "source_run_id":43448555468,
+            "original_zip_artifacts":[
+              {"type":"WASDE","id":14049815789,"original_zip_sha256":"4b62c1cddf12290731e94740603918f4cabd49395bcc91c2301e384a2428ed17"},
+              {"type":"NASS","id":14049291864,"original_zip_sha256":"5467fc6263373cf65cb32c56953cf399c0dbff0186c4823c5614871c152bc280"},
+              {"type":"PIT_LOCATOR","id":14049231951,"original_zip_sha256":"0d4d9ac3dbad5060b615a3e0268bd1de54f6c978c18fa7577e631039b9cb2e11"}
+            ],
+            "current_payload_description":"EXPANDED ORIGINAL SOURCE RAW FILES; NOT BYTE-IDENTICAL OUTER ZIP ARCHIVES",
+            "source_raw_sha256_checked":True,
+            "default_retention_requested_days":90,
+            "permanent_archive_created":False,
+            "historical_timestamp_certified":False,
+            "pit_certified_rows":0
+          }
+          Path("inputs/EXTENDED_HOLD_MANIFEST.json").write_text(json.dumps(inventory,indent=2)+"\n",encoding="utf-8")
+          PY
+      - name: Upload concise machine-readable research report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k37-pit6-value-and-time-gate
+          path: audited/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Preserve verified source raw bytes temporarily for 90 days
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k37-original-source-90day-hold
+          path: inputs/
+          retention-days: 90
+          if-no-files-found: error
+      - name: Explicit governance note
+        if: always()
+        run: |
+          echo "The 90-day hold is NOT permanent archival and must not be treated as a GitHub Release."
+          echo "Official raw values can be corroborated while earliest public availability remains unknown."
+          echo "No historical PIT certified backtest or trading claims are allowed."
