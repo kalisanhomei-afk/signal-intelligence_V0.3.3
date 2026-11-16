@@ -286,6 +286,49 @@ def prior_comparison(source: str, release_id: str, digest: str, prior: dict | No
             "revision_authenticated": False}
 
 
+def validate_catalog_evidence(evidence: dict, source: str, release: date, url: str,
+                              downloaded_started: datetime) -> dict:
+    """Bind exact-day ESMIS HTML bytes to a selected URL and a fetch time.
+
+    This establishes only when SIGNAL actually saw the ESMIS listing; it
+    does NOT prove the first ever USDA publication time.
+    """
+    from research_core.k3_8.discover import OFFICIAL_PUBLICATIONS, extract_direct_txt, MAX_HTML_BYTES
+
+    if evidence.get("source") != source or evidence.get("release_date") != release.isoformat():
+        raise CaptureError("OFFICIAL_CATALOG_SOURCE_OR_DATE_MISMATCH")
+    if evidence.get("selected_url") != url:
+        raise CaptureError("OFFICIAL_CATALOG_SELECTED_URL_MISMATCH")
+    if evidence.get("catalog_requested_url") != OFFICIAL_PUBLICATIONS[source]:
+        raise CaptureError("OFFICIAL_CATALOG_WRONG_LISTING")
+    resolved = urlsplit(evidence.get("catalog_resolved_url", ""))
+    if resolved.scheme != "https" or resolved.hostname != "esmis.nal.usda.gov":
+        raise CaptureError("OFFICIAL_CATALOG_RESOLVED_HOST_MISMATCH")
+    html = evidence.get("catalog_bytes")
+    if not isinstance(html, bytes) or not (0 < len(html) <= MAX_HTML_BYTES):
+        raise CaptureError("OFFICIAL_CATALOG_MISSING_OR_OVERSIZED_BYTES")
+    digest = hashlib.sha256(html).hexdigest()
+    if digest != evidence.get("catalog_sha256"):
+        raise CaptureError("OFFICIAL_CATALOG_SHA256_MISMATCH")
+    observed = extract_direct_txt(html.decode("utf-8", errors="replace"), source, release)
+    if observed != url:
+        raise CaptureError("OFFICIAL_CATALOG_RAW_LINK_NOT_REPRODUCIBLE")
+    started = parse_utc(evidence["catalog_request_started_at_utc"])
+    completed = parse_utc(evidence["catalog_response_finished_at_utc"])
+    if not (started <= completed <= downloaded_started):
+        raise CaptureError("OFFICIAL_CATALOG_AND_REPORT_CLOCK_ORDER_INVALID")
+    key = f"catalog/{source}/{release.isoformat()}/{digest}.html"
+    return {
+        "catalog_sha256": digest, "catalog_path": key,
+        "catalog_requested_url": evidence["catalog_requested_url"],
+        "catalog_resolved_url": evidence["catalog_resolved_url"],
+        "catalog_request_started_at_utc": iso(started),
+        "catalog_response_finished_at_utc": iso(completed),
+        "catalog_report_date_from_listing": release.isoformat(),
+        "catalog_observation_proves_initial_publication": False,
+    }
+
+
 def verify_saved(root: Path) -> dict:
     man = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
     receipt_bytes = (root / man["receipt_path"]).read_bytes()
@@ -318,6 +361,29 @@ def verify_saved(root: Path) -> dict:
     if parse_utc(receipt["safe_feature_not_before_utc"]) != (
             finish + timedelta(seconds=int(receipt["safety_latency_seconds"]))):
         raise CaptureError("FEATURE_CUTOFF_MISMATCH")
+    method = receipt.get("source_url_resolution_method")
+    if method == "OFFICIAL_ESMIS_EXACT_DATE_LINK":
+        path = receipt.get("catalog_path")
+        if not isinstance(path, str) or not path.startswith("catalog/") or ".." in path:
+            raise CaptureError("OFFICIAL_CATALOG_PATH_MISSING_OR_UNSAFE")
+        html = (root / path).read_bytes()
+        catalog = {
+            **{name: receipt[name] for name in (
+                "catalog_requested_url", "catalog_resolved_url", "catalog_sha256",
+                "catalog_request_started_at_utc", "catalog_response_finished_at_utc")},
+            "catalog_bytes": html, "source": receipt["source"],
+            "release_date": receipt["release_date"], "selected_url": receipt["source_url"],
+        }
+        validated = validate_catalog_evidence(catalog, receipt["source"],
+                     date.fromisoformat(receipt["release_date"]), receipt["source_url"],
+                     parse_utc(receipt["request_started_at_utc"]))
+        if path != validated["catalog_path"]:
+            raise CaptureError("OFFICIAL_CATALOG_PATH_SHA256_MISMATCH")
+    elif method == "OPERATOR_DIRECT_SOURCE_URL":
+        if receipt.get("catalog_path") is not None:
+            raise CaptureError("DIRECT_URL_CANNOT_CLAIM_CATALOG_OBSERVATION")
+    else:
+        raise CaptureError("INVALID_SOURCE_RESOLUTION_METHOD")
     return {"verified": True, "source_sha256": receipt["source_sha256"],
             "report_id": receipt["report_id"], "pit_certified": False}
 
@@ -325,7 +391,8 @@ def verify_saved(root: Path) -> dict:
 def capture(source: str, url: str, release_date: str, not_before_utc: str,
             output: Path, *, safety_seconds: int = 120, prior: dict | None = None,
             transport=fetch_official, preflight_now: datetime | None = None,
-            source_resolution_method: str = "OPERATOR_DIRECT_SOURCE_URL") -> dict:
+            source_resolution_method: str = "OPERATOR_DIRECT_SOURCE_URL",
+            catalog_evidence: dict | None = None) -> dict:
     preflight_now = preflight_now or now_utc()
     expected, barrier = validate_spec(source, url, release_date, not_before_utc,
                                       safety_seconds, preflight_now)
@@ -333,6 +400,15 @@ def capture(source: str, url: str, release_date: str, not_before_utc: str,
     ident = validate_fetch(source, url, result, expected, barrier, safety_seconds)
     if source_resolution_method not in ("OPERATOR_DIRECT_SOURCE_URL", "OFFICIAL_ESMIS_EXACT_DATE_LINK"):
         raise CaptureError("INVALID_SOURCE_RESOLUTION_METHOD")
+    if source_resolution_method == "OFFICIAL_ESMIS_EXACT_DATE_LINK":
+        if catalog_evidence is None:
+            raise CaptureError("AUTO_CATALOG_PROVENANCE_REQUIRED")
+        catalog_metadata = validate_catalog_evidence(catalog_evidence, source, expected,
+                                                      url, result.start)
+    else:
+        if catalog_evidence is not None:
+            raise CaptureError("DIRECT_URL_CANNOT_CLAIM_CATALOG_OBSERVATION")
+        catalog_metadata = {"catalog_path": None}
     raw_sha = hashlib.sha256(result.raw).hexdigest()
     release_id = ident["report_id"]
     compare = prior_comparison(source, release_id, raw_sha, prior)
@@ -346,6 +422,7 @@ def capture(source: str, url: str, release_date: str, not_before_utc: str,
         "schema": "signal-k38-manual-official-response-receipt-v1",
         "source": source, "release_date": release_date, **ident,
         "source_url": url, "source_url_resolution_method": source_resolution_method,
+        **catalog_metadata,
         "resolved_url": result.resolved_url,
         "redirect_chain": list(result.redirects), "http_status": result.status,
         "response_content_type": result.content_type,
@@ -378,6 +455,11 @@ def capture(source: str, url: str, release_date: str, not_before_utc: str,
     saved.parent.mkdir(parents=True, exist_ok=False)
     with saved.open("xb") as stream:
         stream.write(result.raw)
+    if catalog_evidence is not None:
+        catalog_out = output / catalog_metadata["catalog_path"]
+        catalog_out.parent.mkdir(parents=True, exist_ok=True)
+        with catalog_out.open("xb") as stream:
+            stream.write(catalog_evidence["catalog_bytes"])
     raw_reloaded = saved.read_bytes()
     if hashlib.sha256(raw_reloaded).hexdigest() != raw_sha:
         raise CaptureError("DISK_RAW_WRITE_MISMATCH")
@@ -420,15 +502,18 @@ def main(argv=None) -> int:
             # report has not reached the official release-time barrier.
             expected, _ = validate_spec(args.source, None, args.release_date,
                                         args.not_before_utc, args.latency_seconds, now_utc())
-            from research_core.k3_8.discover import discover_exact_txt
-            exact_url = discover_exact_txt(args.source, expected)
+            from research_core.k3_8.discover import discover_exact_txt_with_evidence
+            evidence = discover_exact_txt_with_evidence(args.source, expected)
+            exact_url = evidence["selected_url"]
             resolution_method = "OFFICIAL_ESMIS_EXACT_DATE_LINK"
         else:
             exact_url = args.url
+            evidence = None
             resolution_method = "OPERATOR_DIRECT_SOURCE_URL"
         receipt = capture(args.source, exact_url, args.release_date, args.not_before_utc,
                           args.output, safety_seconds=args.latency_seconds, prior=prior,
-                          source_resolution_method=resolution_method)
+                          source_resolution_method=resolution_method,
+                          catalog_evidence=evidence)
         print(json.dumps({
             "status": receipt["status"], "source_sha256": receipt["source_sha256"],
             "report_id": receipt["report_id"],
