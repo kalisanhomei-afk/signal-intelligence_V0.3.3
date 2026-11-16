@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": "0.4.0",
-    "generated_at": "2026-11-15T13:23:30+00:00",
-    "source_last_success_at": "2026-11-15T13:23:22+00:00",
+    "generated_at": "2026-11-16T01:51:58+00:00",
+    "source_last_success_at": "2026-11-16T01:51:53+00:00",
     "source_status": "healthy",
     "mode": "rules_only",
     "analysis_request": "disabled",
@@ -13,7 +13,7 @@
     "ai_error_codes": [],
     "cached_ai_annotations": 0,
     "candidate_count": 12,
-    "input_count": 365,
+    "input_count": 364,
     "publisher_counts": {
       "arxiv": 2,
       "bea": 2,
