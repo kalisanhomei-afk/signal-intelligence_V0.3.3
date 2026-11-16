@@ -1,12 +1,13 @@
 """K3.8 source listing resolution: exact date and exact official URL."""
 from datetime import date, datetime, timezone
+from hashlib import sha256
 from io import StringIO
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from contextlib import redirect_stdout
 from unittest.mock import patch
 import unittest
-from research_core.k3_8.capture import CaptureError, main, validate_spec
+from research_core.k3_8.capture import CaptureError, Fetch, capture, main, validate_spec, verify_saved
 from research_core.k3_8.discover import extract_direct_txt
 
 
@@ -55,7 +56,7 @@ class OfficialCatalogParserTests(unittest.TestCase):
                       "--release-date", "2099-11-16",
                       "--not-before-utc", "2099-11-16T21:00:00Z",
                       "--output", str(Path(tmp) / "out")]
-            with patch("research_core.k3_8.discover.discover_exact_txt") as resolver:
+            with patch("research_core.k3_8.discover.discover_exact_txt_with_evidence") as resolver:
                 with redirect_stdout(StringIO()):
                     status = main(params)
             self.assertEqual(status, 2)
@@ -76,7 +77,10 @@ class OfficialCatalogParserTests(unittest.TestCase):
                 "safe_feature_not_before_utc": "2026-11-16T21:02:40Z"}
         with patch("research_core.k3_8.capture.now_utc",
                    return_value=datetime(2026,11,16,21,0,45,tzinfo=timezone.utc)):
-            with patch("research_core.k3_8.discover.discover_exact_txt",return_value=fake["source_url"]) as discover:
+            with patch("research_core.k3_8.discover.discover_exact_txt_with_evidence",
+                       return_value={"selected_url": fake["source_url"],
+                                     "catalog_sha256": "a" * 64,
+                                     "catalog_bytes": b"<html>example</html>"}) as discover:
                 with patch("research_core.k3_8.capture.capture",return_value=fake) as observe:
                     with redirect_stdout(StringIO()):
                         status=main(params)
@@ -85,6 +89,56 @@ class OfficialCatalogParserTests(unittest.TestCase):
         self.assertEqual(observe.call_args.args[1],fake["source_url"])
         self.assertEqual(observe.call_args.kwargs["source_resolution_method"],
                          "OFFICIAL_ESMIS_EXACT_DATE_LINK")
+        self.assertEqual(observe.call_args.kwargs["catalog_evidence"]["catalog_sha256"],
+                         "a" * 64)
+
+    def _catalog_fixture(self):
+        url = "https://esmis.nal.usda.gov/sites/default/release-files/demo/prog4626.txt"
+        html = b'<a href="/sites/default/release-files/demo/prog4626.txt" title="Nov 16 2026 - txt">Download</a>'
+        listing = "https://esmis.nal.usda.gov/publication/crop-progress"
+        return url, {"source": "NASS", "release_date": "2026-11-16",
+                     "selected_url": url, "catalog_bytes": html,
+                     "catalog_requested_url": listing, "catalog_resolved_url": listing,
+                     "catalog_sha256": sha256(html).hexdigest(),
+                     "catalog_request_started_at_utc": "2026-11-16T21:00:30Z",
+                     "catalog_response_finished_at_utc": "2026-11-16T21:00:32Z"}
+
+    def _fake_fetch(self, url):
+        body = b"Crop Progress\\nReleased November 16, 2026, by NASS\\nCorn Condition\\n"
+        return Fetch(body, url, url, 200, "text/plain", len(body),
+                     datetime(2026, 11, 16, 21, 0, 35, tzinfo=timezone.utc),
+                     datetime(2026, 11, 16, 21, 0, 40, tzinfo=timezone.utc))
+
+    def test_auto_catalog_bytes_replay_verified_and_tamper_rejected(self):
+        url, catalog = self._catalog_fixture()
+        with TemporaryDirectory() as tmp:
+            path = Path(tmp) / "observed"
+            receipt = capture("NASS", url, "2026-11-16", "2026-11-16T21:00:00Z",
+                              path, source_resolution_method="OFFICIAL_ESMIS_EXACT_DATE_LINK",
+                              catalog_evidence=catalog, transport=lambda s,u: self._fake_fetch(url),
+                              preflight_now=datetime(2026,11,16,21,0,36,tzinfo=timezone.utc))
+            self.assertEqual(receipt["catalog_sha256"], catalog["catalog_sha256"])
+            self.assertEqual(receipt["catalog_report_date_from_listing"], "2026-11-16")
+            self.assertFalse(receipt["catalog_observation_proves_initial_publication"])
+            self.assertTrue(verify_saved(path)["verified"])
+            (path / receipt["catalog_path"]).write_bytes(b"changed")
+            with self.assertRaisesRegex(CaptureError, "OFFICIAL_CATALOG_SHA256_MISMATCH"):
+                verify_saved(path)
+
+    def test_auto_refuses_non_matching_listing_or_late_timestamp(self):
+        url, catalog = self._catalog_fixture()
+        for key, value, expected in (
+            ("selected_url", url.replace("prog4626", "prog4526"), "SELECTED_URL_MISMATCH"),
+            ("catalog_response_finished_at_utc", "2026-11-16T21:00:45Z", "CLOCK_ORDER_INVALID"),
+        ):
+            with self.subTest(key=key), TemporaryDirectory() as tmp:
+                invalid = {**catalog, key: value}
+                with self.assertRaisesRegex(CaptureError, expected):
+                    capture("NASS", url, "2026-11-16", "2026-11-16T21:00:00Z",
+                            Path(tmp)/"observed", source_resolution_method="OFFICIAL_ESMIS_EXACT_DATE_LINK",
+                            catalog_evidence=invalid, transport=lambda s,u: self._fake_fetch(url),
+                            preflight_now=datetime(2026,11,16,21,0,36,tzinfo=timezone.utc))
+                self.assertFalse((Path(tmp)/"observed").exists())
 
 
 if __name__ == "__main__":
