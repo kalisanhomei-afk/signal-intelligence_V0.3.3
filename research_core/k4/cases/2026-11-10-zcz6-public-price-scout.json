@@ -1,0 +1,64 @@
+{
+  "schema": "signal-k4-public-price-scout-v1",
+  "hypothesis_id": "H-CORN-001",
+  "report_date": "2026-11-10",
+  "report_release_scheduled_utc": "2026-11-10T17:00:00Z",
+  "commodity": "Corn",
+  "market": "CBOT",
+  "instrument_id_for_research_only": "ZCZ6",
+  "barchart_symbol_alias": "ZCZ26",
+  "symbol_cross_vendor_mapping_authenticated": false,
+  "unit": "US_cents_per_bushel",
+  "tick_size_cents": "0.25",
+  "contract_bushels": "5000",
+  "reporting_sources": [
+    {
+      "publisher": "Tredas",
+      "source_url": "https://tools.gotredas.com/nov-wasde/",
+      "evidence_class": "RETROSPECTIVE_POST_EVENT_WEB_ARTICLE_QUOTE",
+      "raw_archived_source_sha256": null,
+      "publisher_quote_captured_independently_at_utc": null,
+      "bid_ask_or_trade_executability_proven": false,
+      "intraday_claimed_quotes": [
+        {
+          "publisher_claimed_time_ct": "2026-11-10 11:01:05 CST",
+          "timestamp_utc": "2026-11-10T17:01:05Z",
+          "quote_cents_per_bushel": "450.75"
+        },
+        {
+          "publisher_claimed_time_ct": "2026-11-10 11:06:12 CST",
+          "timestamp_utc": "2026-11-10T17:06:12Z",
+          "quote_cents_per_bushel": "452.50"
+        }
+      ]
+    },
+    {
+      "publisher": "Barchart embedded third-party futures detail",
+      "source_url": "https://mnbl.websol.barchart.com/?1_selected=futureQuote&module=futureDetail&popup=1&region=US&symbol=ZCZ26",
+      "evidence_class": "RETROSPECTIVE_DAILY_WEB_HISTORY_NOT_MINUTE_BARS",
+      "raw_archived_source_sha256": null,
+      "publisher_quote_captured_independently_at_utc": null,
+      "daily_reference": [
+        {
+          "trade_date": "2026-11-09",
+          "settlement_or_last_cents_per_bushel": "439.25",
+          "price_type": "PUBLISHER_DAILY_LAST_MAY_NOT_EQUAL_OFFICIAL_CME_SETTLEMENT"
+        },
+        {
+          "trade_date": "2026-11-10",
+          "settlement_or_last_cents_per_bushel": "449.00",
+          "price_type": "PUBLISHER_DAILY_LAST_MAY_NOT_EQUAL_OFFICIAL_CME_SETTLEMENT"
+        }
+      ]
+    }
+  ],
+  "research_limitations": [
+    "PRE_RELEASE_TICK_OR_BID_ASK_NOT_CAPTURED",
+    "POST_RELEASE_PRICE_OBSERVATIONS_NOT_EXCHANGE_AUTHENTICATED",
+    "PREVIOUS_DAY_REFERENCE_INCLUDES_OVERNIGHT_TRADING",
+    "PUBLISHER_CLAIMED_TIMESTAMPS_NOT_INDEPENDENTLY_ATTESTED",
+    "SAME_CONTRACT_CROSS_VENDOR_ALIAS_UNVERIFIED",
+    "MARKET_REACTION_IS_NOT_TRADE_EXECUTION",
+    "PRICE_CFD_OR_CONTINUOUS_CONTRACT_NOT_PERMITTED"
+  ]
+}
