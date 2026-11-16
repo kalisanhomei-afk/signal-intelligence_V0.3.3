@@ -1,0 +1,80 @@
+{
+  "schema": "signal-k4-consensus-sensitivity-catalog-v1",
+  "hypothesis_id": "H-CORN-001",
+  "source_report": "WASDE-677",
+  "source_report_release_date": "2026-11-10",
+  "release_schedule_utc": "2026-11-10T17:00:00Z",
+  "commodity": "Corn",
+  "region": "United States",
+  "marketing_year": "2026/27",
+  "unit": "million_bushels",
+  "actual_ending_stocks": "1758",
+  "usda_prior_month_ending_stocks": "1849",
+  "survey_selection_policy": "DISPLAY_EACH_SOURCE_SEPARATELY_NEVER_AVERAGE_NOR_SELECT_BEST_LOOKING_RESULT",
+  "survey_observation_vintages": [
+    {
+      "survey_id": "CME_EVENT_CALENDAR_ESTIMATES",
+      "reported_ending_stocks": "1846",
+      "publisher": "CME Group",
+      "publisher_article_date_claim": "2026-11-10",
+      "published_time_zone_claim": null,
+      "source_url": "https://www.cmegroup.com/education/events/econoday/675955",
+      "survey_family": "CME_EVENT_PAGE_ESTIMATE_LISTING",
+      "survey_underlying_vendor_identity": "NOT_AUTHENTICATED_IN_THIS_PILOT",
+      "independent_pre_release_capture_body_sha256": null,
+      "independent_pre_release_capture_at_utc": null,
+      "source_acquisition_status": "CURRENT_PUBLIC_PAGE_REVIEWED_NOT_INDEPENDENT_PRE_RELEASE_CAPTURED",
+      "time_evidence_quality": "PUBLISHER_DATE_ONLY_PRE_RELEASE_UNVERIFIED"
+    },
+    {
+      "survey_id": "STONEX_NOV_05_AVERAGE",
+      "reported_ending_stocks": "1840",
+      "publisher": "StoneX",
+      "publisher_article_date_claim": "2026-11-05",
+      "published_time_zone_claim": null,
+      "source_url": "https://www.stonex.com/en-us/insights/nov-wasde-estimates/",
+      "survey_family": "STONEX_TRADE_AVERAGE_AS_DESCRIBED_IN_ARTICLE",
+      "survey_underlying_vendor_identity": "REUTERS_POLL_SUMMARY_AS_REPORTING_CLAIM",
+      "independent_pre_release_capture_body_sha256": null,
+      "independent_pre_release_capture_at_utc": null,
+      "source_acquisition_status": "ARTICLE_PUBLISHED_DATE_CLAIM_NOT_CRYPTOPROVEN",
+      "time_evidence_quality": "PUBLISHER_DATE_ONLY_PRE_RELEASE_UNVERIFIED"
+    },
+    {
+      "survey_id": "DTN_DOW_JONES_NOV_06",
+      "reported_ending_stocks": "1826",
+      "publisher": "DTN / Dow Jones survey",
+      "publisher_article_date_claim": "2026-11-06",
+      "published_time_zone_claim": null,
+      "source_url": "https://www.dtnpf.com/agriculture/web/AG/news/article/2026/11/06/grain-prices-melt-can-usda-provide",
+      "survey_family": "DOW_JONES_ANALYST_POLL_REPORTED_BY_DTN",
+      "survey_underlying_vendor_identity": "DOW_JONES",
+      "independent_pre_release_capture_body_sha256": null,
+      "independent_pre_release_capture_at_utc": null,
+      "source_acquisition_status": "ARTICLE_PUBLISHED_DATE_CLAIM_NOT_CRYPTOPROVEN",
+      "time_evidence_quality": "PUBLISHER_DATE_ONLY_PRE_RELEASE_UNVERIFIED"
+    }
+  ],
+  "price_data_feasibility": {
+    "candidate_exchange": "CBOT (CME Group)",
+    "potential_contract_symbol": "ZCZ6",
+    "symbol_status": "CONFIRMED_BY_CME_GROUP_AS_DECEMBER_2026_QUOTE_NOT_YET_BACKTEST_TRADE_SERIES",
+    "contract_unit_bushels": "5000",
+    "minimum_tick_cents_per_bushel": "0.25",
+    "minimum_tick_usd_per_contract": "12.50",
+    "official_spec_url": "https://www.cmegroup.com/markets/agriculture/grains/corn/specs",
+    "preferred_first_provider": "DATABENTO_GLBX_MDP3_HISTORICAL_OHLCV_1MIN",
+    "preferred_provider_url": "https://databento.com/pricing",
+    "alternative_provider": "CME_DATAMINE_TIME_AND_SALES",
+    "alternative_provider_url": "https://datamine.new.cmegroup.com/",
+    "actual_intraday_records_acquired": 0,
+    "event_contract_evidence_sha256": null,
+    "orderbook_bid_ask_executability_proven": false,
+    "pricing_terms_permitted_for_public_git_repository": false,
+    "requested_pilot_data_window_utc": [
+      "2026-11-10T16:30:00Z",
+      "2026-11-10T19:30:00Z"
+    ],
+    "price_history_status": "VENDOR_CAPABILITY_REVIEWED_DATA_NOT_ACQUIRED"
+  }
+}
