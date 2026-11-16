@@ -165,8 +165,8 @@ def report_identity(source: str, raw: bytes, expected: date) -> dict:
         if len(nums) != 1:
             raise CaptureError("WASDE_REPORT_NUMBER_MISSING_OR_CONFLICTING")
         match = re.search(
-            r"(?im)^\\s*WASDE\\s*[-–]\\s*\\d{3,4}\\s*[-–]\\s*\\d+"
-            r"\\s+([A-Za-z]+)\\s+(20\\d{2})\\s*$", text[:12000])
+            r"(?im)^\s*WASDE\s*[-–]\s*\d{3,4}\s*[-–]\s*\d+"
+            r"\s+([A-Za-z]+)\s+(20\d{2})\s*$", text[:12000])
         if not match:
             raise CaptureError("WASDE_REPORT_MONTH_HEADER_MISSING")
         month_name, year = match.groups()
