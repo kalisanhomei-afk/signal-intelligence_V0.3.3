@@ -25,9 +25,8 @@ Corn Harvested for Grain - Selected States
 WASDE_DATE = "2026-12-10"
 WASDE_BARRIER = "2026-12-10T17:00:00Z"
 WASDE_URL = "https://usda.azureedge.us/oce/commodity/wasde/wasde1226.txt"
-WASDE_TEXT = b"""WASDE-678
-World Agricultural Supply and Demand Estimates
-December 10, 2026
+WASDE_TEXT = b"""WASDE - 678 - 8                        December 2026
+U.S. Feed Grain and Corn Supply and Use
 Corn: U.S. supply and use
 """
 
@@ -82,7 +81,9 @@ class ObserverGuards(unittest.TestCase):
         with TemporaryDirectory() as td:
             r = capture_test(td, src="WASDE")
             self.assertEqual(r["report_id"], "WASDE-678")
-            self.assertEqual(r["report_date_confirmed_from_body"], WASDE_DATE)
+            self.assertIsNone(r["report_date_confirmed_from_body"])
+            self.assertEqual(r["release_date_precision_from_body"], "MONTH")
+            self.assertEqual(r["report_month_confirmed_from_body"], "2026-12")
             self.assertEqual(r["safe_feature_not_before_utc"], "2026-12-10T17:02:40.000000Z")
 
     def test_reject_unsupported_or_third_party_domains(self):
@@ -154,6 +155,12 @@ class ObserverGuards(unittest.TestCase):
                     ctype="text/html"))
             self.assertFalse((Path(td) / "fresh").exists())
 
+    def test_real_wasde_plain_text_month_header_is_not_falsely_a_full_date(self):
+        r = report_identity("WASDE", WASDE_TEXT, datetime(2026, 12, 10).date())
+        self.assertEqual(r["report_id"], "WASDE-678")
+        self.assertEqual(r["release_date_precision_from_body"], "MONTH")
+        self.assertIsNone(r["report_date_confirmed_from_body"])
+
     def test_wrong_release_or_stale_page_rejected(self):
         with TemporaryDirectory() as td:
             stale = NASS_TEXT.replace(b"November 16", b"November 9")
@@ -173,8 +180,8 @@ class ObserverGuards(unittest.TestCase):
 
     def test_wasde_wrong_date_rejected(self):
         with TemporaryDirectory() as td:
-            raw = WASDE_TEXT.replace(b"December 10", b"November 10")
-            with self.assertRaisesRegex(CaptureError, "WASDE_HEADER_DATE_MISMATCH"):
+            raw = WASDE_TEXT.replace(b"December 2026", b"November 2026")
+            with self.assertRaisesRegex(CaptureError, "WASDE_HEADER_MONTH_YEAR_MISMATCH"):
                 capture_test(td, src="WASDE", result=downloaded("WASDE", raw=raw))
 
     def test_started_before_schedule_even_if_finished_after_blocked(self):
