@@ -36,6 +36,29 @@ jobs:
           python -B research_core/k4/hypothesis.py \
             --case research_core/k4/cases/2026-11-corn-wasde-retrospective.json \
             --output k4-review
+      - name: Score three distinct survey versions (NOT a pre-release as-of backtest)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.consensus_sensitivity \
+            --catalog research_core/k4/cases/2026-11-consensus-source-variants.json \
+            --output k4-review
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("k4-review/survey_vintage_sensitivity.json")
+          x=json.loads(p.read_text(encoding="utf-8"))
+          assert x["survey_count"] == 3
+          assert x["surprise_min_million_bushels"] == "-88"
+          assert x["surprise_max_million_bushels"] == "-68"
+          assert x["surprise_span_million_bushels"] == "20"
+          assert x["independently_authenticated_pre_release_survey_count"] == 0
+          assert x["historical_intraday_price_rows_acquired"] == 0
+          assert x["historical_PIT_certified"] is False
+          assert x["transaction_cost_adjusted_tradable"] is False
+          assert all(r["event_study_eligible"] is False for r in x["survey_results"])
+          print("K4_CONSENSUS_VINTAGE_SENSITIVITY_PASS_NO_ASOF_NO_PRICE")
+          PY
       - name: Forbid trading, performance and historical PIT certification
         shell: bash
         run: |
