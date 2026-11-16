@@ -1,0 +1,47 @@
+name: SIGNAL K3.8 manual future USDA source observation (research only)
+
+# DEFAULT-BRANCH REGISTRATION STUB ONLY.
+# Actual, reviewed capture code exists ONLY on codex/k38-forward-pit-capture.
+# Selecting 'main' or a branch without its own vetted workflow fails closed.
+# NO SCHEDULE / NO AUTOMATIC EXECUTION / NO TOKEN OR WRITE PERMISSIONS.
+on:
+  workflow_dispatch:
+    inputs:
+      source:
+        description: "Exactly one official source"
+        type: choice
+        options: [NASS, WASDE]
+        required: true
+      release_date:
+        description: "Report date in US Eastern calendar, YYYY-MM-DD"
+        type: string
+        required: true
+      direct_txt_url:
+        description: "Exact official plain-text report URL"
+        type: string
+        required: true
+      not_before_utc:
+        description: "Conservative UTC barrier at or after confirmed release time"
+        type: string
+        required: true
+      latency_seconds:
+        description: "Safety lag after observed finish UTC, 0-3600 seconds"
+        type: number
+        default: 120
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  block-default-branch:
+    name: No capture implementation on main (intentional fail-closed)
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Require separate vetted K3.8 development branch
+        run: |
+          echo 'REGISTRATION_ONLY: no USDA capture code is installed on main.'
+          echo 'This workflow on the default branch deliberately refuses to capture.'
+          echo 'Manually select codex/k38-forward-pit-capture AFTER its tests and explicit authorization.'
+          exit 1
