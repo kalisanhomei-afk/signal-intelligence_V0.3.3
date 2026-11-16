@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 from research_core.k3_7.pit.pilot6.verify_capture_contents import (
-    case_entries, match_target_text, normalize_html, run, warc_content
+    case_entries, inspect, match_target_text, normalize_html, run, warc_content
 )
 
 
@@ -35,6 +35,34 @@ class ArchiveContentTests(unittest.TestCase):
             {"provider": "IA_AVAILABILITY", "capture_entries_in_180day_window": [
                 {"capture_at_utc": "2016-06-11T13:03:24Z", "archived_url": "https://a", "capture_digest": "x"}]}]}
         self.assertEqual(len(list(case_entries(case))), 1)
+
+    def test_replay_redirect_to_another_capture_time_is_blocked(self):
+        case = {"kind": "WASDE", "year": 2016,
+                "target_media_url": "https://www.dtnpf.com/test"}
+        cap = {"capture_at_utc": "2016-06-11T13:03:24Z", "capture_digest": "a"}
+        response = {"status": "FETCHED", "raw": b"USDA corn ending stocks 2.008 billion",
+                    "http_status": 200,
+                    "resolved_url": "https://web.archive.org/web/20201101000000id_/https://www.dtnpf.com/test",
+                    "capture_sha256": "example"}
+        with patch("research_core.k3_7.pit.pilot6.verify_capture_contents.safe_open",
+                   return_value=response):
+            r = inspect(case, "WAYBACK", cap)
+        self.assertEqual(r["status"], "ARCHIVED_CAPTURE_REDIRECT_TIME_MISMATCH")
+        self.assertFalse(r["value_matched"])
+
+    def test_exact_replay_timestamp_with_value_matches_only_as_candidate(self):
+        case = {"kind": "WASDE", "year": 2016,
+                "target_media_url": "https://www.dtnpf.com/test"}
+        cap = {"capture_at_utc": "2016-06-11T13:03:24Z", "capture_digest": "a"}
+        response = {"status": "FETCHED", "raw": b"USDA corn ending stocks 2.008 billion bushels",
+                    "http_status": 200,
+                    "resolved_url": "https://web.archive.org/web/20160611130324id_/https://www.dtnpf.com/test",
+                    "capture_sha256": "example"}
+        with patch("research_core.k3_7.pit.pilot6.verify_capture_contents.safe_open",
+                   return_value=response):
+            r = inspect(case, "WAYBACK", cap)
+        self.assertTrue(r["value_matched"])
+        self.assertFalse(r["pit_certified"])
 
     def test_unreachable_archive_is_never_pit(self):
         data = {"cases": [{"kind": "WASDE", "year": 2016, "nominal_release_date": "2016-06-10",
