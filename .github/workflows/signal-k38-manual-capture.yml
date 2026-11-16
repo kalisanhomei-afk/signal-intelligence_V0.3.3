@@ -107,14 +107,24 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
-          from datetime import date
-          from research_core.k3_8.discover import discover_exact_txt
+          from datetime import date, datetime, timezone
+          from hashlib import sha256
+          from research_core.k3_8.discover import (
+              discover_exact_txt_with_evidence, extract_direct_txt
+          )
           for source, release in [('NASS', date(2026,11,9)), ('WASDE', date(2026,11,10))]:
-              url = discover_exact_txt(source, release)
+              finding = discover_exact_txt_with_evidence(source, release)
+              url = finding['selected_url']
               assert url.startswith('https://esmis.nal.usda.gov/')
               assert url.endswith('.txt')
-              print(source, release.isoformat(), url, 'OFFICIAL_CATALOG_MATCH')
-          print('SOURCE_DISCOVERY_LAYOUT_SMOKE_PASS; NOT NEW PIT')
+              assert finding['catalog_sha256'] == sha256(finding['catalog_bytes']).hexdigest()
+              assert extract_direct_txt(finding['catalog_bytes'].decode('utf-8',errors='replace'),
+                                        source, release) == url
+              utc=lambda s: datetime.fromisoformat(s.replace('Z','+00:00'))
+              assert utc(finding['catalog_request_started_at_utc']) <= utc(finding['catalog_response_finished_at_utc'])
+              print(source, release.isoformat(), url, finding['catalog_sha256'],
+                    'OFFICIAL_CATALOG_SNAPSHOT_SHA256_PASS')
+          print('SOURCE_DISCOVERY_CATALOG_SNAPSHOT_SMOKE_PASS; NOT NEW PIT')
           PY
       - name: Enforce historical test-only boundary
         if: always()
