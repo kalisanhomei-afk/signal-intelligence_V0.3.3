@@ -5,6 +5,7 @@
 > - **K4.5-A**：2026-12-10 WASDE 公告前基準預測已於 2026-11-17 GitHub 提交凍結，`USDA_PREVIOUS_WASDE_PERSISTENCE_V0=1,758` 百萬蒲式耳；這不是具增量優勢的 V1，也沒有原始 USDA 首版位元組 PIT 認證。詳見 [基準與封存](K45_DEC_2026_FROZEN_BASELINE_zh-TW.md)。
 > - **K4.5-B**：納入 2026-11-16 USDA FGIS 玉米出口檢驗（截至 11/12），當週相對必要週速偏弱，但累計季節性進度高於五年均值。輸出 `ABSTAIN_UNCALIBRATED_EXPORT_DRIVER`，不從未經校準的資料硬造 V1 點預測；詳見 [出口數據稽核](K45_EXPORT_DRIVER_AUDIT_2026-11-16_zh-TW.md)。
 > - **K4.5-C**：12 月市場共識來源與官方原始證據仍待公告前獨立保存，`PIT_UNVERIFIED`、`trade_eligible=false`；PR #22 保持 Draft、隔離於 main。
+> - **K4.6**：已從 USDA 官方當年發布版本 CSV 取得 2021/22–2025/26 共 **5 個年度** 11→12 月玉米出口與期末庫存修訂標籤、原始 CSV SHA-256；2017–2020 官方歷史 ZIP 本次取得失敗，明確保留缺口。FGIS 歷史檢驗 API 可讀，但當週初版 as-of 仍未認證，故 **僅限 outcome labels，不能進入無前視偏差回測**。詳見 [歷史校準稽核](K46_HISTORICAL_CALIBRATION_AUDIT_zh-TW.md)。
 
 
 **Decision: ACCOUNTING / MECHANISM RESEARCH ONLY; PIT_UNVERIFIED; NO PRICE EDGE VERIFIED; NO TRADING.**
