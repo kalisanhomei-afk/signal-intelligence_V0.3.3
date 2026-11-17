@@ -54,11 +54,11 @@ class FGISWeeklyVintageTests(unittest.TestCase):
 
     def test_wrong_report_date_blocked(self):
         with self.assertRaisesRegex(ValueError,"WRONG_REPORT_DATE"):
-            parse_report(RAW,"2026-11-23","2026-11-12")
+            parse_report(RAW,"2026-11-23","2026-11-19")
 
     def test_wrong_week_end_blocked(self):
         with self.assertRaisesRegex(ValueError,"WRONG_WEEK_END"):
-            parse_report(next_week(),"2026-11-23","2026-11-12")
+            parse_report(next_week(),"2026-11-23","2026-11-20")
 
     def test_non_official_slug_rejected(self):
         with self.assertRaisesRegex(ValueError,"REPORT_SLUG_MISMATCH"):
