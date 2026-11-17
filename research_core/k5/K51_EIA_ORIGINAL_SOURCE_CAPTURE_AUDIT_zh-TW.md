@@ -50,3 +50,7 @@ GitHub Actions 於 2026-11-17T02:55:16.523381Z 開始、2026-11-17T02:55:16.8418
 不要再優化 **+61 Bcf**。11/19 完成官方結果的首次事件評分，並核對**公告前**市場對同一週 `Lower48 net change` 的具名共識（若無則 NULL），不能用 11/13 的共識值代替。NOAA 需求預測要進入 V1，必須先保存早於資料預測時點的天氣 forecast vintage 及其模型有效期，不能把 11/19 後 NOAA 的實際 HDD/CDD 當成 11/17 已可用的預測。
 
 **決策：SOURCE_RAW_INTEGRITY_PASS；NEXT_EVENT_OUTCOME_WAITING；CONSENSUS_PIT_UNVERIFIED；NOAA_FORECAST_PIT_UNVERIFIED；V1_ABSTAIN；NO_TRADING。** 不合併 PR #23／PR #22 到 `main`，不購買市場行情或下單。
+
+## 6. 使用既有排程，避免超過自動化額度
+
+帳號目前的自動化工作數量已達上限，沒有新增重複任務；已將原有「SIGNAL K5 天然氣首輪驗收」排程（ID `6afbc01d50f881919100ca338242f4f8`）調整為 **2026-11-19 21:00 台灣時間公告前共識查核**及 **2026-11-20 09:00 台灣時間公告後結果驗收**。此排程為嘗試取得證據，不代表成功封存；每次必須核對真正來源及 GitHub 提交。不會因事後找到有發布日期的市場評論就自動賦予獨立 PIT 認證。
