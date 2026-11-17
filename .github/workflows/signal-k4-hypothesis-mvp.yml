@@ -290,32 +290,3 @@ jobs:
           path: k46-review/
           retention-days: 30
           if-no-files-found: warn
-
-  k48-forward-fgis-one-time-capture:
-    name: Capture exact November 16 USDA FGIS source (one-time research evidence)
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
-    permissions:
-      contents: read
-    steps:
-      - name: Checkout isolated PR source without credentials
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - name: Setup Python 3.12
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Fetch official USDA WA_GR101 and strictly validate dated source
-        shell: bash
-        run: |
-          set -euo pipefail
-          python -B -m research_core.k4.fgis_forward_capture --output k48-forward --emit-public-source-for-commit
-      - name: Persist exact raw bytes and capture receipt for immediate reviewer archive
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: signal-k48-nov16-pre-dec-wasde-official-raw
-          path: k48-forward/
-          retention-days: 7
-          if-no-files-found: error
