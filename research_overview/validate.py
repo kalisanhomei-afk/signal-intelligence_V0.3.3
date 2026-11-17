@@ -19,6 +19,14 @@ GIT_SHA1 = re.compile(r"^[a-f0-9]{40}$")
 UTC = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$")
 SAFE_PATH = re.compile(r"^[a-zA-Z0-9._/-]+$")
 UNITS = {"Bcf", "million_bushels"}
+# Immutable 11/17 source commits continue to prove what was known BEFORE
+# a research branch receives new post-event evidence. Never force old
+# pre-release forecast URLs to follow the branch HEAD after an outcome commit.
+FROZEN_SOURCE_COMMITS = {
+    "H-CORN-001": "bdc68222f4b9ca7eba07b96205ac510c0d8bf345",
+    "H-NG-001": "f613719479c9ede0add2e6ff0893c0fa1831c765",
+}
+
 CARD_KEYS = {
     "schema", "hypothesis_id", "title", "scope", "unit",
     "research_pr", "research_branch", "event_id", "target_period",
@@ -145,7 +153,7 @@ def validate_card(c: dict, prs: dict):
     }
     require(f["source_path"] == expected_forecast_files[c["hypothesis_id"]],
             "FORECAST_ORIGINAL_PATH_MISMATCH")
-    require(f.get("source_commit_ref") == prs[c["research_pr"]].get("head_commit_sha") and
+    require(f.get("source_commit_ref") == FROZEN_SOURCE_COMMITS[c["hypothesis_id"]] and
             hash_value(f.get("source_git_blob_sha1"), "sha1"),
             "FORECAST_COMMIT_ANCHOR_MISMATCH")
     proof = f["frozen_proof"]
@@ -156,7 +164,7 @@ def validate_card(c: dict, prs: dict):
     require(original["prospective_raw_source_available"] is True, "NO_PRIOR_ORIGINAL_EVIDENCE")
     require(github_path(original["prospective_raw_source_path"]) and
             hash_value(original["prospective_raw_source_sha256"]), "PRIOR_ORIGINAL_HASH_MISSING")
-    require(original.get("source_commit_ref") == prs[c["research_pr"]].get("head_commit_sha") and
+    require(original.get("source_commit_ref") == FROZEN_SOURCE_COMMITS[c["hypothesis_id"]] and
             hash_value(original.get("source_git_blob_sha1"), "sha1"),
             "PRIOR_EVIDENCE_COMMIT_ANCHOR_MISMATCH")
     require(original["historical_predictor_pit_verified"] is False and
