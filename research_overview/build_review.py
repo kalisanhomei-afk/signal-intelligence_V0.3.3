@@ -10,6 +10,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 from research_overview.validate import HERE, load_portfolio
+from research_overview.decision_bridge import audit_from_repo
 
 STATUS_ZH = {
     "PARTIAL_PROTOTYPE": "原型／部分驗證",
@@ -101,6 +102,17 @@ def build_html(manifest, cards):
         f"<td>{t(x['event'])}</td></tr>" for x in manifest["upcoming_checkpoints"]
     )
     cards_html = "\n".join(render_card(c, manifest["repository"]) for c in cards)
+    bridge = audit_from_repo()
+    gate_heading = ["G1 市場預期", "G2 合約映射", "G3 價格證據",
+                    "G4 樣本外效果", "G5 風險預算"]
+    gate_rows = "\n".join(
+        "<tr><td>" + t(c["hypothesis_id"]) + "</td>" +
+        "<td>待驗證</td>" * len(gate_heading) +
+        "<td>" + t(c["status"]) + "</td></tr>"
+        for c in bridge["hypotheses"]
+    )
+    gate_headers = "".join("<th>" + t(g) + "</th>" for g in gate_heading)
+
     datestr = t(manifest["snapshot_date"])
     version = t(manifest["publication"]["main_index_html_title"])
     return f"""<!doctype html>
@@ -159,6 +171,13 @@ K4 與 K5 均為 Draft；原始預測及來源連結已固定到 11/17 查核的
 <h2>04｜已安排的下一批檢查</h2><div class="tablewrap"><table>
 <thead><tr><th>台灣時間 (+08:00)</th><th>交付／研究驗收</th></tr></thead>
 <tbody>{checks}</tbody></table></div>
+<h2>05｜市場定價與投資決策銜接（架構設計）</h2>
+<p>本階段尚無可認證的公告前市場共識、精確可交易契約、報價原始資料、價格效果或風險預算。
+下表是未來研究進入投資決策前的五道關卡；「待驗證」不是數值零，也不是交易訊號。</p>
+<div class="tablewrap"><table><thead><tr><th>研究假說</th>{gate_headers}<th>投資資格</th></tr></thead>
+<tbody>{gate_rows}</tbody></table></div>
+<p class="muted">研究架構規格：research_overview/MARKET_TO_ALLOCATION_ARCHITECTURE_V01_zh-TW.md。
+目前不接行情 API、不設風險部位、不授權交易。</p>
 <footer>資料來源：GitHub 已核對之主線、研究 Draft PR 與既有事件封存；
 本頁由 research_overview/status_manifest.json 與兩份卡片生成，並非已部署網站狀態。
 官方預測誤差在原始事件未發布前均為空值。</footer>
