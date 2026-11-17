@@ -161,6 +161,30 @@ class FGISWeeklyVintageTests(unittest.TestCase):
             self.assertEqual(r["status"],"BLOCKED_NO_VALID_OFFICIAL_REPORT")
             self.assertTrue(any(x["reason"]=="PREVIOUS_RAW_SHA_MISMATCH" for x in r["attempts"]))
 
+    def test_previous_capture_from_future_cannot_be_used(self):
+        with tempfile.TemporaryDirectory() as d:
+            forged=json.loads(OLD_RECEIPT.read_text(encoding="utf-8"))
+            forged["source"]["fetch_finished_utc"]="2026-11-25T00:00:00Z"
+            p=Path(d)/"forged_receipt.json"
+            p.write_text(json.dumps(forged),encoding="utf-8")
+            r=capture(**kwargs(d),prior_raw=OLD,prior_receipt=p,
+                      fetcher=provider())
+            self.assertEqual(r["status"],"BLOCKED_NO_VALID_OFFICIAL_REPORT")
+            self.assertTrue(any(x["reason"]=="PREVIOUS_CAPTURE_NOT_BEFORE_CURRENT"
+                                for x in r["attempts"]))
+
+    def test_prior_receipt_numbers_must_equal_original_bytes(self):
+        with tempfile.TemporaryDirectory() as d:
+            forged=json.loads(OLD_RECEIPT.read_text(encoding="utf-8"))
+            forged["source_report"]["corn_week_current_mt"]=865504
+            p=Path(d)/"forged_values.json"
+            p.write_text(json.dumps(forged),encoding="utf-8")
+            r=capture(**kwargs(d),prior_raw=OLD,prior_receipt=p,
+                      fetcher=provider())
+            self.assertEqual(r["status"],"BLOCKED_NO_VALID_OFFICIAL_REPORT")
+            self.assertTrue(any(x["reason"]=="PREVIOUS_RECEIPT_RAW_CONTENT_MISMATCH"
+                                for x in r["attempts"]))
+
     def test_unknown_previous_week_is_not_zero(self):
         with tempfile.TemporaryDirectory() as d:
             r=capture(**kwargs(d),fetcher=provider())
