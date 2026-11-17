@@ -1,0 +1,121 @@
+{
+  "schema": "signal-k46-usda-as-reported-december-corn-revision-evidence-v1",
+  "source": "USDA OCE historical WASDE as-reported CSV",
+  "source_index": "https://www.usda.gov/oce/commodity-markets/wasde/historical-wasde-report-data",
+  "evidence_source": "GitHub Actions run 43996982886 retrieved official CSV and computed SHA-256",
+  "observations": [
+    {
+      "marketing_year": "2021/22",
+      "nov_release_date": "2021-11-09",
+      "dec_release_date": "2021-12-09",
+      "nov_exports_mbu": 2500,
+      "dec_exports_mbu": 2500,
+      "delta_exports_mbu": 0,
+      "nov_ending_stocks_mbu": 1493,
+      "dec_ending_stocks_mbu": 1493,
+      "delta_ending_stocks_mbu": 0,
+      "other_net_stock_change_mbu": 0,
+      "source_csv_urls": {
+        "nov": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2021-11.csv",
+        "dec": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2021-12.csv"
+      },
+      "source_raw_sha256": {
+        "nov": "d19da221bc1e5639994eb7ab1f7d6c00ef952fc5b71a8ab337644f2857e38831",
+        "dec": "6a5e31cf3788fdd48f188f3d9261728f17f441d0b12a7727ec935ef74ff8b086"
+      }
+    },
+    {
+      "marketing_year": "2022/23",
+      "nov_release_date": "2022-11-09",
+      "dec_release_date": "2022-12-09",
+      "nov_exports_mbu": 2150,
+      "dec_exports_mbu": 2075,
+      "delta_exports_mbu": -75,
+      "nov_ending_stocks_mbu": 1182,
+      "dec_ending_stocks_mbu": 1257,
+      "delta_ending_stocks_mbu": 75,
+      "other_net_stock_change_mbu": 0,
+      "source_csv_urls": {
+        "nov": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2022-11.csv",
+        "dec": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2022-12.csv"
+      },
+      "source_raw_sha256": {
+        "nov": "bf924ac77e945baf6ee02641f9c423eb52aef5662ad1d11cd656249d12f62cf2",
+        "dec": "de3a08249ba6cce1074d0bc6b9c7e0af9fdbd7c16de8efaf9316e1ae98a8eb12"
+      }
+    },
+    {
+      "marketing_year": "2023/24",
+      "nov_release_date": "2023-11-09",
+      "dec_release_date": "2023-12-08",
+      "nov_exports_mbu": 2075,
+      "dec_exports_mbu": 2100,
+      "delta_exports_mbu": 25,
+      "nov_ending_stocks_mbu": 2156,
+      "dec_ending_stocks_mbu": 2131,
+      "delta_ending_stocks_mbu": -25,
+      "other_net_stock_change_mbu": 0,
+      "source_csv_urls": {
+        "nov": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-11.csv",
+        "dec": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2023-12.csv"
+      },
+      "source_raw_sha256": {
+        "nov": "6eaeec7577af66c16d8950ec4adca815f69eb502697a1f229e5065da39491da9",
+        "dec": "dc54139bc20db03f780d453d176a7e449652f3d8586bd5864beb1f681136f12f"
+      }
+    },
+    {
+      "marketing_year": "2024/25",
+      "nov_release_date": "2024-11-08",
+      "dec_release_date": "2024-12-10",
+      "nov_exports_mbu": 2325,
+      "dec_exports_mbu": 2475,
+      "delta_exports_mbu": 150,
+      "nov_ending_stocks_mbu": 1938,
+      "dec_ending_stocks_mbu": 1738,
+      "delta_ending_stocks_mbu": -200,
+      "other_net_stock_change_mbu": -50,
+      "source_csv_urls": {
+        "nov": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-11.csv",
+        "dec": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2024-12.csv"
+      },
+      "source_raw_sha256": {
+        "nov": "9167822a972211e246e763ba628748697e4a0dfe98ebb2b7aacd3c4a6c8b729d",
+        "dec": "29e8bfbfe57e72f1e70e8f8367498f35f3cb8ccd6b33e0ec683e66d40e332a74"
+      }
+    },
+    {
+      "marketing_year": "2025/26",
+      "nov_release_date": "2025-11-14",
+      "dec_release_date": "2025-12-09",
+      "nov_exports_mbu": 3075,
+      "dec_exports_mbu": 3200,
+      "delta_exports_mbu": 125,
+      "nov_ending_stocks_mbu": 2154,
+      "dec_ending_stocks_mbu": 2029,
+      "delta_ending_stocks_mbu": -125,
+      "other_net_stock_change_mbu": 0,
+      "source_csv_urls": {
+        "nov": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-11.csv",
+        "dec": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2025-12.csv"
+      },
+      "source_raw_sha256": {
+        "nov": "896385bbf592ec74e9b9b581bc5969597f719b5dbf84d59905cc6cc1c5587156",
+        "dec": "cfad35ab09e17453509606dfa224ebf18af26536220397180c610000160d0188"
+      }
+    }
+  ],
+  "unavailable_years": [
+    "2017/18",
+    "2018/19",
+    "2019/20",
+    "2020/21"
+  ],
+  "unavailable_reason": "Official 2016-2020 records are bundled in ZIP; direct per-month CSV route does not work. Archive ZIP retrieval not verified in this run.",
+  "observations_retrieved_after_the_events": true,
+  "original_source_bytes_committed_to_github": false,
+  "prospective_fgis_feature_vintages_verified": false,
+  "training_or_backtest_eligible": false,
+  "investment_edge_verified": false,
+  "trade_eligible": false
+}
