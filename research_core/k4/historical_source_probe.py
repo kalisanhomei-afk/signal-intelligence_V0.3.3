@@ -11,7 +11,7 @@ from urllib.parse import urlsplit, urljoin, urlencode
 from html.parser import HTMLParser
 
 BASE = "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-"
-WASDE = {f"{y}-{m}": f"{BASE}{y}-{m}.csv" for y in (2024, 2025) for m in ("11", "12")}
+WASDE = {f"{y}-{m}": f"{BASE}{y}-{m}.csv" for y in (2021, 2024, 2025) for m in ("11", "12")}
 FGIS = "https://agtransport.usda.gov/resource/sruw-w49i.json?%24limit=2"
 ALLOWED = {"www.usda.gov", "usda.azureedge.us", "agtransport.usda.gov"}
 
@@ -43,7 +43,7 @@ def assess_wasde(raw: bytes, actual: str):
                  "Attribute","Value","Unit","ReleaseDate","ForecastYear","ForecastMonth")})
         if (str(x.get("Commodity", "")).strip() == "Corn"
             and str(x.get("Region", "")).strip() == "United States"
-            and str(x.get("MarketYear", "")).strip() in ("2024/25","2025/26")
+            and str(x.get("MarketYear", "")).strip() in ("2021/22","2024/25","2025/26")
             and str(x.get("Attribute", "")).strip() in ("Exports","Ending Stocks")
             and str(x.get("Unit", "")).strip() == "Million Bushels"
             and len(target_examples) < 20):
@@ -147,7 +147,7 @@ def main():
                       "fgis_status":r["fgis_api"]["status"],"pit_certified":False}))
     print("K46_USDA_ARCHIVE_BUNDLE_LINKS",json.dumps(r["usda_archived_bundle_links"]))
     print("K46_FGIS_AGGREGATE_TEST",json.dumps(r["fgis_2025_11_weekly_aggregate_probe"])[:6000])
-    for key in ("2024-11","2024-12","2025-11","2025-12"):
+    for key in ("2021-11","2021-12","2024-11","2024-12","2025-11","2025-12"):
         item=r["sources"][key]
         if item["status"].startswith("RETRIEVED"):
             print("K46_WASDE_SAMPLE",json.dumps({"file":key,"columns":item["columns"],"rows":item["rows"],
