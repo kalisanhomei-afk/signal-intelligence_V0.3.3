@@ -1,0 +1,12 @@
+{
+  "schema": "signal-k410-dec2026-baseline-scoring-contract-v1",
+  "event_id": "USDA-WASDE-2026-12-10",
+  "target": "US_CORN_2026_27_ENDING_STOCKS_MBU",
+  "release_scheduled_utc": "2026-12-10T17:00:00Z",
+  "model_id": "USDA_PREVIOUS_WASDE_PERSISTENCE_V0",
+  "forecast_value_mbu": 1758,
+  "forecast_raw_sha256": "54d4d7597d457c64307e9a2e1e5670cd5f1ecd52676180eded2a19a8ebcaca48",
+  "scoring_rule": "ABSOLUTE_ERROR_MILLION_BUSHELS_LOWER_BETTER",
+  "has_separately_frozen_v1": false,
+  "trade_eligible": false
+}

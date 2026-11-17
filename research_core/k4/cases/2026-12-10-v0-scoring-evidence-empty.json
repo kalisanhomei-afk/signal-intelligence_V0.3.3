@@ -1,0 +1,15 @@
+{
+  "schema": "signal-k410-dec2026-evaluation-evidence-v1",
+  "event_id": "USDA-WASDE-2026-12-10",
+  "consensus_value_mbu": null,
+  "consensus_provider": null,
+  "consensus_methodology": null,
+  "consensus_source_url": null,
+  "consensus_publication_utc": null,
+  "consensus_capture_utc": null,
+  "consensus_raw_sha256": null,
+  "official_value_mbu": null,
+  "official_source_url": null,
+  "official_capture_utc": null,
+  "official_raw_sha256": null
+}

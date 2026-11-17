@@ -1,0 +1,43 @@
+{
+  "hypothesis_id": "H-CORN-001",
+  "research_case_id": "CORN-WASDE-2026-11-US-2026-27-RETROSPECTIVE",
+  "evidence_type": "RETROSPECTIVE_REFERENCE",
+  "commodity": "Corn",
+  "region": "United States",
+  "release_date": "2026-11-10",
+  "marketing_year": "2026/27",
+  "prior_report_marketing_year": "2026/27",
+  "unit": "million_bushels",
+  "reported": {
+    "beginning_stocks": "2095",
+    "production": "15893",
+    "imports": "25",
+    "domestic_use": "12980",
+    "exports": "3275",
+    "total_use": "16255",
+    "ending_stocks": "1758"
+  },
+  "reference": {
+    "prior_month_ending_stocks": "1849",
+    "pre_report_consensus_ending_stocks": "1846",
+    "survey_captured_at_utc": null,
+    "survey_type": "CME_GROUP_EVENT_CALENDAR_ESTIMATE_DISPLAY; as-of publisher evidence not independently certified"
+  },
+  "provenance": {
+    "report_source_url": "https://esmis.nal.usda.gov/sites/default/release-files/796142/wasde1126.txt",
+    "official_source_sha256": null,
+    "scheduled_release_at_utc": "2026-11-10T17:00:00Z",
+    "report_observed_at_utc": null,
+    "report_historical_version_originality_verified": false,
+    "market_survey_source_url": "https://www.cmegroup.com/education/events/econoday/675955",
+    "reported_balance_reference_url": "https://tools.gotredas.com/nov-wasde/",
+    "pit_certified": false,
+    "claim": "Retrospective cross-source accounting demonstration only; neither source was cryptographically captured at pre-release as-of"
+  },
+  "prices": {
+    "pre_report_contract_verified": null,
+    "price_timestamped_intraday_source": null,
+    "post_event_price_asof": null,
+    "transaction_costs": null
+  }
+}

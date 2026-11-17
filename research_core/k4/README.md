@@ -1,0 +1,134 @@
+# SIGNAL K4｜H-CORN-001 玉米庫存預期差假說 MVP
+
+> **最新狀態（2026-11-17）**：原先本文「尚未取得行情」等文字記錄的是前期進度，請以下列最新實際驗收為準：
+> - **K4.1–K4.4**：使用者已在 Windows 私有環境取得 Databento `GLBX.MDP3 / ZCZ6` 的 2026-11-10 OHLCV、Trades、TBBO；本機大小/SHA、DBN 解碼及描述性事件研究完成。離線執行價格情境不等於成交回測，無任何 alpha/交易資格；原始行情未上傳此 Repository。詳見 PR #22 的 [事件分析](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/pull/22#issuecomment-6919499112) 與 [情境反證](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/pull/22#issuecomment-6919671139)。
+> - **K4.5-A**：2026-12-10 WASDE 公告前基準預測已於 2026-11-17 GitHub 提交凍結，`USDA_PREVIOUS_WASDE_PERSISTENCE_V0=1,758` 百萬蒲式耳；這不是具增量優勢的 V1，也沒有原始 USDA 首版位元組 PIT 認證。詳見 [基準與封存](K45_DEC_2026_FROZEN_BASELINE_zh-TW.md)。
+> - **K4.5-B**：納入 2026-11-16 USDA FGIS 玉米出口檢驗（截至 11/12），當週相對必要週速偏弱，但累計季節性進度高於五年均值。輸出 `ABSTAIN_UNCALIBRATED_EXPORT_DRIVER`，不從未經校準的資料硬造 V1 點預測；詳見 [出口數據稽核](K45_EXPORT_DRIVER_AUDIT_2026-11-16_zh-TW.md)。
+> - **K4.5-C**：12 月市場共識來源與官方原始證據仍待公告前獨立保存，`PIT_UNVERIFIED`、`trade_eligible=false`；PR #22 保持 Draft、隔離於 main。
+> - **K4.6**：已從 USDA 官方當年發布版本 CSV 取得 2021/22–2025/26 共 **5 個年度** 11→12 月玉米出口與期末庫存修訂標籤、原始 CSV SHA-256；2017–2020 官方歷史 ZIP 本次取得失敗，明確保留缺口。FGIS 歷史檢驗 API 可讀，但當週初版 as-of 仍未認證，故 **僅限 outcome labels，不能進入無前視偏差回測**。詳見 [歷史校準稽核](K46_HISTORICAL_CALIBRATION_AUDIT_zh-TW.md)。
+> - **K4.7（2026-11-17）**：USDA 官方鏡像 ZIP 已成功補齊 2017/18–2020/21，配合 K4.6 共 **9 個連續年度**真實 Nov→Dec 玉米出口與期末庫存修訂標籤，來源 ZIP／CSV 與各年原始資料 SHA 已留存；驗收 [#43998763582](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/43998763582)：149/149 測試通過。**仍缺 FGIS 每週最初公布的獨立 as-of 證據，因此不可升格為預測回測或交易優勢。** 參見 [K4.7 九年來源與版本稽核](K47_NINE_YEAR_SOURCE_VINTAGE_AUDIT_zh-TW.md)。研究網路重抓現改為僅在 PR 掛上 `k4-source-refresh` 標籤時啟用，避免文件修改反覆下載。
+> - **K4.8（2026-11-17）**：已從 USDA 官網當週報表取得真正完整 WA_GR101（11/16 發布、週截至 11/12）原始 18,499 bytes，`SHA-256=4555c478b09d2507d042de55c6d5042e095f37b13d05185fcf889433c52802e5`，與 UTC 實際捕獲回執一起提交 GitHub，原始 Blob SHA 比對一致；[完整 K4.8 前瞻封存稽核](K48_FORWARD_FGIS_CAPTURE_AUDIT_2026-11-17_zh-TW.md)。最新 [CI #44000667200](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/44000667200)：160/160 PASS。此僅是 **一份真正前瞻捕獲**，不是九年歷史特徵 PIT 完成、不是 12 月市場共識或 V1 alpha；一次性網路擷取 job 已關閉。
+
+> - **K4.9（2026-11-17 最新）**：已完成可依報告日期、週結束日及 WASDE 截止 UTC 運作的通用 FGIS 週報擷取器 `fgis_weekly_vintage.py`、按原始 SHA-256 保留不同版本及前週修訂差額，另有 `fgis_archive_audit.py` 對 GitHub 所有封存原件做純離線 SHA／內容／取得 UTC／連續週次稽核。修復 K4.8 已知一次性舊檔名與回執差異，不更改原始證據；[CI #44002761793](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/44002761793) **185/185 PASS**。原有 11/24、12/01、12/08 台灣時間檢查任務已更新採用 [K4.9 執行規範](K49_WEEKLY_FGIS_CAPTURE_RUNBOOK_zh-TW.md)；新週報尚未發表，**不能把未來週別標示為已封存**。
+
+> - **K4.10（2026-11-17 最新）**：已將 2017/18–2025/26 九年官方修訂做成固定持平預測評分基準：MAE **57.78**、RMSE **85.89**、絕對誤差中位數 **45**（百萬蒲式耳）；12/10 USDA 期末庫存 V0=**1758** 的 SHA 與 **絕對誤差**計分法已在公告前鎖定，12 月分析師共識和 USDA 實際值保持 null，絕不事後回填或移用 11 月共識。程式 [`prospective_scorecard.py`](prospective_scorecard.py)、[K4.10 中文驗收規格](K410_V0_REFERENCE_AND_DECEMBER_SCORING_zh-TW.md)；核心 [CI #44003988190](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/44003988190) **199/199 PASS**。12/11 台灣上午約 09:00 已有一次性驗收追蹤；缺乏實際證據即保持 BLOCKED，**不代表可交易**。
+
+
+
+**Decision: ACCOUNTING / MECHANISM RESEARCH ONLY; PIT_UNVERIFIED; NO PRICE EDGE VERIFIED; NO TRADING.**
+
+## 一、現在真正要驗證的問題
+
+> 在市場已經掌握上一期 WASDE、分析師發布前的供需預估、NASS 作物狀態等資訊後，USDA 當期玉米期末庫存與**事前市場預期**之差，是否仍能解釋公布後的期貨價格反應？更重要的是，等 SIGNAL 真正收到報告並扣除交易成本後，是否仍有**增量且可重複**的可交易優勢？
+
+**這不是全新發現。** USDA ERS（2012）已研究 WASDE 公布的資訊價值；2026 年 ASFMRA 期刊由 CME Group 研究者發表的 *WASDE Surprises and Futures Prices: What Moves Markets?* 亦報告玉米、黃豆期末庫存「發布值相對於市場預期」與期貨盤中走勢具有統計關係。研究已存在，**關係顯著 ≠ SIGNAL 可以從中獲利**。必須打敗可公開知道的基準、考慮交易速度及成本。
+
+- USDA ERS: https://www.ers.usda.gov/amber-waves/2012/june/wasde
+- 2026 ASFMRA Journal (CME researchers), paper begins on journal p.153: https://higherlogicdownload.s3.amazonaws.com/ASFMRA/aeb240ec-5d8f-447f-80ff-3c90f13db621/UploadedImages/Journal/2026/_ASFMRA_2026_Journal_Final_LR.pdf
+- CME WASDE calendar/analyst expectations: https://www.cmegroup.com/education/events/econoday/675955
+
+### 供需因果鏈（假說，不是已識別因果）
+
+```text
+氣候／作物狀態 → 對單產的推估變動 → 產量 → 期末庫存
+供需其他變數：期初庫存 + 產量 + 進口 − 國內消費 − 出口 = 期末庫存
+                    ↓
+ [USDA 當期估計]  vs  [市場公告前的預估] → surprise
+                    ↓
+      期貨價格反應與實際可交易進出場時間、成本
+```
+
+NASS 作物評級是領先觀察候選，不能直接等同因果或立即交易訊號；當期 WASDE 更新很可能已反映於市場預期，不能重複使用成「新資訊」。
+
+## 二、第一個真實數值範例（僅事後驗算）
+
+**2026-11-10 美國玉米 WASDE，2026/27 行銷年度；單位皆為百萬蒲式耳。**
+
+| 指標 | 公告數值或參考 |
+|---|---:|
+| 期初庫存 | 2,095 |
+| 產量 | 15,893 |
+| 進口 | 25 |
+| 國內需求 | 12,980 |
+| 出口 | 3,275 |
+| 需求合計 | 16,255 |
+| **期末庫存** | **1,758** |
+| 10月 USDA 前值（同一行銷年度） | 1,849 |
+| CME 報表顯示的發布前預估基準 | 1,846 |
+
+**基本稽核：** 2,095 + 15,893 + 25 − 12,980 − 3,275 = 1,758，供需帳平衡。
+
+- USDA 逐月變化：1,758 − 1,849 = **−91** 百萬蒲式耳。
+- 相對市場預估差異：1,758 − 1,846 = **−88** 百萬蒲式耳。
+- 庫存／使用比：1,758 ÷ 16,255 = **約10.82%**。
+
+**兩個差異不可混用！** `−91` 是 USDA 對上月自身估計的修訂；`−88` 才是對提供的市場預估數值的事後 surprise 比較。它可支持「看漲壓力」的機制方向範例，但**並未證明其可預測未來價格或在報告發布後有可獲利的進場窗口**。
+
+官方報告原始 TXT：https://esmis.nal.usda.gov/sites/default/release-files/796142/wasde1126.txt
+
+市場預估參考：https://www.cmegroup.com/education/events/econoday/675955
+
+本案例的財報數值亦與 https://tools.gotredas.com/nov-wasde/ 相符，但 **CME 頁面目前可檢視 ≠ 已有原始資料的發布前不可竄改快照**；本案例沒有在發布前記錄該調查、也沒有歷史官方第一版的 PIT 時間認證。GitHub 的 Case JSON 保留 `survey_captured_at_utc=null`、`official_source_sha256=null`，不是資料缺陷可以自動補值。
+
+### 市場共識不是單一來源（2026-11-16 補充稽核）
+
+前述 **−88** 是 CME 頁面所列 **1,846** 的結果，不是唯一的市場共識。另從 StoneX 11/05 市場預估文取得 **1,840**（公布差 −82）、DTN 11/06 刊載的 Dow Jones 調查取得 **1,826**（公布差 −68），三個來源不可混合、不可事後挑選最好看的基準。它們是數值差異範例，**均尚未具有經獨立原始快照證實的公告前時間**。
+
+新增 `consensus_sensitivity.py`、`cases/2026-11-consensus-source-variants.json` 與 `tests/test_consensus_sensitivity.py`，自動輸出每個來源的差值與 −88 至 −68 百萬蒲式耳敏感度範圍（跨度20），在測試中強制 `independently_authenticated_pre_release_survey_count=0`、`historical_intraday_price_rows_acquired=0` 與 `transaction_cost_adjusted_tradable=false`。
+
+行情取得評估與建議的**單日、單合約**採購範圍見 [DATA_FEASIBILITY_2026-11.md](DATA_FEASIBILITY_2026-11.md)。首選先確認 Databento 低用量歷史分鐘線能否合法取得並報價，備援為 CME DataMine 官方 Time & Sales，**尚未購買或下載**，不應虛構測得的價格反應。
+
+### 公開價格線索的先行反證（2026-11-16）
+
+新增 `public_price_scout.py`、`cases/2026-11-10-zcz6-public-price-scout.json` 及獨立測試。它使用 Tredas 事後報導所述的**同一期約**兩個時間點：2026/11/10 11:01:05 CT 450.75美分／蒲式耳，11:06:12 CT 452.50美分／蒲式耳，相差 **+1.75美分**；Barchart `ZCZ26` 所列11/09及11/10日價為439.25與449.00美分，相差+9.75美分。來源與限制見 [DATA_FEASIBILITY_2026-11.md](DATA_FEASIBILITY_2026-11.md)。
+
+**不能將11:01價相對前一日結算的+11.50美分當成公告首分鐘漲幅。** 夜盤、開盤到公布前的行情尚未知；這些公開網頁也不是由我們取得的經交易所認證的分鐘線、撮合記錄或可成交 bid/ask。正確的問題仍然是：公布前最後成交或報價與公布後可實際交易時點之間有多少價格變化、扣成本後多少留下？程式一律維持 `formal_intraday_event_study_eligible=false`、`trade_eligible=false`。
+
+## 三、預先指定驗證方案（不准事後挑最好看的條件）
+
+**零假說 H0：** 在可靠的 pre-release consensus、可得時點及交易成本條件下，庫存預期差對「可實際進場之後」的價格變化沒有穩定的增量解釋／獲利能力。
+
+**研究假說 H1：** 負向庫存 surprise 與玉米期貨向上價格壓力、正向 surprise 與向下價格壓力有關。但需與三組基準同時比較：
+
+1. 無訊號／不交易。
+2. USDA 當月數值減上月 USDA 前值（**非**真正市場 surprise）。
+3. 公布當下立即價格反應（檢查五分鐘後是否已被市場吸收）；以及有其他供需／氣候／全球庫存因素的解釋。
+
+**驗證時間框架：** 先以 1 分鐘、5 分鐘、30 分鐘與當日結算研究資訊如何反映；**交易測試須從系統「實際收到資料且解析完畢」之後開始**，不可把公告前／公告瞬間的價差視為可交易收益。額外逐次記錄成交量、價差、滑價、手續費、合約月份及換月規則。
+
+**反證／停止條件：** 市場共識與盤中價格無獨立時間證據、樣本版本混淆、樣本過小無法跨年度檢驗、加入同時公布的 Crop Production 等控制後效果消失、排除最初 5 分鐘後無效、考慮成本後無經濟意義；任何一項成立，都不能聲稱存在可交易優勢。未預先指定且經評估的門檻、模型超參數不得從保留樣本回推選擇。
+
+**檢查範圍**：初期只做美國玉米、同一行銷年度、單一 WASDE 公布期；跨月份的舊作／新作或不同到期合約不得混同。巴西等全球變數先列作重要混雜因素，不在 MVP 中擴張多商品模型。
+
+## 四、K3.7 → K4 資料交接現況
+
+K3.7 的 Agent D 曾在真實官方位元組資料上驗證約 1,512 WASDE 觀測、1,006 NASS 州週資料，形成 568 筆 **研究性結構對應**。這些經 SHA-256 稽核，但 **PIT 0**，不能當作正式事件研究樣本。Agent A/B/C/D 程式仍在各自 Draft PR，`codex/k37-orchestration` 是協作基準，不是已合併整套 Agent 輸入的產品分支。
+
+K4 首版會產出：
+- `hypothesis.py`：純離線供需恆等式／前值與市場共識區分／時間與版本護欄，輸出 JSON 與 Markdown。
+- `cases/2026-11-corn-wasde-retrospective.json`：已公開數據的**事後演示**，沒有假造發布前捕獲時間或期貨交易價。
+- `tests/`：決定論測試，強制保持 `event_study_eligible=false`、`trade_eligible=false`。
+- GitHub Actions PR CI：不下載 USDA、不連交易 API、不修改既有 K3.7、不執行預測訓練。
+
+## 五、最小多 AI Agent 協作，不增建大型管理平台
+
+| 職責 | 交付 | 獨立否決權 |
+|---|---|---|
+| R — 研究假說 | 明確 H0/H1、先驗規則、主要／替代解釋 | 不可聲稱既有文獻是 SIGNAL 原創 alpha |
+| E — 資料與 PIT | 原始 WASDE、NASS、**公告前市場共識**、行情 UTC 及證據 SHA | 任一 as-of 或合約配對不正確，否決回測 |
+| X — 反證與偏差 | 時間穿越、資訊洩漏、樣本外、交易成本、控制變數 | 顯著但不可交易時，否決投資結論 |
+| Q — 驗收與提交 | CI、原始報表核對、PR 審查、狀態分類 | 未證實的指標不可進入正式投資建議 |
+
+**目前是可審查的角色／交接規格，不是已開啟四個獨立自動執行的 Codex Agent。** 真正建立新 Codex 代理工作任務必須有對應執行環境／權限；目前 GitHub 連線可直接提交、跑 CI，但不提供自主多代理啟動 API。勿將 PR 命名視為代理真的獨立運作。每個角色要有清楚輸入／輸出及拒絕條件，只有可平行的實際工作才分派多代理。
+
+### K4 低成本資料准入審查（本輪已執行）
+
+- **獨立發布前歷史封存證據**：GitHub Runner 已對 CME、StoneX、DTN 三個確切報導網址進行截止於 2026/11/10 17:00 UTC 的 Wayback 查詢；三者皆未取得可解析的索引，因此 **0/3** 可驗證發布前內容。這**不是**證明歷史網頁不存在，僅表示不能在此案例中聲稱已完成 PIT 認證。明確停止無期限的回溯封存嘗試，改採未來報告發布前的實際觀測。
+- **交易所行情查價**：新增 `vendor_quote_only.py` 與離線反證測試，固定 `GLBX.MDP3`、`ZCZ6`、11/10 16:30–19:30 UTC，查 `ohlcv-1m/trades/tbbo` 三種資料的 `get_record_count/get_cost`；先以 `symbology.resolve` 驗證合約，**不會下載行情、觸發付費批次作業或下單**。實際美元報價需要使用者自己的供應商憑證，尚未執行，也不要求在聊天或公開 PR 貼出 API key。
+- 核對紀錄與停止準則見 [DATA_FEASIBILITY_2026-11.md](DATA_FEASIBILITY_2026-11.md)。**交易能力依舊是 0**，不能因程式測試通過而增加投資訊號的可信度。
+
+## 六、下一道經濟價值關卡
+
+先取得能合法長期使用、且**能確認在報告公布前就存在**的分析師調查或市場預估資料，再取得同一份玉米合約各時間點可靠價格來源、價差／交易成本。這是決定能否驗證交易優勢的瓶頸，**比增加 Agent 或更複雜模型重要**。
+
+結論：**K4 MVP 可先完成嚴謹的研究設計與可重現帳務核對，但無任何可宣稱的投資績效；需要下一階段證據支持後才會談模型及資產配置。**

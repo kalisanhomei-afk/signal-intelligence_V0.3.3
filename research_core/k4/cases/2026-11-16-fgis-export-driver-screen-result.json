@@ -1,0 +1,37 @@
+{
+  "schema": "signal-k45-export-driver-screen-result-v1",
+  "event_id": "USDA-WASDE-2026-12-10",
+  "source_report_release_utc_claim": "2026-11-16T16:00:00Z",
+  "inputs_cutoff_utc": "2026-11-17T00:00:00Z",
+  "weekly_vs_required_ratio": 0.50872,
+  "cumulative_yoy_change_percent": -21.375,
+  "progress_vs_five_year_avg_percentage_points": 2.1,
+  "competing_signal_directions": {
+    "current_week_vs_required": "BELOW_TARGET_PACE",
+    "cumulative_vs_seasonal_average": "AHEAD"
+  },
+  "mixed_signals": true,
+  "scenario_only_not_probabilistic": [
+    {
+      "assumed_export_revision_mbu": -50,
+      "conditional_ending_stocks_mbu": 1808
+    },
+    {
+      "assumed_export_revision_mbu": 0,
+      "conditional_ending_stocks_mbu": 1758
+    },
+    {
+      "assumed_export_revision_mbu": 50,
+      "conditional_ending_stocks_mbu": 1708
+    }
+  ],
+  "forecast_point_estimate_mbu": null,
+  "model_v1_status": "ABSTAIN_UNCALIBRATED_EXPORT_DRIVER",
+  "numeric_source_publication_claim_is_not_pit_authentication": true,
+  "official_raw_pit_authenticated": false,
+  "calibration_evidence_present": false,
+  "december_consensus_pit_verified": false,
+  "independent_predictive_edge_verified": false,
+  "trade_eligible": false,
+  "reason": "Weekly pace and seasonal cumulative progress send opposing signals; no historically validated mapping of inspections to December WASDE export revisions. Scenario levels are arbitrary stress inputs, not forecasts."
+}

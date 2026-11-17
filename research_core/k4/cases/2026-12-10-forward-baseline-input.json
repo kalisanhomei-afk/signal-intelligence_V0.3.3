@@ -1,0 +1,22 @@
+{
+  "baseline_mbu": 1758,
+  "created_utc": "2026-11-17T00:57:44Z",
+  "event_id": "USDA-WASDE-2026-12-10",
+  "input_cutoff_utc": "2026-11-17T00:57:44Z",
+  "marketing_year": "2026/27",
+  "model_id": "USDA_PREVIOUS_WASDE_PERSISTENCE_V0",
+  "release_scheduled_utc": "2026-12-10T17:00:00Z",
+  "schema": "signal-k45-dec-corn-baseline-input-v1",
+  "source_components_mbu": {
+    "beginning_stocks": 2095,
+    "ending_stocks": 1758,
+    "exports": 3275,
+    "feed_residual": 5975,
+    "food_seed_industrial": 7005,
+    "imports": 25,
+    "production": 15893
+  },
+  "source_raw_sha256": null,
+  "source_release_scheduled_utc": "2026-11-10T17:00:00Z",
+  "source_url": "https://esmis.nal.usda.gov/sites/default/release-files/796142/wasde1126.txt"
+}

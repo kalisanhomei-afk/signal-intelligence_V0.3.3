@@ -1,0 +1,20 @@
+{
+  "schema": "signal-k4-event-study-evidence-v1",
+  "hypothesis_id": "H-CORN-001",
+  "symbol": "ZCZ6",
+  "event_scheduled_utc": "2026-11-10T17:00:00Z",
+  "evidence": {
+    "official_raw_sha256": null,
+    "official_response_finished_utc": null,
+    "official_report_identity": null,
+    "survey_raw_sha256": null,
+    "survey_independent_capture_utc": null,
+    "survey_provider_and_methodology": null,
+    "futures_raw_sha256": null,
+    "futures_vendor_license_reference": null,
+    "futures_instrument_definition": null,
+    "same_contract_pre_release_quote_utc": null,
+    "same_contract_post_observation_quote_utc": null,
+    "bid_ask_and_cost_evidence": null
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "signal-k45-export-driver-evidence-v1",
+  "event_id": "USDA-WASDE-2026-12-10",
+  "marketing_year": "2026/27",
+  "target": "US_CORN_2026_27_ENDING_STOCKS_MBU",
+  "release_scheduled_utc": "2026-12-10T17:00:00Z",
+  "observation_week_end": "2026-11-12",
+  "source_report_release_utc_claim": "2026-11-16T16:00:00Z",
+  "inputs_cutoff_utc": "2026-11-17T00:00:00Z",
+  "source_dataset": "USDA_FGIS_WEEKLY_INSPECTIONS_WA_GR101",
+  "numerical_source_url": "https://www.cmegroup.com/education/events/econoday/675853",
+  "official_report_catalog_url": "https://mymarketnews.ams.usda.gov/viewReport/3071",
+  "official_raw_sha256": null,
+  "independent_pre_release_capture_utc": null,
+  "source_pit_authenticated": false,
+  "weekly_inspections_mt": 865503,
+  "weekly_required_to_hit_usda_mt": 1701336,
+  "cumulative_inspections_mt": 12463023,
+  "prior_year_cumulative_inspections_mt": 15851319,
+  "usda_percent_completed": 15,
+  "five_year_average_percent_completed": 12.9,
+  "usda_exports_baseline_mbu": 3275,
+  "usda_ending_stocks_baseline_mbu": 1758,
+  "illustrative_export_deltas_mbu": [
+    -50,
+    0,
+    50
+  ],
+  "model_calibration_evidence_sha256": null,
+  "official_raw_txt_url": "https://www.ams.usda.gov/mnreports/wa_gr101.txt"
+}

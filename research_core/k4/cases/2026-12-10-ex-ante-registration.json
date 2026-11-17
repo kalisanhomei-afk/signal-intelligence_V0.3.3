@@ -1,0 +1,21 @@
+{
+  "consensus_independent_capture_utc": null,
+  "consensus_methodology": null,
+  "consensus_provider": null,
+  "consensus_raw_sha256": null,
+  "consensus_value_mbu": null,
+  "evaluation_rule": "compare_frozen_forecast_to_frozen_consensus_before_official_outcome",
+  "event_id": "USDA-WASDE-2026-12-10",
+  "forecast_created_utc": "2026-11-17T00:57:44Z",
+  "forecast_independent_capture_utc": "2026-11-17T00:58:10Z",
+  "forecast_inputs_cutoff_utc": "2026-11-17T00:57:44Z",
+  "forecast_inputs_manifest_sha256": "b248ba007ea520281d9ab0be4df5479b6d403b3fa4ef204ae7b344e4e9ae439f",
+  "forecast_method_id": "USDA_PREVIOUS_WASDE_PERSISTENCE_V0",
+  "forecast_raw_sha256": "54d4d7597d457c64307e9a2e1e5670cd5f1ecd52676180eded2a19a8ebcaca48",
+  "forecast_value_mbu": 1758,
+  "frozen_before_release": false,
+  "hypothesis_id": "H-CORN-001",
+  "release_scheduled_utc": "2026-12-10T17:00:00Z",
+  "schema": "signal-k45-ex-ante-registration-v1",
+  "target": "US_CORN_2026_27_ENDING_STOCKS_MBU"
+}

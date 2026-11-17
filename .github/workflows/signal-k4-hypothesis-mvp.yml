@@ -1,0 +1,329 @@
+name: SIGNAL K4 corn hypothesis accounting and leakage gate (research only)
+
+on:
+  pull_request:
+    branches: [codex/k37-orchestration]
+    paths:
+      - 'research_core/k4/**'
+      - '.github/workflows/signal-k4-hypothesis-mvp.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  hypothesis-contract-review:
+    name: K4 offline accounting/consensus/public-price source gating
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout K4 research-only branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python 3.12 (standard library only)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify H-CORN-001 unit, timing, balance and fail-closed tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest discover -s research_core/k4/tests -p 'test_*.py' -v
+      - name: Verify all saved forward USDA FGIS original bytes and version receipts offline
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.fgis_archive_audit \
+            --evidence-dir research_core/k4/evidence/fgis \
+            --output k4-review/fgis_forward_version_audit.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("k4-review/fgis_forward_version_audit.json").read_text())
+          assert r["status"] == "FORWARD_SOURCE_BYTES_AND_RECEIPTS_VERIFIED_NOT_INDEPENDENT_PIT"
+          assert r["version_count"] >= 1
+          assert r["distinct_weeks"] >= 1
+          assert not r["historic_nine_year_fgis_features_pit_certified"]
+          assert not r["model_calibrated"] and not r["predictive_edge_verified"]
+          assert not r["trade_eligible"]
+          print("K49_FORWARD_FGIS_ARCHIVE_BYTES_AND_SERIES_PASS_RESEARCH_ONLY")
+          PY
+      - name: K4.10 score frozen December baseline against official nine-year reference without future facts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.prospective_scorecard \
+            --output k4-review/k410_frozen_december_scorecard.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("k4-review/k410_frozen_december_scorecard.json").read_text())
+          assert r["historical_reference"]["label_years"]==9
+          assert r["historical_reference"]["absolute_error_mae_mbu"]=="57.78"
+          assert r["forecast_v0_mbu"]=="1758"
+          assert r["status"]=="WAITING_FOR_DECEMBER_PRE_RELEASE_CONSENSUS_AND_USDA_OUTCOME"
+          assert not r["evidence_complete"]
+          assert not r["trading_edge_verified"] and not r["trade_eligible"]
+          print("K410_FROZEN_HISTORIC_REFERENCE_AND_EXANTE_DECEMBER_EVALUATION_GATE_PASS")
+          PY
+      - name: Reconcile nine historical as-reported USDA corn export and stock revisions offline
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.nine_year_revision_catalog \
+            --output k4-review/nine_year_revision_catalog.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("k4-review/nine_year_revision_catalog.json").read_text())
+          assert r["marketing_years"] == 9
+          assert r["status"] == "OUTCOME_LABEL_CATALOG_ONLY"
+          assert not r["fgis_features_by_announcement_asof_available"]
+          assert not r["formal_backtest_eligible"] and not r["trade_eligible"]
+          print("K47_NINE_YEAR_OFFICIAL_OUTCOME_LABEL_CATALOG_PASS_NO_PIT")
+          PY
+      - name: Reproduce Nov 2026 real retrospective accounting reference
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B research_core/k4/hypothesis.py \
+            --case research_core/k4/cases/2026-11-corn-wasde-retrospective.json \
+            --output k4-review
+      - name: Score three distinct survey versions (NOT a pre-release as-of backtest)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.consensus_sensitivity \
+            --catalog research_core/k4/cases/2026-11-consensus-source-variants.json \
+            --output k4-review
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("k4-review/survey_vintage_sensitivity.json")
+          x=json.loads(p.read_text(encoding="utf-8"))
+          assert x["survey_count"] == 3
+          assert x["surprise_min_million_bushels"] == "-88"
+          assert x["surprise_max_million_bushels"] == "-68"
+          assert x["surprise_span_million_bushels"] == "20"
+          assert x["independently_authenticated_pre_release_survey_count"] == 0
+          assert x["historical_intraday_price_rows_acquired"] == 0
+          assert x["historical_PIT_certified"] is False
+          assert x["transaction_cost_adjusted_tradable"] is False
+          assert all(r["event_study_eligible"] is False for r in x["survey_results"])
+          print("K4_CONSENSUS_VINTAGE_SENSITIVITY_PASS_NO_ASOF_NO_PRICE")
+          PY
+      - name: Review reported event-window ZCZ6 prices (NO genuine trade bars)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.public_price_scout \
+            --case research_core/k4/cases/2026-11-10-zcz6-public-price-scout.json \
+            --output k4-review
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("k4-review/price_scout_research_only.json").read_text(encoding="utf-8"))
+          assert r["first_to_second_claimed_quote_cents"] == "1.75"
+          assert r["prior_day_to_first_claimed_quote_cents"] == "11.50"
+          assert r["prior_day_to_event_day_publisher_last_cents"] == "9.75"
+          assert r["previous_day_to_event_quote_attribution_to_WASDE_permitted"] is False
+          assert r["live_or_independently_attested_quote_rows_acquired"] == 0
+          assert r["actual_trade_bid_ask_rows_acquired"] == 0
+          assert r["contemporaneous_pre_event_price_available"] is False
+          assert r["formal_intraday_event_study_eligible"] is False
+          assert r["trade_eligible"] is False
+          print("K4_PUBLIC_PRICE_SOURCE_SCOUT_PASS_NOT_INTRADAY_PIT_OR_EXECUTABLE")
+          PY
+      - name: Forbid trading, performance and historical PIT certification
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('k4-review/hypothesis_review.json').read_text(encoding='utf-8'))
+          assert r['hypothesis_id']=='H-CORN-001'
+          assert r['stock_flow_identity_reconciled'] is True
+          assert r['market_consensus_surprise_million_bushels']=='-88'
+          assert r['prior_month_change_million_bushels']=='-91'
+          assert r['stocks_to_use_percent']=='10.82'
+          assert r['historical_original_source_pit_certified'] is False
+          assert r['investment_edge_verified'] is False
+          assert r['event_study_eligible'] is False
+          assert r['trade_eligible'] is False
+          assert r['strategy_return'] is None and r['price_effect_estimate'] is None
+          print('K4_ACCOUNTING_REVIEW_PASS_RESEARCH_ONLY_NO_EDGE_PIT_UNVERIFIED')
+          PY
+      - name: Fail-closed event-study evidence gate (no market data acquired)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.event_study_gate \
+            --case research_core/k4/cases/2026-11-10-event-study-evidence.json \
+            --output k4-review
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("k4-review/event_study_gate.json").read_text(encoding="utf-8"))
+          assert r["status"] == "BLOCKED_MISSING_EVIDENCE"
+          assert len(r["missing_evidence"]) == 12
+          assert r["formal_event_study_eligible"] is False
+          assert r["trade_eligible"] is False
+          assert r["strategy_return"] is None
+          print("K4_EVENT_STUDY_EVIDENCE_GATE_PASS_BLOCKED_NO_TRADING")
+          PY
+      - name: Retain reviewer-readable hypothesis report, not source data archive
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k4-h-corn-001-accounting-only
+          path: k4-review/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Explicit scope governance
+        if: always()
+        run: |
+          echo 'PR workflow contains no official USDA downloads, price feeds or trading signals.'
+          echo 'This report is retrospective accounting, not a future-knowledge or alpha proof.'
+          echo 'Never merge into main, enable schedule or mark investment hypothesis proven.'
+
+  pre-release-survey-archive-feasibility:
+    name: Independent pre-release poll archive inquiry (no historic PIT claims)
+    # Historical network probes are opt-in; normal PR commits run only deterministic tests.
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'k4-source-refresh') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout isolated K4 source evidence verifier
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Query only three URL-specific archived survey sources before WASDE
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.poll_archive_preflight --output k4-archive
+      - name: No certification from publisher datelines or unavailable archives
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("k4-archive/independent_survey_archive_preflight.json")
+          x=json.loads(p.read_text(encoding="utf-8"))
+          assert len(x["sources"])==3
+          assert x["source_pit_certified"] is False
+          assert x["formal_event_study_eligible"] is False
+          assert x["trading_allowed"] is False
+          assert all(row["trade_eligible"] is False for row in x["sources"])
+          print("K4_INDEPENDENT_PRE_RELEASE_ARCHIVE_FEASIBILITY_COMPLETE_PIT_UNVERIFIED")
+          PY
+      - name: Retain archive receipts, never archive copyrighted full pages here
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k4-nov10-pre-release-survey-archive-probe
+          path: k4-archive/
+          retention-days: 30
+          if-no-files-found: warn
+
+  k46-historical-source-preflight:
+    name: USDA vintage CSV and historical FGIS source schema probe (research only)
+    # Historical network probes are opt-in; normal PR commits run only deterministic tests.
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'k4-source-refresh') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout isolated research branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Probe four fixed USDA vintage CSVs and public USDA FGIS endpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.historical_source_probe --output k46-review/source_probe.json
+      - name: Read USDA 2016-2020 official mirror ZIP and extract 2017-2020 current-year corn revisions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.wasde_historical_zip_labels \
+            --output k46-review/k47_usda_historical_zip_labels.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("k46-review/k47_usda_historical_zip_labels.json").read_text())
+          assert r["schema"]=="signal-k47-usda-archive-corn-revision-labels-v1"
+          assert not r["independent_pit_features_verified"] and not r["trade_eligible"]
+          assert not r["calibrated_model_ready"]
+          assert len(r["rows"])+len(r["gaps"])==4
+          print("K47_OFFICIAL_HISTORIC_ZIP_LABELS_EXTRACTED_RESEARCH_ONLY")
+          PY
+      - name: Pair official Nov and Dec corn revisions for nine historical marketing years
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.wasde_revision_labels \
+            --start-year 2017 --end-year 2025 \
+            --output k46-review/wasde_revision_labels_2017_2025.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("k46-review/wasde_revision_labels_2017_2025.json").read_text())
+          assert r["status"] == "OUTCOME_LABELS_ONLY"
+          assert r["ready_for_backtest"] is False
+          assert r["historical_pit_features_verified"] is False
+          assert r["predictor_features"] == []
+          assert r["trade_eligible"] is False
+          assert all(s["independent_pit_features_verified"] is False for s in r["rows"])
+          print("K46_USDA_AS_REPORTED_LABELS_EXTRACTED_NO_PREDICTIVE_DATA")
+          PY
+      - name: K4.7 probe dated FGIS archival documents and USDA 2016–2020 ZIP mirrors
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.historical_archive_discovery --output k46-review/k47_official_archive_discovery.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("k46-review/k47_official_archive_discovery.json")
+          r=json.loads(p.read_text())
+          assert r["schema"]=="signal-k47-official-archive-discovery-v1"
+          assert set(r["results"]) == {"historic_usda_zip_primary","historic_usda_zip_mirror","fgis_report_index","fgis_report_index_slug"}
+          assert not r["historical_feature_pit_certified"]
+          assert not r["training_eligible"] and not r["trade_eligible"]
+          print("K47_ARCHIVE_DISCOVERY_RECEIPT_COMPLETE_NO_PIT_PROMOTION")
+          PY
+      - name: Forbid invented pre-release history or model readiness
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("k46-review/source_probe.json")
+          r = json.loads(p.read_text(encoding="utf-8"))
+          assert r["schema"] == "signal-k46-history-source-probe-v1"
+          assert not r["pit_certified"] and not r["trade_eligible"]
+          assert not r["market_data_purchased"]
+          assert set(r["sources"]) == {"2021-11","2021-12","2024-11","2024-12","2025-11","2025-12"}
+          print("K46_SOURCE_PREFLIGHT_COMPLETE_NO_PIT_OR_ALPHA_CLAIM")
+          PY
+      - name: Save short provenance and source header receipts (not licensed vendor data)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k46-usda-historical-source-preflight
+          path: k46-review/
+          retention-days: 30
+          if-no-files-found: warn
