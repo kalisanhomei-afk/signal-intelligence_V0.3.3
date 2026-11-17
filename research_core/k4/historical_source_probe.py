@@ -75,6 +75,14 @@ def main():
     args.output.write_text(json.dumps(r,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     print(json.dumps({"statuses":{k:v["status"] for k,v in r["sources"].items()},
                       "fgis_status":r["fgis_api"]["status"],"pit_certified":False}))
+    for key in ("2024-11","2024-12","2025-11","2025-12"):
+        item=r["sources"][key]
+        if item["status"].startswith("RETRIEVED"):
+            print("K46_WASDE_SAMPLE",json.dumps({"file":key,"columns":item["columns"],"rows":item["rows"],
+                                                "corn_samples":item["corn_rows_sample"][:5]}))
+    item=r["fgis_api"]
+    if item["status"]=="DATASET_ENDPOINT_FOUND_NOT_VINTAGE_CERTIFIED":
+        print("K46_FGIS_SCHEMA",json.dumps({"columns":item["columns"],"sample":item["sample"][:1]}))
 
 if __name__ == "__main__":
     main()
