@@ -72,14 +72,22 @@ def capture(output_dir,fetcher=fetch,clock=utc_now):
         }
         if any(p.exists() for p in outputs.values()):
             raise ValueError("EVIDENCE_COLLISION_NO_OVERWRITE")
-        outputs["raw"].write_bytes(raw)
+        # All files are opened EXCLUSIVELY. A second runner may pass the
+        # existence pre-check concurrently; never overwrite its evidence.
+        owned=[]
         try:
+            with outputs["raw"].open("xb") as f:
+                owned.append(outputs["raw"])
+                f.write(raw)
             for key,obj in (("receipt",receipt),("score",score)):
                 with outputs[key].open("x",encoding="utf-8") as f:
+                    owned.append(outputs[key])
                     json.dump(obj,f,indent=2,ensure_ascii=False)
                     f.write("\n")
         except BaseException:
-            for p in outputs.values():
+            # Remove only files created by THIS attempt, not an archive
+            # committed concurrently by another task.
+            for p in reversed(owned):
                 p.unlink(missing_ok=True)
             raise
         return {"status":"OFFICIAL_ORIGINAL_SOURCE_AND_V0_EVALUATION_CAPTURED",
