@@ -2,7 +2,7 @@
   "schema": "signal-research-portfolio-v1",
   "snapshot_date": "2026-11-17",
   "repository": "kalisanhomei-afk/signal-intelligence_V0.3.3",
-  "status_basis": "GitHub read-only verification on 2026-11-17. This is a frozen snapshot, not a live GitHub or research-data query. Research PR source links point to pinned head commits checked on the snapshot date.",
+  "status_basis": "GitHub checked on 2026-11-17 after K4.11, K5.2 no-overwrite preflight and research overview result-transition rehearsal. Snapshot only, not an always-live query. Original pre-event source links intentionally remain fixed to earlier immutable commits, even if draft PR HEAD moves after subsequent evidence commits.",
   "default_branch": "main",
   "publication": {
     "main_readme_label": "SIGNAL V0.3.3",
@@ -50,7 +50,7 @@
       "draft": true,
       "merged": false,
       "scope": "outcome_and_forward_research",
-      "head_commit_sha": "bdc68222f4b9ca7eba07b96205ac510c0d8bf345"
+      "head_commit_sha": "817a9503cea049dc79e32e985ecaeb8ff94529f5"
     },
     {
       "number": 23,
@@ -61,7 +61,7 @@
       "draft": true,
       "merged": false,
       "scope": "first_forward_eia_evaluation",
-      "head_commit_sha": "f613719479c9ede0add2e6ff0893c0fa1831c765"
+      "head_commit_sha": "306235360bfb6409a9a2c16dd8d4f434d66d0210"
     }
   ],
   "layers": [
@@ -109,16 +109,16 @@
   "last_known_test_evidence": [
     {
       "pr": 22,
-      "run_id": 44004194113,
-      "passed": 199,
+      "run_id": 44035145638,
+      "passed": 214,
       "failed": 0,
       "kind": "Engineering tests only",
       "checked_on": "2026-11-17"
     },
     {
       "pr": 23,
-      "run_id": 44010454910,
-      "passed": 55,
+      "run_id": 44035154162,
+      "passed": 56,
       "failed": 0,
       "kind": "Engineering tests only",
       "checked_on": "2026-11-17"
@@ -136,8 +136,18 @@
       "automation_id": "6afbc01d50f881919100ca338242f4f8"
     },
     {
+      "date_time_local": "2026-11-20T21:00:00+08:00",
+      "event": "K5 backup official raw / CI check for the SAME 11/19 report; skip new upload if already verified",
+      "automation_id": "6afbc01d50f881919100ca338242f4f8"
+    },
+    {
       "date_time_local": "2026-11-24T08:00:00+08:00",
       "event": "K4 first forward FGIS weekly receipt check",
+      "automation_id": "Automation_20115d37f41881919d2d2c28bee547eb"
+    },
+    {
+      "date_time_local": "2026-11-25T08:00:00+08:00",
+      "event": "K4 FGIS first-week retry only if official dated raw missing or revised",
       "automation_id": "Automation_20115d37f41881919d2d2c28bee547eb"
     },
     {
