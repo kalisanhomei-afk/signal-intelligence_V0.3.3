@@ -1,0 +1,168 @@
+{
+  "schema": "signal-research-portfolio-v1",
+  "snapshot_date": "2026-11-17",
+  "repository": "kalisanhomei-afk/signal-intelligence_V0.3.3",
+  "status_basis": "GitHub frozen snapshot checked on 2026-11-17 after K4.11, K5.2 no-overwrite preflight and research overview result-transition rehearsal. Not an always-live query. Original pre-event source links intentionally remain fixed to earlier immutable commits, even if research PR HEAD moves after new evidence commits.",
+  "default_branch": "main",
+  "publication": {
+    "main_readme_label": "SIGNAL V0.3.3",
+    "main_index_html_title": "視界 SIGNAL · 個人情報系統 V0.5.2a",
+    "current_public_site_revision_verified": false,
+    "readme_and_index_version_labels_disagree": true,
+    "research_branch_results_in_main": false,
+    "status": "VERSION_LABELS_INCONSISTENT_NOT_PRODUCTION_RELEASE"
+  },
+  "k38_main_registration": {
+    "path": ".github/workflows/signal-k38-manual-capture.yml",
+    "registration_pr": 20,
+    "registration_pr_merged": true,
+    "actual_capture_implementation_in_main": false,
+    "default_branch_execution": "INTENTIONAL_FAIL_CLOSED",
+    "auto_capture_schedule_enabled": false
+  },
+  "prs": [
+    {
+      "number": 19,
+      "title": "K3.8 forward-only USDA capture",
+      "branch": "codex/k38-forward-pit-capture",
+      "base": "codex/k37-orchestration",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "scope": "review_only"
+    },
+    {
+      "number": 20,
+      "title": "K3.8 manual workflow registration",
+      "branch": "codex/k38-manual-dispatch-registration",
+      "base": "main",
+      "state": "closed",
+      "draft": false,
+      "merged": true,
+      "scope": "registration_only"
+    },
+    {
+      "number": 22,
+      "title": "K4 corn hypothesis",
+      "branch": "codex/k4-corn-hypothesis-mvp",
+      "base": "codex/k37-orchestration",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "scope": "outcome_and_forward_research",
+      "head_commit_sha": "817a9503cea049dc79e32e985ecaeb8ff94529f5"
+    },
+    {
+      "number": 23,
+      "title": "K5 natural gas hypothesis",
+      "branch": "codex/k5-natural-gas-scout",
+      "base": "codex/k37-orchestration",
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "scope": "first_forward_eia_evaluation",
+      "head_commit_sha": "306235360bfb6409a9a2c16dd8d4f434d66d0210"
+    }
+  ],
+  "layers": [
+    {
+      "id": "sources",
+      "name": "資訊來源與採集",
+      "status": "PARTIAL_PROTOTYPE",
+      "evidence": "main README v0.3.3 source probe; no claim of full continuous news harvest"
+    },
+    {
+      "id": "evidence",
+      "name": "資料版本與原始證據",
+      "status": "RESEARCH_VERIFIED",
+      "evidence": "K1 contracts and K4/K5 source hashes; no blanket historical PIT attestation"
+    },
+    {
+      "id": "two_engine",
+      "name": "因果與存量流量研究",
+      "status": "PARTIAL_PROTOTYPE",
+      "evidence": "K1 synthetic balance validation; K3.7 experimental multi-agent orchestration"
+    },
+    {
+      "id": "hypotheses",
+      "name": "投資假說與反證",
+      "status": "RESEARCH_VERIFIED",
+      "evidence": "K4/K5 pre-release frozen V0 and CI; no independently verified V1 alpha"
+    },
+    {
+      "id": "market",
+      "name": "價格、交易成本與策略驗證",
+      "status": "NOT_VALIDATED",
+      "evidence": "Not a validated out-of-sample price/transaction-cost strategy"
+    },
+    {
+      "id": "allocation",
+      "name": "投資組合與風險預算",
+      "status": "NOT_IMPLEMENTED",
+      "evidence": "No approved allocation or live-trade system"
+    }
+  ],
+  "research_cards": [
+    "research_overview/cards/H-CORN-001.json",
+    "research_overview/cards/H-NG-001.json"
+  ],
+  "last_known_test_evidence": [
+    {
+      "pr": 22,
+      "run_id": 44035145638,
+      "passed": 214,
+      "failed": 0,
+      "kind": "Engineering tests only",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "pr": 23,
+      "run_id": 44035154162,
+      "passed": 56,
+      "failed": 0,
+      "kind": "Engineering tests only",
+      "checked_on": "2026-11-17"
+    }
+  ],
+  "upcoming_checkpoints": [
+    {
+      "date_time_local": "2026-11-19T21:00:00+08:00",
+      "event": "K5 pre-release market-expectation evidence check",
+      "automation_id": "6afbc01d50f881919100ca338242f4f8"
+    },
+    {
+      "date_time_local": "2026-11-20T09:00:00+08:00",
+      "event": "K5 post-release official raw and V0 score audit",
+      "automation_id": "6afbc01d50f881919100ca338242f4f8"
+    },
+    {
+      "date_time_local": "2026-11-20T21:00:00+08:00",
+      "event": "K5 backup official raw / CI check for the SAME 11/19 report; skip new upload if already verified",
+      "automation_id": "6afbc01d50f881919100ca338242f4f8"
+    },
+    {
+      "date_time_local": "2026-11-24T08:00:00+08:00",
+      "event": "K4 first forward FGIS weekly receipt check",
+      "automation_id": "Automation_20115d37f41881919d2d2c28bee547eb"
+    },
+    {
+      "date_time_local": "2026-11-25T08:00:00+08:00",
+      "event": "K4 FGIS first-week retry only if official dated raw missing or revised",
+      "automation_id": "Automation_20115d37f41881919d2d2c28bee547eb"
+    },
+    {
+      "date_time_local": "2026-12-11T09:00:00+08:00",
+      "event": "K4 December WASDE official outcome and V0 score",
+      "automation_id": "6afbbd62658c819185f7f3cf47464a42"
+    }
+  ],
+  "programme_gates": {
+    "engineering": "RESEARCH_ONLY",
+    "production_site_status": "NOT_REVERIFIED",
+    "historical_pit": "PARTIAL_UNVERIFIED",
+    "model_v1": "ABSTAIN",
+    "alpha": "UNVERIFIED",
+    "trading": "NOT_AUTHORIZED",
+    "allowed_next_step": "Evidence-driven first event audits, no forecast edits or main merges"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "schema": "signal-market-decision-bridge-design-v0.1",
+  "snapshot_date": "2026-11-17",
+  "stage": "ARCHITECTURE_ONLY",
+  "purpose": "Separate evidence of official-data forecasts from market pricing, price reaction, trading costs and portfolio risk. No trade engine is authorized.",
+  "actual_market_data_integrated": false,
+  "no_trade_enforced": true,
+  "hypotheses": [
+    {
+      "hypothesis_id": "H-CORN-001",
+      "event_id": "USDA-WASDE-2026-12-10",
+      "forecast_unit": "million_bushels",
+      "expectations": {
+        "status": "UNVERIFIED_PRE_EVENT_CONSENSUS",
+        "value": null,
+        "source_url": null,
+        "source_capture_utc": null,
+        "source_sha256": null
+      },
+      "instrument": {
+        "status": "UNMAPPED",
+        "exchange": null,
+        "symbol": null,
+        "contract_month": null,
+        "contract_size": null,
+        "quote_unit": null,
+        "currency": null,
+        "roll_method": null
+      },
+      "market_prices": {
+        "status": "NO_VERIFIED_PRICES",
+        "pre_event_quote": null,
+        "pre_event_capture_utc": null,
+        "post_event_quote": null,
+        "post_event_capture_utc": null,
+        "quote_source_sha256": null
+      },
+      "price_effect": {
+        "status": "NOT_CALIBRATED",
+        "ex_ante_surprise": null,
+        "price_response_coefficient": null,
+        "out_of_sample_events": 0,
+        "estimated_net_return": null
+      },
+      "portfolio_risk": {
+        "status": "NOT_EVALUATED",
+        "transaction_costs_verified": false,
+        "liquidity_verified": false,
+        "margin_risk_verified": false,
+        "exposure_limit": null
+      },
+      "decision": {
+        "status": "NO_GO",
+        "proposed_position": null,
+        "approved_to_trade": false
+      }
+    },
+    {
+      "hypothesis_id": "H-NG-001",
+      "event_id": "EIA-WNGSR-2026-11-19",
+      "forecast_unit": "Bcf",
+      "expectations": {
+        "status": "UNVERIFIED_PRE_EVENT_CONSENSUS",
+        "value": null,
+        "source_url": null,
+        "source_capture_utc": null,
+        "source_sha256": null
+      },
+      "instrument": {
+        "status": "UNMAPPED",
+        "exchange": null,
+        "symbol": null,
+        "contract_month": null,
+        "contract_size": null,
+        "quote_unit": null,
+        "currency": null,
+        "roll_method": null
+      },
+      "market_prices": {
+        "status": "NO_VERIFIED_PRICES",
+        "pre_event_quote": null,
+        "pre_event_capture_utc": null,
+        "post_event_quote": null,
+        "post_event_capture_utc": null,
+        "quote_source_sha256": null
+      },
+      "price_effect": {
+        "status": "NOT_CALIBRATED",
+        "ex_ante_surprise": null,
+        "price_response_coefficient": null,
+        "out_of_sample_events": 0,
+        "estimated_net_return": null
+      },
+      "portfolio_risk": {
+        "status": "NOT_EVALUATED",
+        "transaction_costs_verified": false,
+        "liquidity_verified": false,
+        "margin_risk_verified": false,
+        "exposure_limit": null
+      },
+      "decision": {
+        "status": "NO_GO",
+        "proposed_position": null,
+        "approved_to_trade": false
+      }
+    }
+  ]
+}
