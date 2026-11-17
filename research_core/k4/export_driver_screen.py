@@ -14,7 +14,7 @@ EXPECTED_KEYS = {
     "schema", "event_id", "marketing_year", "target", "release_scheduled_utc",
     "observation_week_end", "source_report_release_utc_claim",
     "inputs_cutoff_utc", "source_dataset", "numerical_source_url",
-    "official_report_catalog_url", "official_raw_sha256",
+    "official_report_catalog_url", "official_raw_txt_url", "official_raw_sha256",
     "independent_pre_release_capture_utc", "source_pit_authenticated",
     "weekly_inspections_mt", "weekly_required_to_hit_usda_mt",
     "cumulative_inspections_mt", "prior_year_cumulative_inspections_mt",
@@ -27,6 +27,7 @@ SCHEDULE = "2026-12-10T17:00:00Z"
 SOURCE = "USDA_FGIS_WEEKLY_INSPECTIONS_WA_GR101"
 NUMERIC_URL = "https://www.cmegroup.com/education/events/econoday/675853"
 OFFICIAL_URL = "https://mymarketnews.ams.usda.gov/viewReport/3071"
+OFFICIAL_TXT_URL = "https://www.ams.usda.gov/mnreports/wa_gr101.txt"
 
 def utc(value):
     if not isinstance(value, str) or not value.endswith("Z"):
@@ -52,6 +53,7 @@ def assess(x):
         raise ValueError("EVENT_OR_TARGET_MISMATCH")
     if (x["source_dataset"] != SOURCE or x["numerical_source_url"] != NUMERIC_URL
         or x["official_report_catalog_url"] != OFFICIAL_URL
+        or x["official_raw_txt_url"] != OFFICIAL_TXT_URL
         or x["observation_week_end"] != "2026-11-12"):
         raise ValueError("SOURCE_IDENTITY_MISMATCH")
     for field in ("official_raw_sha256", "model_calibration_evidence_sha256"):
