@@ -1,0 +1,46 @@
+{
+  "schema": "signal-k48-fgis-prospective-raw-capture-v1",
+  "status": "CAPTURED_PRE_DECEMBER_RELEASE_NOT_INDEPENDENT_PIT_CERTIFIED",
+  "hypothesis_id": "H-CORN-001",
+  "source": {
+    "requested_url": "https://www.ams.usda.gov/mnreports/wa_gr101.txt",
+    "response_url": "https://www.ams.usda.gov/mnreports/wa_gr101.txt",
+    "fetch_started_utc": "2026-11-17T02:05:28.373407Z",
+    "fetch_finished_utc": "2026-11-17T02:05:28.486910Z",
+    "source_etag": "\"4843-66066d148db23-gzip\"",
+    "source_last_modified_claim": "Mon, 16 Nov 2026 15:56:14 GMT",
+    "source_content_type": "text/plain"
+  },
+  "source_report": {
+    "report_slug": "WA_GR101",
+    "report_date": "2026-11-16",
+    "week_end": "2026-11-12",
+    "units": "metric_tons",
+    "corn_week_current_mt": 865503,
+    "corn_week_previous_mt": 908378,
+    "corn_week_year_ago_mt": 2066210,
+    "corn_marketing_year_to_date_mt": 12463023,
+    "corn_prior_marketing_year_to_date_mt": 15851319,
+    "raw_report_revision_warning_present": true
+  },
+  "selected_official_historical_version_path": false,
+  "source_historical_url_is_cryptographically_immutable": false,
+  "source_raw_file": "WA_GR101_20261116_official_captured.txt",
+  "source_raw_sha256": "4555c478b09d2507d042de55c6d5042e095f37b13d05185fcf889433c52802e5",
+  "source_raw_bytes": 18499,
+  "future_wasde_scheduled_utc": "2026-12-10T17:00:00Z",
+  "capture_before_event_verified_by_local_clock": true,
+  "source_report_first_publication_utc_independently_verified": false,
+  "source_history_corrections_eliminated": false,
+  "repo_commit_provides_independent_timestamp_certificate": false,
+  "predictive_edge_verified": false,
+  "trade_eligible": false,
+  "attempts": [
+    {
+      "url": "https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3071/2026-11-16/1365706/ams_3071_00353.txt",
+      "status": "UNAVAILABLE_OR_REJECTED",
+      "error_type": "TimeoutError",
+      "error_code": null
+    }
+  ]
+}
