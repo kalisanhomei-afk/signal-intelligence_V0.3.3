@@ -227,7 +227,7 @@ jobs:
           assert r["schema"] == "signal-k46-history-source-probe-v1"
           assert not r["pit_certified"] and not r["trade_eligible"]
           assert not r["market_data_purchased"]
-          assert set(r["sources"]) == {"2024-11","2024-12","2025-11","2025-12"}
+          assert set(r["sources"]) == {"2021-11","2021-12","2024-11","2024-12","2025-11","2025-12"}
           print("K46_SOURCE_PREFLIGHT_COMPLETE_NO_PIT_OR_ALPHA_CLAIM")
           PY
       - name: Save short provenance and source header receipts (not licensed vendor data)
