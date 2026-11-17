@@ -26,5 +26,6 @@
     0,
     50
   ],
-  "model_calibration_evidence_sha256": null
+  "model_calibration_evidence_sha256": null,
+  "official_raw_txt_url": "https://www.ams.usda.gov/mnreports/wa_gr101.txt"
 }
