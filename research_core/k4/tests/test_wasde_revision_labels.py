@@ -36,6 +36,19 @@ class WASDELabelTests(unittest.TestCase):
         self.assertEqual(Decimal(r["other_net_stock_change_mbu"]),Decimal(-50))
         self.assertFalse(r["independent_pit_features_verified"])
 
+    def test_legacy_usda_slash_release_date_normalized(self):
+        rows=[make_row(2021,11,"Exports",2500),make_row(2021,11,"Ending Stocks",1493)]
+        for r in rows: r["ReleaseDate"]="11/09/2021"
+        parsed=extract_vintage(csv_bytes(rows),2021,11)
+        self.assertEqual(parsed["Exports"]["release_date"],"2021-11-09")
+        self.assertEqual(Decimal(parsed["Ending Stocks"]["value_mbu"]),Decimal(1493))
+
+    def test_reject_ambiguous_unrecognized_date_format(self):
+        rows=[make_row(2021,11,"Exports",2500),make_row(2021,11,"Ending Stocks",1493)]
+        for r in rows: r["ReleaseDate"]="09-11-2021"
+        with self.assertRaisesRegex(ValueError,"UNSUPPORTED_SOURCE_DATE_FORMAT"):
+            extract_vintage(csv_bytes(rows),2021,11)
+
     def test_reliability_statistics_never_used(self):
         bad=make_row(2024,11,"Ending Stocks",9999)
         bad["ReportTitle"]="Reliability of United States November Projections"
