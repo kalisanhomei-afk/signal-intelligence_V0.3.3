@@ -24,6 +24,24 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: K4 one-time live official November 2026 text-format check (NOT December)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from urllib.request import urlopen,Request
+          from research_core.k4.wasde_official_outcome_capture import parse_wasde_corn
+          url='https://esmis.nal.usda.gov/sites/default/release-files/796142/wasde1126.txt'
+          with urlopen(Request(url,headers={'User-Agent':'SIGNAL-K411-Preflight/1.0'}),timeout=20) as f:
+              raw=f.read(1000001)
+              source=f.geturl()
+          assert len(raw)<1000001
+          assert source.startswith('https://esmis.nal.usda.gov/')
+          parsed=parse_wasde_corn(raw,'November','Oct','Nov')
+          assert parsed['previous_month_ending_stock_mbu']==1849
+          assert parsed['current_month_ending_stock_mbu']==1758
+          print('K411_USDA_OFFICIAL_NOVEMBER_REAL_FORMAT_PASS_NOT_DECEMBER_OUTCOME',len(raw))
+          PY
       - name: Verify H-CORN-001 unit, timing, balance and fail-closed tests
         shell: bash
         run: |
