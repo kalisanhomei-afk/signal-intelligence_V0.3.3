@@ -176,3 +176,46 @@ jobs:
           path: k4-archive/
           retention-days: 30
           if-no-files-found: warn
+
+  k46-historical-source-preflight:
+    name: USDA vintage CSV and historical FGIS source schema probe (research only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout isolated research branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Probe four fixed USDA vintage CSVs and public USDA FGIS endpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.historical_source_probe --output k46-review/source_probe.json
+      - name: Forbid invented pre-release history or model readiness
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("k46-review/source_probe.json")
+          r = json.loads(p.read_text(encoding="utf-8"))
+          assert r["schema"] == "signal-k46-history-source-probe-v1"
+          assert not r["pit_certified"] and not r["trade_eligible"]
+          assert not r["market_data_purchased"]
+          assert set(r["sources"]) == {"2024-11","2024-12","2025-11","2025-12"}
+          print("K46_SOURCE_PREFLIGHT_COMPLETE_NO_PIT_OR_ALPHA_CLAIM")
+          PY
+      - name: Save short provenance and source header receipts (not licensed vendor data)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k46-usda-historical-source-preflight
+          path: k46-review/source_probe.json
+          retention-days: 30
+          if-no-files-found: warn
