@@ -32,13 +32,20 @@ class ResearchPortfolioTests(unittest.TestCase):
         self.assertFalse(a["decision"]["trade_eligible"])
         self.assertFalse(b["decision"]["trade_eligible"])
 
-    def test_all_official_future_results_and_errors_remain_null(self):
+    def test_each_event_keeps_score_empty_until_official_result_arrives(self):
         for card in self.cards:
-            self.assertEqual(card["official_outcome"]["status"],"NOT_RELEASED")
-            self.assertIsNone(card["official_outcome"]["value"])
-            self.assertIsNone(card["score"]["v0_absolute_error"])
-            self.assertIsNone(card["score"]["consensus_absolute_error"])
-            self.assertIsNone(card["score"]["v1_absolute_error"])
+            official=card["official_outcome"]
+            score=card["score"]
+            if official["status"]=="NOT_RELEASED":
+                self.assertIsNone(official["value"])
+                self.assertIsNone(score["v0_absolute_error"])
+                self.assertIsNone(score["consensus_absolute_error"])
+                self.assertIsNone(score["v1_absolute_error"])
+            else:
+                self.assertEqual(official["status"],"RESEARCH_BRANCH_RAW_CAPTURED")
+                self.assertEqual(score["v0_absolute_error"],
+                                 abs(official["value"]-card["forecast"]["value"]))
+                self.assertFalse(card["decision"]["trade_eligible"])
 
     def test_k5_indicative_calendar_is_not_consensus(self):
         card=self.by_id["H-NG-001"]
@@ -187,6 +194,44 @@ class ResearchPortfolioTests(unittest.TestCase):
             path.write_text(build_html(self.manifest,self.cards),encoding="utf-8")
             self.assertGreater(path.stat().st_size,5000)
             self.assertTrue(path.read_text(encoding="utf-8").startswith("<!doctype html>"))
+
+    def test_synthetic_post_release_K5_result_can_be_reviewed_without_rewriting_v0(self):
+        # This is a DESIGN TEST ONLY. No Nov19 EIA outcome is supplied or asserted.
+        future_head="c"*40
+        manifest=deepcopy(self.manifest)
+        manifest["prs"][3]["head_commit_sha"]=future_head
+        self.assertIsNotNone(validate_manifest(manifest))
+        indices={p["number"]:p for p in manifest["prs"]}
+        fake=deepcopy(self.by_id["H-NG-001"])
+        fake["official_outcome"].update({
+            "status":"RESEARCH_BRANCH_RAW_CAPTURED",
+            "value":40,
+            "raw_sha256":"b"*64,
+            "capture_utc":"2026-11-19T15:40:00Z",
+            "evidence_link":"https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/blob/"+
+                future_head+"/research_core/k5/evidence/eia/SYNTHETIC_TEST_ONLY.json"
+        })
+        fake["score"]["v0_absolute_error"]=21
+        self.assertEqual(validate_card(fake,indices),fake)
+        self.assertEqual(fake["forecast"]["source_commit_ref"],
+                         "f613719479c9ede0add2e6ff0893c0fa1831c765")
+        self.assertIn("40 Bcf",render_card(fake,manifest["repository"]))
+        self.assertFalse(fake["score"]["out_of_sample_edge_verified"])
+        self.assertFalse(fake["decision"]["trade_eligible"])
+
+    def test_synthetic_future_value_with_wrong_error_still_blocked(self):
+        fake=deepcopy(self.by_id["H-NG-001"])
+        fake["official_outcome"].update({
+            "status":"RESEARCH_BRANCH_RAW_CAPTURED",
+            "value":40,
+            "raw_sha256":"b"*64,
+            "capture_utc":"2026-11-19T15:40:00Z",
+            "evidence_link":"https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/blob/"+
+                "c"*40+"/research_core/k5/evidence/eia/SYNTHETIC_TEST_ONLY.json"
+        })
+        fake["score"]["v0_absolute_error"]=0
+        with self.assertRaisesRegex(ValueError,"OUTCOME_SCORE_WRONG"):
+            validate_card(fake,self.prs)
 
     def test_no_investment_promotion_in_portfolio_gate(self):
         m=deepcopy(self.manifest)
