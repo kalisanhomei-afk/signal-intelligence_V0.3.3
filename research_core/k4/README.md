@@ -7,6 +7,7 @@
 > - **K4.5-C**：12 月市場共識來源與官方原始證據仍待公告前獨立保存，`PIT_UNVERIFIED`、`trade_eligible=false`；PR #22 保持 Draft、隔離於 main。
 > - **K4.6**：已從 USDA 官方當年發布版本 CSV 取得 2021/22–2025/26 共 **5 個年度** 11→12 月玉米出口與期末庫存修訂標籤、原始 CSV SHA-256；2017–2020 官方歷史 ZIP 本次取得失敗，明確保留缺口。FGIS 歷史檢驗 API 可讀，但當週初版 as-of 仍未認證，故 **僅限 outcome labels，不能進入無前視偏差回測**。詳見 [歷史校準稽核](K46_HISTORICAL_CALIBRATION_AUDIT_zh-TW.md)。
 > - **K4.7（2026-11-17 最新）**：USDA 官方鏡像 ZIP 已成功補齊 2017/18–2020/21，配合 K4.6 共 **9 個連續年度**真實 Nov→Dec 玉米出口與期末庫存修訂標籤，來源 ZIP／CSV 與各年原始資料 SHA 已留存；驗收 [#43998763582](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/43998763582)：149/149 測試通過。**仍缺 FGIS 每週最初公布的獨立 as-of 證據，因此不可升格為預測回測或交易優勢。** 參見 [K4.7 九年來源與版本稽核](K47_NINE_YEAR_SOURCE_VINTAGE_AUDIT_zh-TW.md)。研究網路重抓現改為僅在 PR 掛上 `k4-source-refresh` 標籤時啟用，避免文件修改反覆下載。
+> - **K4.8（2026-11-17 最新）**：已從 USDA 官網當週報表取得真正完整 WA_GR101（11/16 發布、週截至 11/12）原始 18,499 bytes，`SHA-256=4555c478b09d2507d042de55c6d5042e095f37b13d05185fcf889433c52802e5`，與 UTC 實際捕獲回執一起提交 GitHub，原始 Blob SHA 比對一致；[完整 K4.8 前瞻封存稽核](K48_FORWARD_FGIS_CAPTURE_AUDIT_2026-11-17_zh-TW.md)。最新 [CI #44000667200](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/44000667200)：160/160 PASS。此僅是 **一份真正前瞻捕獲**，不是九年歷史特徵 PIT 完成、不是 12 月市場共識或 V1 alpha；一次性網路擷取 job 已關閉。
 
 
 
