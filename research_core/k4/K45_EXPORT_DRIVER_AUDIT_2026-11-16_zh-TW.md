@@ -5,7 +5,8 @@
 ## 資料身分與可得時間
 
 - 上游數據：USDA AMS/FGIS `WA_GR101` — Grain Inspected for Export，報告週結束日 2026-11-12，原始報告登錄 2026-11-16（catalog 顯示 09:56 am，時區未獨立驗證）。
-- 官方動態報告目錄：https://mymarketnews.ams.usda.gov/viewReport/3071；檔案清單於 2026/11/16 顯示 `WA_GR101`；動態網站**不是不可竄改版本封存**。
+- USDA 官方原始 TXT 入口：https://www.ams.usda.gov/mnreports/wa_gr101.txt （在 2026-11-17 網頁檢視時明列 `WA_GR101`、2026-11-16、該週玉米 865,503 公噸、累計 12,463,023 公噸；但此 URL 會被新週報覆寫，**不可視為不可竄改的歷史封存**）。
+- 官方動態報告目錄：https://mymarketnews.ams.usda.gov/viewReport/3071；報告清單於 2026-11-16 顯示 `WA_GR101`。由於原始 TXT 位元組下載失敗，`official_raw_sha256=null`，仍不能宣稱已取得 raw-byte PIT。
 - 本次可核對數字來源：CME Economic Calendar, 2026-11-16 10:00 CT https://www.cmegroup.com/education/events/econoday/675853；`source_report_release_utc_claim=2026-11-16T16:00:00Z` 是以 CME 公布時間換算的**來源時間聲稱**，不是獨立認證的首筆可取得時間。
 - `inputs_cutoff_utc=2026-11-17T00:00:00Z`（截至該時間公開的資訊快照）；截至此次研究尚無官方文件原始位元組 SHA、可信獨立 captura 時間，必須維持 `source_pit_authenticated=false`。
 - 目標：USDA 2026-12-10 12:00 ET 預定發布之 2026/27 美國玉米 ending stocks (million bushels)。不將 Nov16 出口資料改寫已封存的 V0 = 1,758 million bushels。
