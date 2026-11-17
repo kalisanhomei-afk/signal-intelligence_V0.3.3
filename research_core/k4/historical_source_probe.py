@@ -7,7 +7,8 @@ import io
 import json
 from pathlib import Path
 from urllib.request import urlopen, Request
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit, urljoin
+from html.parser import HTMLParser
 
 BASE = "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-"
 WASDE = {f"{y}-{m}": f"{BASE}{y}-{m}.csv" for y in (2024, 2025) for m in ("11", "12")}
@@ -54,9 +55,42 @@ def assess_wasde(raw: bytes, actual: str):
             "us_corn_supply_rows_sample":target_examples,
             "status":"RETRIEVED_SCHEMA_ONLY_NOT_PIT_CERTIFIED"}
 
+class HistoricBundleLinks(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.href=None
+        self.text=[]
+        self.links=[]
+
+    def handle_starttag(self, tag, attrs):
+        if tag=="a":
+            self.href=dict(attrs).get("href")
+            self.text=[]
+
+    def handle_data(self, value):
+        if self.href is not None: self.text.append(value)
+
+    def handle_endtag(self, tag):
+        if tag=="a" and self.href is not None:
+            label=" ".join(" ".join(self.text).split())
+            if ("January 2016 to December 2020" in label or
+                "April 2010 to December 2015" in label):
+                url=urljoin("https://www.usda.gov/oce/commodity-markets/wasde/historical-wasde-report-data",self.href)
+                if urlsplit(url).scheme=="https" and urlsplit(url).hostname in ALLOWED:
+                    self.links.append({"label":label,"url":url})
+            self.href=None
+            self.text=[]
+
 def probe():
     result = {"schema":"signal-k46-history-source-probe-v1","sources":{},
               "market_data_purchased":False,"pit_certified":False,"trade_eligible":False}
+    try:
+        page, _=fetch("https://www.usda.gov/oce/commodity-markets/wasde/historical-wasde-report-data")
+        parser=HistoricBundleLinks()
+        parser.feed(page.decode("utf-8",errors="replace"))
+        result["usda_archived_bundle_links"]=parser.links
+    except Exception as exc:
+        result["usda_archived_bundle_links"]=[{"status":"UNAVAILABLE","error_type":type(exc).__name__}]
     for date, url in WASDE.items():
         try:
             raw, actual = fetch(url)
@@ -85,6 +119,7 @@ def main():
     args.output.write_text(json.dumps(r,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     print(json.dumps({"statuses":{k:v["status"] for k,v in r["sources"].items()},
                       "fgis_status":r["fgis_api"]["status"],"pit_certified":False}))
+    print("K46_USDA_ARCHIVE_BUNDLE_LINKS",json.dumps(r["usda_archived_bundle_links"]))
     for key in ("2024-11","2024-12","2025-11","2025-12"):
         item=r["sources"][key]
         if item["status"].startswith("RETRIEVED"):
