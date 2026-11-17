@@ -2,7 +2,7 @@
   "meta": {
     "version": "0.5.1",
     "status": "human_reviewed_reference_benchmark_only",
-    "generated_at": "2026-11-17T01:43:54+00:00",
+    "generated_at": "2026-11-17T13:41:07+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "global_news_recall": null,
     "overall_news_importance_accuracy": null,
@@ -94,15 +94,7 @@
       "benchmark_approved": false,
       "in_45_day_history_window": true,
       "reviewed_match": false,
-      "suggestions_not_verified": [
-        {
-          "item_id": "rss-aeb9f5365fde19f44e2313",
-          "title": "GDP (Advance Estimate), 3rd Quarter 2026",
-          "publisher_id": "bea",
-          "possible_same_url": true,
-          "title_similarity_hint": 0.24
-        }
-      ]
+      "suggestions_not_verified": []
     },
     {
       "id": "bea-sept-pce",
@@ -118,15 +110,7 @@
       "benchmark_approved": false,
       "in_45_day_history_window": true,
       "reviewed_match": false,
-      "suggestions_not_verified": [
-        {
-          "item_id": "rss-ed83cb0bc28656a36c6f39",
-          "title": "Personal Income and Outlays, September 2026",
-          "publisher_id": "bea",
-          "possible_same_url": true,
-          "title_similarity_hint": 0.21
-        }
-      ]
+      "suggestions_not_verified": []
     },
     {
       "id": "bea-sept-trade",
@@ -142,15 +126,7 @@
       "benchmark_approved": false,
       "in_45_day_history_window": true,
       "reviewed_match": false,
-      "suggestions_not_verified": [
-        {
-          "item_id": "rss-9cc53e9eda9e7cde360497",
-          "title": "U.S. International Trade in Goods and Services, September 2026",
-          "publisher_id": "bea",
-          "possible_same_url": true,
-          "title_similarity_hint": 0.17
-        }
-      ]
+      "suggestions_not_verified": []
     },
     {
       "id": "bea-research-dev",
