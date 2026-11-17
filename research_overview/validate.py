@@ -96,6 +96,8 @@ def validate_manifest(m: dict):
         require(q["state"] == "open" and q["draft"] is True and q["merged"] is False,
                 "RESEARCH_PR_NOT_DRAFT")
         require(q["base"] == "codex/k37-orchestration", "PR_RESEARCH_BASE_UNEXPECTED")
+        if ident in (22, 23):
+            require(hash_value(q.get("head_commit_sha"), "sha1"), "RESEARCH_COMMIT_ANCHOR_MISSING")
     require(indexed[20]["state"] == "closed" and indexed[20]["merged"] is True and
             indexed[20]["scope"] == "registration_only" and indexed[20]["base"] == "main",
             "PR20_EXAGGERATED")
@@ -137,6 +139,9 @@ def validate_card(c: dict, prs: dict):
             "NO_FROZEN_V0")
     require(f["source_branch"] == c["research_branch"] and github_path(f["source_path"]),
             "FORECAST_SOURCE_PATH_MISMATCH")
+    require(f.get("source_commit_ref") == prs[c["research_pr"]].get("head_commit_sha") and
+            hash_value(f.get("source_git_blob_sha1"), "sha1"),
+            "FORECAST_COMMIT_ANCHOR_MISMATCH")
     proof = f["frozen_proof"]
     require((proof["type"] == "git_blob_sha1" and hash_value(proof["value"], "sha1")) or
             (proof["type"] == "sha256_of_frozen_forecast_json" and hash_value(proof["value"])),
@@ -145,6 +150,9 @@ def validate_card(c: dict, prs: dict):
     require(original["prospective_raw_source_available"] is True, "NO_PRIOR_ORIGINAL_EVIDENCE")
     require(github_path(original["prospective_raw_source_path"]) and
             hash_value(original["prospective_raw_source_sha256"]), "PRIOR_ORIGINAL_HASH_MISSING")
+    require(original.get("source_commit_ref") == prs[c["research_pr"]].get("head_commit_sha") and
+            hash_value(original.get("source_git_blob_sha1"), "sha1"),
+            "PRIOR_EVIDENCE_COMMIT_ANCHOR_MISMATCH")
     require(original["historical_predictor_pit_verified"] is False and
             original["prior_source_capture_utc_independently_attested"] is False,
             "SOURCE_PIT_PROMOTED_WITHOUT_PROOF")
@@ -224,4 +232,16 @@ def load_portfolio(root: Path = HERE):
             by_id["H-NG-001"]["forecast"]["value"] == 61 and
             by_id["H-NG-001"]["event_id"] == "EIA-WNGSR-2026-11-19",
             "NATGAS_FROZEN_BASELINE_CHANGED")
+    require(by_id["H-CORN-001"]["forecast"]["source_path"] ==
+            "research_core/k4/cases/2026-12-10-forward-baseline-forecast.json" and
+            by_id["H-CORN-001"]["forecast"]["source_git_blob_sha1"] ==
+            "ad00e4c0989d98eae56b31960fc9c24cd76da120" and
+            by_id["H-CORN-001"]["evidence"]["source_git_blob_sha1"] ==
+            "9102c9c4e66dd0239d043a5c2c756ecb678bfffe",
+            "CORN_ORIGINAL_LINK_IDENTITY_CHANGED")
+    require(by_id["H-NG-001"]["forecast"]["source_git_blob_sha1"] ==
+            "bacc82f549fb3bba74142139d89bec94e386d88e" and
+            by_id["H-NG-001"]["evidence"]["source_git_blob_sha1"] ==
+            "8fb2ef46421b9a4af513f54e298aef45943a79b5",
+            "NATGAS_ORIGINAL_LINK_IDENTITY_CHANGED")
     return m, cards
