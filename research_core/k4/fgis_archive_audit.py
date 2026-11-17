@@ -31,6 +31,13 @@ def audit(folder):
         name=r.get("raw_filename",r.get("source_raw_file"))
         if not isinstance(name,str) or Path(name).name!=name or not name.endswith(".txt"):
             raise ValueError("UNSAFE_RAW_FILENAME")
+        # K4.8 captured the file as _official_captured.txt but committed
+        # those same bytes under _official_raw.txt. This one explicit alias
+        # preserves the original receipt without weakening future receipts.
+        if (r.get("schema")=="signal-k48-fgis-prospective-raw-capture-v1" and
+            name=="WA_GR101_20261116_official_captured.txt" and
+            digest=="4555c478b09d2507d042de55c6d5042e095f37b13d05185fcf889433c52802e5"):
+            name="WA_GR101_20261116_official_raw.txt"
         raw_path=directory/name
         raw=raw_path.read_bytes()
         if hashlib.sha256(raw).hexdigest()!=digest or len(raw)!=r["source_raw_bytes"]:
