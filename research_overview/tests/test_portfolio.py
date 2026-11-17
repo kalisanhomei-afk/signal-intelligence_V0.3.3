@@ -125,6 +125,44 @@ class ResearchPortfolioTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"RESEARCH_BRANCH_MISMATCH"):
             validate_card(fake,self.prs)
 
+    def test_k4_must_link_actual_frozen_forecast_not_scoring_contract(self):
+        original=self.by_id["H-CORN-001"]
+        self.assertEqual(original["forecast"]["source_path"],
+            "research_core/k4/cases/2026-12-10-forward-baseline-forecast.json")
+        fake=deepcopy(original)
+        fake["forecast"]["source_path"]="research_core/k4/cases/2026-12-10-v0-scoring-contract.json"
+        with self.assertRaisesRegex(ValueError,"FORECAST_ORIGINAL_PATH_MISMATCH"):
+            validate_card(fake,self.prs)
+
+    def test_k4_commit_anchor_cannot_drift(self):
+        fake=deepcopy(self.by_id["H-CORN-001"])
+        fake["forecast"]["source_commit_ref"]="a"*40
+        with self.assertRaisesRegex(ValueError,"FORECAST_COMMIT_ANCHOR_MISMATCH"):
+            validate_card(fake,self.prs)
+
+    def test_k5_eia_original_commit_anchor_cannot_drift(self):
+        fake=deepcopy(self.by_id["H-NG-001"])
+        fake["evidence"]["source_commit_ref"]="b"*40
+        with self.assertRaisesRegex(ValueError,"PRIOR_EVIDENCE_COMMIT_ANCHOR_MISMATCH"):
+            validate_card(fake,self.prs)
+
+    def test_manifest_rejects_missing_head_sha(self):
+        fake=deepcopy(self.manifest)
+        fake["prs"][2].pop("head_commit_sha")
+        with self.assertRaisesRegex(ValueError,"RESEARCH_COMMIT_ANCHOR_MISSING"):
+            validate_manifest(fake)
+
+    def test_html_links_are_commit_pinned_not_mutable_head(self):
+        a=self.by_id["H-CORN-001"]
+        b=self.by_id["H-NG-001"]
+        rendered=render_card(a,self.manifest["repository"])+render_card(b,self.manifest["repository"])
+        for card in (a,b):
+            self.assertIn("/blob/"+card["forecast"]["source_commit_ref"]+"/",rendered)
+            self.assertIn(card["forecast"]["source_path"],rendered)
+            self.assertIn(card["evidence"]["prospective_raw_source_path"],rendered)
+        self.assertNotIn("/blob/codex/k4-corn-hypothesis-mvp/",rendered)
+        self.assertNotIn("/blob/codex/k5-natural-gas-scout/",rendered)
+
     def test_html_is_readonly_static_and_renders_all_gates(self):
         html=build_html(self.manifest,self.cards)
         self.assertIn("H-CORN-001",html)
