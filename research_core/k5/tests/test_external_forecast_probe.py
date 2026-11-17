@@ -29,9 +29,11 @@ class K52ThirdPartyForecastTests(unittest.TestCase):
             parse_candidate("metatrader_event_calendar",
                             "Next release 19 Nov 2026 15:30 GMT Actual pending Forecast 61 B")
 
-    def test_missing_model_claim_publication_rejected(self):
-        with self.assertRaisesRegex(ValueError,"PUBLISHER_CLAIM_NOT_FOUND"):
-            parse_candidate("named_forecaster_arc","Open call +13.4 Bcf, build Week ending Nov 13, 2026.")
+    def test_missing_model_claim_publication_is_null_not_invented(self):
+        r=parse_candidate("named_forecaster_arc","Open call +13.4 Bcf, build Week ending Nov 13, 2026.")
+        self.assertEqual(r["forecast_net_change_bcf"],13.4)
+        self.assertIsNone(r["publisher_publication_time_claim"])
+        self.assertFalse(r["publisher_claim_independently_authenticated"])
 
     def test_html_text_skips_scripts(self):
         s=ExtractText()
