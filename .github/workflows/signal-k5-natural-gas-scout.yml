@@ -1,0 +1,51 @@
+name: SIGNAL K5 Natural Gas Hypothesis Scout
+on:
+  pull_request:
+    paths:
+      - 'research_core/k5/**'
+      - '.github/workflows/signal-k5-natural-gas-scout.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-source-and-pre-release-baseline:
+    name: K5 official-source snapshot and prospective V0 gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout isolated PR without write token
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run all K5 offline guardrail tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest discover -s research_core/k5/tests -p 'test_*.py' -v
+      - name: Recreate next-report baseline from the already-published official reference
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k5.ng_baseline \
+            --case research_core/k5/cases/2026-11-19-eia-prior-week-input.json \
+            --output k5-review/ng_baseline_recomputed.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path('k5-review/ng_baseline_recomputed.json').read_text(encoding='utf-8'))
+          b=json.loads(Path('research_core/k5/cases/2026-11-19-eia-frozen-v0-forecast.json').read_text(encoding='utf-8'))
+          assert a==b
+          assert a['forecast_net_change_bcf']==61
+          assert a['actual_next_release_net_change_bcf'] is None
+          assert a['market_consensus_bcf'] is None
+          assert a['source_raw_sha256'] is None
+          assert not a['independent_pit_certified']
+          assert not a['trade_eligible']
+          print('K5_FORECAST_FROZEN_PRIOR_TO_EIA_NOV19_OUTCOME_NO_ALPHA')
+          PY
