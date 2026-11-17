@@ -2,7 +2,8 @@
 from __future__ import annotations
 import argparse
 import csv
-from datetime import date
+from datetime import date, datetime
+import re
 from decimal import Decimal, InvalidOperation
 import hashlib
 import io
@@ -29,7 +30,13 @@ def extract_vintage(raw: bytes, year: int, month: int):
             continue
         if r["ForecastYear"] != str(year) or r["ForecastMonth"] != str(month):
             raise ValueError("FORECAST_VINTAGE_MISMATCH")
-        when = date.fromisoformat(r["ReleaseDate"])
+        published = r["ReleaseDate"].strip()
+        if re.fullmatch(r"\\d{2}/\\d{2}/\\d{4}",published):
+            when = datetime.strptime(published,"%m/%d/%Y").date()
+        elif re.fullmatch(r"\\d{4}-\\d{2}-\\d{2}",published):
+            when = date.fromisoformat(published)
+        else:
+            raise ValueError("UNSUPPORTED_SOURCE_DATE_FORMAT")
         if when.year != year or when.month != month:
             raise ValueError("RELEASE_DATE_VINTAGE_MISMATCH")
         try:
