@@ -11,6 +11,8 @@
 
 > - **K4.9（2026-11-17 最新）**：已完成可依報告日期、週結束日及 WASDE 截止 UTC 運作的通用 FGIS 週報擷取器 `fgis_weekly_vintage.py`、按原始 SHA-256 保留不同版本及前週修訂差額，另有 `fgis_archive_audit.py` 對 GitHub 所有封存原件做純離線 SHA／內容／取得 UTC／連續週次稽核。修復 K4.8 已知一次性舊檔名與回執差異，不更改原始證據；[CI #44002761793](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/44002761793) **185/185 PASS**。原有 11/24、12/01、12/08 台灣時間檢查任務已更新採用 [K4.9 執行規範](K49_WEEKLY_FGIS_CAPTURE_RUNBOOK_zh-TW.md)；新週報尚未發表，**不能把未來週別標示為已封存**。
 
+> - **K4.10（2026-11-17 最新）**：已將 2017/18–2025/26 九年官方修訂做成固定持平預測評分基準：MAE **57.78**、RMSE **85.89**、絕對誤差中位數 **45**（百萬蒲式耳）；12/10 USDA 期末庫存 V0=**1758** 的 SHA 與 **絕對誤差**計分法已在公告前鎖定，12 月分析師共識和 USDA 實際值保持 null，絕不事後回填或移用 11 月共識。程式 [`prospective_scorecard.py`](prospective_scorecard.py)、[K4.10 中文驗收規格](K410_V0_REFERENCE_AND_DECEMBER_SCORING_zh-TW.md)；核心 [CI #44003988190](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/44003988190) **199/199 PASS**。12/11 台灣上午約 09:00 已有一次性驗收追蹤；缺乏實際證據即保持 BLOCKED，**不代表可交易**。
+
 
 
 **Decision: ACCOUNTING / MECHANISM RESEARCH ONLY; PIT_UNVERIFIED; NO PRICE EDGE VERIFIED; NO TRADING.**
