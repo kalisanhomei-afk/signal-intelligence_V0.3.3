@@ -64,6 +64,12 @@ class ExportDriverScreenTests(unittest.TestCase):
         c = sample(); c["numerical_source_url"] = "https://example.com"
         with self.assertRaisesRegex(ValueError, "SOURCE_IDENTITY_MISMATCH"): assess(c)
 
+    def test_official_raw_txt_link_is_pinned(self):
+        c = sample()
+        c["official_raw_txt_url"] = "https://unverified.example/weekly-report.txt"
+        with self.assertRaisesRegex(ValueError, "SOURCE_IDENTITY_MISMATCH"):
+            assess(c)
+
     def test_impossible_week_value_rejected(self):
         c = sample(); c["weekly_inspections_mt"] = c["cumulative_inspections_mt"] + 1
         with self.assertRaisesRegex(ValueError, "WEEK_EXCEEDS_YEAR"): assess(c)
