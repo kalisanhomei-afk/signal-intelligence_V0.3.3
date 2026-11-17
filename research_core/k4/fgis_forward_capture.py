@@ -15,10 +15,11 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
 SOURCES = (
+    "https://mymarketnews.ams.usda.gov/filerepo/sites/default/files/3071/2026-11-16/1365706/ams_3071_00353.txt",
     "https://www.ams.usda.gov/mnreports/wa_gr101.txt",
     "https://usda.azureedge.us/mnreports/wa_gr101.txt",
 )
-ALLOWED_HOSTS={"www.ams.usda.gov","usda.azureedge.us"}
+ALLOWED_HOSTS={"mymarketnews.ams.usda.gov","www.ams.usda.gov","usda.azureedge.us"}
 DATE_EXPECTED="2026-11-16"
 WEEK_EXPECTED="2026-11-12"
 DECEMBER_RELEASE="2026-12-10T17:00:00Z"
@@ -101,6 +102,8 @@ def capture(output_dir, fetcher=fetch):
                 "hypothesis_id":"H-CORN-001",
                 "source":metadata,
                 "source_report":data,
+                "selected_official_historical_version_path":"/3071/2026-11-16/1365706/" in metadata["response_url"],
+                "source_historical_url_is_cryptographically_immutable":False,
                 "source_raw_file":saved_name,
                 "source_raw_sha256":hashlib.sha256(raw).hexdigest(),
                 "source_raw_bytes":len(raw),
