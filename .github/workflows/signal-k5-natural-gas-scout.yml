@@ -49,34 +49,3 @@ jobs:
           assert not a['trade_eligible']
           print('K5_FORECAST_FROZEN_PRIOR_TO_EIA_NOV19_OUTCOME_NO_ALPHA')
           PY
-
-  k51-one-time-official-raw-acquisition:
-    name: K5.1 one-time EIA Nov13 original JSON evidence capture
-    runs-on: ubuntu-latest
-    timeout-minutes: 4
-    permissions:
-      contents: read
-    steps:
-      - name: Read isolated PR branch, no write token
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - name: Python 3.12
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Capture only exact pre-Nov19 EIA prior-release original bytes
-        shell: bash
-        run: |
-          set -euo pipefail
-          python -B -m research_core.k5.eia_prior_original_capture \
-            --output-dir k51-review/prior-eia-raw \
-            --emit-source-to-ci-log-once
-      - name: Upload original official public EIA JSON + capture receipt
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: signal-k51-pre-nov19-eia-prior-original-receipt
-          path: k51-review/prior-eia-raw/
-          if-no-files-found: warn
-          retention-days: 7
