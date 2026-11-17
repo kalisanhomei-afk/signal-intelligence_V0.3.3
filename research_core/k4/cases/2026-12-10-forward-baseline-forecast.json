@@ -1,0 +1,19 @@
+{
+  "comparison": "prior_USDA_only_not_independent_alpha",
+  "consensus_independently_pit_verified": false,
+  "consensus_value_mbu": null,
+  "decision": "PERSISTENCE_BASELINE_FROZEN_CANDIDATE_NOT_SIGNAL",
+  "event_id": "USDA-WASDE-2026-12-10",
+  "forecast_created_utc": "2026-11-17T00:57:44Z",
+  "forecast_inputs_cutoff_utc": "2026-11-17T00:57:44Z",
+  "forecast_value_mbu": 1758,
+  "method_id": "USDA_PREVIOUS_WASDE_PERSISTENCE_V0",
+  "model_adjustments_independently_evidenced": false,
+  "release_scheduled_utc": "2026-12-10T17:00:00Z",
+  "schema": "signal-k45-ex-ante-forecast-v1",
+  "source_content_independently_authenticated": false,
+  "source_raw_sha256": null,
+  "source_url": "https://esmis.nal.usda.gov/sites/default/release-files/796142/wasde1126.txt",
+  "target": "US_CORN_2026_27_ENDING_STOCKS_MBU",
+  "trade_eligible": false
+}
