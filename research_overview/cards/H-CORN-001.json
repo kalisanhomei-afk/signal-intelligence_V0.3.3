@@ -13,12 +13,14 @@
     "model": "USDA_PREVIOUS_WASDE_PERSISTENCE_V0",
     "value": 1758,
     "frozen_before_event": true,
-    "source_path": "research_core/k4/cases/2026-12-10-v0-scoring-contract.json",
+    "source_path": "research_core/k4/cases/2026-12-10-forward-baseline-forecast.json",
     "source_branch": "codex/k4-corn-hypothesis-mvp",
     "frozen_proof": {
       "type": "sha256_of_frozen_forecast_json",
       "value": "54d4d7597d457c64307e9a2e1e5670cd5f1ecd52676180eded2a19a8ebcaca48"
-    }
+    },
+    "source_commit_ref": "bdc68222f4b9ca7eba07b96205ac510c0d8bf345",
+    "source_git_blob_sha1": "ad00e4c0989d98eae56b31960fc9c24cd76da120"
   },
   "evidence": {
     "prior_source": "USDA WASDE November 2026 as-reported",
@@ -27,7 +29,9 @@
     "prospective_raw_source_sha256": "4555c478b09d2507d042de55c6d5042e095f37b13d05185fcf889433c52802e5",
     "historical_outcome_labels_years": 9,
     "historical_predictor_pit_verified": false,
-    "prior_source_capture_utc_independently_attested": false
+    "prior_source_capture_utc_independently_attested": false,
+    "source_commit_ref": "bdc68222f4b9ca7eba07b96205ac510c0d8bf345",
+    "source_git_blob_sha1": "9102c9c4e66dd0239d043a5c2c756ecb678bfffe"
   },
   "market_consensus": {
     "status": "NOT_VERIFIED",
