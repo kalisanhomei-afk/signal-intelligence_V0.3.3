@@ -135,12 +135,40 @@ def evaluate(frozen_bytes,prior_raw,prior_receipt,raw=None,capture=None):
             "revised_prior_week_bcf":outcome["prior_official_week_stock_revision_bcf"],
             "official_data_checks":outcome}
 
+def evaluate_with_receipt(raw, receipt, frozen_bytes=None, prior_raw=None, prior_receipt=None):
+    if not isinstance(receipt,dict) or set(receipt)!={
+        "schema","event_id","target_week_end","source_raw_sha256",
+        "source_raw_bytes","capture","first_published_pit_authenticated","trade_eligible"
+    }:
+        raise ValueError("POSTRELEASE_RECEIPT_CONTRACT_MISMATCH")
+    if (receipt["schema"]!="signal-k52-post-eia-original-evidence-v1" or
+        receipt["event_id"]!=EVENT or receipt["target_week_end"]!=WEEK or
+        receipt["trade_eligible"] is not False or
+        receipt["first_published_pit_authenticated"] is not False):
+        raise ValueError("POSTRELEASE_EVIDENCE_IDENTITY_MISMATCH")
+    if (receipt["source_raw_sha256"]!=hashlib.sha256(raw).hexdigest() or
+        receipt["source_raw_bytes"]!=len(raw)):
+        raise ValueError("POSTRELEASE_RAW_BYTE_SHA_MISMATCH")
+    return evaluate(
+        frozen_bytes if frozen_bytes is not None else FROZEN.read_bytes(),
+        prior_raw if prior_raw is not None else FIRST.read_bytes(),
+        prior_receipt if prior_receipt is not None else PRIOR_RECEIPT.read_bytes(),
+        raw,receipt["capture"])
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--output",type=Path,required=True)
-    # No post-event outcome args by default; code cannot hallucinate it.
+    p.add_argument("--event-raw",type=Path,default=None)
+    p.add_argument("--event-receipt",type=Path,default=None)
     args=p.parse_args()
-    result=evaluate(FROZEN.read_bytes(), FIRST.read_bytes(), PRIOR_RECEIPT.read_bytes())
+    if (args.event_raw is None) != (args.event_receipt is None):
+        p.error("both --event-raw and --event-receipt are required together")
+    if args.event_raw is None:
+        result=evaluate(FROZEN.read_bytes(), FIRST.read_bytes(), PRIOR_RECEIPT.read_bytes())
+    else:
+        result=evaluate_with_receipt(
+            args.event_raw.read_bytes(),
+            json.loads(args.event_receipt.read_text(encoding="utf-8")))
     args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     print(json.dumps({"status":result["status"],"actual":result["actual_net_change_bcf"],
