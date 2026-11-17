@@ -18,7 +18,9 @@
     "frozen_proof": {
       "type": "git_blob_sha1",
       "value": "bacc82f549fb3bba74142139d89bec94e386d88e"
-    }
+    },
+    "source_commit_ref": "f613719479c9ede0add2e6ff0893c0fa1831c765",
+    "source_git_blob_sha1": "bacc82f549fb3bba74142139d89bec94e386d88e"
   },
   "evidence": {
     "prior_source": "EIA WNGSR 2026-11-13 Lower 48 week ending Nov 6",
@@ -27,7 +29,9 @@
     "prospective_raw_source_sha256": "6eb6c699b789d7130d3f50dbe5681e835b57bc25dd118380398169dda63fe252",
     "historical_outcome_labels_years": null,
     "historical_predictor_pit_verified": false,
-    "prior_source_capture_utc_independently_attested": false
+    "prior_source_capture_utc_independently_attested": false,
+    "source_commit_ref": "f613719479c9ede0add2e6ff0893c0fa1831c765",
+    "source_git_blob_sha1": "8fb2ef46421b9a4af513f54e298aef45943a79b5"
   },
   "market_consensus": {
     "status": "NOT_VERIFIED",
