@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.1",
-    "generated_at": "2026-11-16T15:33:03+00:00",
+    "generated_at": "2026-11-17T01:43:50+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "status": "metadata_gap_audit_only",
     "candidate_count": 12,
@@ -157,13 +157,13 @@
       "fingerprint": "d3cbcd0dd970b250a2172d47"
     },
     {
-      "id": "rss-fbae7cd0ca9331b4f9bf09",
+      "id": "rss-24f157b5583c520353b798",
       "source_id": "mit-research",
       "publisher_id": "mit_news",
-      "title": "Waves that clear waste from the brain during sleep are impaired in older adults",
+      "title": "Q&A: How ocean carbon sequestration changes under different glacial conditions",
       "category": "科技",
-      "published_at": "2026-11-13T10:00:00+00:00",
-      "url": "https://news.mit.edu/2026/waste-clearing-waves-in-brain-during-sleep-are-impaired-in-older-adults-1113",
+      "published_at": "2026-11-16T19:00:00+00:00",
+      "url": "https://news.mit.edu/2026/qa-how-ocean-carbon-sequestration-changes-under-different-glacial-conditions-1116",
       "source_role": "研究機構自有新聞編輯室",
       "evidence_kind": "MIT 自有研究報導標題元資料",
       "evidence_level": "M0",
@@ -179,16 +179,16 @@
         "研究結果與商業部署或規模化是否有證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "c2a01a342f9dacc3c0b03f8a"
+      "fingerprint": "fec36d35dc3c1c1a78102081"
     },
     {
-      "id": "rss-188e9640464d6e20df1ed9",
+      "id": "rss-f709330c4c7d4bfc373bf0",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
-      "title": "Contractor to Civil Servant: NASA Welcomes Jim Mirandy",
+      "title": "Perseverance Update: The Ghostly Rocks of ‘Idubi’ — Bright Remnants of Aqueous Systems from Long Ago",
       "category": "科技",
-      "published_at": "2026-11-16T15:22:09+00:00",
-      "url": "https://www.nasa.gov/centers-and-facilities/stennis/contractor-to-civil-servant-jim-mirandy",
+      "published_at": "2026-11-16T23:12:45+00:00",
+      "url": "https://science.nasa.gov/blog/perseverance-update-the-ghostly-rocks-of-idubi-bright-remnants-of-aqueous-systems-from-long-ago",
       "source_role": "第一手航太科研機構",
       "evidence_kind": "航太與技術機構公開消息標題元資料",
       "evidence_level": "M0",
@@ -204,7 +204,7 @@
         "相關成果有無獨立測試或第三方研究？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "83f67992b2ca2d528ddcee05"
+      "fingerprint": "823ac789d160f8a9f2ab13dd"
     },
     {
       "id": "rss-f5dc4cd120b45659518fb5",

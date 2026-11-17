@@ -2,19 +2,121 @@
   "meta": {
     "version": "0.3.4",
     "mode": "official_metadata",
-    "generated_at": "2026-11-16T15:32:56+00:00",
-    "last_attempt_at": "2026-11-16T15:32:56+00:00",
-    "last_success_at": "2026-11-16T15:32:56+00:00",
+    "generated_at": "2026-11-17T01:43:44+00:00",
+    "last_attempt_at": "2026-11-17T01:43:44+00:00",
+    "last_success_at": "2026-11-17T01:43:44+00:00",
     "successful_sources": 8,
     "source_count": 8,
     "status": "healthy",
-    "new_items_in_run": 45,
-    "item_count": 408,
+    "new_items_in_run": 7,
+    "item_count": 415,
     "retention_days": 45,
     "rights_scope": "descriptive_public_metadata_only",
     "note": "僅公開公告或研究的描述性元資料；不代表全文被查證、來源互為獨立證據，亦非 AI 精選。"
   },
   "items": [
+    {
+      "id": "rss-f709330c4c7d4bfc373bf0",
+      "title": "Perseverance Update: The Ghostly Rocks of ‘Idubi’ — Bright Remnants of Aqueous Systems from Long Ago",
+      "url": "https://science.nasa.gov/blog/perseverance-update-the-ghostly-rocks-of-idubi-bright-remnants-of-aqueous-systems-from-long-ago",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-16T23:12:45+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-17T01:43:44+00:00",
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
+    },
+    {
+      "id": "rss-cce295b82699fc57efd4a2",
+      "title": "A Collage Showing 49 Drill Holes Made by NASA’s Curiosity Mars Rover",
+      "url": "https://science.nasa.gov/photojournal/a-collage-showing-49-drill-holes-made-by-nasas-curiosity-mars-rover",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-16T22:05:23+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-17T01:43:44+00:00",
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
+    },
+    {
+      "id": "rss-7403de890de58df3a42748",
+      "title": "NASA Receives 16th Consecutive ‘Clean’ Financial Audit Opinion",
+      "url": "https://www.nasa.gov/news-release/nasa-receives-16th-consecutive-clean-financial-audit-opinion",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-16T20:30:40+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-17T01:43:44+00:00",
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
+    },
+    {
+      "id": "rss-24f157b5583c520353b798",
+      "title": "Q&A: How ocean carbon sequestration changes under different glacial conditions",
+      "url": "https://news.mit.edu/2026/qa-how-ocean-carbon-sequestration-changes-under-different-glacial-conditions-1116",
+      "source_id": "mit-research",
+      "publisher_id": "mit_news",
+      "source": "MIT News｜研究與創新",
+      "category": "科技",
+      "source_kind": "institutional_news",
+      "published_at": "2026-11-16T19:00:00+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-17T01:43:44+00:00",
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
+    },
+    {
+      "id": "rss-668fc8a9a0da0ffbae4445",
+      "title": "Sentinel-6B in Orbit Around Earth",
+      "url": "https://science.nasa.gov/photojournal/sentinel-6b-in-orbit-around-earth",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-16T18:52:32+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-17T01:43:44+00:00",
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
+    },
+    {
+      "id": "rss-ba39da1c09be83ae70733f",
+      "title": "Thunderbirds in Formation",
+      "url": "https://www.nasa.gov/image-article/thunderbirds-in-formation",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-16T18:34:47+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-17T01:43:44+00:00",
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
+    },
     {
       "id": "rss-188e9640464d6e20df1ed9",
       "title": "Contractor to Civil Servant: NASA Welcomes Jim Mirandy",
@@ -30,7 +132,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-4ffee92f5603cb723fb0d2",
@@ -47,7 +149,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-62ea515fc9b47413bca943",
@@ -64,7 +166,24 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
+    },
+    {
+      "id": "rss-ab897263d8a2b245323cfa",
+      "title": "Remarks by Commissioner Šefčovič at the EU-UK Parliamentary Partnership Assembly",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2460",
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "category": "政治",
+      "source_kind": "official",
+      "published_at": "2026-11-16T14:18:08+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-17T01:43:44+00:00",
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-95108808d6a7d482e9c9ce",
@@ -81,11 +200,11 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-e0439e8155faa4548fea49",
-      "title": "Opening remarks by Executive Vice-President Teresa Ribera on the Commission decision to approve UniCredit's acquisition of Commerzbank",
+      "title": "Opening remarks by Executive Vice-President Ribera on the Commission decision to approve UniCredit's acquisition of Commerzbank",
       "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2453",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
@@ -98,7 +217,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-3b1c758cfacc5239da4703",
@@ -115,7 +234,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-556a7614b046fb3125e4a1",
@@ -132,7 +251,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-29c10dc327257d0e140bd0",
@@ -149,7 +268,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-1a54b5f64a3a300791f91b",
@@ -166,7 +285,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-7a51d0d8ec244eeeca1873",
@@ -183,7 +302,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-ef17915034f8fe4d3cb2fc",
@@ -217,7 +336,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-f765c18ee2038059114c9e",
@@ -234,7 +353,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-f5dc4cd120b45659518fb5",
@@ -251,7 +370,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-f50e63d8425077c4b471e5",
@@ -268,7 +387,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-ecc949253693080f542ec4",
@@ -285,7 +404,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-eab4211ec5c3bb16de1c82",
@@ -302,7 +421,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-e6b637328ef2109d9e898d",
@@ -319,7 +438,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-e51f5d43ff08a4af93eacb",
@@ -336,7 +455,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-dd86e9d4088d13f89ca1f6",
@@ -353,7 +472,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-db119966b06bc107127570",
@@ -370,7 +489,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-d6f2a3136b4179e3604cb7",
@@ -387,7 +506,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-c5e99b47f323d8fc56e110",
@@ -404,7 +523,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-c0fb3abdbf393ee063b314",
@@ -421,7 +540,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-b715b2affb8796e9f221a7",
@@ -438,7 +557,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-b5369aae9868552237b761",
@@ -455,7 +574,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-af8a7e144ce59fae4c06b8",
@@ -472,7 +591,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-acc7a29d379e668484478b",
@@ -489,7 +608,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-ac331e48e2190c4966f31c",
@@ -506,7 +625,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-963bbe19ff67ab4441c4be",
@@ -523,7 +642,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-8438bbec5efa814758ea54",
@@ -540,7 +659,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-7f3ad460c89ae8b74c70c9",
@@ -557,7 +676,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-7c770de66ae1d2f35d6edc",
@@ -574,7 +693,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-6e7825326e83b136fe22d3",
@@ -591,7 +710,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-68fe11d005062f62079e53",
@@ -608,7 +727,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-5da9a95de14e592d935b17",
@@ -625,7 +744,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-5cc536aed4b9c933614710",
@@ -642,7 +761,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-5b66b471dda6a30666311b",
@@ -659,7 +778,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-35a225122c2efce83e233d",
@@ -676,7 +795,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-2b74064ea37c9c76718636",
@@ -693,7 +812,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-199bb42cf667d7c742b5cd",
@@ -710,7 +829,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-195bc1ba47884f4b53004b",
@@ -727,7 +846,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-0e4a08dbe6ed3850782ee7",
@@ -744,7 +863,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-0df80b1fd3a1813ab4eca4",
@@ -761,7 +880,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-04234be9f8573efb0afce7",
@@ -778,7 +897,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-16T15:32:56+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-48f4c41fb88a6ee287fd56",
@@ -795,7 +914,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-14T01:31:49+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-22eb3de9760f07c5c415c4",
@@ -812,7 +931,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-14T01:31:49+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-742ddfea2daea0e322f2cc",
@@ -863,7 +982,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-14T01:31:49+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-b3cadfec94cdc44d4199ed",
@@ -914,7 +1033,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-13T13:37:59+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-c0b7c078fa81b4497f91af",
@@ -1220,7 +1339,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-13T13:37:59+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-ba68d014b0c0b5fafbbfac",
@@ -1577,7 +1696,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-13T01:36:49+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-da9b1cc7c4c966319bebd2",
@@ -1645,7 +1764,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-13T01:36:49+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-8d68a3c33012c205191cfe",
@@ -1696,7 +1815,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-13T01:36:49+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-54932b5451ef2b4f878fb1",
@@ -1883,7 +2002,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-12T13:41:17+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-5cf497c37d846708158654",
@@ -1934,7 +2053,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-12T01:42:43+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-81baee169db989c0a18b8d",
@@ -3039,7 +3158,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-10T13:31:42+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-eb8b3aae475a0234cc9448",
@@ -3311,7 +3430,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-10T13:31:42+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-50653b36e1edda3c81dffa",
@@ -3923,7 +4042,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-09T13:41:42+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-f0fc1ec2b15269c6aefab2",
@@ -4212,7 +4331,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-09T13:41:42+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-69ce3e7f06d8c845ebe1af",
@@ -4620,7 +4739,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-07T01:28:23+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-0bb49f96544d94ecd80e77",
@@ -4637,7 +4756,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-07T01:28:23+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-344d924327419a44654fb9",
@@ -4688,7 +4807,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-07T01:28:23+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-09bb1ad32db5ff72080874",
@@ -5470,7 +5589,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-06T00:57:13+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-55a2930a5c54378a8e52b0",
@@ -5521,7 +5640,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-3993941242fcf8c5b02082",
@@ -5538,7 +5657,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-4d40eb7ca8fc9a3f90fd0f",
@@ -6065,7 +6184,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-06T00:57:13+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-833e9eaf617aca9be82ddf",
@@ -6439,7 +6558,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-acc301e7ba339cf7543554",
@@ -6473,7 +6592,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-06T00:57:13+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-fa3c3955bedd87023e690a",
@@ -6490,7 +6609,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-06T00:57:13+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-526cec034ccb484b91924a",
@@ -6507,7 +6626,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-5fc0241e25c90db0d110df",
@@ -6609,7 +6728,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-4a7112d2f79c11dcd650dd",
@@ -6643,7 +6762,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-ed83cb0bc28656a36c6f39",
@@ -6660,7 +6779,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-aeb9f5365fde19f44e2313",
@@ -6677,7 +6796,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-0b4b10cb796c52ff97a7ea",
@@ -6779,7 +6898,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-8cedd51707f2b8e3c3da68",
@@ -6813,7 +6932,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-9b574b9b6d9a12cd61d443",
@@ -6830,7 +6949,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-207bf0c6d4cca97565ea65",
@@ -6847,7 +6966,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-cb5890d031cd055d66cdc7",
@@ -6864,7 +6983,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-15c2bd28b112053151bc52",
@@ -6881,7 +7000,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-ca688a27006cdc18bac09f",
@@ -6898,7 +7017,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-08dfdbdaa9ce20cc125a15",
@@ -6915,7 +7034,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-109f7d64c8d9628cdb1057",
@@ -6932,7 +7051,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     },
     {
       "id": "rss-73998ce676150f5cf0a3c1",
@@ -6949,7 +7068,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-16T15:32:56+00:00"
+      "last_seen_at": "2026-11-17T01:43:44+00:00"
     }
   ],
   "sources": [
@@ -6962,9 +7081,9 @@
       "ok": true,
       "count": 15,
       "error": null,
-      "last_attempt_at": "2026-11-16T15:32:56+00:00",
-      "last_success_at": "2026-11-16T15:32:56+00:00",
-      "latency_ms": 38,
+      "last_attempt_at": "2026-11-17T01:43:44+00:00",
+      "last_success_at": "2026-11-17T01:43:44+00:00",
+      "latency_ms": 70,
       "evidence_url": "https://www.federalreserve.gov/disclaimer.htm"
     },
     {
@@ -6976,9 +7095,9 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-16T15:32:56+00:00",
-      "last_success_at": "2026-11-16T15:32:56+00:00",
-      "latency_ms": 70,
+      "last_attempt_at": "2026-11-17T01:43:44+00:00",
+      "last_success_at": "2026-11-17T01:43:44+00:00",
+      "latency_ms": 66,
       "evidence_url": "https://www.bea.gov/help/faq/147"
     },
     {
@@ -6990,9 +7109,9 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-16T15:32:56+00:00",
-      "last_success_at": "2026-11-16T15:32:56+00:00",
-      "latency_ms": 75,
+      "last_attempt_at": "2026-11-17T01:43:44+00:00",
+      "last_success_at": "2026-11-17T01:43:44+00:00",
+      "latency_ms": 49,
       "evidence_url": "https://info.arxiv.org/help/api/tou.html"
     },
     {
@@ -7004,9 +7123,9 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-16T15:32:56+00:00",
-      "last_success_at": "2026-11-16T15:32:56+00:00",
-      "latency_ms": 17,
+      "last_attempt_at": "2026-11-17T01:43:44+00:00",
+      "last_success_at": "2026-11-17T01:43:44+00:00",
+      "latency_ms": 18,
       "evidence_url": "https://info.arxiv.org/help/api/tou.html"
     },
     {
@@ -7018,9 +7137,9 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-16T15:32:56+00:00",
-      "last_success_at": "2026-11-16T15:32:56+00:00",
-      "latency_ms": 70,
+      "last_attempt_at": "2026-11-17T01:43:44+00:00",
+      "last_success_at": "2026-11-17T01:43:44+00:00",
+      "latency_ms": 221,
       "evidence_url": "https://www.eia.gov/TODAYINENERGY/about.php"
     },
     {
@@ -7032,9 +7151,9 @@
       "ok": true,
       "count": 10,
       "error": null,
-      "last_attempt_at": "2026-11-16T15:32:56+00:00",
-      "last_success_at": "2026-11-16T15:32:56+00:00",
-      "latency_ms": 29,
+      "last_attempt_at": "2026-11-17T01:43:44+00:00",
+      "last_success_at": "2026-11-17T01:43:44+00:00",
+      "latency_ms": 18,
       "evidence_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
     },
     {
@@ -7046,9 +7165,9 @@
       "ok": true,
       "count": 10,
       "error": null,
-      "last_attempt_at": "2026-11-16T15:32:56+00:00",
-      "last_success_at": "2026-11-16T15:32:56+00:00",
-      "latency_ms": 1299,
+      "last_attempt_at": "2026-11-17T01:43:44+00:00",
+      "last_success_at": "2026-11-17T01:43:44+00:00",
+      "latency_ms": 702,
       "evidence_url": "https://commission.europa.eu/legal-notice_en"
     },
     {
@@ -7060,9 +7179,9 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-16T15:32:56+00:00",
-      "last_success_at": "2026-11-16T15:32:56+00:00",
-      "latency_ms": 55,
+      "last_attempt_at": "2026-11-17T01:43:44+00:00",
+      "last_success_at": "2026-11-17T01:43:44+00:00",
+      "latency_ms": 37,
       "evidence_url": "https://news.mit.edu/terms-of-use"
     }
   ]
