@@ -34,7 +34,7 @@
     {
       "number": 20,
       "title": "K3.8 manual workflow registration",
-      "branch": "codex/k38-manual-workflow-registration",
+      "branch": "codex/k38-manual-dispatch-registration",
       "base": "main",
       "state": "closed",
       "draft": false,
