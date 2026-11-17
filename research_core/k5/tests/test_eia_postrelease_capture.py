@@ -74,6 +74,26 @@ class PostReleaseK52Tests(unittest.TestCase):
             self.assertEqual(b["reason"],"EVIDENCE_COLLISION_NO_OVERWRITE")
             self.assertEqual(len(list(Path(d).glob("*"))),3)
 
+    def test_concurrent_receipt_creation_never_overwritten_or_deleted(self):
+        from unittest.mock import patch
+        original_open=Path.open
+        race_inserted=[False]
+        def race_open(p,mode="r",*args,**kwargs):
+            if str(p).endswith("_receipt.json") and mode=="x" and not race_inserted[0]:
+                race_inserted[0]=True
+                with original_open(p,"x",encoding="utf-8") as external:
+                    external.write("ANOTHER_RUN_OWNED_EVIDENCE")
+                raise FileExistsError("racing independent writer")
+            return original_open(p,mode,*args,**kwargs)
+        with tempfile.TemporaryDirectory() as d:
+            with patch.object(Path,"open",race_open):
+                result=capture(d,lambda:(future_raw(),source()),clock)
+            self.assertEqual(result["status"],"BLOCKED_EIA_REPORT_NOT_VALIDATED")
+            self.assertEqual(len(list(Path(d).glob("*"))),1)
+            receipt=next(Path(d).glob("*_receipt.json"))
+            self.assertEqual(receipt.read_text(),"ANOTHER_RUN_OWNED_EVIDENCE")
+            self.assertFalse(list(Path(d).glob("*_original.json")))
+
     def test_forged_receipt_hash_cannot_get_a_score(self):
         raw=future_raw()
         rec={
