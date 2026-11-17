@@ -48,6 +48,24 @@ jobs:
           assert not r["trade_eligible"]
           print("K49_FORWARD_FGIS_ARCHIVE_BYTES_AND_SERIES_PASS_RESEARCH_ONLY")
           PY
+      - name: K4.10 score frozen December baseline against official nine-year reference without future facts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.prospective_scorecard \
+            --output k4-review/k410_frozen_december_scorecard.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("k4-review/k410_frozen_december_scorecard.json").read_text())
+          assert r["historical_reference"]["label_years"]==9
+          assert r["historical_reference"]["absolute_error_mae_mbu"]=="57.78"
+          assert r["forecast_v0_mbu"]=="1758"
+          assert r["status"]=="WAITING_FOR_DECEMBER_PRE_RELEASE_CONSENSUS_AND_USDA_OUTCOME"
+          assert not r["evidence_complete"]
+          assert not r["trading_edge_verified"] and not r["trade_eligible"]
+          print("K410_FROZEN_HISTORIC_REFERENCE_AND_EXANTE_DECEMBER_EVALUATION_GATE_PASS")
+          PY
       - name: Reconcile nine historical as-reported USDA corn export and stock revisions offline
         shell: bash
         run: |
