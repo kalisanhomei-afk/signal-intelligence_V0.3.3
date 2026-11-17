@@ -61,3 +61,21 @@ python -B -m research_overview.build_review --output research_overview/out/revie
 ## 資料隔離
 
 此處只保存**公開來源的檔名及雜湊**與研究數值，不鏡像第三方全文、不包含 API Key、帳戶、資產持倉、個人資訊或交易紀錄。CI 的預覽 HTML 亦僅含公開研究快照。
+
+## 延伸：市場價格與投資決策的第五、第六層架構（設計版）
+
+已新增 [市場定價與投資決策銜接規格 V0.1](MARKET_TO_ALLOCATION_ARCHITECTURE_V01_zh-TW.md)，不是行情、交易或資產配置系統。它把 K4/K5 事前研究往下游拆成五道獨立證據關卡：**事前市場預期 → 可交易契約 → 同一契約價格來源 → 價格效果樣本外驗證 → 交易成本、流動性與組合風險**。缺少時必須保持 `null`、`NO_GO`。
+
+- `market_decision_bridge.json`：K4 與 K5 各自明確沒有共識、價格、合約或風險預算，避免畫面臆測。
+- `decision_bridge.py`：讀取既有兩張假說卡的事件與單位，產生五道阻塞關卡與後續所需的研究證據，不連網、不下單。
+- `tests/test_decision_bridge.py`：未驗證的 MetaTrader +69 Bcf 不可成為共識；假合約、假價格、假 alpha、假部位均必須拒絕。
+- 研究總覽 HTML 新增「05｜市場定價與投資決策銜接」，只有 **待驗證／No-Go**，不顯示虛構價格。
+
+執行：
+
+```bash
+python -B -m research_overview.decision_bridge \
+  --output research_overview/out/decision_bridge_audit.json
+```
+
+只有後續 K5、K4 真實事件完成且事前市場預期、精確可交易契約及合法市場價格資料可追溯時，才另外開啟市場定價實驗。**目前未接行情 API、沒有任何交易指令，也不改動既有 V0 原件及 `main`。**
