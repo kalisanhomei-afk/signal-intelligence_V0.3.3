@@ -2,7 +2,7 @@
   "schema": "signal-research-portfolio-v1",
   "snapshot_date": "2026-11-17",
   "repository": "kalisanhomei-afk/signal-intelligence_V0.3.3",
-  "status_basis": "GitHub read-only verification on 2026-11-17. This is a frozen snapshot, not a live GitHub or research-data query.",
+  "status_basis": "GitHub read-only verification on 2026-11-17. This is a frozen snapshot, not a live GitHub or research-data query. Research PR source links point to pinned head commits checked on the snapshot date.",
   "default_branch": "main",
   "publication": {
     "main_readme_label": "SIGNAL V0.3.3",
@@ -49,7 +49,8 @@
       "state": "open",
       "draft": true,
       "merged": false,
-      "scope": "outcome_and_forward_research"
+      "scope": "outcome_and_forward_research",
+      "head_commit_sha": "bdc68222f4b9ca7eba07b96205ac510c0d8bf345"
     },
     {
       "number": 23,
@@ -59,7 +60,8 @@
       "state": "open",
       "draft": true,
       "merged": false,
-      "scope": "first_forward_eia_evaluation"
+      "scope": "first_forward_eia_evaluation",
+      "head_commit_sha": "f613719479c9ede0add2e6ff0893c0fa1831c765"
     }
   ],
   "layers": [
