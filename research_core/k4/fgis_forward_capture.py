@@ -65,7 +65,7 @@ def fetch(url):
         raise ValueError("UNAPPROVED_SOURCE_URL")
     start=utc_now()
     try:
-        with urlopen(Request(url,headers={"User-Agent":"SIGNAL-K4-FGIS-Forward-Evidence/1.0"}),timeout=17) as r:
+        with urlopen(Request(url,headers={"User-Agent":"SIGNAL-K4-FGIS-Forward-Evidence/1.0"}),timeout=6) as r:
             final=r.geturl()
             parts=urlsplit(final)
             if parts.scheme!="https" or parts.hostname not in ALLOWED_HOSTS:
@@ -133,10 +133,15 @@ def capture(output_dir, fetcher=fetch):
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--output",type=Path,required=True)
+    p.add_argument("--emit-public-source-for-commit",action="store_true",default=False)
     args=p.parse_args()
     result=capture(args.output)
     print(json.dumps({"status":result["status"],"sha256":result["source_raw_sha256"],
                       "attempts":result["attempts"],"trade_eligible":False}))
+    if args.emit_public_source_for_commit and result["source_raw_file"]:
+        raw=(args.output/result["source_raw_file"]).read_bytes()
+        print("K48_ARCHIVE_REPORT_JSON="+json.dumps(raw.decode("utf-8"),ensure_ascii=True))
+        print("K48_ARCHIVE_RECEIPT_JSON="+json.dumps(result,ensure_ascii=True))
 
 if __name__=="__main__":
     main()
