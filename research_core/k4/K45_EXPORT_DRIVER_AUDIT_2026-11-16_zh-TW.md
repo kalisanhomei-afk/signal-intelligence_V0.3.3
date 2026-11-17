@@ -55,4 +55,4 @@ python -m research_core.k4.export_driver_screen \
 
 **有資料 ≠ 能轉為有辨識力的預測。** 想要提出數值 V1，應先在事前版本化的歷史資料上校準出口檢驗進度 → USDA 下期出口修訂，包含季節項、已知 USDA 預測、未來可得資訊的時間滲漏檢查、樣本外測試，且要打敗上期持平基準與市場事前共識。如果沒有可靠映射，模型必須 ABSTAIN。12 月市場共識及正式來源封存仍為獨立待解決的證據缺口。
 
-**Gate: EVIDENCE_SCREEN_PASS (GitHub Actions [#43993281116](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/43993281116)：115/115 tests PASS); V1_POINT_FORECAST_NO_GO; PIT_UNVERIFIED; TRADE_ELIGIBLE=false.**
+**Gate: EVIDENCE_SCREEN_PASS (GitHub Actions [#43993719450](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/43993719450)：116/116 tests PASS，包含官方 FGIS TXT 來源鎖定測試); V1_POINT_FORECAST_NO_GO; PIT_UNVERIFIED; TRADE_ELIGIBLE=false.**
