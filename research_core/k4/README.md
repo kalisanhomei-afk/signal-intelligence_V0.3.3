@@ -1,5 +1,12 @@
 # SIGNAL K4｜H-CORN-001 玉米庫存預期差假說 MVP
 
+> **最新狀態（2026-11-17）**：原先本文「尚未取得行情」等文字記錄的是前期進度，請以下列最新實際驗收為準：
+> - **K4.1–K4.4**：使用者已在 Windows 私有環境取得 Databento `GLBX.MDP3 / ZCZ6` 的 2026-11-10 OHLCV、Trades、TBBO；本機大小/SHA、DBN 解碼及描述性事件研究完成。離線執行價格情境不等於成交回測，無任何 alpha/交易資格；原始行情未上傳此 Repository。詳見 PR #22 的 [事件分析](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/pull/22#issuecomment-6919499112) 與 [情境反證](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/pull/22#issuecomment-6919671139)。
+> - **K4.5-A**：2026-12-10 WASDE 公告前基準預測已於 2026-11-17 GitHub 提交凍結，`USDA_PREVIOUS_WASDE_PERSISTENCE_V0=1,758` 百萬蒲式耳；這不是具增量優勢的 V1，也沒有原始 USDA 首版位元組 PIT 認證。詳見 [基準與封存](K45_DEC_2026_FROZEN_BASELINE_zh-TW.md)。
+> - **K4.5-B**：納入 2026-11-16 USDA FGIS 玉米出口檢驗（截至 11/12），當週相對必要週速偏弱，但累計季節性進度高於五年均值。輸出 `ABSTAIN_UNCALIBRATED_EXPORT_DRIVER`，不從未經校準的資料硬造 V1 點預測；詳見 [出口數據稽核](K45_EXPORT_DRIVER_AUDIT_2026-11-16_zh-TW.md)。
+> - **K4.5-C**：12 月市場共識來源與官方原始證據仍待公告前獨立保存，`PIT_UNVERIFIED`、`trade_eligible=false`；PR #22 保持 Draft、隔離於 main。
+
+
 **Decision: ACCOUNTING / MECHANISM RESEARCH ONLY; PIT_UNVERIFIED; NO PRICE EDGE VERIFIED; NO TRADING.**
 
 ## 一、現在真正要驗證的問題
