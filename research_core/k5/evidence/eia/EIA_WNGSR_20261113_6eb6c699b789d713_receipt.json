@@ -1,0 +1,42 @@
+{
+  "schema": "signal-k51-prior-eia-raw-capture-v1",
+  "status": "PRIOR_EIA_ORIGINAL_BYTES_CAPTURED_BEFORE_NEXT_EVENT",
+  "source": {
+    "requested_url": "https://ir.eia.gov/ngs/wngsr.json",
+    "response_host": "ir.eia.gov",
+    "response_path": "/secure/ngs/wngsr.json",
+    "signed_redirect_query_deliberately_omitted": true,
+    "capture_started_utc": "2026-11-17T02:55:16.523381Z",
+    "capture_finished_utc": "2026-11-17T02:55:16.841819Z",
+    "content_type_claim": "application/json",
+    "last_modified_claim": "Fri, 13 Nov 2026 14:39:08 GMT",
+    "etag_claim": "\"70e7bb75d0a8b54f1194c19bac7b6747\""
+  },
+  "source_report": {
+    "source_report_release_date_claim": "2026-Nov-13",
+    "source_report_release_clock_timezone_unverified": true,
+    "week_end": "2026-11-06",
+    "prior_week_end": "2026-10-30",
+    "year_ago_week_end": "2025-11-06",
+    "series_id": "png.nw2_epg0_swo_r48_bcf.w",
+    "region": "Lower 48 states",
+    "unit": "Bcf",
+    "storage_bcf": 3862,
+    "prior_week_storage_bcf": 3801,
+    "year_ago_storage_bcf": 3954,
+    "five_year_average_storage_bcf": 3787,
+    "net_change_bcf": 61,
+    "all_source_revision_flags_independently_audited": false
+  },
+  "source_raw_file": "EIA_WNGSR_20261113_6eb6c699b789d713_original.json",
+  "source_raw_sha256": "6eb6c699b789d7130d3f50dbe5681e835b57bc25dd118380398169dda63fe252",
+  "source_raw_bytes": 7197,
+  "next_eia_event_scheduled_utc": "2026-11-19T15:30:00Z",
+  "official_first_publication_time_independently_verified": false,
+  "source_corrections_and_history_independently_verified": false,
+  "noaa_ex_ante_vintages_verified": false,
+  "market_consensus_pre_event_verified": false,
+  "baseline_forecast_already_frozen_and_unchanged": true,
+  "investment_edge_verified": false,
+  "trade_eligible": false
+}
