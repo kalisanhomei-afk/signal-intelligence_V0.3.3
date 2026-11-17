@@ -31,7 +31,7 @@ def assess_wasde(raw: bytes, actual: str):
     cols = rows.fieldnames or []
     if not cols:
         raise ValueError("NO_CSV_COLUMNS")
-    examples, total = [], 0
+    examples, target_examples, total = [], [], 0
     for x in rows:
         total += 1
         if (str(x.get("Commodity", "")).strip().lower() == "corn"
@@ -40,8 +40,18 @@ def assess_wasde(raw: bytes, actual: str):
             examples.append({k: str(x.get(k, ""))[:90] for k in
                 ("ReportTitle","Commodity","Region","MarketYear","ProjEstFlag",
                  "Attribute","Value","Unit","ReleaseDate","ForecastYear","ForecastMonth")})
+        if (str(x.get("Commodity", "")).strip() == "Corn"
+            and str(x.get("Region", "")).strip() == "United States"
+            and str(x.get("MarketYear", "")).strip() in ("2024/25","2025/26")
+            and str(x.get("Attribute", "")).strip() in ("Exports","Ending Stocks")
+            and str(x.get("Unit", "")).strip() == "Million Bushels"
+            and len(target_examples) < 20):
+            target_examples.append({k: str(x.get(k, ""))[:90] for k in
+                ("ReportTitle","Commodity","Region","MarketYear","ProjEstFlag",
+                 "Attribute","Value","Unit","ReleaseDate","ForecastYear","ForecastMonth")})
     return {"source_url":actual,"sha256":hashlib.sha256(raw).hexdigest(),
             "bytes":len(raw),"columns":cols,"rows":total,"corn_rows_sample":examples,
+            "us_corn_supply_rows_sample":target_examples,
             "status":"RETRIEVED_SCHEMA_ONLY_NOT_PIT_CERTIFIED"}
 
 def probe():
@@ -79,7 +89,8 @@ def main():
         item=r["sources"][key]
         if item["status"].startswith("RETRIEVED"):
             print("K46_WASDE_SAMPLE",json.dumps({"file":key,"columns":item["columns"],"rows":item["rows"],
-                                                "corn_samples":item["corn_rows_sample"][:5]}))
+                                                "corn_samples":item["corn_rows_sample"][:1],
+                                                "target_rows":item["us_corn_supply_rows_sample"]}))
     item=r["fgis_api"]
     if item["status"]=="DATASET_ENDPOINT_FOUND_NOT_VINTAGE_CERTIFIED":
         print("K46_FGIS_SCHEMA",json.dumps({"columns":item["columns"],"sample":item["sample"][:1]}))
