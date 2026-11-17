@@ -1,0 +1,47 @@
+{
+  "schema": "signal-k52-public-pre-eia-external-forecast-observations-v1",
+  "status": "UNVERIFIED_CONSENSUS_CONFLICTING_FORECAST_CANDIDATES",
+  "event_id": "EIA-WNGSR-2026-11-19",
+  "event_scheduled_utc": "2026-11-19T15:30:00Z",
+  "frozen_signal_v0_bcf": 61,
+  "market_analyst_consensus_certified": false,
+  "observations": [
+    {
+      "status": "SOURCE_UNAVAILABLE_OR_TARGET_NOT_VERIFIED",
+      "source_role": "named_forecaster_arc",
+      "source_url": "https://www.getarcresearch.com/commodities/natural-gas/scorecard/",
+      "failure_type": "ValueError",
+      "failure_code": "WEB_EXPECTED_NUMBER_DIFFERENT",
+      "source_raw_html_sha256": null,
+      "forecast_net_change_bcf": null,
+      "trade_eligible": false
+    },
+    {
+      "status": "WEB_BYTES_CAPTURED_TARGET_VERIFIED_NO_INDEPENDENT_PIT",
+      "source_role": "metatrader_event_calendar",
+      "source_url": "https://www.metatrader.com/en/economic-calendar/united-states/eia-natural-gas-storage-change",
+      "response_url": "https://www.metatrader.com/en/economic-calendar/united-states/eia-natural-gas-storage-change",
+      "source_raw_html_sha256": "bd465faf5b3818a20a822960ce47c62ec2727f04eff8ff844df24e3e27e9919d",
+      "source_raw_html_bytes": 151191,
+      "capture_started_utc": "2026-11-17T03:24:48.202997Z",
+      "capture_finished_utc": "2026-11-17T03:24:50.774100Z",
+      "source_metadata_no_immutable_first_publication_proof": true,
+      "raw_html_not_committed_to_public_repository": true,
+      "event_id": "EIA-WNGSR-2026-11-19",
+      "target_week_end": "2026-11-13",
+      "units": "Bcf",
+      "forecast_net_change_bcf": 69,
+      "forecast_class": "CALENDAR_INDICATIVE_VALUE_CONSENSUS_METHOD_UNVERIFIED",
+      "source_publisher": "MetaTrader economic calendar",
+      "publisher_publication_time_claim": null,
+      "publisher_claim_independently_authenticated": false,
+      "trade_eligible": false
+    }
+  ],
+  "trade_eligible": false,
+  "provenance_note": "MetaTrader value is a current calendar estimate, not verified survey consensus. Arc's displayed forecast disagreed between browser view and actual GitHub capture, so the automated source check rejected that value rather than manufacturing a corroborating snapshot. Raw third-party HTML is not redistributed in git.",
+  "first_party_pre_release_capture_ci_run": "https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/44010006480",
+  "actual_nov19_eia_result_bcf": null,
+  "first_publication_utc_independently_verified": false,
+  "trading_status": "NO_TRADING"
+}
