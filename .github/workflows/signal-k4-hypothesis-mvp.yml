@@ -151,6 +151,8 @@ jobs:
 
   pre-release-survey-archive-feasibility:
     name: Independent pre-release poll archive inquiry (no historic PIT claims)
+    # Historical network probes are opt-in; normal PR commits run only deterministic tests.
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'k4-source-refresh') }}
     runs-on: ubuntu-latest
     timeout-minutes: 6
     permissions:
@@ -195,6 +197,8 @@ jobs:
 
   k46-historical-source-preflight:
     name: USDA vintage CSV and historical FGIS source schema probe (research only)
+    # Historical network probes are opt-in; normal PR commits run only deterministic tests.
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'k4-source-refresh') }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     permissions:
