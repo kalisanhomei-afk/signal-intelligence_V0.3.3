@@ -75,7 +75,8 @@ def extract_archived(raw_zip: bytes):
             n=single_month(year,11)
             d=single_month(year,12)
             rec=pair(n,d,year,{"nov":URL+"#"+MEMBER,"dec":URL+"#"+MEMBER})
-            # pair hashes are filtered subsets; the authoritative source is the ZIP+member SHA
+            # pair hashes identify generated filtered subsets, not the official 2016-2020 archive.
+            rec["selected_rows_sha256"]=rec.pop("raw_sha256")
             rec["source_zip_sha256"]=zip_sha256
             rec["source_csv_sha256"]=csv_sha256
             rec["selected_rows_nov"]=len(buckets[(year,11)])
