@@ -62,4 +62,4 @@ python -B -m research_core.k4.fgis_archive_audit \
 
 這次已將重複工作壓縮到同一條命令；每週只有參數日期與上一份回執路徑不同。可以由研究 Agent 執行取得、核對及提交，但**排程發出通知並不等於已提交成功**。不要在 `main` 新增定時 workflow，也不要在 PR 程式內硬塞當週特定數值或擷取時間。
 
-**研究 Gate：** `K49_REUSABLE_CAPTURE_AND_ARCHIVE_AUDIT_ENGINE`（待 CI 驗收）；未來新週版數字以實際來源為準，保持 `NO_TRADING`。
+**研究 Gate：** `K49_REUSABLE_CAPTURE_AND_ARCHIVE_AUDIT_ENGINE_PASS`。GitHub Actions [#44002761793](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/44002761793) 以實際 11/16 歷史原件與模擬次週報告完成 **185/185 項測試**；純離線來源鏈稽核 PASS。K4.8 原件曾以 `_official_raw.txt` 保存，而第一版捕獲回執記為 `_official_captured.txt`，新稽核器只針對此一已知 SHA-256 作明確檔名對照，未更改任何原件或回執。**尚無新的 11/23 原始觀測**；未來週數值以實際來源為準，保持 `NO_TRADING`。
