@@ -139,6 +139,12 @@ def validate_card(c: dict, prs: dict):
             "NO_FROZEN_V0")
     require(f["source_branch"] == c["research_branch"] and github_path(f["source_path"]),
             "FORECAST_SOURCE_PATH_MISMATCH")
+    expected_forecast_files = {
+        "H-CORN-001": "research_core/k4/cases/2026-12-10-forward-baseline-forecast.json",
+        "H-NG-001": "research_core/k5/cases/2026-11-19-eia-frozen-v0-forecast.json",
+    }
+    require(f["source_path"] == expected_forecast_files[c["hypothesis_id"]],
+            "FORECAST_ORIGINAL_PATH_MISMATCH")
     require(f.get("source_commit_ref") == prs[c["research_pr"]].get("head_commit_sha") and
             hash_value(f.get("source_git_blob_sha1"), "sha1"),
             "FORECAST_COMMIT_ANCHOR_MISMATCH")
