@@ -180,7 +180,7 @@ jobs:
   k46-historical-source-preflight:
     name: USDA vintage CSV and historical FGIS source schema probe (research only)
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     permissions:
       contents: read
     steps:
@@ -197,6 +197,25 @@ jobs:
         run: |
           set -euo pipefail
           python -B -m research_core.k4.historical_source_probe --output k46-review/source_probe.json
+      - name: Pair official Nov and Dec corn revisions for nine historical marketing years
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.wasde_revision_labels \
+            --start-year 2017 --end-year 2025 \
+            --output k46-review/wasde_revision_labels_2017_2025.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("k46-review/wasde_revision_labels_2017_2025.json").read_text())
+          assert r["status"] == "OUTCOME_LABELS_ONLY"
+          assert r["ready_for_backtest"] is False
+          assert r["historical_pit_features_verified"] is False
+          assert r["predictor_features"] == []
+          assert r["trade_eligible"] is False
+          assert all(s["independent_pit_features_verified"] is False for s in r["rows"])
+          print("K46_USDA_AS_REPORTED_LABELS_EXTRACTED_NO_PREDICTIVE_DATA")
+          PY
       - name: Forbid invented pre-release history or model readiness
         shell: bash
         run: |
@@ -216,6 +235,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: signal-k46-usda-historical-source-preflight
-          path: k46-review/source_probe.json
+          path: k46-review/
           retention-days: 30
           if-no-files-found: warn
