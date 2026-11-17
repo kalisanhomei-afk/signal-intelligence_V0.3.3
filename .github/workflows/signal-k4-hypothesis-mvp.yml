@@ -29,6 +29,22 @@ jobs:
         run: |
           set -euo pipefail
           python -B -m unittest discover -s research_core/k4/tests -p 'test_*.py' -v
+      - name: Reconcile nine historical as-reported USDA corn export and stock revisions offline
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.nine_year_revision_catalog \
+            --output k4-review/nine_year_revision_catalog.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("k4-review/nine_year_revision_catalog.json").read_text())
+          assert r["marketing_years"] == 9
+          assert r["status"] == "OUTCOME_LABEL_CATALOG_ONLY"
+          assert not r["fgis_features_by_announcement_asof_available"]
+          assert not r["formal_backtest_eligible"] and not r["trade_eligible"]
+          print("K47_NINE_YEAR_OFFICIAL_OUTCOME_LABEL_CATALOG_PASS_NO_PIT")
+          PY
       - name: Reproduce Nov 2026 real retrospective accounting reference
         shell: bash
         run: |
