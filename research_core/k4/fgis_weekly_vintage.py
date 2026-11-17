@@ -132,7 +132,7 @@ def fetch(url):
     except HTTPError as e:
         raise ValueError(f"HTTP_{e.code}") from e
 
-def compare_previous(current,prior_raw=None,prior_receipt=None):
+def compare_previous(current,prior_raw=None,prior_receipt=None, current_capture_started_utc=None):
     if (prior_raw is None) != (prior_receipt is None):
         raise ValueError("INCOMPLETE_PREVIOUS_SOURCE_PAIR")
     if prior_raw is None:
@@ -143,9 +143,19 @@ def compare_previous(current,prior_raw=None,prior_receipt=None):
     raw=Path(prior_raw).read_bytes()
     if hashlib.sha256(raw).hexdigest()!=prior.get("source_raw_sha256"):
         raise ValueError("PREVIOUS_RAW_SHA_MISMATCH")
+    if len(raw)!=prior.get("source_raw_bytes"):
+        raise ValueError("PREVIOUS_RAW_LENGTH_MISMATCH")
     p=prior.get("source_report",{})
     if p.get("week_end")!=current["previous_week_end"]:
         raise ValueError("PREVIOUS_WEEK_NOT_CONTIGUOUS")
+    if current_capture_started_utc is None or not (
+        timestamp(prior["source"]["fetch_finished_utc"]) <
+        timestamp(current_capture_started_utc)):
+        raise ValueError("PREVIOUS_CAPTURE_NOT_BEFORE_CURRENT")
+    previous_parsed=parse_report(raw,p["report_date"],p["week_end"])
+    for key in ("corn_week_current_mt","corn_marketing_year_to_date_mt","week_end"):
+        if previous_parsed[key]!=p.get(key):
+            raise ValueError("PREVIOUS_RECEIPT_RAW_CONTENT_MISMATCH")
     # Prior report may have a different schema, but must be the same commodity and units.
     if p.get("report_slug")!="WA_GR101" or p.get("units")!="metric_tons":
         raise ValueError("PREVIOUS_REPORT_NOT_COMPARABLE")
@@ -183,7 +193,7 @@ def capture(report_date,week_end,cutoff_utc,output_dir, historical_url=None,
             if start.date()<date.fromisoformat(report_date):
                 raise ValueError("CAPTURE_BEFORE_SOURCE_REPORT_DATE")
             info=parse_report(raw,report_date,week_end)
-            revisions=compare_previous(info,prior_raw,prior_receipt)
+            revisions=compare_previous(info,prior_raw,prior_receipt,source["fetch_started_utc"])
             digest=hashlib.sha256(raw).hexdigest()
             short=digest[:16]
             stem=f"WA_GR101_{report_date.replace('-','')}_{short}"
