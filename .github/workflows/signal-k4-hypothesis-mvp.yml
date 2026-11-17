@@ -216,6 +216,22 @@ jobs:
           assert all(s["independent_pit_features_verified"] is False for s in r["rows"])
           print("K46_USDA_AS_REPORTED_LABELS_EXTRACTED_NO_PREDICTIVE_DATA")
           PY
+      - name: K4.7 probe dated FGIS archival documents and USDA 2016–2020 ZIP mirrors
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.historical_archive_discovery --output k46-review/k47_official_archive_discovery.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("k46-review/k47_official_archive_discovery.json")
+          r=json.loads(p.read_text())
+          assert r["schema"]=="signal-k47-official-archive-discovery-v1"
+          assert set(r["results"]) == {"historic_usda_zip_primary","historic_usda_zip_mirror","fgis_report_index","fgis_report_index_slug"}
+          assert not r["historical_feature_pit_certified"]
+          assert not r["training_eligible"] and not r["trade_eligible"]
+          print("K47_ARCHIVE_DISCOVERY_RECEIPT_COMPLETE_NO_PIT_PROMOTION")
+          PY
       - name: Forbid invented pre-release history or model readiness
         shell: bash
         run: |
