@@ -5,6 +5,7 @@ import csv
 import hashlib
 import io
 import json
+import zipfile
 from pathlib import Path
 from urllib.request import urlopen, Request
 from urllib.parse import urlsplit, urljoin, urlencode
@@ -84,6 +85,20 @@ class HistoricBundleLinks(HTMLParser):
 def probe():
     result = {"schema":"signal-k46-history-source-probe-v1","sources":{},
               "market_data_purchased":False,"pit_certified":False,"trade_eligible":False}
+    archive_url="https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2016-01-to-2020-12.zip"
+    try:
+        raw_archive, final_archive=fetch(archive_url,limit=6_000_000)
+        with zipfile.ZipFile(io.BytesIO(raw_archive)) as bundle:
+            names=bundle.namelist()
+        result["usda_archived_zip_probe"]={
+            "url":final_archive,"status":"ZIP_READ_NO_PIT_CERTIFICATION",
+            "sha256":hashlib.sha256(raw_archive).hexdigest(),
+            "bytes":len(raw_archive),"entry_count":len(names),
+            "entries_sample":names[:30],
+            "target_entries":[n for n in names if ("2017" in n or "2020" in n) and ("nov" in n.lower() or "dec" in n.lower() or "-11" in n or "-12" in n)][:30]}
+    except Exception as exc:
+        result["usda_archived_zip_probe"]={"url":archive_url,"status":"SOURCE_UNAVAILABLE",
+                                             "error_type":type(exc).__name__}
     result["usda_archived_bundle_links"]=[]
     for archive_index_url in (
         "https://www.usda.gov/oce/commodity-markets/wasde/historical-wasde-report-data",
@@ -145,6 +160,7 @@ def main():
     args.output.write_text(json.dumps(r,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     print(json.dumps({"statuses":{k:v["status"] for k,v in r["sources"].items()},
                       "fgis_status":r["fgis_api"]["status"],"pit_certified":False}))
+    print("K46_USDA_ZIP_DETAILS",json.dumps(r["usda_archived_zip_probe"])[:6000])
     print("K46_USDA_ARCHIVE_BUNDLE_LINKS",json.dumps(r["usda_archived_bundle_links"]))
     print("K46_FGIS_AGGREGATE_TEST",json.dumps(r["fgis_2025_11_weekly_aggregate_probe"])[:6000])
     for key in ("2021-11","2021-12","2024-11","2024-12","2025-11","2025-12"):
