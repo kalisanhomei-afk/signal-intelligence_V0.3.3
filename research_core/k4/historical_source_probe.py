@@ -7,7 +7,7 @@ import io
 import json
 from pathlib import Path
 from urllib.request import urlopen, Request
-from urllib.parse import urlsplit, urljoin
+from urllib.parse import urlsplit, urljoin, urlencode
 from html.parser import HTMLParser
 
 BASE = "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-"
@@ -84,13 +84,21 @@ class HistoricBundleLinks(HTMLParser):
 def probe():
     result = {"schema":"signal-k46-history-source-probe-v1","sources":{},
               "market_data_purchased":False,"pit_certified":False,"trade_eligible":False}
-    try:
-        page, _=fetch("https://www.usda.gov/oce/commodity-markets/wasde/historical-wasde-report-data")
-        parser=HistoricBundleLinks()
-        parser.feed(page.decode("utf-8",errors="replace"))
-        result["usda_archived_bundle_links"]=parser.links
-    except Exception as exc:
-        result["usda_archived_bundle_links"]=[{"status":"UNAVAILABLE","error_type":type(exc).__name__}]
+    result["usda_archived_bundle_links"]=[]
+    for archive_index_url in (
+        "https://www.usda.gov/oce/commodity-markets/wasde/historical-wasde-report-data",
+        "https://usda.azureedge.us/historical-wasde-report-data-3",
+    ):
+        try:
+            page, _=fetch(archive_index_url)
+            parser=HistoricBundleLinks()
+            parser.feed(page.decode("utf-8",errors="replace"))
+            result["usda_archived_bundle_links"].append({"url":archive_index_url,"status":"INDEX_READ",
+                                                            "links":parser.links})
+        except Exception as exc:
+            result["usda_archived_bundle_links"].append({"url":archive_index_url,
+                                                            "status":"UNAVAILABLE","error_type":type(exc).__name__})
+
     for date, url in WASDE.items():
         try:
             raw, actual = fetch(url)
@@ -98,6 +106,24 @@ def probe():
         except Exception as exc:
             result["sources"][date] = {"source_url":url,"status":"SOURCE_UNAVAILABLE",
                                        "error_type":type(exc).__name__}
+    try:
+        params={
+            "$select":"date, sum(mt) as total_mt",
+            "$where":"grain='CORN' AND date >= '2025-11-01T00:00:00' AND date <= '2025-11-30T00:00:00'",
+            "$group":"date",
+            "$order":"date asc",
+            "$limit":"100"
+        }
+        aggurl="https://agtransport.usda.gov/resource/sruw-w49i.json?"+urlencode(params)
+        data, final=fetch(aggurl,limit=250_000)
+        parsed=json.loads(data)
+        if not isinstance(parsed,list): raise ValueError("BAD_AGG_SHAPE")
+        result["fgis_2025_11_weekly_aggregate_probe"]={
+            "url":final,"status":"RETRIEVED_POSTHOC_AGGREGATE_NOT_ASOF",
+            "rows":parsed[:12], "row_count":len(parsed)}
+    except Exception as exc:
+        result["fgis_2025_11_weekly_aggregate_probe"]={
+            "status":"SOURCE_UNAVAILABLE", "error_type":type(exc).__name__}
     try:
         raw, actual = fetch(FGIS, limit=350_000)
         sample = json.loads(raw)
@@ -120,6 +146,7 @@ def main():
     print(json.dumps({"statuses":{k:v["status"] for k,v in r["sources"].items()},
                       "fgis_status":r["fgis_api"]["status"],"pit_certified":False}))
     print("K46_USDA_ARCHIVE_BUNDLE_LINKS",json.dumps(r["usda_archived_bundle_links"]))
+    print("K46_FGIS_AGGREGATE_TEST",json.dumps(r["fgis_2025_11_weekly_aggregate_probe"])[:6000])
     for key in ("2024-11","2024-12","2025-11","2025-12"):
         item=r["sources"][key]
         if item["status"].startswith("RETRIEVED"):
