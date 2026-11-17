@@ -49,3 +49,53 @@ jobs:
           assert not a['trade_eligible']
           print('K5_FORECAST_FROZEN_PRIOR_TO_EIA_NOV19_OUTCOME_NO_ALPHA')
           PY
+
+      - name: K5.2 re-evaluate frozen V0 without inventing future November 19 EIA result
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k5.official_event_score \
+            --output k5-review/official_event_score_pending.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("k5-review/official_event_score_pending.json")
+          r=json.loads(p.read_text())
+          assert r["status"]=="WAITING_FOR_NOV19_OFFICIAL_EIA_ORIGINAL"
+          assert r["frozen_v0_net_change_bcf"]==61
+          assert r["actual_net_change_bcf"] is None
+          assert r["v0_absolute_error_bcf"] is None
+          assert not r["alpha_or_trade_verified"]
+          assert not r["trade_eligible"]
+          print("K52_OFFICIAL_EIA_RAW_EVENT_GUARD_PASS_AWAIT_RELEASE")
+          PY
+
+  k52-once-external-forecast-probe:
+    name: K5.2 one-time pre-Nov19 source receipts for competing forecasts
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout isolated PR
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch two public sources, record hash and pre-release UTC, no trade
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k5.external_forecast_probe \
+            --output k52-review/external_forecast_receipts.json
+      - name: Temporarily retain compact source-provenance JSON (no copyrighted HTML)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-k52-20261117-external-forecast-observation-receipts
+          path: k52-review/external_forecast_receipts.json
+          retention-days: 7
+          if-no-files-found: warn
