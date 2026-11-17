@@ -5,7 +5,7 @@ edits for each new week. Never upgrades PIT or trading permissions.
 """
 from __future__ import annotations
 import argparse
-from datetime import timedelta
+from datetime import date, timedelta
 import hashlib
 import json
 from pathlib import Path
@@ -71,7 +71,7 @@ def audit(folder):
             if len(matches)!=1:
                 raise ValueError("AMBIGUOUS_PREVIOUS_SOURCE")
             if matches[0]["week_end"]!=str(
-                __import__("datetime").date.fromisoformat(row["week_end"])-timedelta(days=7)):
+                date.fromisoformat(row["week_end"])-timedelta(days=7)):
                 raise ValueError("REFERENCED_PREVIOUS_WEEK_MISMATCH")
             if matches[0]["capture_finished_utc"] >= row["capture_finished_utc"]:
                 raise ValueError("PREVIOUS_CAPTURE_CHRONOLOGY_INVALID")
