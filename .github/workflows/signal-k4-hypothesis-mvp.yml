@@ -29,6 +29,25 @@ jobs:
         run: |
           set -euo pipefail
           python -B -m unittest discover -s research_core/k4/tests -p 'test_*.py' -v
+      - name: Verify all saved forward USDA FGIS original bytes and version receipts offline
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_core.k4.fgis_archive_audit \
+            --evidence-dir research_core/k4/evidence/fgis \
+            --output k4-review/fgis_forward_version_audit.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("k4-review/fgis_forward_version_audit.json").read_text())
+          assert r["status"] == "FORWARD_SOURCE_BYTES_AND_RECEIPTS_VERIFIED_NOT_INDEPENDENT_PIT"
+          assert r["version_count"] >= 1
+          assert r["distinct_weeks"] >= 1
+          assert not r["historic_nine_year_fgis_features_pit_certified"]
+          assert not r["model_calibrated"] and not r["predictive_edge_verified"]
+          assert not r["trade_eligible"]
+          print("K49_FORWARD_FGIS_ARCHIVE_BYTES_AND_SERIES_PASS_RESEARCH_ONLY")
+          PY
       - name: Reconcile nine historical as-reported USDA corn export and stock revisions offline
         shell: bash
         run: |
