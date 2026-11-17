@@ -310,7 +310,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python -B -m research_core.k4.fgis_forward_capture --output k48-forward
+          python -B -m research_core.k4.fgis_forward_capture --output k48-forward --emit-public-source-for-commit
       - name: Persist exact raw bytes and capture receipt for immediate reviewer archive
         if: always()
         uses: actions/upload-artifact@v4
