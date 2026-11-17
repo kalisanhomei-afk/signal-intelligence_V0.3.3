@@ -78,8 +78,8 @@ def render_card(c, repo):
         <p>歷史特徵 PIT：未認證；預測增量優勢：未驗證；投資決策：<b>No-Go</b></p>
         <ul>{reference}</ul>
         <p><a href="{t(pr_url(repo, c["research_pr"]))}">研究 PR #{c["research_pr"]}</a> ·
-        <a href="{t(source_url(repo, forecast["source_branch"], forecast["source_path"]))}">原始凍結預測／契約</a> ·
-        <a href="{t(source_url(repo, c["research_branch"], c["evidence"]["prospective_raw_source_path"]))}">已封存的前期原始檔</a></p>
+        <a href="{t(source_url(repo, forecast["source_commit_ref"], forecast["source_path"]))}">原始凍結預測（固定提交）</a> ·
+        <a href="{t(source_url(repo, c["evidence"]["source_commit_ref"], c["evidence"]["prospective_raw_source_path"]))}">已封存前期原始檔（固定提交）</a></p>
       </div>
     </article>
     """
@@ -147,7 +147,7 @@ footer {{ margin-top:35px; color:#667384; font-size:.8rem }}
 </header>
 <div class="warning"><strong>邊界說明：</strong>
 main 僅註冊 K3.8 手動 Workflow，未合併 K4／K5 研究程式。
-K4 與 K5 均為 Draft，工程驗收不等於研究可獲利。所有投資權限維持 No-Go。
+K4 與 K5 均為 Draft；原始預測及來源連結已固定到 11/17 查核的 Git commit，而不是後續會變動的分支版本。工程驗收不等於研究可獲利。所有投資權限維持 No-Go。
 此報表不會自動從 GitHub 取新資料，請以快照日期核對時效。</div>
 <h2>01｜投資假說驗收</h2><section class="grid">{cards_html}</section>
 <h2>02｜研究系統六層架構</h2><div class="tablewrap"><table>
