@@ -1,0 +1,79 @@
+{
+  "schema": "signal-k47-official-usda-2017-2020-outcome-label-evidence-v1",
+  "status": "OUTCOME_LABELS_ONLY",
+  "source_archive_url": "https://usda.azureedge.us/sites/default/files/documents/oce-wasde-report-data-2016-01-to-2020-12.zip",
+  "source_archive_zip_sha256": "1cffbc4aa0ec436c832afb306b19631eaac42c2aaf3fffbf8dd9923052bfefb5",
+  "source_uncompressed_csv_sha256": "4592a608708310a8cc92226f47eac5dacebcf4fad21cde879034a80c67efa89a",
+  "archive_member": "oce-wasde-report-data-2016-01-to-2020-12.csv",
+  "retrieved_by_github_run": 43998393195,
+  "archive_retrieved_after_all_historical_events": true,
+  "historical_asof_features_authenticated": false,
+  "model_calibrated": false,
+  "trade_eligible": false,
+  "rows": [
+    {
+      "marketing_year": "2017/18",
+      "nov_release_date": "2017-11-09",
+      "dec_release_date": "2017-12-12",
+      "nov_exports_mbu": 1925,
+      "dec_exports_mbu": 1925,
+      "delta_exports_mbu": 0,
+      "nov_ending_stocks_mbu": 2487,
+      "dec_ending_stocks_mbu": 2437,
+      "delta_ending_stocks_mbu": -50,
+      "other_net_stock_change_mbu": -50,
+      "selected_rows_sha256": {
+        "nov": "5d474a883a4b447cf3548d067c0fe9b87cdc679553dfad7adc4a26d2108da1e8",
+        "dec": "752396ab1a62943ceb976c727480fd24553829cf606e04953225d23ef69768f2"
+      }
+    },
+    {
+      "marketing_year": "2018/19",
+      "nov_release_date": "2018-11-08",
+      "dec_release_date": "2018-12-11",
+      "nov_exports_mbu": 2450,
+      "dec_exports_mbu": 2450,
+      "delta_exports_mbu": 0,
+      "nov_ending_stocks_mbu": 1736,
+      "dec_ending_stocks_mbu": 1781,
+      "delta_ending_stocks_mbu": 45,
+      "other_net_stock_change_mbu": 45,
+      "selected_rows_sha256": {
+        "nov": "73eef7e08422f4b0afb83326ecd89124620d3e4a772ea6a128510273dce7627b",
+        "dec": "09d26824fb6722c11721eb11753b9129946dc02580d18c0fef43e26e4663d6b9"
+      }
+    },
+    {
+      "marketing_year": "2019/20",
+      "nov_release_date": "2019-11-08",
+      "dec_release_date": "2019-12-10",
+      "nov_exports_mbu": 1850,
+      "dec_exports_mbu": 1850,
+      "delta_exports_mbu": 0,
+      "nov_ending_stocks_mbu": 1910,
+      "dec_ending_stocks_mbu": 1910,
+      "delta_ending_stocks_mbu": 0,
+      "other_net_stock_change_mbu": 0,
+      "selected_rows_sha256": {
+        "nov": "8f0f0177e72053a916e22287ec9718d0073fd923c2faa887366128dfc52795aa",
+        "dec": "9407f96f9eb4e7003c318fbbad9231faa3474b1b584139996cad5f0a81712b50"
+      }
+    },
+    {
+      "marketing_year": "2020/21",
+      "nov_release_date": "2020-11-10",
+      "dec_release_date": "2020-12-10",
+      "nov_exports_mbu": 2650,
+      "dec_exports_mbu": 2650,
+      "delta_exports_mbu": 0,
+      "nov_ending_stocks_mbu": 1702,
+      "dec_ending_stocks_mbu": 1702,
+      "delta_ending_stocks_mbu": 0,
+      "other_net_stock_change_mbu": 0,
+      "selected_rows_sha256": {
+        "nov": "7a6ab36890886aa276c2710046c406b2b7083d15ef445b0eee7af8e8724fe90c",
+        "dec": "13be6f09546081e1bd1126643a78bd5cebbbf1132cf005c2de387fa86b5368ed"
+      }
+    }
+  ]
+}
