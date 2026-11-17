@@ -63,3 +63,9 @@ python -B -m research_core.k4.fgis_archive_audit \
 這次已將重複工作壓縮到同一條命令；每週只有參數日期與上一份回執路徑不同。可以由研究 Agent 執行取得、核對及提交，但**排程發出通知並不等於已提交成功**。不要在 `main` 新增定時 workflow，也不要在 PR 程式內硬塞當週特定數值或擷取時間。
 
 **研究 Gate：** `K49_REUSABLE_CAPTURE_AND_ARCHIVE_AUDIT_ENGINE_PASS`。GitHub Actions [#44002761793](https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/actions/runs/44002761793) 以實際 11/16 歷史原件與模擬次週報告完成 **185/185 項測試**；純離線來源鏈稽核 PASS。K4.8 原件曾以 `_official_raw.txt` 保存，而第一版捕獲回執記為 `_official_captured.txt`，新稽核器只針對此一已知 SHA-256 作明確檔名對照，未更改任何原件或回執。**尚無新的 11/23 原始觀測**；未來週數值以實際來源為準，保持 `NO_TRADING`。
+
+### 2026-11-17 公告前預演更新：每週增加隔日備援
+
+為避免 USDA 當天尚未公布、HTTP 暫時 404、排程 Agent 無法取得 GitHub 權限造成週報被後續 rolling URL 覆寫，已將**原有**「SIGNAL FGIS 週報封存」自動任務（不另建新任務）改為台灣時間 **11/24、11/25、12/01、12/02、12/08、12/09 上午 08:00** 共六次查核；週二先擷取，週三只補救失敗／官方延遲／正式修訂，成功同 SHA 時不得重新提交或覆寫。時間只表示嘗試查核，不是保證可取檔。必須優先確認 ESMIS/MMN 官方日期版 URL，如原 rolling TXT 已轉到下一週，不能將下一週資料冒充這週。
+
+本次 K4 的更新也新增 [K4.11 官方結果單獨評分備援](K411_DECEMBER_OFFICIAL_ONLY_PRE_RELEASE_PREFLIGHT_zh-TW.md)；**11/17 已對真實官方 11 月報告 122,379 bytes 成功驗證表格解析**，12 月若缺乏共識仍能獨立評估已凍結 V0=1758，並保留市場共識 null。研究程式、PR 和 `main` 不合併。
