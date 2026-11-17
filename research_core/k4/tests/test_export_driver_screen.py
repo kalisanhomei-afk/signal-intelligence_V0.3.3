@@ -68,5 +68,10 @@ class ExportDriverScreenTests(unittest.TestCase):
         c = sample(); c["weekly_inspections_mt"] = c["cumulative_inspections_mt"] + 1
         with self.assertRaisesRegex(ValueError, "WEEK_EXCEEDS_YEAR"): assess(c)
 
+    def test_committed_export_screen_is_reproducible(self):
+        reference = CASE.parent / "2026-11-16-fgis-export-driver-screen-result.json"
+        expected = json.loads(reference.read_text(encoding="utf-8"))
+        self.assertEqual(assess(sample()), expected)
+
 if __name__ == "__main__":
     unittest.main()
