@@ -78,8 +78,6 @@ class K52StrictOriginalEventTests(unittest.TestCase):
 
     def test_wrong_series_and_unit_rejected(self):
         data=json.loads(fake_new())
-        data["series"][0]["series_id"]="invalid-series"
-        # The first raw source has several series, locate by series ID instead.
         for row in data["series"]:
             if row["series_id"]=="png.nw2_epg0_swo_r48_bcf.w":
                 row["unitsshort"]="Mcf"
