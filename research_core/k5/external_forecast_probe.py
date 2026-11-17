@@ -43,8 +43,8 @@ def parse_candidate(key,text):
         if not m:
             raise ValueError("NAMED_CALL_NOT_FOUND")
         p=re.search(r"Published\s+(Fri Nov 13,\s*7:21 PM ET)",text)
-        if not p:
-            raise ValueError("PUBLISHER_CLAIM_NOT_FOUND")
+        # Current source content may omit its own claimed time. Never fill it
+        # from a search snippet; the actual capture UTC remains separately known.
         val=float(m.group(1))
         if val!=13.4:
             raise ValueError("WEB_EXPECTED_NUMBER_DIFFERENT")
@@ -53,7 +53,7 @@ def parse_candidate(key,text):
                 "forecast_net_change_bcf":val,
                 "forecast_class":"SINGLE_NAMED_FORECASTER_NOT_CONSENSUS",
                 "source_publisher":"Arc Research",
-                "publisher_publication_time_claim":p.group(1),
+                "publisher_publication_time_claim":p.group(1) if p else None,
                 "publisher_claim_independently_authenticated":False}
     if key=="metatrader_event_calendar":
         if not re.search(r"19 Nov 2026",text):
