@@ -2,19 +2,291 @@
   "meta": {
     "version": "0.3.4",
     "mode": "official_metadata",
-    "generated_at": "2026-11-17T13:40:57+00:00",
-    "last_attempt_at": "2026-11-17T13:40:57+00:00",
-    "last_success_at": "2026-11-17T13:40:57+00:00",
+    "generated_at": "2026-11-18T01:47:01+00:00",
+    "last_attempt_at": "2026-11-18T01:47:01+00:00",
+    "last_success_at": "2026-11-18T01:47:01+00:00",
     "successful_sources": 8,
     "source_count": 8,
     "status": "healthy",
-    "new_items_in_run": 45,
+    "new_items_in_run": 16,
     "item_count": 420,
     "retention_days": 45,
     "rights_scope": "descriptive_public_metadata_only",
     "note": "僅公開公告或研究的描述性元資料；不代表全文被查證、來源互為獨立證據，亦非 AI 精選。"
   },
   "items": [
+    {
+      "id": "rss-0c5fad1c6ec664104725bb",
+      "title": "NASA Launches Nuclear Power Systems Student Contest",
+      "url": "https://science.nasa.gov/centers-and-facilities/glenn/nasa-launches-nuclear-power-systems-student-contest",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-17T22:02:48+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-18T01:47:01+00:00",
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
+    },
+    {
+      "id": "rss-231b826ea9d0e37a20b30b",
+      "title": "NASA Space Apps Challenge Breaks Global Hackathon Records",
+      "url": "https://science.nasa.gov/open-science/nasa-space-apps-challenge-breaks-global-hackathon-records",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-17T21:50:34+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-18T01:47:01+00:00",
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
+    },
+    {
+      "id": "rss-ae3bcf4f2f8dd60bf1be4f",
+      "title": "BPS Digital AVATAR Challenge",
+      "url": "https://www.nasa.gov/directorates/stmd/prizes-challenges-crowdsourcing-program/center-of-excellence-for-collaborative-innovation-coeci/bps-digital-avatar-challenge",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-17T20:39:38+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-18T01:47:01+00:00",
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
+    },
+    {
+      "id": "rss-ab8a1fe910dea6f4759efd",
+      "title": "New Album of Baby Star Sounds Shared by NASA’s Chandra",
+      "url": "https://science.nasa.gov/missions/chandra/new-album-of-baby-star-sounds-shared-by-nasas-chandra",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-17T20:26:17+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-18T01:47:01+00:00",
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
+    },
+    {
+      "id": "rss-3ae2b43c4175b84b0344f5",
+      "title": "NASA to Cover 35th SpaceX Resupply Mission Space Station Departure",
+      "url": "https://www.nasa.gov/news-release/nasa-to-cover-35th-spacex-resupply-mission-space-station-departure",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-17T19:16:22+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-18T01:47:01+00:00",
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
+    },
+    {
+      "id": "rss-2e4daaa502b7235c7dbf9d",
+      "title": "NICER Status Updates",
+      "url": "https://www.nasa.gov/missions/station/nicer-status-updates",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-17T18:18:16+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-18T01:47:01+00:00",
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
+    },
+    {
+      "id": "rss-af9be69f804411bf2ebeaa",
+      "title": "Speech by Commissioner Dombrovskis at German Digital Ministers' Conference",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2484",
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "category": "政治",
+      "source_kind": "official",
+      "published_at": "2026-11-17T17:57:09+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-18T01:47:01+00:00",
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
+    },
+    {
+      "id": "rss-05694927c60ab3949de24d",
+      "title": "NASA to Conduct Low-Altitude Flights Over Texas Farmland",
+      "url": "https://www.nasa.gov/general/nasa-to-conduct-low-altitude-flights-over-texas-farmland",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-17T17:12:20+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-18T01:47:01+00:00",
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
+    },
+    {
+      "id": "rss-3d38b26b1350b86595a2a5",
+      "title": "Speech by Commissioner Lahbib at the EIGE Gender Equality Forum",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2483",
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "category": "政治",
+      "source_kind": "official",
+      "published_at": "2026-11-17T17:11:40+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-18T01:47:01+00:00",
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
+    },
+    {
+      "id": "rss-e30c0e2f8aac10b9a0167d",
+      "title": "Curiosity Blog, Sols 5072-5076: The Return of the Polygons",
+      "url": "https://science.nasa.gov/blog/curiosity-blog-sols-5072-5076-the-return-of-the-polygons",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-17T17:06:07+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-18T01:47:01+00:00",
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
+    },
+    {
+      "id": "rss-884b0c3577a7e56a40348c",
+      "title": "NASA Invites Media, Public to View Roman Telescope’s First Images",
+      "url": "https://www.nasa.gov/news-release/nasa-invites-media-public-to-view-roman-telescopes-first-images",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-17T17:00:29+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-18T01:47:01+00:00",
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
+    },
+    {
+      "id": "rss-c7833fd2e3796dd1196ca4",
+      "title": "Space Selfie",
+      "url": "https://www.nasa.gov/image-article/space-selfie-2",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "category": "科技",
+      "source_kind": "official",
+      "published_at": "2026-11-17T16:51:14+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-18T01:47:01+00:00",
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
+    },
+    {
+      "id": "rss-93c8a8ec976e1de0d30c5e",
+      "title": "Press point by Commissioner Glenn Micallef on the Communication on reinforcing the European Sport Model",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2480",
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "category": "政治",
+      "source_kind": "official",
+      "published_at": "2026-11-17T16:39:15+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-18T01:47:01+00:00",
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
+    },
+    {
+      "id": "rss-9fdb50442866d1c8e55c10",
+      "title": "Commission partially greenlights Croatia's final payment request for €2.67 billion under NextGenerationEU",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_2478",
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "category": "政治",
+      "source_kind": "official",
+      "published_at": "2026-11-17T15:25:23+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-18T01:47:01+00:00",
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
+    },
+    {
+      "id": "rss-22ccaf1b4369e5e402da92",
+      "title": "EU Leaders discuss AI and Europe's role in Ukraine peace negotiations during informal summit in Dublin",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/ac_26_2477",
+      "source_id": "eu-press",
+      "publisher_id": "eu_commission",
+      "source": "European Commission｜政策與國際事務",
+      "category": "政治",
+      "source_kind": "official",
+      "published_at": "2026-11-17T14:24:30+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-18T01:47:01+00:00",
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
+    },
+    {
+      "id": "rss-b9b1dbb35bdc6562fe0996",
+      "title": "How does EIA account for small differences between energy supply and demand data?",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68464",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "category": "能源",
+      "source_kind": "official",
+      "published_at": "2026-11-17T14:00:00+00:00",
+      "date_status": "provided",
+      "status": "來源元資料，內容未查證",
+      "verification_state": "原始發布標題／非 AI 精選",
+      "summary": null,
+      "first_seen_at": "2026-11-18T01:47:01+00:00",
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
+    },
     {
       "id": "rss-c2f9a3f05003fafaeb12fe",
       "title": "Remarks by Commissioner Hoekstra at EU press conference at COP31",
@@ -30,7 +302,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-fb610732ecb5fae706ed59",
@@ -47,7 +319,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-c819fb9b5c3bcc134aa7b8",
@@ -64,7 +336,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-5c4adc066d016bfbf59791",
@@ -81,7 +353,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-39687c5c6c66843ca8b6f0",
@@ -98,7 +370,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-b8a780e883bcc7652e7bb4",
@@ -183,7 +455,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-d0d7404d0e0a7f6a625619",
@@ -200,7 +472,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-cabea08ba2bd77eaf31162",
@@ -217,7 +489,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-c294f20baa0eb9528141c8",
@@ -234,7 +506,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-c2084b3fbdc50f5944b2dc",
@@ -251,7 +523,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-c1a53d2104a4d649d07fa9",
@@ -268,7 +540,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-bad5340dcf4ee6d13c9b3a",
@@ -285,7 +557,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-b53f058a60e56a5bb0cb7c",
@@ -302,7 +574,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-b03b85019d8b6fde071581",
@@ -319,7 +591,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-afaa75dc5c03d536b80b80",
@@ -336,7 +608,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-a970f1b2274f5f568fbe9b",
@@ -353,7 +625,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-9c2c1e1bd0ff48ae11552f",
@@ -370,7 +642,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-97436de9344bc0c95cd361",
@@ -387,7 +659,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-8ea965a98d7213ef7efff4",
@@ -404,7 +676,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-88d7f6b8194c1755f282d8",
@@ -421,7 +693,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-88b84581371efd14faf43a",
@@ -438,7 +710,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-86abcf8aa5999d62fc8407",
@@ -455,7 +727,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-869dd9129460d71e9c2b13",
@@ -472,7 +744,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-81f1140a4cfb670d61411c",
@@ -489,7 +761,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-6adf52e922b7316e58ebf8",
@@ -506,7 +778,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-66316fbeeaf7c1e0e225e7",
@@ -523,7 +795,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-5bb2e2f6703508d6b03ef1",
@@ -540,7 +812,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-55c3dd158d6d653650559e",
@@ -557,7 +829,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-545489afabaa0aec4cf1d6",
@@ -574,7 +846,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-341b85bc5b2e44d2240064",
@@ -591,7 +863,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-3294d5129c0647b446525c",
@@ -608,7 +880,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-27f4b98cfe3ee9c6d471a7",
@@ -625,7 +897,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-276235570d19a5e4f2f7d4",
@@ -642,7 +914,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-23297fa602e89190e5190f",
@@ -659,7 +931,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-2185e9428314802fccbf46",
@@ -676,7 +948,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-1dde18fd6bc952aa15bf16",
@@ -693,7 +965,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-12efcc8c3a30b442f6035b",
@@ -710,7 +982,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-0e4f4e664bbf420d616353",
@@ -727,7 +999,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T13:40:57+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-f709330c4c7d4bfc373bf0",
@@ -846,7 +1118,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-17T01:43:44+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-668fc8a9a0da0ffbae4445",
@@ -1747,7 +2019,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-14T01:31:49+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-b3cadfec94cdc44d4199ed",
@@ -1798,7 +2070,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-13T13:37:59+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-c0b7c078fa81b4497f91af",
@@ -2104,7 +2376,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-13T13:37:59+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-ba68d014b0c0b5fafbbfac",
@@ -2461,7 +2733,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-13T01:36:49+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-da9b1cc7c4c966319bebd2",
@@ -2529,7 +2801,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-13T01:36:49+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-8d68a3c33012c205191cfe",
@@ -2580,7 +2852,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-13T01:36:49+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-54932b5451ef2b4f878fb1",
@@ -2767,7 +3039,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-12T13:41:17+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-5cf497c37d846708158654",
@@ -2818,7 +3090,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-12T01:42:43+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-81baee169db989c0a18b8d",
@@ -3923,7 +4195,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-10T13:31:42+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-eb8b3aae475a0234cc9448",
@@ -4195,7 +4467,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-10T13:31:42+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-50653b36e1edda3c81dffa",
@@ -4807,7 +5079,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-09T13:41:42+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-f0fc1ec2b15269c6aefab2",
@@ -5096,7 +5368,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-09T13:41:42+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-69ce3e7f06d8c845ebe1af",
@@ -5504,7 +5776,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-07T01:28:23+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-0bb49f96544d94ecd80e77",
@@ -5521,7 +5793,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-07T01:28:23+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-344d924327419a44654fb9",
@@ -5572,7 +5844,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-07T01:28:23+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-09bb1ad32db5ff72080874",
@@ -6354,7 +6626,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-06T00:57:13+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-55a2930a5c54378a8e52b0",
@@ -6405,7 +6677,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-3993941242fcf8c5b02082",
@@ -6422,7 +6694,7 @@
       "verification_state": "原始發布標題／非 AI 精選",
       "summary": null,
       "first_seen_at": "2026-11-05T15:04:31+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
+      "last_seen_at": "2026-11-18T01:47:01+00:00"
     },
     {
       "id": "rss-4d40eb7ca8fc9a3f90fd0f",
@@ -6882,278 +7154,6 @@
       "summary": null,
       "first_seen_at": "2026-11-05T11:15:31+00:00",
       "last_seen_at": "2026-11-06T03:30:32+00:00"
-    },
-    {
-      "id": "rss-9a2876bfe0c6b1db7700d8",
-      "title": "$\\mathcal{C}^\\infty$ Smooth Trajectory Planning with Application to Soft Robots",
-      "url": "https://arxiv.org/abs/2611.05615",
-      "source_id": "arxiv-robotics",
-      "publisher_id": "arxiv",
-      "source": "arXiv｜機器人研究",
-      "category": "知識",
-      "source_kind": "research",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "date_status": "provided",
-      "status": "來源元資料，內容未查證",
-      "verification_state": "原始發布標題／非 AI 精選",
-      "summary": null,
-      "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-06T03:30:32+00:00"
-    },
-    {
-      "id": "rss-988751dceb22688e500597",
-      "title": "Contact-Implicit Whole-Body Trajectory Optimization for Dynamic Humanoid Locomotion on Parameterizable Uneven Terrain",
-      "url": "https://arxiv.org/abs/2611.05585",
-      "source_id": "arxiv-robotics",
-      "publisher_id": "arxiv",
-      "source": "arXiv｜機器人研究",
-      "category": "知識",
-      "source_kind": "research",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "date_status": "provided",
-      "status": "來源元資料，內容未查證",
-      "verification_state": "原始發布標題／非 AI 精選",
-      "summary": null,
-      "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-06T03:30:32+00:00"
-    },
-    {
-      "id": "rss-95c7efe247d46f3e264c26",
-      "title": "ELA: End-to-End Latent Action Policy Learning from Video Demonstrations",
-      "url": "https://arxiv.org/abs/2611.05571",
-      "source_id": "arxiv-robotics",
-      "publisher_id": "arxiv",
-      "source": "arXiv｜機器人研究",
-      "category": "知識",
-      "source_kind": "research",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "date_status": "provided",
-      "status": "來源元資料，內容未查證",
-      "verification_state": "原始發布標題／非 AI 精選",
-      "summary": null,
-      "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-06T03:30:32+00:00"
-    },
-    {
-      "id": "rss-87631feae5b67cf18cdcb5",
-      "title": "Clearing up a robot’s fuzzy memory",
-      "url": "https://news.mit.edu/2026/clearing-up-robot-fuzzy-memory-1105",
-      "source_id": "mit-research",
-      "publisher_id": "mit_news",
-      "source": "MIT News｜研究與創新",
-      "category": "科技",
-      "source_kind": "institutional_news",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "date_status": "provided",
-      "status": "來源元資料，內容未查證",
-      "verification_state": "原始發布標題／非 AI 精選",
-      "summary": null,
-      "first_seen_at": "2026-11-06T00:57:13+00:00",
-      "last_seen_at": "2026-11-17T13:40:57+00:00"
-    },
-    {
-      "id": "rss-833e9eaf617aca9be82ddf",
-      "title": "Anduin: A sybil-resistant agentic marketplace reputation system",
-      "url": "https://arxiv.org/abs/2611.05586",
-      "source_id": "arxiv-ai",
-      "publisher_id": "arxiv",
-      "source": "arXiv｜人工智慧研究",
-      "category": "知識",
-      "source_kind": "research",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "date_status": "provided",
-      "status": "來源元資料，內容未查證",
-      "verification_state": "原始發布標題／非 AI 精選",
-      "summary": null,
-      "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-06T03:30:32+00:00"
-    },
-    {
-      "id": "rss-8169d789c150c26cec0b3c",
-      "title": "Time-to-Goal: Learned Temporal Metrics for Long-Horizon Planning with JEPA World Models",
-      "url": "https://arxiv.org/abs/2611.05847",
-      "source_id": "arxiv-robotics",
-      "publisher_id": "arxiv",
-      "source": "arXiv｜機器人研究",
-      "category": "知識",
-      "source_kind": "research",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "date_status": "provided",
-      "status": "來源元資料，內容未查證",
-      "verification_state": "原始發布標題／非 AI 精選",
-      "summary": null,
-      "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-06T03:30:32+00:00"
-    },
-    {
-      "id": "rss-4ced9b5daa264ea9566439",
-      "title": "Towards Robust Long-Lived Agents: Benchmarking Experience Lifecycles in Evolving Environments",
-      "url": "https://arxiv.org/abs/2611.05450",
-      "source_id": "arxiv-ai",
-      "publisher_id": "arxiv",
-      "source": "arXiv｜人工智慧研究",
-      "category": "知識",
-      "source_kind": "research",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "date_status": "provided",
-      "status": "來源元資料，內容未查證",
-      "verification_state": "原始發布標題／非 AI 精選",
-      "summary": null,
-      "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-06T03:30:32+00:00"
-    },
-    {
-      "id": "rss-495042ca0e78bb75db55be",
-      "title": "BrainBind: Bridging Synchronized EEG and fMRI through Long-Form Naturalistic Video Representations",
-      "url": "https://arxiv.org/abs/2611.05581",
-      "source_id": "arxiv-ai",
-      "publisher_id": "arxiv",
-      "source": "arXiv｜人工智慧研究",
-      "category": "知識",
-      "source_kind": "research",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "date_status": "provided",
-      "status": "來源元資料，內容未查證",
-      "verification_state": "原始發布標題／非 AI 精選",
-      "summary": null,
-      "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-06T03:30:32+00:00"
-    },
-    {
-      "id": "rss-48da68b7227da49a051915",
-      "title": "Challenge-Aware Knowledge Recruitment with Meta-Agent Supervision for Medical Multi-Agent Reasoning",
-      "url": "https://arxiv.org/abs/2611.05393",
-      "source_id": "arxiv-ai",
-      "publisher_id": "arxiv",
-      "source": "arXiv｜人工智慧研究",
-      "category": "知識",
-      "source_kind": "research",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "date_status": "provided",
-      "status": "來源元資料，內容未查證",
-      "verification_state": "原始發布標題／非 AI 精選",
-      "summary": null,
-      "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-06T03:30:32+00:00"
-    },
-    {
-      "id": "rss-3dabf25cdecd1ece505429",
-      "title": "GRASP: Gradient-Guided Sampling for Contact-Rich Physics-Based Motion Retargeting",
-      "url": "https://arxiv.org/abs/2611.05754",
-      "source_id": "arxiv-robotics",
-      "publisher_id": "arxiv",
-      "source": "arXiv｜機器人研究",
-      "category": "知識",
-      "source_kind": "research",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "date_status": "provided",
-      "status": "來源元資料，內容未查證",
-      "verification_state": "原始發布標題／非 AI 精選",
-      "summary": null,
-      "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-06T03:30:32+00:00"
-    },
-    {
-      "id": "rss-3a7683833c88aecd08c1aa",
-      "title": "Correct Robots Before They Make Mistakes: Proactive Human-in-the-Loop Intervention via Preference Learning",
-      "url": "https://arxiv.org/abs/2611.05667",
-      "source_id": "arxiv-robotics",
-      "publisher_id": "arxiv",
-      "source": "arXiv｜機器人研究",
-      "category": "知識",
-      "source_kind": "research",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "date_status": "provided",
-      "status": "來源元資料，內容未查證",
-      "verification_state": "原始發布標題／非 AI 精選",
-      "summary": null,
-      "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-06T03:30:32+00:00"
-    },
-    {
-      "id": "rss-3751b7ab91027357836e75",
-      "title": "Jev with Foresight: Safe Language-Guided Autonomous Driving via a Language World Model",
-      "url": "https://arxiv.org/abs/2611.05448",
-      "source_id": "arxiv-robotics",
-      "publisher_id": "arxiv",
-      "source": "arXiv｜機器人研究",
-      "category": "知識",
-      "source_kind": "research",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "date_status": "provided",
-      "status": "來源元資料，內容未查證",
-      "verification_state": "原始發布標題／非 AI 精選",
-      "summary": null,
-      "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-06T03:30:32+00:00"
-    },
-    {
-      "id": "rss-2ae8b3d97a36342702f9e4",
-      "title": "FWIK: Multi-Waypoint IK Selection via Lookahead Graph Search",
-      "url": "https://arxiv.org/abs/2611.05897",
-      "source_id": "arxiv-robotics",
-      "publisher_id": "arxiv",
-      "source": "arXiv｜機器人研究",
-      "category": "知識",
-      "source_kind": "research",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "date_status": "provided",
-      "status": "來源元資料，內容未查證",
-      "verification_state": "原始發布標題／非 AI 精選",
-      "summary": null,
-      "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-06T03:30:32+00:00"
-    },
-    {
-      "id": "rss-2ae2a8a1402b02d009c496",
-      "title": "Ctrl-F: Force as an Interface for Humanoid Loco-Manipulation",
-      "url": "https://arxiv.org/abs/2611.05507",
-      "source_id": "arxiv-robotics",
-      "publisher_id": "arxiv",
-      "source": "arXiv｜機器人研究",
-      "category": "知識",
-      "source_kind": "research",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "date_status": "provided",
-      "status": "來源元資料，內容未查證",
-      "verification_state": "原始發布標題／非 AI 精選",
-      "summary": null,
-      "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-06T03:30:32+00:00"
-    },
-    {
-      "id": "rss-2101b19f66c97047766fc0",
-      "title": "Iterated creation, grading, and revision of data science projects by language models",
-      "url": "https://arxiv.org/abs/2611.05548",
-      "source_id": "arxiv-ai",
-      "publisher_id": "arxiv",
-      "source": "arXiv｜人工智慧研究",
-      "category": "知識",
-      "source_kind": "research",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "date_status": "provided",
-      "status": "來源元資料，內容未查證",
-      "verification_state": "原始發布標題／非 AI 精選",
-      "summary": null,
-      "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-06T03:30:32+00:00"
-    },
-    {
-      "id": "rss-209029a364bea7da5bf4f7",
-      "title": "MESA: An Evaluation Framework for Compositional, Semantic, and Spatial Generalization in Robotics",
-      "url": "https://arxiv.org/abs/2611.05567",
-      "source_id": "arxiv-robotics",
-      "publisher_id": "arxiv",
-      "source": "arXiv｜機器人研究",
-      "category": "知識",
-      "source_kind": "research",
-      "published_at": "2026-11-05T05:00:00+00:00",
-      "date_status": "provided",
-      "status": "來源元資料，內容未查證",
-      "verification_state": "原始發布標題／非 AI 精選",
-      "summary": null,
-      "first_seen_at": "2026-11-05T11:15:31+00:00",
-      "last_seen_at": "2026-11-06T03:30:32+00:00"
     }
   ],
   "sources": [
@@ -7166,9 +7166,9 @@
       "ok": true,
       "count": 15,
       "error": null,
-      "last_attempt_at": "2026-11-17T13:40:57+00:00",
-      "last_success_at": "2026-11-17T13:40:57+00:00",
-      "latency_ms": 43,
+      "last_attempt_at": "2026-11-18T01:47:01+00:00",
+      "last_success_at": "2026-11-18T01:47:01+00:00",
+      "latency_ms": 157,
       "evidence_url": "https://www.federalreserve.gov/disclaimer.htm"
     },
     {
@@ -7180,9 +7180,9 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-17T13:40:57+00:00",
-      "last_success_at": "2026-11-17T13:40:57+00:00",
-      "latency_ms": 61,
+      "last_attempt_at": "2026-11-18T01:47:01+00:00",
+      "last_success_at": "2026-11-18T01:47:01+00:00",
+      "latency_ms": 262,
       "evidence_url": "https://www.bea.gov/help/faq/147"
     },
     {
@@ -7194,9 +7194,9 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-17T13:40:57+00:00",
-      "last_success_at": "2026-11-17T13:40:57+00:00",
-      "latency_ms": 72,
+      "last_attempt_at": "2026-11-18T01:47:01+00:00",
+      "last_success_at": "2026-11-18T01:47:01+00:00",
+      "latency_ms": 214,
       "evidence_url": "https://info.arxiv.org/help/api/tou.html"
     },
     {
@@ -7208,9 +7208,9 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-17T13:40:57+00:00",
-      "last_success_at": "2026-11-17T13:40:57+00:00",
-      "latency_ms": 30,
+      "last_attempt_at": "2026-11-18T01:47:01+00:00",
+      "last_success_at": "2026-11-18T01:47:01+00:00",
+      "latency_ms": 124,
       "evidence_url": "https://info.arxiv.org/help/api/tou.html"
     },
     {
@@ -7222,9 +7222,9 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-17T13:40:57+00:00",
-      "last_success_at": "2026-11-17T13:40:57+00:00",
-      "latency_ms": 52,
+      "last_attempt_at": "2026-11-18T01:47:01+00:00",
+      "last_success_at": "2026-11-18T01:47:01+00:00",
+      "latency_ms": 192,
       "evidence_url": "https://www.eia.gov/TODAYINENERGY/about.php"
     },
     {
@@ -7236,9 +7236,9 @@
       "ok": true,
       "count": 10,
       "error": null,
-      "last_attempt_at": "2026-11-17T13:40:57+00:00",
-      "last_success_at": "2026-11-17T13:40:57+00:00",
-      "latency_ms": 31,
+      "last_attempt_at": "2026-11-18T01:47:01+00:00",
+      "last_success_at": "2026-11-18T01:47:01+00:00",
+      "latency_ms": 122,
       "evidence_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
     },
     {
@@ -7250,9 +7250,9 @@
       "ok": true,
       "count": 10,
       "error": null,
-      "last_attempt_at": "2026-11-17T13:40:57+00:00",
-      "last_success_at": "2026-11-17T13:40:57+00:00",
-      "latency_ms": 981,
+      "last_attempt_at": "2026-11-18T01:47:01+00:00",
+      "last_success_at": "2026-11-18T01:47:01+00:00",
+      "latency_ms": 818,
       "evidence_url": "https://commission.europa.eu/legal-notice_en"
     },
     {
@@ -7264,9 +7264,9 @@
       "ok": true,
       "count": 16,
       "error": null,
-      "last_attempt_at": "2026-11-17T13:40:57+00:00",
-      "last_success_at": "2026-11-17T13:40:57+00:00",
-      "latency_ms": 41,
+      "last_attempt_at": "2026-11-18T01:47:01+00:00",
+      "last_success_at": "2026-11-18T01:47:01+00:00",
+      "latency_ms": 134,
       "evidence_url": "https://news.mit.edu/terms-of-use"
     }
   ]

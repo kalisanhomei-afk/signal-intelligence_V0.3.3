@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.3",
-    "generated_at": "2026-11-17T13:41:07+00:00",
+    "generated_at": "2026-11-18T01:47:12+00:00",
     "status": "input_coverage_diagnostic_only",
     "rights_scope": "descriptive_public_metadata_only",
     "observed_items": 420,
@@ -16,7 +16,7 @@
       "mit_news",
       "nasa"
     ],
-    "last_collection_success_at": "2026-11-17T13:40:57+00:00",
+    "last_collection_success_at": "2026-11-18T01:47:01+00:00",
     "collection_last_success_age_hours": 0.0,
     "domains_no_observed_publisher": 5,
     "domains_single_publisher": 4,
@@ -132,39 +132,39 @@
   "publisher_activity": [
     {
       "publisher_id": "arxiv",
-      "item_count": 254,
+      "item_count": 239,
       "last_item_published_at": "2026-11-17T05:00:00+00:00",
-      "age_days_of_newest_item": 0.4
+      "age_days_of_newest_item": 0.9
     },
     {
       "publisher_id": "eia",
-      "item_count": 5,
-      "last_item_published_at": "2026-11-13T14:00:00+00:00",
-      "age_days_of_newest_item": 4.0
+      "item_count": 6,
+      "last_item_published_at": "2026-11-17T14:00:00+00:00",
+      "age_days_of_newest_item": 0.5
     },
     {
       "publisher_id": "eu_commission",
-      "item_count": 87,
-      "last_item_published_at": "2026-11-17T11:14:35+00:00",
-      "age_days_of_newest_item": 0.1
+      "item_count": 92,
+      "last_item_published_at": "2026-11-17T17:57:09+00:00",
+      "age_days_of_newest_item": 0.3
     },
     {
       "publisher_id": "fed",
       "item_count": 1,
       "last_item_published_at": "2026-11-12T17:45:00+00:00",
-      "age_days_of_newest_item": 4.8
+      "age_days_of_newest_item": 5.3
     },
     {
       "publisher_id": "mit_news",
-      "item_count": 15,
+      "item_count": 14,
       "last_item_published_at": "2026-11-17T05:00:00+00:00",
-      "age_days_of_newest_item": 0.4
+      "age_days_of_newest_item": 0.9
     },
     {
       "publisher_id": "nasa",
-      "item_count": 58,
-      "last_item_published_at": "2026-11-17T05:05:00+00:00",
-      "age_days_of_newest_item": 0.4
+      "item_count": 68,
+      "last_item_published_at": "2026-11-17T22:02:48+00:00",
+      "age_days_of_newest_item": 0.2
     }
   ],
   "benchmark_candidates": [],

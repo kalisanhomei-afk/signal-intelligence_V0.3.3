@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.1",
-    "generated_at": "2026-11-17T13:41:03+00:00",
+    "generated_at": "2026-11-18T01:47:08+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "status": "metadata_gap_audit_only",
     "candidate_count": 12,
@@ -56,13 +56,13 @@
       "fingerprint": "ffd30551e0b24c84468a4c35"
     },
     {
-      "id": "rss-2474a6edd8a20e4b6f1234",
+      "id": "rss-b9b1dbb35bdc6562fe0996",
       "source_id": "eia-energy",
       "publisher_id": "eia",
-      "title": "Hydropower generation in the Southwest fell to record lows this summer",
+      "title": "How does EIA account for small differences between energy supply and demand data?",
       "category": "能源",
-      "published_at": "2026-11-13T14:00:00+00:00",
-      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68445",
+      "published_at": "2026-11-17T14:00:00+00:00",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68464",
       "source_role": "第一手能源統計機構",
       "evidence_kind": "能源統計與分析機構公開標題元資料",
       "evidence_level": "M0",
@@ -78,16 +78,16 @@
         "有無其他機構或市場資料交叉驗證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "6053e5a52186f5aabe39062f"
+      "fingerprint": "f212e9ca362d79b248fa0f16"
     },
     {
-      "id": "rss-c2f9a3f05003fafaeb12fe",
+      "id": "rss-af9be69f804411bf2ebeaa",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Remarks by Commissioner Hoekstra at EU press conference at COP31",
+      "title": "Speech by Commissioner Dombrovskis at German Digital Ministers' Conference",
       "category": "政治",
-      "published_at": "2026-11-17T11:14:35+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2474",
+      "published_at": "2026-11-17T17:57:09+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2484",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -103,7 +103,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "d688e32aa40a846b925517c9"
+      "fingerprint": "ed154322d42e0f3e4c43d3eb"
     },
     {
       "id": "rss-87a784bdd6110f05671301",
@@ -156,13 +156,13 @@
       "fingerprint": "f0c8ebd27956d275685bfa92"
     },
     {
-      "id": "rss-5cf4301583bea7d8db6f5e",
+      "id": "rss-0c5fad1c6ec664104725bb",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
-      "title": "APOD: 2026 November 17 – Milky Way versus Aurora",
+      "title": "NASA Launches Nuclear Power Systems Student Contest",
       "category": "科技",
-      "published_at": "2026-11-17T05:05:00+00:00",
-      "url": "https://science.nasa.gov/image-article/apod-2026-november-17-milky-way-versus-aurora",
+      "published_at": "2026-11-17T22:02:48+00:00",
+      "url": "https://science.nasa.gov/centers-and-facilities/glenn/nasa-launches-nuclear-power-systems-student-contest",
       "source_role": "第一手航太科研機構",
       "evidence_kind": "航太與技術機構公開消息標題元資料",
       "evidence_level": "M0",
@@ -178,7 +178,7 @@
         "相關成果有無獨立測試或第三方研究？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "3da85ae48e4be5b48d0ada1b"
+      "fingerprint": "d459168eb4ab9bcf843a4087"
     },
     {
       "id": "rss-d0d7404d0e0a7f6a625619",
@@ -206,13 +206,13 @@
       "fingerprint": "0c5dfeeedc1207936f42d978"
     },
     {
-      "id": "rss-e3f23c3f0faa7979a64467",
+      "id": "rss-2474a6edd8a20e4b6f1234",
       "source_id": "eia-energy",
       "publisher_id": "eia",
-      "title": "EIA forecasts Alaskan crude oil production to grow 13% in 2027",
+      "title": "Hydropower generation in the Southwest fell to record lows this summer",
       "category": "能源",
-      "published_at": "2026-11-12T14:00:00+00:00",
-      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68444",
+      "published_at": "2026-11-13T14:00:00+00:00",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68445",
       "source_role": "第一手能源統計機構",
       "evidence_kind": "能源統計與分析機構公開標題元資料",
       "evidence_level": "M0",
@@ -228,16 +228,16 @@
         "有無其他機構或市場資料交叉驗證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "14b7d349932ea5bf0627118d"
+      "fingerprint": "6053e5a52186f5aabe39062f"
     },
     {
-      "id": "rss-fb610732ecb5fae706ed59",
+      "id": "rss-3d38b26b1350b86595a2a5",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Factsheet: European Sport Model",
+      "title": "Speech by Commissioner Lahbib at the EIGE Gender Equality Forum",
       "category": "政治",
-      "published_at": "2026-11-17T10:38:21+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/fs_26_2473",
+      "published_at": "2026-11-17T17:11:40+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2483",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -253,7 +253,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "ba6184af5775906b9409d455"
+      "fingerprint": "13a514920d4be536a899e367"
     },
     {
       "id": "rss-24f157b5583c520353b798",
@@ -281,13 +281,13 @@
       "fingerprint": "fec36d35dc3c1c1a78102081"
     },
     {
-      "id": "rss-ff29f8a875bc688b7e23c7",
+      "id": "rss-231b826ea9d0e37a20b30b",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
-      "title": "Tossing Fireworks from Cloud to Cloud",
+      "title": "NASA Space Apps Challenge Breaks Global Hackathon Records",
       "category": "科技",
-      "published_at": "2026-11-17T05:01:00+00:00",
-      "url": "https://science.nasa.gov/earth/earth-observatory/tossing-fireworks-from-cloud-to-cloud",
+      "published_at": "2026-11-17T21:50:34+00:00",
+      "url": "https://science.nasa.gov/open-science/nasa-space-apps-challenge-breaks-global-hackathon-records",
       "source_role": "第一手航太科研機構",
       "evidence_kind": "航太與技術機構公開消息標題元資料",
       "evidence_level": "M0",
@@ -303,7 +303,7 @@
         "相關成果有無獨立測試或第三方研究？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "47f43771e546700dd852ef8b"
+      "fingerprint": "d317b44e692820e3f1093928"
     },
     {
       "id": "rss-cabea08ba2bd77eaf31162",
