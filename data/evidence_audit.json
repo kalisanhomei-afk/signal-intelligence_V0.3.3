@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.1",
-    "generated_at": "2026-11-19T13:44:52+00:00",
+    "generated_at": "2026-11-20T01:38:37+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "status": "metadata_gap_audit_only",
     "candidate_count": 12,
@@ -82,13 +82,13 @@
       "fingerprint": "354605a9401370967db25931"
     },
     {
-      "id": "rss-a4c390e9c48b4825355d9b",
+      "id": "rss-7dd88225b4ad6945571af2",
       "source_id": "eia-energy",
       "publisher_id": "eia",
-      "title": "U.S. natural gas inventories end injection season above normal levels",
+      "title": "Oil flows through Middle East chokepoints increased in the third quarter",
       "category": "能源",
-      "published_at": "2026-11-18T14:00:00+00:00",
-      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68484",
+      "published_at": "2026-11-19T14:00:00+00:00",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=",
       "source_role": "第一手能源統計機構",
       "evidence_kind": "能源統計與分析機構公開標題元資料",
       "evidence_level": "M0",
@@ -104,16 +104,16 @@
         "有無其他機構或市場資料交叉驗證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "b1eecaccd564cbfd0c3797a8"
+      "fingerprint": "0d02c1540882a045b3851031"
     },
     {
-      "id": "rss-ac32ea56be833da613688c",
+      "id": "rss-3ba99bd86757a6d51325e1",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Commissioner Roswall's opening speech at the EPP Group Hearing, ‘From Stress Test to Solutions – Practical Lessons for the Birds and Habitats Directives'",
+      "title": "Statement on the incident at today's Cancer Summit",
       "category": "政治",
-      "published_at": "2026-11-19T10:52:19+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2519",
+      "published_at": "2026-11-19T15:04:25+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2528",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -129,7 +129,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "0a9d700fc0a82b5da61bd75a"
+      "fingerprint": "ecb31802eb8dae15d9f9ce12"
     },
     {
       "id": "rss-c0c4ef66e0d9307c0568ef",
@@ -157,13 +157,13 @@
       "fingerprint": "6234d4e58ee1fb676fbe5984"
     },
     {
-      "id": "rss-8124621a3ec27f00d59dc5",
+      "id": "rss-c842cebd4bd1f2ab5a8ae4",
       "source_id": "mit-research",
       "publisher_id": "mit_news",
-      "title": "Confirmed: Numbers tell, but language sells",
+      "title": "AI helps researchers investigate how thousands of medical studies share code",
       "category": "科技",
-      "published_at": "2026-11-19T05:00:00+00:00",
-      "url": "https://news.mit.edu/2026/confirmed-numbers-tell-language-sells-1119",
+      "published_at": "2026-11-19T22:15:00+00:00",
+      "url": "https://news.mit.edu/2026/ai-helps-researchers-investigate-how-medical-studies-share-code-1119",
       "source_role": "研究機構自有新聞編輯室",
       "evidence_kind": "MIT 自有研究報導標題元資料",
       "evidence_level": "M0",
@@ -179,16 +179,16 @@
         "研究結果與商業部署或規模化是否有證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "ee503f556249a87fb61f2548"
+      "fingerprint": "7cef22e5932631ca6b04119c"
     },
     {
-      "id": "rss-fb849f3daf520e54868f4e",
+      "id": "rss-1aefc3b058a85a50b2d8eb",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
-      "title": "APOD: 2026 November 18 – An M-class Solar Flare",
+      "title": "Challenge: Public Input on Life and the World in 2075",
       "category": "科技",
-      "published_at": "2026-11-18T05:05:00+00:00",
-      "url": "https://science.nasa.gov/image-article/apod-2026-november-18-an-m-class-solar-flare",
+      "published_at": "2026-11-19T19:34:20+00:00",
+      "url": "https://www.nasa.gov/directorates/stmd/prizes-challenges-crowdsourcing-program/center-of-excellence-for-collaborative-innovation-coeci/challenge-public-input-on-life-and-the-world-in-2075",
       "source_role": "第一手航太科研機構",
       "evidence_kind": "航太與技術機構公開消息標題元資料",
       "evidence_level": "M0",
@@ -204,7 +204,7 @@
         "相關成果有無獨立測試或第三方研究？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "a10481109d4dfaafe372218a"
+      "fingerprint": "dcb26bc8927477c9cf6976de"
     },
     {
       "id": "rss-f7a3b0193b2bb179c7cb77",
@@ -232,13 +232,13 @@
       "fingerprint": "c5b6b0b16b9124fb4f0cf6d9"
     },
     {
-      "id": "rss-b9b1dbb35bdc6562fe0996",
+      "id": "rss-a4c390e9c48b4825355d9b",
       "source_id": "eia-energy",
       "publisher_id": "eia",
-      "title": "How does EIA account for small differences between energy supply and demand data?",
+      "title": "U.S. natural gas inventories end injection season above normal levels",
       "category": "能源",
-      "published_at": "2026-11-17T14:00:00+00:00",
-      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68464",
+      "published_at": "2026-11-18T14:00:00+00:00",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68484",
       "source_role": "第一手能源統計機構",
       "evidence_kind": "能源統計與分析機構公開標題元資料",
       "evidence_level": "M0",
@@ -254,16 +254,16 @@
         "有無其他機構或市場資料交叉驗證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "f212e9ca362d79b248fa0f16"
+      "fingerprint": "b1eecaccd564cbfd0c3797a8"
     },
     {
-      "id": "rss-179cde096621df0eb38a88",
+      "id": "rss-d351b8cca1a091a715f4be",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Commissioner Roswall's address at the 2nd European Bioeconomy Conference",
+      "title": "Closing remarks by Commissioner Albuquerque at the high level conference on financial literacy: beyond numbers",
       "category": "政治",
-      "published_at": "2026-11-19T10:43:42+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2518",
+      "published_at": "2026-11-19T15:03:49+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2527",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -279,7 +279,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "ac7efc39493ba7872cb0bbe1"
+      "fingerprint": "88084a091174815471bd96ae"
     },
     {
       "id": "rss-87a784bdd6110f05671301",
@@ -307,13 +307,13 @@
       "fingerprint": "d3cbcd0dd970b250a2172d47"
     },
     {
-      "id": "rss-f4d5cc76792a20c67ba410",
+      "id": "rss-091d8212ef272c4559902b",
       "source_id": "mit-research",
       "publisher_id": "mit_news",
-      "title": "This featherweight, flying robot carries its own sensors and computers",
+      "title": "Ultrasound imaging without the gel",
       "category": "科技",
-      "published_at": "2026-11-18T19:00:00+00:00",
-      "url": "https://news.mit.edu/2026/featherweight-flying-robot-carries-its-own-sensors-and-computers-1118",
+      "published_at": "2026-11-19T19:00:00+00:00",
+      "url": "https://news.mit.edu/2026/ultrasound-imaging-without-gel-1119",
       "source_role": "研究機構自有新聞編輯室",
       "evidence_kind": "MIT 自有研究報導標題元資料",
       "evidence_level": "M0",
@@ -329,7 +329,7 @@
         "研究結果與商業部署或規模化是否有證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "806bd562e1690ca527f3ed20"
+      "fingerprint": "637ffd1fb5a575bd59af1c9f"
     }
   ]
 }
