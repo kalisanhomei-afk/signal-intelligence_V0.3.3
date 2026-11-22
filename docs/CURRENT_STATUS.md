@@ -1,6 +1,15 @@
 # 視界 SIGNAL — CURRENT_STATUS / cross-chat handoff
 
-Updated: 2026-11-17 Asia/Taipei. This is a **main-branch handoff index**, not proof that experimental research branches were merged or that forecast outcomes are known.
+Updated: 2026-11-22 Asia/Taipei (R1c source audit). This is a **stacked research-branch handoff index**, not a claim that these drafts were merged to main or forecast outcomes are known.
+
+## Current R1c research gate (latest as of 2026-11-22; supersedes earlier chronological R1c snapshots)
+- R0 #26, R1a #27, R1b #28, R1c #29: all **Draft / unmerged**; PR #29 branch `research/global-capital-flow-r1c-capture-pilot-20261122`.
+- Antigravity **externally reported** 2/2 one-off official-source downloads (Fed H.6 HTML, Treasury TIC 2020-03-16 ZIP). Actual source bytes are retained **only** in Antigravity local `research_raw/`, not available in this ChatGPT session. Raw body SHA-256 values below are reported from Antigravity verification; no claim of independent local rehash.
+- TIC 2020-03-16 ZIP: requested `https://www.treasury.gov/resource-center/data-chart-center/tic/Documents/ticrel_20200316.zip`; final `https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/ticrel_20200316.zip`; reported 2,810,284 B, SHA-256 `4c8b61acb50851f277168b5b897ffd5aba5cab2fb589d44ef74c75890a3b4196`; retrieval completed `2026-11-22T04:34:51.627322Z`; HTTP Last-Modified `2026-02-10 15:47:24 GMT`; 49 members, a member `slt3d_globl.tic` shows ZIP timestamp **2020-04-10**, after nominal 2020-03-16 release. Post-release metadata anomaly is NOT proof of later data revision, but defeats unqualified original-bytes certification.
+- TIC member `slt3d_globl.tic` remains `QUARANTINE_TIMESTAMP_POST_RELEASE`; other ZIP members **HISTORICAL_BYTES_NOT_CERTIFIED**. Official source listing and general revisions confirmed; full release vintage, exact UTC, data rights and investable total return label remain UNVERIFIED.
+- Document: `docs/research/GLOBAL_CAPITAL_FLOW_R1C_TIC_RECEIPT_PIT_AUDIT_20261122.md`, structured file: `docs/research/global_capital_flow_r1c_tic_receipt_20261122.json`. Original ZIP / receipt not committed to Git.
+- R1c `EXTERNAL_CAPTURE_REPORTED`, `SOURCE_PIT_BLOCKED`; Gate 0 = BLOCKED, M0/M1/M2 NOT_RUN, no trading/deployment, no new agent launched.
+- **Next**: single-value compare 2020-03-16 original press release vs `npr_history.csv` in the *retained* ZIP, using correct definitions; no re-download, no repeat of existing 8/8 offline tests. If cannot match safely, record BLOCKED rather than invent.
 
 ## Objective
 Research official and independent evidence, model causal supply/demand and stock-flow drivers, build timestamped falsifiable hypotheses, and evaluate tradable financial implications only after proper out-of-sample and point-in-time (PIT) tests. Not merely a news aggregator. Favor verifiable forecasts and risk-adjusted decisions.
@@ -79,4 +88,4 @@ Repository: https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3
 - **Next:** verify official Treasury archive ZIP anchor direct href before external TIC capture; do not guess links. Keep original H.6 bytes and receipt on Antigravity device for independent later check. Model work stays blocked.
 
 ## Next action
-Review the current research draft PR #24 and the dependent K4/K5 PRs against the correct base branches. Prioritize actual PIT evidence, point-in-time release checks and independent acceptance; do not silently merge or deploy these drafts.
+For **global-capital-flow R1c**: compare a single exact 2020-03-16 TIC press-release number with an appropriately mapped member in the existing Antigravity-held ZIP, quarantine the post-release-timestamp member, and retain Gate 0 BLOCKED until data rights and investable total-return/PIT evidence are demonstrated. For the **separate K4/K5** line: retain original independent PIT validation gates and never modify frozen evidence or silently merge drafts.

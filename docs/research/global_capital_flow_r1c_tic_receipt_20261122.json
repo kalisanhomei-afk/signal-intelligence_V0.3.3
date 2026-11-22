@@ -1,0 +1,54 @@
+{
+  "schema": "signal.r1c.capture_provenance_audit.v0.1",
+  "recorded_date_taipei": "2026-11-22",
+  "source_id": "UST_TIC_2020_03_16",
+  "evidence_basis": [
+    "user-supplied Antigravity execution transcript and receipt metadata",
+    "independent read-only confirmation of official Treasury archive listing and release-policy webpage"
+  ],
+  "source_links": {
+    "archive_index": "https://home.treasury.gov/archives-of-tic-monthly-data-releases",
+    "official_press_release": "https://home.treasury.gov/news/press-releases/sm943",
+    "release_policy": "https://home.treasury.gov/data/treasury-international-capital-tic-system/release-dates-of-tic-data",
+    "requested_file": "https://www.treasury.gov/resource-center/data-chart-center/tic/Documents/ticrel_20200316.zip",
+    "redirected_file": "https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/ticrel_20200316.zip"
+  },
+  "reference_period": "2020-01",
+  "nominal_release_date": "2020-03-16",
+  "exact_per_release_publication_timestamp_utc": null,
+  "downloaded_at_start_utc_reported": "2026-11-22T04:34:50.834165Z",
+  "downloaded_at_end_utc_reported": "2026-11-22T04:34:51.627322Z",
+  "http_status_reported": 200,
+  "content_type_reported": "application/zip",
+  "content_length_bytes_reported": 2810284,
+  "last_modified_reported": "Tue, 10 Feb 2026 15:47:24 GMT",
+  "etag_reported": "\"41acd0733af2e60980f78f267071a509:1770738444.506209\"",
+  "raw_body_sha256_reported": "4c8b61acb50851f277168b5b897ffd5aba5cab2fb589d44ef74c75890a3b4196",
+  "receipt_json_sha256_reported": "6282a8fe6b6bc1e06cd470a5236a9a7d2462e010f6930eae65e2496c7b09b6f8",
+  "antigravity_local_sha256sum_matches": true,
+  "assistant_independent_raw_bytes_review": false,
+  "raw_file_uploaded_or_available_to_assistant": false,
+  "member_count_reported": 49,
+  "uncompressed_bytes_sum_reported": 23116176,
+  "compressed_bytes_sum_reported": 2803534,
+  "zip_member_timestamp_reported_range": [
+    "2020-03-08 18:24:22",
+    "2020-04-10 17:00:00"
+  ],
+  "post_release_metadata_flag": {
+    "member": "slt3d_globl.tic",
+    "reported_zip_member_datetime": "2020-04-10 17:00:00",
+    "reported_members_with_pre_release_metadata": 48,
+    "classification": "QUARANTINE_TIMESTAMP_POST_RELEASE",
+    "semantic_category": "US Treasury securities holdings: old TIC series, not total capital flow",
+    "actual_change_to_data_content_proven": false
+  },
+  "remaining_members_status": "HISTORICAL_BYTES_NOT_CERTIFIED",
+  "archived_as_of_capture_only": true,
+  "contemporaneous_original_file_certified": false,
+  "license_status": "UNVERIFIED",
+  "accepted_for_model": false,
+  "PIT_VERIFIED": false,
+  "gate0": "BLOCKED",
+  "next_single_validation": "Compare one explicitly identified npr_history.csv field in the retained ZIP with the 2020-03-16 contemporaneous Treasury TIC press release; do not rerun already passed tests."
+}
