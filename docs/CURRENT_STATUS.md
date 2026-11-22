@@ -45,5 +45,14 @@ Repository: https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3
 - Next authorized action: review charter and prepare R1 read-only source feasibility; later actual data acquisition/forecast code requires a separately scoped change and acceptance.
 - Human action: **none for review**; explicit authorization required before merging this PR or running any trade/paid data action.
 
+## 2026-11-22 R1 Global Capital Flow metadata feasibility — dependent draft
+- Source document: docs/research/GLOBAL_CAPITAL_FLOW_R1_SOURCE_FEASIBILITY_V0_1.md
+- R1a = SOURCE_METADATA_REVIEWED (ten official source families incl. FRED license, time-of-release, revisions and source archive discovery).
+- R1b = NOT_STARTED (raw data/vintage samples, legal scope, investable total-return label). Gate 0 = BLOCKED; no raw data SHA, no original capture, no model/backtest/alpha, no Agent launched.
+- High-priority change to proposed method: current FRED/ALFRED ToS prohibits use in machine-learning/software development or training and limits API archiving; do not ingest FRED/ALFRED for modeling without separate rights clearance. Prefer original public issuers subject to their own terms.
+- Time gate: Fed H.15 posts about 16:15 ET after 16:00 signal cutoff; Treasury TIC posts 16:00 ET with ~1.5 month reference-period lag. Historical CFTC backcast classifications are not contemporary evidence.
+- Branch: research/global-capital-flow-r1-feasibility-20261122 (dependent on unmerged charter Draft PR #26). PR and commit references are in GitHub; do not merge or deploy automatically.
+- Next: scoped R1b primary-source archived-version samples plus investable total-return/rights verification. No user action for documentation review; merging or high-risk changes require separate approval.
+
 ## Next action
 Review the current research draft PR #24 and the dependent K4/K5 PRs against the correct base branches. Prioritize actual PIT evidence, point-in-time release checks and independent acceptance; do not silently merge or deploy these drafts.
