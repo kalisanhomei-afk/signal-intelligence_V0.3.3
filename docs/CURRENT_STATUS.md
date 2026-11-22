@@ -51,7 +51,7 @@ Repository: https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3
 - R1b = NOT_STARTED (raw data/vintage samples, legal scope, investable total-return label). Gate 0 = BLOCKED; no raw data SHA, no original capture, no model/backtest/alpha, no Agent launched.
 - High-priority change to proposed method: current FRED/ALFRED ToS prohibits use in machine-learning/software development or training and limits API archiving; do not ingest FRED/ALFRED for modeling without separate rights clearance. Prefer original public issuers subject to their own terms.
 - Time gate: Fed H.15 posts about 16:15 ET after 16:00 signal cutoff; Treasury TIC posts 16:00 ET with ~1.5 month reference-period lag. Historical CFTC backcast classifications are not contemporary evidence.
-- Branch: research/global-capital-flow-r1-feasibility-20261122 (dependent on unmerged charter Draft PR #26). PR and commit references are in GitHub; do not merge or deploy automatically.
+- Branch: research/global-capital-flow-r1-feasibility-20261122; dependent Draft PR #27: https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/pull/27 (base is R0 Draft PR #26 branch, NOT main); first R1 research commit c1a91eb35a424bca73a3a08ed426ca122ae780e2. Status sync commit follows this original R1 commit. Neither PR merged nor deployed.
 - Next: scoped R1b primary-source archived-version samples plus investable total-return/rights verification. No user action for documentation review; merging or high-risk changes require separate approval.
 
 ## Next action
