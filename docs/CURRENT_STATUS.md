@@ -43,6 +43,13 @@ Updated: 2026-11-22 Asia/Taipei (R1c source audit). This is a **stacked research
 - **Result:** `TIINGO_LOWER_COST_CANDIDATE_IDENTIFIED`, `RIGHTS_NOT_CLEARED`, `SPY_BIL_INDIVIDUAL_HISTORY_UNVERIFIED`, `HISTORIC_PRICE_VINTAGES_UNVERIFIED`, `GATE0=BLOCKED`, `R2=NOT_STARTED`. The Economist general digital subscription remains manual research-hypothesis background, not trade-return source.
 - **Next**: obtain verifiable vendor written/official support answers on 2007 SPY/BIL OHLC/dividends/splits, private predictive model rights, audit-retention after cancellation, and 16:00 as-of timestamps before approving any subscription or API ingest. If unsatisfied, no paid purchase and scope-down/stop formal model until alternate rights source.
 
+
+## 2026-11-22 R1f free-first cost strategy (latest)
+- Research memo: `docs/research/GLOBAL_CAPITAL_FLOW_R1F_FREE_FIRST_COST_DECISION_20261122.md`. We have identified free official primary-source macro data and publicly downloadable French Mkt-RF/RF as a **non-tradable exploratory candidate**, subject to separate rights assessment. Existing source/PIT gate remains BLOCKED, not an official R2 launch.
+- No market data subscription before sufficient evidence of value, source use rights, and executable SPY/BIL data adapter readiness. Tiingo $50/month ($499/year) cheapest identified internal commercial candidate but cancellation requires raw-data deletion; Twelve Data business from $149/month; EODHD commercial $399/month; no contracts entered.
+- Small-scale cloud may operate under free-tier ceilings; official Fed DDP pages sunset 2027 so avoid new dependencies. Note infra and human maintenance costs separately; user account bills unverified.
+- Next: verify French factor source rights/coverage and only then consider exploratory research; never upgrade Gate 0 based on revised historical factors or market NAV. No PR merge, trade, paid action or Agent launched.
+
 ## Objective
 Research official and independent evidence, model causal supply/demand and stock-flow drivers, build timestamped falsifiable hypotheses, and evaluate tradable financial implications only after proper out-of-sample and point-in-time (PIT) tests. Not merely a news aggregator. Favor verifiable forecasts and risk-adjusted decisions.
 
