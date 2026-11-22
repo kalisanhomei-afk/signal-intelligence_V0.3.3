@@ -63,7 +63,7 @@ Repository: https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3
 - This addendum records a documentation delivery only; any auto PR continuity CI is NOT an investment-model validation.
 
 ## 2026-11-22 R1c network-isolated original-byte capture pilot
-- Scoped branch: `research/global-capital-flow-r1c-capture-pilot-20261122`, based on PR #28 `6b9776ed837ae8c7f816fb5400df435bf67d8b3d`. PR and commit IDs are recorded in actual GitHub PR once created.
+- Scoped branch: `research/global-capital-flow-r1c-capture-pilot-20261122`, based on PR #28 `6b9776ed837ae8c7f816fb5400df435bf67d8b3d`. Draft PR #29 https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/pull/29 ; initial R1c code commit `7ba21a162e21ba416d1b82b5d6491daec4d5220d`; final status-sync commit is the next commit on this branch.
 - Deliverables: `scripts/capture_official_research.py`, `tests/test_capture_official_research.py`, `docs/research/GLOBAL_CAPITAL_FLOW_R1C_CAPTURE_RUNBOOK.md`. Stdlib-only one-off official H.6 HTML / TIC ZIP capture, SHA-256 receipts, safe allowlist, no automatic discovery, no raw data in Git.
 - **Local off-line evidence:** 8 / 8 unit tests PASS in sandbox (mocked responses, NO official network); exact source file must be run in permitted network environment before any official original-body receipt exists.
 - **Actual official network capture: BLOCKED.** This container DNS lookup to federalreserve.gov and home.treasury.gov failed and direct download tool failed. No actual official file bytes, no historical-issue-original hash, no full PIT, no confirmed license or investable return data.
