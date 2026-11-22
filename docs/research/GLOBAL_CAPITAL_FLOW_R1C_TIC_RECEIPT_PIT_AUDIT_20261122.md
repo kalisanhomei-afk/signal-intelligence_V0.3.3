@@ -45,6 +45,13 @@ Antigravity 回報 SHA-256 經同一外部執行環境 `sha256sum` 複核一致�
 4. 若研究需要用到同一類 TIC 指標，優先選一個在 2010–2026 有一致定義、可逐發布日辨識的**候選欄位**，先驗四個時點，而不是解讀所有 49 個成員。
 5. 扣除成本後的可交易股市／短券總報酬來源與權利仍未確認，因此**Gate 0 BLOCKED、R2 不啟動**。
 
+## 2026-11-22 官方欄位字典與最小數值核對錨點（追加唯讀查核）
+- 財政部官方封存欄位字典： https://ticdata.treasury.gov/Publish/arcdatadesc.pdf 。在「REFERENCE: Archived Files RELEASED BEFORE APRIL 2023」章節，`npr_history.csv` 定義為每個新聞稿資料列的歷史數字；該官方定義已另行查核，不代表 CSV 原始列已讀取。
+- 2020-03-16 當次新聞稿： https://home.treasury.gov/news/press-releases/sm943 。在 2020 年 1 月欄位，`Monthly Net TIC Flows (lines 21,22,29) /8` = **+122.9 USD billions**，`Private, net` = **+94.1**，`Official, net` = **+28.7**。後兩者顯示值加總為 122.8，與總數差 0.1；可能受各自四捨五入影響，不視為本次 CSV 比對失敗。
+- **精確待驗收項目**：在 Antigravity 本機既有 ZIP 中以 Python `zipfile.ZipFile(...).open("npr_history.csv")` **唯讀**查看 CSV 標頭／資料排列（不可預測 CSV 是直向或橫向）；先尋 2020 年 1 月 +「Monthly Net TIC Flows」對應的**同一交叉欄位**，檢查數值、符號、單位。提供原始欄位名稱、行號、欄號、所在行/欄必要上下文和結果。不要只搜尋 ZIP 中的 `122.9`，以免把其他項目的數值誤認為該項。必要時再用 +94.1/+28.7 交叉驗證。
+- **狀態**：PRESS_RELEASE_VALUE_VERIFIED；CSV_IN_ZIP_NOT_READ_HERE；VALUE_MATCH_NOT_TESTED；PIT_VERIFIED=false；Gate 0 BLOCKED。禁止因精確新聞稿數值已知就自行填寫 CSV 比對為 PASS。
+- 此次額外查核利用新聞稿及官方字典，不重新下載 ZIP，也不重跑已成功的測試。
+
 ## 5. 驗收與範圍
 - `R1c_H6_CAPTURE`: EXTERNAL_BYTES_REPORTED（前次 Antigravity 報告）；`R1c_TIC_CAPTURE`: EXTERNAL_BYTES_REPORTED，ZIP directory externally inspected。
 - `RAW_BYTES_IN_CHATGPT_RUNTIME=false`、`RAW_SHA256_INDEPENDENTLY_REPRODUCED_HERE=false`、`HISTORICAL_PIT_PASS=false`。
