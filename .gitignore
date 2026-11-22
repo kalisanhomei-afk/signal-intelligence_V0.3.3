@@ -4,3 +4,6 @@ __pycache__/
 *.pyc
 *.log
 .DS_Store
+
+# Research raw source responses and receipts are local-only evidence, never tracked
+research_raw/

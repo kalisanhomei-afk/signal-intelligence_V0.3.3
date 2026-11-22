@@ -32,7 +32,7 @@ class FakeOpener:
 
 class CaptureTests(unittest.TestCase):
     H6 = 'https://www.federalreserve.gov/releases/h6/20200827/'
-    TIC = 'https://home.treasury.gov/resource-center/data-chart-center/tic/Documents/ticrel_20200316.zip'
+    TIC = 'https://home.treasury.gov/research-only-fake-zip-fixture.zip'  # host allowlist fixture, not a real ZIP link
 
     def test_disallow_unsafe_urls(self):
         urls = ['http://www.federalreserve.gov/x', 'https://evil.example/x',
@@ -100,7 +100,7 @@ class CaptureTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             with self.assertRaises(ValueError):
                 capture.capture(self.TIC, 'zip', Path(td), opener=FakeOpener(b'<html>not a zip</html>', self.TIC))
-            self.assertFalse(list(Path(td).iterdir())
+            self.assertFalse(list(Path(td).iterdir()))
 
 if __name__ == '__main__':
     unittest.main()
