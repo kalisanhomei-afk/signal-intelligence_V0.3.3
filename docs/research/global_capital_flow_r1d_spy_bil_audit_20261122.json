@@ -1,0 +1,73 @@
+{
+  "schema": "signal.r1d.official_spy_bil_xlsx_audit.v0.1",
+  "date_taipei": "2026-11-22",
+  "evidence_level": "USER_SUPPLIED_ANTIGRAVITY_EXECUTION_TRANSCRIPT",
+  "raw_xlsx_accessible_to_chatgpt": false,
+  "independently_hashed_by_chatgpt": false,
+  "source_issuer": "State Street Global Advisors",
+  "source_provenance": "two issuer-linked NAV-history XLSX files publicly downloaded by Antigravity, metadata inspected in memory",
+  "format": "xlsx",
+  "sample_reports": [
+    {
+      "symbol": "SPY",
+      "original_url": "https://www.ssga.com/library-content/products/fund-data/etfs/us/navhist-us-en-spy.xlsx",
+      "response_code_reported": 200,
+      "bytes_reported": 279222,
+      "sha256_reported": "403043332329f1cbb602ddc9643781b867110bf52a1b143a7ed7654dd839fb45",
+      "capture_finished_utc_reported": "2026-11-22T10:09:33.890552Z",
+      "last_modified_reported": "Fri, 20 Nov 2026 05:59:35 GMT",
+      "sheets": [
+        "navhist"
+      ],
+      "data_rows_reported": 5783,
+      "start": "2003-12-01",
+      "end": "2026-11-19",
+      "shares_outstanding_and_total_net_assets_pre_2006_05_30_missing_reported": 628,
+      "reported_copyright_footer_at_excel_row": 5912
+    },
+    {
+      "symbol": "BIL",
+      "original_url": "https://www.ssga.com/library-content/products/fund-data/etfs/us/navhist-us-en-bil.xlsx",
+      "response_code_reported": 200,
+      "bytes_reported": 224435,
+      "sha256_reported": "14b3448596972532085cc77e701ace8a6b3e25d4c775240a68aacaaeaac9c8aa",
+      "capture_finished_utc_reported": "2026-11-22T10:09:34.525627Z",
+      "last_modified_reported": "Fri, 20 Nov 2026 05:58:23 GMT",
+      "sheets": [
+        "navhist"
+      ],
+      "data_rows_reported": 4905,
+      "start": "2007-05-30",
+      "end": "2026-11-19",
+      "reported_copyright_footer_at_excel_row": 5034
+    }
+  ],
+  "matching_trading_dates_reported": 4905,
+  "fields": [
+    "Date",
+    "NAV",
+    "Shares Outstanding",
+    "Total Net Assets"
+  ],
+  "contains_exchange_open": false,
+  "contains_exchange_close": false,
+  "contains_bid_ask": false,
+  "contains_cash_distributions": false,
+  "contains_split_events": false,
+  "contains_total_return": false,
+  "workbook_copyright_permission": "RESTRICTED; express written consent language for reproduction/transmission/third-party disclosures, model/storage grant not independently verified",
+  "corporate_action_external_independent": {
+    "symbol": "BIL",
+    "event": "1-for-2 reverse share split",
+    "effective_date": "2017-11-30",
+    "issuer_press_release": "https://www.streetinsider.com/Press+Releases/State+Street+Global+Advisors+Announces+ETF+Share+Splits/13511071.html",
+    "sec_support": "https://www.sec.gov/Archives/edgar/data/1064642/000119312517345305/d462662d497.htm",
+    "raw_corporate_action_dataset_verified": false
+  },
+  "source_decision": "STANDALONE_TRADABLE_TOTAL_RETURN_LABEL_NO_GO",
+  "underlying_etfs_still_candidate": true,
+  "accepted_for_model": false,
+  "gate0": "BLOCKED",
+  "paid_resources_used": false,
+  "required_next": "One rights-cleared SPY/BIL historical actual trade price/distribution/splits data path, with 2007-present coverage and next-session execution feasibility; if unavailable, stop formal model."
+}

@@ -1,9 +1,47 @@
 # SIGNAL R1d｜資料使用權與可交易總報酬資料 Gate 0 審查（2026-11-22）
 
-**狀態：PUBLIC_LICENSE_AND_SOURCE_LINKS_REVIEWED / DATA_FILE_NOT_CAPTURED / FULL_GATE0_BLOCKED**
+**狀態：EXTERNAL_SSGA_XLSX_STRUCTURES_REVIEWED / STANDALONE_LABEL_NO_GO / GATE0_BLOCKED**
 研究分支：research/global-capital-flow-r1c-capture-pilot-20261122；更新既有 Draft PR #29，依附 R1b #28、R1a #27、R0 #26。沒有更動研究預註冊主要假說，沒有訂閱、交易、模型回測或部署。
 
-## 1. 本輪關鍵決策
+## 2026-11-22 R1d 實測接收與研究 Gate 決策（最新；取代下方尚未下載的事前規劃）
+
+**決策：SSGA NAV XLSX 作為獨立的「下一時段可交易、含息總報酬」標籤 = NO-GO；SPY/BIL 可交易代理標的本身仍為候選。** 本節根據使用者提供的 Antigravity 當日唯讀執行報告，其 raw XLSX 均**只留在外部** `research_raw/`，沒有傳入 ChatGPT，本節不得冒稱本端獨立重算檔案雜湊。這是來源**適用性 NO-GO**，不代表對研究假說判定 NO-GO。Gate 0 維持 BLOCKED。
+
+### 核對結果（EXTERNAL_XLSX_STRUCTURE_VERIFIED；權利非授權核發）
+| 欄位 | SPY | BIL |
+|---|---|---|
+| 官方來源 | https://www.ssga.com/library-content/products/fund-data/etfs/us/navhist-us-en-spy.xlsx | https://www.ssga.com/library-content/products/fund-data/etfs/us/navhist-us-en-bil.xlsx |
+| HTTP | 200; xlsx | 200; xlsx |
+| GET 完成 UTC | `2026-11-22T10:09:33.890552Z` | `2026-11-22T10:09:34.525627Z` |
+| HTTP Last-Modified | `Fri, 20 Nov 2026 05:59:35 GMT`（SPY metadata HEAD 另外補查） | `Fri, 20 Nov 2026 05:58:23 GMT` |
+| 原始位元組 | 279,222 | 224,435 |
+| **外部回報 SHA-256** | `403043332329f1cbb602ddc9643781b867110bf52a1b143a7ed7654dd839fb45` | `14b3448596972532085cc77e701ace8a6b3e25d4c775240a68aacaaeaac9c8aa` |
+| 工作表 | navhist 1 張 | navhist 1 張 |
+| 有效日期筆數 | 5,783 | 4,905 |
+| 最早～最晚 | 2003-12-01～2026-11-19 | 2007-05-30～2026-11-19 |
+| 列架構 | Date, NAV, Shares Outstanding, Total Net Assets | 同左 |
+| 可交易價/含息總報酬/配息 | **均無** | **均無** |
+| 文件中授權警告 | 同樣有受限重製與第三方揭露的權利聲明；SPY 工作簿約 R5912 | BIL 工作簿約 R5034 |
+
+- 抽查報告指出 **SPY/BIL 自 2007-05-30 起有 4,905 個日期完全重合**，BIL 四資料欄未發現缺漏；SPY 在 2006-05-30 前的 Shares Outstanding / Total Net Assets 欄有 628 個 `-`，不是 NAV 缺值。
+- 工作簿有顯式 SSGA 著作權與未經書面同意的複製／傳播及第三方揭露限制。**保守結論：尚無用於內部自動建模、長期資料儲存及後續對外商用的明確權利證據；不提交或重發原檔，不建立長期商業資料庫。** 法律上的權利範圍仍以正式授權條款為準，不能將所有內部閱讀一概說成非法。
+- **額外具時點來源的重大公司行動**：發行人 2017-11-15 新聞稿指出 **BIL 於 2017-11-30 進行 1:2 反分割**，拆分前每股價格約 `45.74` 美元、拆分後約 `91.48` 美元（公告估值，不是實際已實現投資報酬）。官方 SEC 同月申報亦修改 BIL Creation Unit 所需股數 100,000 -> 50,000，且有 reverse split 提示。來源：https://www.streetinsider.com/Press+Releases/State+Street+Global+Advisors+Announces+ETF+Share+Splits/13511071.html ; https://www.sec.gov/Archives/edgar/data/1064642/000119312517345305/d462662d497.htm ; https://www.sec.gov/Archives/edgar/data/1064642/000119312517353499/d481888d497.htm 。**2017 前後的 NAV 不能直接相減或除比，不可把反分割價差當收益；配息等另需完整公司行動時間序列。**
+- 實測僅證明「現行官方 NAV XLSX 的資料架構與日期覆蓋」，**非模型需用的原始市場 Open/Close、executability、股息／除權、split-adjustment 或已批准的營利用途**。截至本輪，原始檔只存在 Antigravity，本地 hash 為其回報且經其原地複核，ChatGPT 未取得 bytes。
+
+### 立即停止與轉換路線
+
+1. **停止**從 SSGA 兩份 NAV XLSX 直接建立正式 SPY/BIL 超額可交易報酬模型或反覆下載；已完成的結構驗證不重跑。
+2. **只研究一個新的有明確授權的行情供應路線**：要求能提供 SPY/BIL 2007～2026 的下一可執行時段 **未調整的開盤/收盤市場價**、現金股息／除權日期、2017 BIL 反分割／所有拆股、歷史交易日、時間標記、企業內部儲存與回測授權。供應商未能書面證明前，不購買或入模。不以「adjusted close」取代可執行價。
+3. 若短期無法取得合適權利，只能對明確**學術或非交易標籤**做另行標示的研究，不能把探索性 NAV 或因子研究升級為 `Gate0 PASS` 或經濟性 alpha。
+4. 現有 TIC `2020-Jan` `[30]` 數值一致性外部 PASS 不重做；`slt3d_globl.tic` 時點異常仍隔離。主研究的 R2、R3 不得開始，直到 source rights + executable total return + PIT 資料門檻達成。
+
+### 本輪證據性質
+- `SOURCE_STRUCTURE_REVIEW=EXTERNAL_REPORTED`、`EXTERNAL_SHA_REPORTED`、`WRITTEN_COMMERCIAL_MODEL_LICENSE=NOT_AVAILABLE`、`SSGA_NAV_XLSX_STANDALONE_LABEL=NO_GO`、`SPY_BIL_MARKET_PROXY=STILL_CANDIDATE`。
+- `GATE0=BLOCKED`，`MODEL_TRAINING=0`、`STRATEGY_TRADING=0`、`PAYMENT=0`；不向 GitHub 上傳 SSGA XLSX。
+- 實際 Agent 執行：只有使用者提供的 Antigravity 外部動作紀錄，沒有宣稱 GitHub 研究多 Agent 實際啟動。
+
+
+## 1. 先前來源審查（歷史規劃，現已由上方實測結論更新）
 
 **首選探索方向：SPY (美股) − BIL (1–3月美國短期國庫券 ETF)。** 不代表建議買入。選同一發行人有利於降低不同基金資料處理差異，且兩檔是可上市交易的投資工具。SPY 成立 1993-01-22；BIL 成立 2007-05-25。若兩檔自 2007-06 至 2026-10 均有資料，最多約 233 個完整月的**理論共同樣本**；這只是日曆算術，**不是實際資料覆蓋驗證**，也尚未證明滿足 120 月訓練 + 60 月樣本外有效值門檻。
 
