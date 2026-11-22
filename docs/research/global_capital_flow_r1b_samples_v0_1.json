@@ -1,0 +1,93 @@
+{
+  "schema_version": "signal.r1b.historical_sample.v0.1",
+  "created_date_taipei": "2026-11-22",
+  "purpose": "historical-publication sample, not raw-byte or full PIT certification",
+  "status": "WEB_TEXT_VERIFIED_PARTIAL",
+  "raw_sample_bytes_captured": false,
+  "raw_sha256": null,
+  "exact_raw_capture_utc": null,
+  "gate0": "BLOCKED",
+  "r2_authorized": false,
+  "samples": [
+    {
+      "source_id": "FED_H6",
+      "release_date": "2020-08-27",
+      "period": "2020-07",
+      "page": "https://www.federalreserve.gov/releases/h6/20200827/",
+      "series": "SA M2",
+      "value": 18327,
+      "unit": "USD billions",
+      "release_time_declared": "16:30 America/New_York",
+      "original_bytes_sha256": null,
+      "source_type": "contemporaneous archived official webpage"
+    },
+    {
+      "source_id": "FED_H6",
+      "release_date": "2021-02-11",
+      "period": "2020-07",
+      "page": "https://www.federalreserve.gov/releases/h6/20210211/",
+      "series": "SA M2",
+      "value": 18328.8,
+      "unit": "USD billions",
+      "release_time_declared": "16:30 America/New_York",
+      "original_bytes_sha256": null,
+      "source_type": "subsequent revised official webpage"
+    },
+    {
+      "source_id": "FED_H6",
+      "release_date": "2021-03-23",
+      "period": "2020-07",
+      "page": "https://www.federalreserve.gov/releases/h6/20210323/",
+      "series": "revised SA M2, appendix 2",
+      "value": 18321.5,
+      "unit": "USD billions",
+      "release_time_declared": "13:00 America/New_York",
+      "original_bytes_sha256": null,
+      "source_type": "further revised official webpage"
+    },
+    {
+      "source_id": "UST_TIC",
+      "period": "2010-04",
+      "release_date": "2010-06-15",
+      "page": "https://home.treasury.gov/news/press-releases/tg744",
+      "exact_per_release_utc": null
+    },
+    {
+      "source_id": "UST_TIC",
+      "period": "2015-09",
+      "release_date": "2015-11-17",
+      "page": "https://home.treasury.gov/news/press-releases/jl0277",
+      "exact_per_release_utc": null
+    },
+    {
+      "source_id": "UST_TIC",
+      "period": "2020-01",
+      "release_date": "2020-03-16",
+      "page": "https://home.treasury.gov/news/press-releases/sm943",
+      "exact_per_release_utc": null
+    },
+    {
+      "source_id": "UST_TIC",
+      "period": "2025-08",
+      "release_date": "2025-11-18",
+      "page": "https://home.treasury.gov/news/press-releases/sb0317",
+      "exact_per_release_utc": null,
+      "late_reason": "government partial shutdown; archive index retains 2025-10-17 scheduled entry",
+      "revision_warning": true
+    },
+    {
+      "source_id": "UST_TIC",
+      "period": "2025-09",
+      "release_date": "2025-11-18",
+      "page": "https://home.treasury.gov/news/press-releases/sb0317",
+      "exact_per_release_utc": null
+    }
+  ],
+  "explicit_limits": [
+    "No raw bytes; every SHA null",
+    "Historical H15 release-file unavailable from checked URLs",
+    "No release-time evidence precise to each TIC announcement",
+    "No full 180-month contemporaneous vintage coverage",
+    "License and investable total-return labels not confirmed"
+  ]
+}
