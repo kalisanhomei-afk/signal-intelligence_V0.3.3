@@ -2,6 +2,28 @@
 
 **日期：2026-11-22 Asia/Taipei。狀態：EXTERNALLY_CAPTURED, REPORTED_HASH_CROSSCHECKED; HISTORICAL_PIT_NOT_VERIFIED。** 本文件根據使用者提供的 Antigravity 原始執行報告建立。GitHub 此次保存收據**中繼資料**及風險評估，不保存 ZIP 本身；ChatGPT 尚未取得本機 `research_raw/` 中原檔，不主張獨立重算 SHA-256。
 
+## 2026-11-22 後續 R1c 單一新聞稿數值比對（最新驗收；覆蓋下方待辦）
+**判定：SINGLE_CELL_VALUE_MATCH = PASS（Antigravity 外部實測回報；非 ChatGPT 本機取得原始位元組複核），HISTORICAL_PIT_VERIFIED = false，Gate 0 = BLOCKED。** 2026-11-22 接獲 Antigravity 的唯讀 CSV 抽取與算術交叉檢查，未重新下載資料、未修改 ZIP 或程式。先前「CSV_VALUE_MATCH_NOT_TESTED」係當時狀態，已由本節取代。
+
+### 可追溯定位
+- 外層 ZIP：`20261122T043451_627322Z_4c8b61acb508.zip`，先前回報完整 SHA-256 `4c8b61acb50851f277168b5b897ffd5aba5cab2fb589d44ef74c75890a3b4196`，存於 Antigravity 本機 `research_raw/`，未提交 GitHub。
+- 成員：`npr_history.csv`，95,727 bytes，515 行、33 欄；外部 Python `hashlib.sha256` 回報該成員 SHA-256 `20e93f3f8a7076f5274504d0c7a018921c05e924a9379e912629720e956bb6e4`，ZIP metadata 時戳 `2020-03-11 19:26:12`（時區未知；不作當時位元組證明）。
+- 檔頭 L1 顯示 `TIC monthly reports on Cross-Border Portfolio Financial Flows through January 2020`；L2 有 `16-Mar-20`，單位 `($ millions)`。
+- 資料排列：L3–L12 多層欄名；L13 新聞稿列號 `[1]` 至 `[32]`；L14 分隔；**L15 為 2020-Jan**。目標欄位是 **第 31 欄（1-based；CSV index=30；Excel AE）**，標籤 `[30]`，L9–L12 逐行標為 `Monthly / Net / TIC / Flows`。
+- L15、第 31 欄原始 `122883` 百萬美元，正向淨流入，轉換 `+122.883` 十億美元，四捨五入至小數一位 `+122.9`，符合財政部 [2020-03-16 官方當次新聞稿](https://home.treasury.gov/news/press-releases/sm943) 2020-Jan「Monthly Net TIC Flows」公布值 `+122.9 USD billions`。
+
+### 兩項獨立欄位算術核對（全在 L15，單位均為百萬美元）
+- 新聞稿行 `[21]`（CSV index 21；col22）=`-3778`，`[22]`（index 22；col23）=`5067`，`[29]`（index 29；col30）=`121594`。**-3778 + 5067 + 121594 = 122883**，等於 `[30]`。
+- 新聞稿行 `[31]`（index 31；col32）私人淨額 `94141`，`[32]`（index 32；col33）官方淨額 `28742`。**94141 + 28742 = 122883**，等於 `[30]`。`94.141` 十億美元四捨五入 `94.1`、`28.742` 四捨五入 `28.7`；這解釋新聞稿兩個已四捨五入分項顯示值合計 `122.8`，總額顯示 `122.9` 的表面差異。
+
+### 證據強度與不得升級事項
+1. **PASS 僅證明** 2026 年本機取得之官方封存 ZIP 中的這一個指定日期/欄位，對應 2020-03-16 當次新聞稿的**公布數值一致**。它沒有證明 ZIP 內所有 49 個成員都未被事後修訂，其他月份數值也未驗證。
+2. CSV 與 ZIP 的 SHA-256 是 **Antigravity 外部實測回報並在該執行環境核對**；原始 bytes 沒有交到 ChatGPT runtime；此處沒有假裝在本機重新算出原始 SHA。
+3. `slt3d_globl.tic` 的 `QUARANTINE_TIMESTAMP_POST_RELEASE` **不解除**；其餘成員仍維持 `HISTORICAL_BYTES_NOT_CERTIFIED`。即使新聞稿指定欄位吻合，也不能證明當期交易前的完整 PIT 覆蓋、逐檔修訂或精確發布 UTC。
+4. `accepted_for_model=false`、`license_status=UNVERIFIED`、可交易股市/美元現金含息總報酬代理尚未驗證；**Gate 0 = BLOCKED，無 R2 模型／交易啟用**。
+5. **下一步**：停止重複下載同包 ZIP 與重新比對這一欄，先獨立完成資料使用權、可交易含息報酬來源以及另一個日期的版本差異樣本，才能重新評估 PIT／Gate 0；不為了蒐集 49 個成員擴張範圍。
+
+
 ## 1. 歷史來源定位（官方公開頁已另行查核）
 
 - TIC [官方月度資料封存頁](https://home.treasury.gov/archives-of-tic-monthly-data-releases) 列有「03/16/2020 TIC Data for January 2020」。官方說明每個 ZIP 包含該檔名日期公布的 TIC 資料，**但此說明不足以證明 2026 目前下載的 ZIP 所有內部成員都和 2020-03-16 的位元組完全一致**。

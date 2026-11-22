@@ -50,5 +50,61 @@
   "accepted_for_model": false,
   "PIT_VERIFIED": false,
   "gate0": "BLOCKED",
-  "next_single_validation": "Compare one explicitly identified npr_history.csv field in the retained ZIP with the 2020-03-16 contemporaneous Treasury TIC press release; do not rerun already passed tests."
+  "next_single_validation": "After one-value match (PASS), obtain rights/investable total-return source evidence and independently timestamp an additional archived release-vintage comparison; never infer full PIT from this one match.",
+  "value_crosscheck": {
+    "verification_status": "PASS_EXTERNAL_REPORT",
+    "verified_scope": "2020-Jan x [30] Monthly Net TIC Flows only",
+    "source": "Antigravity read-only local ZIP CSV extraction reported by user 2026-11-22",
+    "independent_original_bytes_verified_by_chatgpt": false,
+    "member": "npr_history.csv",
+    "member_size_reported_bytes": 95727,
+    "member_sha256_reported": "20e93f3f8a7076f5274504d0c7a018921c05e924a9379e912629720e956bb6e4",
+    "member_timestamp_reported": "2020-03-11 19:26:12",
+    "members_csv_total_lines_reported": 515,
+    "columns_reported": 33,
+    "observation_row_one_based": 15,
+    "observation_label": "2020-Jan",
+    "column_one_based": 31,
+    "column_zero_based": 30,
+    "excel_column": "AE",
+    "press_release_row_tag": "[30]",
+    "field_name": "Monthly Net TIC Flows",
+    "units": "USD millions",
+    "raw_field_value": 122883,
+    "converted_billions_usd": 122.883,
+    "official_press_release_rounded_billions_usd": 122.9,
+    "rounded_to_0_1_billion_match": true,
+    "component_checks": [
+      {
+        "series": [
+          "[21]",
+          "[22]",
+          "[29]"
+        ],
+        "values_usd_millions": [
+          -3778,
+          5067,
+          121594
+        ],
+        "sum_usd_millions": 122883,
+        "matches_target": true
+      },
+      {
+        "series": [
+          "[31]",
+          "[32]"
+        ],
+        "values_usd_millions": [
+          94141,
+          28742
+        ],
+        "sum_usd_millions": 122883,
+        "matches_target": true
+      }
+    ],
+    "published_press_release_url": "https://home.treasury.gov/news/press-releases/sm943",
+    "pit_verified": false,
+    "source_license_verified": false,
+    "accepted_for_model": false
+  }
 }
