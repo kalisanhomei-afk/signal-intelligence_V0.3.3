@@ -62,5 +62,14 @@ Repository: https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3
 - Branch: `research/global-capital-flow-r1b-pit-samples-20261122`; Draft PR #28: https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/pull/28 (base Draft PR #27 branch, which in turn depends on unmerged Draft PR #26). Initial R1b evidence commit `2b2be5bdbb5a2566c46e4b39afa643fa2e0a1407`. No main merge, paid action, deployment, code changes, or trading authorized.
 - This addendum records a documentation delivery only; any auto PR continuity CI is NOT an investment-model validation.
 
+## 2026-11-22 R1c network-isolated original-byte capture pilot
+- Scoped branch: `research/global-capital-flow-r1c-capture-pilot-20261122`, based on PR #28 `6b9776ed837ae8c7f816fb5400df435bf67d8b3d`. PR and commit IDs are recorded in actual GitHub PR once created.
+- Deliverables: `scripts/capture_official_research.py`, `tests/test_capture_official_research.py`, `docs/research/GLOBAL_CAPITAL_FLOW_R1C_CAPTURE_RUNBOOK.md`. Stdlib-only one-off official H.6 HTML / TIC ZIP capture, SHA-256 receipts, safe allowlist, no automatic discovery, no raw data in Git.
+- **Local off-line evidence:** 8 / 8 unit tests PASS in sandbox (mocked responses, NO official network); exact source file must be run in permitted network environment before any official original-body receipt exists.
+- **Actual official network capture: BLOCKED.** This container DNS lookup to federalreserve.gov and home.treasury.gov failed and direct download tool failed. No actual official file bytes, no historical-issue-original hash, no full PIT, no confirmed license or investable return data.
+- **Do not conflate** hash of bytes downloaded *now* with proof bytes at historical release time. Receipts hard-code `contemporaneous_original_file_certified=false`, `accepted_for_model=false`, `license_status=UNVERIFIED`.
+- R1c CODE_DONE / LOCAL_OFFLINE_TEST_PASS; OFFICIAL_CAPTURE_BLOCKED; Gate 0 remains BLOCKED. No forecast/backtest/trade/paid resources/agent execution/main merge. Automated PR continuity CI outcome not claimed before checking.
+- Next: run exactly two approved-source captures in network-enabled research environment, inspect raw receipts, and decide whether historical versions and rights support full PIT before modeling.
+
 ## Next action
 Review the current research draft PR #24 and the dependent K4/K5 PRs against the correct base branches. Prioritize actual PIT evidence, point-in-time release checks and independent acceptance; do not silently merge or deploy these drafts.
