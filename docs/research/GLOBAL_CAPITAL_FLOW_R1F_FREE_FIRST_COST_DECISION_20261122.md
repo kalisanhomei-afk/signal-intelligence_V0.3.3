@@ -36,3 +36,32 @@ Costs: public research $0/year in *new subscriptions*; Tiingo annual + free infr
 4. If ongoing usage is justified, Tiingo annual billing becomes nominally cheaper around ten months of continuous use. Cancellation requires compliance with raw data deletion; no buy-one-month-and-retain data workaround.
 
 No vendor accounts, API captures, backtests, real trades, subscription purchases, merges or deployments occurred in this review. Existing R0–R1e evidence remains frozen and Gate 0 stays BLOCKED. Next best work is read-only rights and schema validation for the French factor proxy; formal R2 remains blocked.
+
+## Owner-approved supplier-selection policy (2026-11-22)
+**OWNER DECISION — APPROVED:** retain the free-first sequence. Do not select Tiingo solely because it is the lowest advertised-price commercial candidate. Tiingo, Twelve Data, EODHD and possibly broker/native sources are *comparative candidates*, not preselected suppliers. No paid subscriptions until separately authorized.
+
+**Mandatory veto gates — evaluate BEFORE scoring price** (each must have primary written evidence or a correctly qualified and measured source test):
+1. **Actual data fit:** symbol-level SPY/BIL daily raw executable OHLC for agreed sample, cash dividends/ex dates, all splits/reverse splits, corporate-action methodology, missing-date policy and verifiable coverage.
+2. **Contract and privacy fit:** authorized internal commercial backtest, non-generative statistical forecasting, permitted team access, storage/backups, independent audit and exact deletion rights after termination; no raw licensed data sent to external LLM/agent services without authorized terms.
+3. **PIT and execution fit:** precise vendor first-availability/revision times or conservative precommitted delays, as-of feature integrity at frozen 16:00 ET cutoff; next-session executable trade price can be reconstructed without lookahead.
+4. **Operational fit:** stable documented API/delivery, provenance/revisions, maintenance burden, incident handling, outage fallback and source replacement path.
+5. **Lifecycle economics fit:** complete quote for internal seats, exchange pass-through, research vs third-party redistribution, integrations, audit/retention add-ons, storage, support and termination; one-month pilot only if it actually permits required data uses.
+
+**Gate outcomes:** PASS/FAIL/BLOCKED per gate. Any FAIL -> SOURCE_NO_GO; any BLOCKED -> no purchase or Gate 0 upgrade. No low price may override a gate. For suppliers that *all* pass, compare on an agreed qualitative priority hierarchy: accuracy/coverage and PIT evidence first, legal/reproducibility second, operational support third, 12/24-month total cost fourth. Do not produce a falsely precise weighted score without measured inputs.
+
+**Supplier evidence table (currently; not procurement approval)**:
+| Source | Current status | Reason |
+|---|---|---|
+| Public Fed/Treasury/BIS | FREE_SOURCE_RESEARCH_CANDIDATE | Publicly obtainable macro series, still require source-specific rights and release-time validation |
+| Kenneth French Fama/French 3-factor | PUBLICLY_LISTED / RIGHTS_NOT_CLEARED / EXPLORATORY_ONLY | Monthly TXT/CSV and historical archives publicly advertised, but CRSP-derived Mkt-RF and ICE-derived RF, no independent business-model license confirmation. As of Jan 2025, French switched US research returns from FIZ to CIZ with different dividend reinvestment timing; may affect historical comparisons |
+| Tiingo Power Commercial | CONDITIONAL / NOT_SELECTED | $50/mo, possible raw OHLC/divCash/splitFactor; source-by-symbol availability, historic 16:00 vintages, cancellation evidence retention, AI/vendor restrictions unconfirmed |
+| Twelve Data Business Venture | CONDITIONAL / NOT_SELECTED | Price $149/mo starting level; exact feature/rights and sample completeness unknown |
+| EODHD Commercial Internal | CONDITIONAL / NOT_SELECTED | Price $399/mo; source/version and rights unconfirmed |
+| SSGA NAV XLSX | STANDALONE_EXECUTABLE_RETURN_NO_GO | Already checked: NAV only, no market OHLC/dividends/splits; workbook rights restrictions |
+
+**Read-only follow-up research completed without data download**:
+- French source: https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html lists factor datasets as TXT/CSV and monthly historical archives. It explicitly records 2025-01 change from CRSP FIZ to CIZ and monthly-return reinvestment methodology change. Definition: https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library/f-f_factors.html defines `Rm-Rf` as CRSP market minus one-month bill rate; RF is ICE BofA from June 2024.
+- This confirms *availability and methodological changes*, NOT legal permission for persistent commercial/AI ingestion, immutable PIT vintages or direct tradable ETF returns.
+- Tiingo publicly advertises $50/mo or $499/yr for internal commercial use: https://www.tiingo.com/about/pricing ; model/AI restrictions: https://www.tiingo.com/tos/ . Price is a screening datum, not a provider recommendation.
+
+**Next authorized activity**: preserve the no-paid policy, document minimal source-agnostic synthetic format and read-only source-license inquiry; only evaluate real-source imports after source rights are verified. Formal R2/backtests, live trades, vendor payments, deployments and merges remain unapproved. No user action presently required.
