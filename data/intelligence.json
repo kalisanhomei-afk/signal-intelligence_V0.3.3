@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": "0.4.0",
-    "generated_at": "2026-11-22T01:40:09+00:00",
-    "source_last_success_at": "2026-11-22T01:39:59+00:00",
+    "generated_at": "2026-11-22T13:25:41+00:00",
+    "source_last_success_at": "2026-11-22T13:25:35+00:00",
     "source_status": "healthy",
     "mode": "rules_only",
     "analysis_request": "disabled",
@@ -167,16 +167,16 @@
       "review_required": true
     },
     {
-      "id": "rss-04d6e4f4006f92dafec2e4",
+      "id": "rss-f5ce4a0fe482d320ff6f5d",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
       "source": "NASA｜News & Technology",
       "source_kind": "official",
       "category": "科技",
-      "title": "APOD: 2026 November 21 – Voyager’s Neptune",
-      "url": "https://science.nasa.gov/image-article/apod-2026-november-21-voyagers-neptune",
-      "published_at": "2026-11-21T05:05:00+00:00",
-      "fingerprint": "c601624933f8377095b3c8b6",
+      "title": "APOD: 2026 November 22 – Swirls and Colors on Jupiter from Juno",
+      "url": "https://science.nasa.gov/image-article/apod-2026-november-22-swirls-and-colors-on-jupiter-from-juno",
+      "published_at": "2026-11-22T05:05:00+00:00",
+      "fingerprint": "11bdf15db7bc740d4906e4eb",
       "triage_priority": "一般候選",
       "analysis_mode": "rules_only",
       "zh_title": null,

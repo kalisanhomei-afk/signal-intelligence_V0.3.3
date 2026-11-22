@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.2",
-    "generated_at": "2026-11-22T01:40:13+00:00",
+    "generated_at": "2026-11-22T13:25:45+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "status": "primary_metadata_enrichment_only",
     "candidate_count": 12,
@@ -204,13 +204,13 @@
       "original_document_verified": false
     },
     {
-      "id": "rss-04d6e4f4006f92dafec2e4",
+      "id": "rss-f5ce4a0fe482d320ff6f5d",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
-      "title": "APOD: 2026 November 21 – Voyager’s Neptune",
+      "title": "APOD: 2026 November 22 – Swirls and Colors on Jupiter from Juno",
       "category": "科技",
-      "published_at": "2026-11-21T05:05:00+00:00",
-      "url": "https://science.nasa.gov/image-article/apod-2026-november-21-voyagers-neptune",
+      "published_at": "2026-11-22T05:05:00+00:00",
+      "url": "https://science.nasa.gov/image-article/apod-2026-november-22-swirls-and-colors-on-jupiter-from-juno",
       "source_role": "第一手航太科研機構",
       "evidence_kind": "航太與技術機構公開消息標題元資料",
       "evidence_level": "M0",
@@ -226,7 +226,7 @@
         "相關成果有無獨立測試或第三方研究？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "1475361ac3ee57c53f67e2e1",
+      "fingerprint": "ad4a069e26779cf7dd311e45",
       "author_abstract": null,
       "metadata_read": false,
       "primary_source_kind": null,
