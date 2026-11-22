@@ -54,5 +54,13 @@ Repository: https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3
 - Branch: research/global-capital-flow-r1-feasibility-20261122; dependent Draft PR #27: https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3/pull/27 (base is R0 Draft PR #26 branch, NOT main); first R1 research commit c1a91eb35a424bca73a3a08ed426ca122ae780e2. Status sync commit follows this original R1 commit. Neither PR merged nor deployed.
 - Next: scoped R1b primary-source archived-version samples plus investable total-return/rights verification. No user action for documentation review; merging or high-risk changes require separate approval.
 
+## 2026-11-22 R1b historic page samples — dependent documentation draft
+- R1b evidence: `docs/research/GLOBAL_CAPITAL_FLOW_R1B_HISTORICAL_PIT_SAMPLES_V0_1.md`, machine-readable `docs/research/global_capital_flow_r1b_samples_v0_1.json`.
+- Verified via public official historical *web pages* (not original raw files): H.6 2015/2020/2021 release schedule switch, July 2020 SA M2 reported 18,327.0 (Aug 2020 release), 18,328.8 (Feb 2021), and revised to 18,321.5 (Mar 2021); Treasury TIC 2010/2015/2020/2025 actual release dates, including shutdown-delayed 2025-08 data released Nov 18 with Sep data and some revised figures. H.15 2016 release changes and Ken French vintage limitations.
+- **R1b status PARTIAL:** historical official WEB_TEXT_VERIFIED, but raw byte acquisition and ZIP content validation **BLOCKED** (container lacks official-source raw download access), no original file SHA-256, no verified full PIT, no license/tradable total returns, no backtests. **Gate 0 BLOCKED**, research predictions NOT_STARTED, no agent launched.
+- Source evidence and next step: obtain a minimal sample of actual native official H.6 HTML/XML and Treasury historical release ZIP bytes in a permitted environment; record observed retrieval UTC + original bytes SHA-256. Freeze investable total-return labels and usage rights before R2. FRED/ALFRED training restrictions remain in force.
+- Branch: `research/global-capital-flow-r1b-pit-samples-20261122` stacked on Draft PR #27 (`research/global-capital-flow-r1-feasibility-20261122`), which is stacked on unmerged PR #26. No main merge, paid action, deployment, code changes, or trading authorized.
+- This addendum records a documentation delivery only; any auto PR continuity CI is NOT an investment-model validation.
+
 ## Next action
 Review the current research draft PR #24 and the dependent K4/K5 PRs against the correct base branches. Prioritize actual PIT evidence, point-in-time release checks and independent acceptance; do not silently merge or deploy these drafts.
