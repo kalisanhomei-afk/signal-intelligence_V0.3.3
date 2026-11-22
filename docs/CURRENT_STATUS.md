@@ -34,5 +34,16 @@ Repository: https://github.com/kalisanhomei-afk/signal-intelligence_V0.3.3
 4. Deliver next scoped work in branch/PR, record actual commit and CI evidence; after material work update this one file with source links and precise next blocker. If main is protected, propose a PR and do not claim main updated.
 5. Stop retrying the same blocker after two failures; identify root cause/alternate path. Do not expand scope into unrelated modules.
 
+
+## 2026-11-22 new independent proposal — global money/credit/asset pricing
+- Research artifact: \`docs/research/GLOBAL_CAPITAL_FLOW_RESEARCH_CHARTER_V0_1.md\` (new, documentation-only, **PROPOSAL / NOT_TESTED**).
+- Scope: test incremental 1-month U.S. equity excess-return forecasting against historical-average and traditional-finance baselines, not presume asset-market fund flows predict returns.
+- Branch: \`research/global-capital-flow-charter-v0.1-20261122\` (based on \`main\` at \`e85f5f12613d19943493707b36112a648f20ee0f\`); review via the branch's draft PR; PR number and exact commit SHA must be verified from GitHub after creation (not self-referentially invented in this status-file commit).
+- Evidence: literature and official metadata definitions verified via linked public pages; **no source raw-byte harvest, no model runs, no PIT_VERIFIED/ALPHA_PASS, no strategy backtest, no agent execution**.
+- CI: documentation PR may automatically run the existing non-deployment continuity check; status is UNKNOWN until the actual run completes. No workflow has been manually dispatched for this proposal.
+- Gate: R0 CHARTER_WRITTEN; R1 source-feasibility/PIT matrix NOT_STARTED. K3.8/K4/K5 frozen sources and draft forecasts untouched. No main merge, deployment, trade, paid resources, or production setting changes.
+- Next authorized action: review charter and prepare R1 read-only source feasibility; later actual data acquisition/forecast code requires a separately scoped change and acceptance.
+- Human action: **none for review**; explicit authorization required before merging this PR or running any trade/paid data action.
+
 ## Next action
 Review the current research draft PR #24 and the dependent K4/K5 PRs against the correct base branches. Prioritize actual PIT evidence, point-in-time release checks and independent acceptance; do not silently merge or deploy these drafts.
