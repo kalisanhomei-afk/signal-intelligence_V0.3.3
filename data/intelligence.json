@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": "0.4.0",
-    "generated_at": "2026-11-22T13:25:41+00:00",
-    "source_last_success_at": "2026-11-22T13:25:35+00:00",
+    "generated_at": "2026-11-23T01:46:32+00:00",
+    "source_last_success_at": "2026-11-23T01:46:25+00:00",
     "source_status": "healthy",
     "mode": "rules_only",
     "analysis_request": "disabled",
@@ -167,16 +167,16 @@
       "review_required": true
     },
     {
-      "id": "rss-f5ce4a0fe482d320ff6f5d",
+      "id": "rss-9922f026851241ecf34796",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
       "source": "NASA｜News & Technology",
       "source_kind": "official",
       "category": "科技",
-      "title": "APOD: 2026 November 22 – Swirls and Colors on Jupiter from Juno",
-      "url": "https://science.nasa.gov/image-article/apod-2026-november-22-swirls-and-colors-on-jupiter-from-juno",
-      "published_at": "2026-11-22T05:05:00+00:00",
-      "fingerprint": "11bdf15db7bc740d4906e4eb",
+      "title": "65 Years of Human Spaceflight at NASA Johnson",
+      "url": "https://www.nasa.gov/centers-and-facilities/johnson/65-years-of-human-spaceflight-at-nasa-johnson",
+      "published_at": "2026-11-22T19:13:25+00:00",
+      "fingerprint": "f012cce4f975fb9ce57f02d0",
       "triage_priority": "一般候選",
       "analysis_mode": "rules_only",
       "zh_title": null,
