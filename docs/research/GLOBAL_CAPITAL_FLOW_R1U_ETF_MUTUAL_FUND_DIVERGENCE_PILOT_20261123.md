@@ -51,3 +51,15 @@ ICI 2026-11-19 Money Market Fund Assets 的公開報告提供 2026-11-04 **US$8,
 - `ROTATION_CAUSAL_LINK_UNVERIFIED`; `FUTURE_MATCHED_REPORTS_NOT_YET_CAPTURED`; `FORMAL_GATE0=BLOCKED`; `R2_NOT_STARTED`.
 - **下一個真正工作**：待 11/18 截止週的 ICI 股票合計公報實際出現後，對它與既有 11/18 MMF 同截止日記下首個預註冊樣本；先查當日假期規則。為避免檔案/排程膨脹，現不新增程式、另開 PR、發信、付費、CI 或自動監測工作。正式資料權利仍由現有 Twelve Data 回信自動任務追蹤。
 - **資產去向的對應結論**：股票基金正淨流入**可與**股票共同基金負流量同時成立；不能把淨流入和淨流出簡單相加宣稱資金由某市場流向另一市場。正式 SPY/BIL 可交易報酬需等待原有授權與 PIT Gate，不能以本次數字替代。
+
+## 5. 2026-11-23 live independent publication crosscheck — R1v
+**Actual source check (public-only, no new source files):** the ICI official combined/mutual/ETF publications still show week ended **2026-11-11** (combined release Nov18, ETF Nov17). As of **2026-11-23**, **ICI's week ended 2026-11-18 combined stock + mutual/ETF breakdown has NOT yet appeared on the official combined release page**. 2026-11-25 is **estimated upcoming**, not a confirmed actual release or measured values: https://www.ici.org/research/stats/combined_flows .
+
+However **independent LSEG Lipper reporting**, published by **Reuters on 2026-11-20**, reports week ended **2026-11-18**:
+- **US equity funds net subscriptions +US$45.71bn**, third consecutive week positive in *its own US equity fund series*: https://www.reuters.com/legal/transactional/us-equity-funds-draw-inflows-third-straight-week-2026-11-20/
+- **Global equity funds +US$59.23bn**, *global* money market funds **-US$13.89bn**: https://www.reuters.com/world/china/global-markets-flows-graphic-2026-11-20/
+- Same first Reuters US-focused report says **money-market funds -US$19.12bn**. Do NOT equate this with ICI's **US mutual MMF total-assets change -US$3.58bn** for week ended 2026-11-18: definitions, fund coverage, direct net flow versus asset change differ and no bridging documentation has been verified. ICI source: https://www.ici.org/research/stats/mmf . Lipper original underlying history is NOT downloaded or license-cleared. The global -13.89bn and US -19.12bn belong to separate aggregation categories, not a conservation ledger.
+
+**Important temporal discovery**: the 2026-11-19 ICI MMF release explicitly notes due to **2026-11-26 Thanksgiving**, the upcoming **MMF** report will cover **week ending Tuesday Nov24**, published **Wednesday Nov25**. This means the registered ICI combined weekly Wednesday Nov25 observation and MMF Tuesday Nov24 could fail exact endpoint alignment. Preserve `INCOMPARABLE` rather than alter the pre-registered weekly join. Source https://www.ici.org/research/stats/mmf .
+
+**Decision**: `LIPPER_NOV18_DIRECTION_EXTERNALLY_REPORTED_NOT_ICI_SAMPLE`. Independent Lipper is useful *descriptive context* on continuing US/global equity demand and price/flow divergence, but **cannot** be substituted into `H-ICI-WRAPPER-01`'s pre-registered ICI three-part sample; Lipper has no checked mutual/ETF wrapper split for this week. `NOV18_ICI_WRAPPER_NOT_YET_PUBLISHED`, `TWO_MMF_SERIES_NOT_COMPARABLE`, `PIT_AND_LICENSE_BLOCKED`. No source bytes, official original SHA, backtest, claims of causality, or new paid data.
