@@ -1,6 +1,8 @@
 # SIGNAL R1h｜從授權不明的研究因子轉為可用條款明確的官方全球流動性資料
 
-日期：2026-11-22 Asia/Taipei。**狀態：OFFICIAL_TERMS_AND_SOURCE_LINKS_VERIFIED / BIS_RAW_CAPTURE_BLOCKED_IN_CHATGPT / PIT_NOT_VERIFIED / GATE0_BLOCKED。**
+> **2026-11-23 R1i 後續實測（取代下文尚未擷取的舊狀態）：**使用者提供 Antigravity 執行紀錄：BIS 官方 GLI ZIP HTTP 200，原始 ZIP SHA-256 由 Antigravity 回報為 `87c8b99cca6043ae7737fb9c15159ad5920d0fdf260e9c9a68d03cec7cb95899`，完成擷取 UTC `2026-11-23T00:40:25.162908Z`；內含 21 欄、24,603 列，已定位 E2.1 2000-Q1..2026-Q2 共 106 季資料。**CSV 結構與 2026-Q2 分項加總 PASS，但歷史 PIT/模型 Gate 0 BLOCKED。**詳見 `GLOBAL_CAPITAL_FLOW_R1I_BIS_RECEIPT_AND_HYPOTHESIS_20261123.md` 和相應 R1i JSON；原檔未交給 ChatGPT、未提交 GitHub。
+
+日期：2026-11-22 Asia/Taipei（以下為試點前的歷史狀態）。**狀態：OFFICIAL_TERMS_AND_SOURCE_LINKS_VERIFIED / BIS_RAW_CAPTURE_BLOCKED_IN_CHATGPT / PIT_NOT_VERIFIED / GATE0_BLOCKED。**
 
 本文件是既有 Draft PR #29 的研究來源決策；不是資料流或真實回測已完成。Kenneth French 企業資料權利在 R1g 後仍無明確許可，依 `AGENTS.md` 對同一阻塞超過兩輪應改變方法，本輪轉為 BIS GLI，**不要求重新下載 TIC/SSGA、不購買 Tiingo、也不啟動多 Agent 假分工**。
 

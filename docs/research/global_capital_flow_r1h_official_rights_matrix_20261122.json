@@ -32,13 +32,23 @@
         "Quarterly; cannot directly represent monthly net portfolio flows",
         "Revisions occur when input data are revised",
         "Current bulk ZIP download in ChatGPT runtime failed, no real raw bytes or SHA captured",
-        "Still need series code, units, original raw bytes, release as-of history and raw-reproduction eligibility before research feature"
+        "Still need series code, units, original raw bytes, release as-of history and raw-reproduction eligibility before research feature",
+        "2026-11-23 Antigravity one-time real ZIP/csv structure externally reported PASS; current revised ZIP is not 2026-10-29 authentic release vintage. For full receipt see R1i JSON. Original ZIP not ingested by ChatGPT."
       ],
-      "collection_status": "OFFICIAL_LINK_CONFIRMED_RAW_NOT_CAPTURED",
+      "collection_status": "EXTERNAL_CAPTURE_AND_SCHEMA_REPORTED",
       "raw_sha256": null,
       "actual_retrieval_utc": null,
       "historical_pit_verified": false,
-      "accepted_for_model": false
+      "accepted_for_model": false,
+      "raw_sha256_reported_externally": "87c8b99cca6043ae7737fb9c15159ad5920d0fdf260e9c9a68d03cec7cb95899",
+      "actual_retrieval_utc_reported_externally": "2026-11-23T00:40:25.162908Z",
+      "inner_csv_sha256_reported_externally": "1bf5aff7ef3903da56ee0e6400a7390cfdb5dee397857625613233d14eaf7cdc",
+      "rows_reported": 24603,
+      "columns_reported": 21,
+      "sample_key": "Q.USD.3P.N.A.I.B.USD",
+      "sample_2026q2_million_usd_reported": 15132723.957,
+      "external_raw_file_retained_outside_chatgpt": true,
+      "current_snapshot_last_modified_utc": "2026-11-18T12:44:16Z"
     },
     {
       "source_id": "FED_H6_DIRECT",
