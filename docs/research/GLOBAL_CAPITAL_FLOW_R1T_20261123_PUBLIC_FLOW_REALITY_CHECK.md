@@ -110,3 +110,44 @@ Other independent sources -> equity funds = 37.020 - x
 - **Recommendation**: research observable, dated changes in institutional balance sheets and reported allocations and separately test their **incremental predictive information** after legal/PIT gates, instead of building a misleading "global dollars map".
 - **No new data-collection instrument**: prior ICI R1u future observation is waiting for an actual updated official release; publisher's official 2026-11-18 combined report still covers **week ended 2026-11-11** as of 2026-11-23. Fresh public search index was checked, while an older cached direct open can still show an August edition; **never confuse stale crawl or report publication date with observation-week endpoint**. Actual source: https://www.ici.org/research/stats/combined_flows ; https://www.ici.org/research/stats/mmf .
 - Status: `R1X_NONIDENTIFICATION_COUNTEREXAMPLE=PASS`, `CAPITAL_ROUTING=UNKNOWN`, `R1U_FUTURE_ICI_OBSERVATION=PENDING_OFFICIAL_PUBLICATION`, `FORMAL_GATE0=BLOCKED`, `R2=NOT_STARTED`. No historical PIT, data subscription, API ingest, new agent, repeated CI, trading, deployment, or change to frozen R0/K4/K5.
+
+## 7. R1y Fed H.4.1 full reserve-factors reconciliation — as published 2026-11-19, 2026-11-23 read-only review
+
+**Why the earlier partial comparison needs a full identity:** R1w correctly distinguished reserve balances, TGA and different reverse-repo counterparties, but the three selected lines alone do **not** explain the reserve change. Official Table 1 publishes complete top-level **factors supplying reserves** and **factors absorbing reserves other than bank reserves**. This section reconciles those official totals exactly, not by assuming TGA/RRP constitute a closed identity.
+
+All figures here are **weekly average** Federal Reserve H.4.1 values in USD **millions**, not single-day intraday tradable dollars, ETF fund transactions, or broad M2 money. Published **2026-11-19**, observation week ending **2026-11-18**; 11/18 16:00 ET was **before release**. Original PDF: https://www.federalreserve.gov/releases/h41/20261119/h41.pdf ; official H.4.1 site: https://www.federalreserve.gov/releases/h41/current/ .
+
+| Official H.4.1 weekly-average identity component (USD million) | 2026-11-11 | 2026-11-18 | Published weekly change |
+|---|---:|---:|---:|
+| Total factors **SUPPLYING** reserve funds | 6,806,128 | 6,804,131 | **-1,997** |
+| Total factors **ABSORBING** reserve funds **other than reserves** | 3,845,525 | 3,824,475 | **-21,050** |
+| **Reserve balances = supply - absorbing** | **2,960,603** | **2,979,656** | **+19,053** |
+
+**Actual independent local Decimal computation:**
+```text
+2026-11-11: 6,806,128 - 3,845,525 = 2,960,603        EXACT
+2026-11-18: 6,804,131 - 3,824,475 = 2,979,656        EXACT
+weekly Δ:     (-1,997) - (-21,050)  = +19,053          EXACT
+```
+**Important mechanism:** Bank reserves **rose US$19.053bn while the total Fed reserve-supplying factors actually fell US$1.997bn**; the reason in the **accounting identity** is that non-reserve absorbing factors declined **US$21.050bn**. In particular, total Fed reverse-repo liabilities changed **-US$12.096bn** (of which foreign official/international **-US$12.233bn**; "Others" **+US$0.136bn**), and **other Fed deposit liabilities** declined **US$10.403bn**, partially offset by **currency in circulation +US$3.491bn**. **TGA increased US$2.243bn**, which was **within** the -US$10.403bn net deposit-liability change, not an independent extra term to subtract again. Those four drain categories **do not exhaust** the accounting factors.
+
+| Absorbing-factors subcategory (weekly change, USD million) | Change |
+|---|---:|
+| Currency in circulation | +3,491 |
+| Reverse repos (gross, all counterparties; including foreign official) | -12,096 |
+| Treasury cash holdings | -24 |
+| All non-reserve deposits at Federal Reserve Banks | -10,403 |
+| Other liabilities/capital | -2,019 |
+| **Sum of displayed component changes** | **-21,051** |
+| **Official absorbing-factor total** | **-21,050** |
+| **Rounding residual** | **+1 million** |
+
+This **1 USD million rounding difference is explicit**. Weekly change signs are relative to liability/drain positions, **not** investment inflow/outflow. Note also **Treasury securities held outright +US$3.645bn** on the weekly average line is a *subcomponent* of reserve-bank credit and does not establish that the system "printed US$19.053bn" or that the money reached equities. The observed supply factors fell due to other assets/credit changes; do not simplify to a single asset factor.
+
+**Two simultaneous hypotheses and what the arithmetic does not identify:**
+- `H-ACCOUNTING-01`: higher bank reserves can coexist with flat/falling reserve-supplying total when autonomous absorbing factors decrease. **PASS for this single weekly period, as an exact accounting identity**; not a predictive discovery.
+- `H-CROSS-MARKET-TRANSFER`: the US$19.053bn reserve rise was spent buying stock funds or the MMF -US$3.58bn flowed to equities. **NOT IDENTIFIED / NO EVIDENCE**: reserve account entries and ICI investor holdings are different statistical universes, and published periods (ICI equity week end 11/11 vs Fed period 11/18) can differ.
+
+**Source/PIT QA:** top-level 3/3 accounting checks exact and 5-way factor sum within 1m rounding (actual Python Decimal calculation, not GitHub CI). Published Fed report date 2026-11-19 and fixed table period 11/18. The PDF/HTML is a current historical release; original raw bytes, archival immutable source, exact minute first published and historical full-vintage snapshots **not** acquired/verified. Do **not** use this as a 2026-11-18 16:00 ET signal or retrospectively certify earlier months. The extra calculation uses only publicly reported small official numbers and does not fetch licensed SPY/BIL prices.
+
+**Decision:** `R1Y_FULL_FED_RESERVE_IDENTITY_RECONCILED=PASS`; `GROSS_RRP_AS_DOMESTIC_MMF_PROXY=REJECTED`; `MONETARY_INJECTION_FROM_RESERVE_CHANGE_ALONE=REJECTED`; `STOCK_ROUTING_NOT_IDENTIFIED`; `FORMAL_GATE0=BLOCKED`; `R2=NOT_STARTED`. No new software architecture, vendor purchases, emails, third-party coding Agents, additional Actions, main merge, deployment or trading. Future ICI observation remains bound to the already-frozen R1u protocol and its real official release dates. 
