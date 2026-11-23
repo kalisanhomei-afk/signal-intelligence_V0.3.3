@@ -1,0 +1,65 @@
+{
+  "schema": "signal.r1l.bis_cross_currency_actual_slice.v0.1",
+  "source": "Bank for International Settlements (BIS), Global Liquidity Indicators WS_GLI(1.0)",
+  "data_classification": "LATEST_REVISED_SNAPSHOT_EXPLORATION",
+  "evidence_kind": "USER_SUPPLIED_ANTIGRAVITY_REAL_LOCAL_CLI_EXECUTION",
+  "api_source": "https://data.bis.org/topics/GLI",
+  "external_original_zip_sha256": "87c8b99cca6043ae7737fb9c15159ad5920d0fdf260e9c9a68d03cec7cb95899",
+  "external_inner_csv_sha256": "1bf5aff7ef3903da56ee0e6400a7390cfdb5dee397857625613233d14eaf7cdc",
+  "source_capture_utc": "2026-11-23T00:40:25.162908Z",
+  "original_bytes_accessed_in_chatgpt": false,
+  "antigravity_execution_exit_code": 0,
+  "selected_cells": 12,
+  "missing": 0,
+  "known_releases_only_date": [
+    "2026-10-29"
+  ],
+  "observations": {
+    "USD": {
+      "scope": "borrowers outside the United States",
+      "series": "Q.USD.3P.N.A.I.B.771",
+      "q1_yoy_pct": "7.308",
+      "q2_yoy_pct": "8.030",
+      "q2_minus_q1_pp": "0.722",
+      "q1_stock_million_local": "14770950.729",
+      "q2_stock_million_local": "15132723.957"
+    },
+    "EUR": {
+      "scope": "borrowers outside the euro area",
+      "series": "Q.EUR.3P.N.A.I.B.771",
+      "q1_yoy_pct": "12.627",
+      "q2_yoy_pct": "13.813",
+      "q2_minus_q1_pp": "1.186",
+      "q1_stock_million_local": "5156518.229",
+      "q2_stock_million_local": "5389820.686"
+    },
+    "JPY": {
+      "scope": "borrowers outside Japan",
+      "series": "Q.JPY.3P.N.A.I.B.771",
+      "q1_yoy_pct": "2.928",
+      "q2_yoy_pct": "7.116",
+      "q2_minus_q1_pp": "4.188",
+      "q1_stock_million_local": "68312707.17",
+      "q2_stock_million_local": "70013771.723"
+    }
+  },
+  "derived_pp_gaps": {
+    "eur_minus_usd_q1": "5.319",
+    "eur_minus_usd_q2": "5.783",
+    "increase_eur_usd_gap": "0.464",
+    "jpy_minus_usd_q1": "-4.380",
+    "jpy_minus_usd_q2": "-0.914",
+    "jpy_closing_usd_gap": "3.466"
+  },
+  "evidence_level": "historical source versions not certified; current revised snapshot only",
+  "independent_contemporaneous_BIS_commentary_url": "https://www.bis.org/publications/202610-commentary-ibs-gli",
+  "conclusion": "Euro yoy highest, yen yoy acceleration largest, all three yoy accelerated vs Q1; not proof of transfers between asset markets",
+  "hypothesis_id": "H-GCF-FX-CREDIT-REL-01",
+  "is_unapproved_exploratory_extension": true,
+  "raw_series_redistributed": false,
+  "historical_pit_verified": false,
+  "accepted_for_model": false,
+  "gate0": "BLOCKED",
+  "model_training": "NOT_STARTED",
+  "paid_subscription_usd": 0
+}
