@@ -28,6 +28,15 @@
 
 **Evidence grade**: Public, dated issuer/industry-body **web report excerpts read on 2026-11-23**; no source-byte download, no retrieval UTC receipt, no original SHA, no historic-vintage certification. ICI source pages show rolling latest numbers and may be updated; source extracts must not be represented as immutable release files. Numerical units kept as USD billion except WGC tonnes and ICI MMF assets.
 
+## 2.1 同週資料其實已可對齊：2026-11-11 截止週的關鍵反例
+
+**不必等待下一週報**：2026-11-19 ICI MMF 來源同一張表已列 2026-11-04 與 2026-11-11 的歷史總資產。
+
+- 股票**共同基金 + ETF** 合計淨流入（週截至 **2026-11-11**）：**+US$37.020bn**。
+- 美國**貨幣市場共同基金資產**在相同週（**2026-11-04 → 2026-11-11**）：**US$8,015.74bn → US$7,980.02bn = -US$35.72bn**。此差額依公告小數計，且資產變化是流量粗略代理，不是銀行間已核實轉帳。
+- 表面上可形成假說：「該週部分資金自貨幣市場基金流向股票基金」。**但這還不是證據**：兩系列不是同一投資者/資金追蹤樣本，可能同時受到不同投資人申贖、資產價值、重新分類、商品範圍/再配置及新資金影響。數字接近不能建立單一來源→單一去向的因果或會計橋接。禁止將 +37.02 和 -35.72 直接歸因為同一筆資金。
+- 因此更精確結論：**至少在 ICI 美國基金覆蓋的該週，股票總淨申購為正，貨幣市場基金總資產下降**，這是值得將來用細粒度交易/持有人證據測試的*可能配置轉換訊號*；**不代表世界資金一定從金銀或所有股票逃逸**。
+
 ## 3. 反證與替代機制
 
 - **Current evidence DISCONFIRMS the universal premise** that both all equities and all physical-gold ETF investment were simultaneously witnessing negative net subscriptions across the cited reporting periods: ICI equity combined +US$37.020bn (Nov 11 week) and WGC gold ETF +US$2.7bn (October). This does **not** disprove an individual day's sell-off, location-specific outflows, gold derivatives de-risking, or investor reallocations outside reported funds.
@@ -39,6 +48,6 @@
 
 - **R1t conclusion:** `GLOBAL_SINGLE_DESTINATION_NOT_ESTABLISHED`, `UNIVERSAL_STOCK_AND_GOLD_WITHDRAWAL_PREMISE_NOT_SUPPORTED_BY_CITED_WINDOWS`, `PUBLIC_DESCRIPTIVE_CROSSCHECK_DONE`.
 - Maintain frozen R0 M0/M1/M2 as **FORMAL_GATE0_BLOCKED** until full lawful SPY/BIL next-session total-return data, historical usable PIT features and durable audit retention. **No new return model and no R2 start.**
-- Useful next low-cost step is **one time-aligned, public-only observation**: when ICI 2026-11-25 weekly releases occur, compare equity combined week ending 11/18 to MMF week ending 11/18 (if same-date reports are actually available). But **do not** invent future ICI values, schedule a scraping agent or treat this as an R0 alpha test. Gold WGC October remains monthly and cannot be aligned to November weekly without a true report.
+- **Time-aligned public-only observation already performed** for the week ending 2026-11-11 using the two ICI releases: equity combined funds +US$37.020bn, MMF assets -US$35.72bn. This is a *potential rotation hypothesis*, not a verified path of funds. A future release could independently check persistence but is **not required to close R1t**. Gold WGC October remains monthly and cannot be aligned to November weekly without a true report.
 - **Stop condition:** If two reported series disagree because of dates/coverage/wrapper, classify `INCOMPARABLE` rather than fix by inventing capital rotation. A snapshot improves narrative calibration only, not prediction accuracy.
 - No paid data, outgoing supplier email, public redistribution of source datasets, source API, new external AI agent, deployment, trading, main merge, or modification of K4/K5. Existing Draft PR #29 remains the sole R1 work branch. Owner need not operate anything for this report.
