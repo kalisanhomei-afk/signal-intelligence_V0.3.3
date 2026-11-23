@@ -1,0 +1,79 @@
+{
+  "schema": "signal.r1j.bis_offshore_usd_credit_quarterly_slice.v0.1",
+  "evidence_kind": "USER_PROVIDED_ANTIGRAVITY_REPORT_EXTERNAL_ORIGINAL_HASH",
+  "source": "Bank for International Settlements (BIS), Global Liquidity Indicators E2.1 / WS_GLI 1.0",
+  "source_url": "https://data.bis.org/topics/GLI",
+  "observed_snapshot_captured_utc": "2026-11-23T00:40:25.162908Z",
+  "original_zip_sha256_reported": "87c8b99cca6043ae7737fb9c15159ad5920d0fdf260e9c9a68d03cec7cb95899",
+  "inner_csv_sha256_reported": "1bf5aff7ef3903da56ee0e6400a7390cfdb5dee397857625613233d14eaf7cdc",
+  "raw_bytes_rehashed_by_chatgpt": false,
+  "category": "LATEST_REVISED_SNAPSHOT_EXPLORATION",
+  "units": {
+    "stock": "USD millions",
+    "yoy": "BIS exchange-rate- and break-adjusted percent"
+  },
+  "rows": [
+    {
+      "q": "2025-Q3",
+      "total": "14240684.034",
+      "loans": "6405726.502",
+      "debt": "7834957.532",
+      "total_yoy": "7.378",
+      "loans_yoy": "8.307",
+      "debt_yoy": "6.628"
+    },
+    {
+      "q": "2025-Q4",
+      "total": "14264166.940",
+      "loans": "6337422.386",
+      "debt": "7926744.554",
+      "total_yoy": "8.671",
+      "loans_yoy": "10.416",
+      "debt_yoy": "7.314"
+    },
+    {
+      "q": "2026-Q1",
+      "total": "14770950.729",
+      "loans": "6706302.542",
+      "debt": "8064648.187",
+      "total_yoy": "7.308",
+      "loans_yoy": "8.195",
+      "debt_yoy": "6.583"
+    },
+    {
+      "q": "2026-Q2",
+      "total": "15132723.957",
+      "loans": "6936280.678",
+      "debt": "8196443.279",
+      "total_yoy": "8.030",
+      "loans_yoy": "9.622",
+      "debt_yoy": "6.720"
+    }
+  ],
+  "expected_cells": 24,
+  "reported_complete": 24,
+  "missing": 0,
+  "reported_status": "A",
+  "all_four_total_additivity": "DECIMAL_EXACT_MATCH",
+  "derived": {
+    "total_nominal_qoq_change_usd_billion": {
+      "2025-Q4": "23.482906",
+      "2026-Q1": "506.783789",
+      "2026-Q2": "361.773228"
+    },
+    "total_yoy_qoq_change_pp": {
+      "2025-Q4": "1.293",
+      "2026-Q1": "-1.363",
+      "2026-Q2": "0.722"
+    },
+    "2026_Q2_bank_yoy_vs_q1_pp": "1.427",
+    "2026_Q2_debt_yoy_vs_q1_pp": "0.137",
+    "2026_Q2_total_yoy_vs_2025Q4_pp": "-0.641",
+    "2026_Q2_bank_nominal_qoq_change_usd_billion": "229.978136",
+    "2026_Q2_debt_nominal_qoq_change_usd_billion": "131.795092"
+  },
+  "historical_pit_verified": false,
+  "accepted_for_model": false,
+  "gate0": "BLOCKED",
+  "formal_models_run": false
+}
