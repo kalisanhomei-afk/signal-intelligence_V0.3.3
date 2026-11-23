@@ -75,3 +75,38 @@
 - ICI 2026-11-19 weekly MMF 11/18 觀察： https://www.ici.org/research/stats/mmf
 
 **Evidence grade**: `DATED_OFFICIAL_PUBLIC_SOURCE_RECONCILED`; `WEEK_AVERAGE_CONSISTENCY_PASS` (3/3 numerical differences; 1m rounding); `GROSS_RRP_VS_ON_RRP_CONFUSION_REJECTED`; `HISTORICAL_PIT_NOT_CERTIFIED`. Fed original release publication minute / original bytes/hash not captured; public current FRED observations may revise. No M0/M1/M2 formal features admitted or R2 authorization. This review adds one specific counterexample for the global-flow interpretation and should not be followed by building a second liquidity software platform.
+
+## 6. R1x formal non-identification counterexample (2026-11-23; independent model-risk QA)
+
+**Reason for this gate**: The original question "Where did those dollars go?" is a **source→destination causal allocation** question. Net marginal fund-flow summaries are insufficient to identify a unique path. Adding more unrelated indicator series (TIC, BIS, Fed RRP, WGC) does not resolve this missing identification. The correct response is a **provable identifiability limit**, not a more elaborate money tracking chart.
+
+### Minimal exact synthetic counterexample (not actual investor transactions)
+
+Observed, publicly reported **different statistical objects** for one identical observation cutoff of **2026-11-11**: ICI total *equity mutual funds plus ETF* **net estimated flow +US$37.020bn** (ICI 2026-11-18 report), and ICI money-market mutual-fund **total assets change -US$35.72bn** (ICI 2026-11-19 report includes Nov04 and Nov11 historical asset levels). To give capital-rotation inference its **strongest possible chance**, suppose **counterfactually** that all -35.72bn of MMF asset change is true net redemption and fund universes match. Define `x` as an **unobserved** amount routed by investors from MMF redemptions into equity fund subscriptions, in USD billions.
+
+The only observed summary constraints then allow:
+```
+MMF -> equity funds       = x
+MMF -> all other uses     = 35.72 - x
+Other independent sources -> equity funds = 37.020 - x
+0 <= x <= 35.72   (illustrative non-negative routing restriction)
+```
+
+| Valid synthetic capital movement (US$bn) | MMF→equity x | MMF→other | Other sources→equity | Implied MMF net change | Implied equity net flow |
+|---|---:|---:|---:|---:|---:|
+| A. **No direct rotation** | 0.00 | 35.72 | 37.020 | -35.72 | +37.020 |
+| B. **Partial rotation** | 17.86 | 17.86 | 19.160 | -35.72 | +37.020 |
+| C. **Maximum direct rotation in this restricted example** | 35.72 | 0.00 | 1.300 | -35.72 | +37.020 |
+
+**Actually executed small local Python Decimal identity test: 3/3 examples reconcile exact published marginals under the deliberately simplified proxy assumption.** It is algebraic QA, not source data ingestion, GitHub CI, or proof any real investor performed those transactions. Financial assets have counterparties: the person selling a stock or redeeming a fund receives a claim; ETF primary creations differ from secondary trading. This is an accounting illustration, **not** a claimed closed world balance sheet.
+
+**Identification result**: From these two published aggregates, the direct MMF→equity amount `x` is **not point-identified**; even the hypothetical restricted bounds allow **x=0**. In reality the bound is **less reliable** because MMF asset changes are a flow proxy, not a reconciled cash-flow account, and the measurement universes vary. Numerical proximity (~35.72 vs 37.02) provides **zero evidence of a bank-account-level transfer path**.
+
+### Practical decision: abandon the impossible exact-dollar destination objective without linked microdata
+
+- `PATH_OF_CAPITAL_IDENTIFICATION=FAILED_WITH_AGGREGATES` for any claim of unique MMF→equity routing, not a failure of factual ICI source reading.
+- **Keep** the pre-registered `H-ICI-WRAPPER-01` **descriptive** same-week sign observation (ETF+, mutual fund−, net equity+) exactly frozen; do **not** promote it to causality, return forecast or formal M2.
+- If source→destination causal attribution becomes a critical requirement, a **separately authorized** access path to linked investor/account-level flows, identified counterparties, or a pre-specified structural model with transparent uncertainty would be needed. Cross-market aggregate totals **cannot substitute** for it. Privacy, commercial data licensing, and complexity likely make that route uneconomic at pilot scale.
+- **Recommendation**: research observable, dated changes in institutional balance sheets and reported allocations and separately test their **incremental predictive information** after legal/PIT gates, instead of building a misleading "global dollars map".
+- **No new data-collection instrument**: prior ICI R1u future observation is waiting for an actual updated official release; publisher's official 2026-11-18 combined report still covers **week ended 2026-11-11** as of 2026-11-23. Fresh public search index was checked, while an older cached direct open can still show an August edition; **never confuse stale crawl or report publication date with observation-week endpoint**. Actual source: https://www.ici.org/research/stats/combined_flows ; https://www.ici.org/research/stats/mmf .
+- Status: `R1X_NONIDENTIFICATION_COUNTEREXAMPLE=PASS`, `CAPITAL_ROUTING=UNKNOWN`, `R1U_FUTURE_ICI_OBSERVATION=PENDING_OFFICIAL_PUBLICATION`, `FORMAL_GATE0=BLOCKED`, `R2=NOT_STARTED`. No historical PIT, data subscription, API ingest, new agent, repeated CI, trading, deployment, or change to frozen R0/K4/K5.
