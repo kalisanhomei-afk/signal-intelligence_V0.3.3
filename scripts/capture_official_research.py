@@ -105,9 +105,14 @@ def capture(url: str, kind: str, output_dir: Path, *, max_bytes: int = DEFAULT_L
         if status != 200:
             raise ValueError("Expected HTTP 200")
         headers = response.headers
-        expected_len = headers.get("Content-Length")
-        if expected_len and expected_len.isdigit() and int(expected_len) > max_bytes:
-            raise ValueError("Server announced excessive response size")
+        expected_len_header = headers.get("Content-Length")
+        expected_len = None
+        if expected_len_header is not None:
+            if not expected_len_header.isascii() or not expected_len_header.isdigit():
+                raise ValueError("Invalid Content-Length response header")
+            expected_len = int(expected_len_header)
+            if expected_len > max_bytes:
+                raise ValueError("Server announced excessive response size")
         parts = []
         n = 0
         while True:
@@ -119,6 +124,8 @@ def capture(url: str, kind: str, output_dir: Path, *, max_bytes: int = DEFAULT_L
                 raise ValueError("Downloaded body is larger than byte limit")
             parts.append(chunk)
         data = b"".join(parts)
+        if expected_len is not None and n != expected_len:
+            raise ValueError("Content-Length mismatch; refusing incomplete or inconsistent HTTP body")
         if not data:
             raise ValueError("Empty response cannot be archived")
         result = validate_body(data, kind)

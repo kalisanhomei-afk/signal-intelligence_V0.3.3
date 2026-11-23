@@ -23,12 +23,16 @@ class FakeResponse(io.BytesIO):
         return self._url
 
 class FakeOpener:
-    def __init__(self, data, final_url, content_type='text/html'):
+    def __init__(self, data, final_url, content_type='text/html', declared_length=None):
         self.data = data
         self.final_url = final_url
         self.content_type = content_type
+        self.declared_length = declared_length
     def open(self, request, timeout=20):
-        return FakeResponse(self.data, self.final_url, self.content_type)
+        response = FakeResponse(self.data, self.final_url, self.content_type)
+        if self.declared_length is not None:
+            response.headers['Content-Length'] = str(self.declared_length)
+        return response
 
 class CaptureTests(unittest.TestCase):
     H6 = 'https://www.federalreserve.gov/releases/h6/20200827/'
@@ -75,6 +79,30 @@ class CaptureTests(unittest.TestCase):
                 capture.capture(self.H6, 'html', Path(td), max_bytes=100,
                                 opener=FakeOpener(b'<html>' + b'x'*500, self.H6))
             self.assertFalse(list(Path(td).iterdir()))
+
+    def test_truncated_http_body_never_creates_evidence_receipt(self):
+        raw = b'<!doctype html><html><body>incomplete synthetic response'
+        with tempfile.TemporaryDirectory() as td:
+            with self.assertRaisesRegex(ValueError, 'Content-Length mismatch'):
+                capture.capture(self.H6, 'html', Path(td),
+                                opener=FakeOpener(raw, self.H6, declared_length=len(raw) + 100))
+            self.assertEqual(list(Path(td).iterdir()), [])
+
+    def test_excess_body_versus_declared_length_rejected(self):
+        raw = b'<!doctype html><html><body>synthetic</body></html>'
+        with tempfile.TemporaryDirectory() as td:
+            with self.assertRaisesRegex(ValueError, 'Content-Length mismatch'):
+                capture.capture(self.H6, 'html', Path(td),
+                                opener=FakeOpener(raw, self.H6, declared_length=len(raw) - 3))
+            self.assertEqual(list(Path(td).iterdir()), [])
+
+    def test_malformed_content_length_rejected_before_writing(self):
+        raw = b'<!doctype html><html><body>synthetic</body></html>'
+        with tempfile.TemporaryDirectory() as td:
+            with self.assertRaisesRegex(ValueError, 'Invalid Content-Length'):
+                capture.capture(self.H6, 'html', Path(td),
+                                opener=FakeOpener(raw, self.H6, declared_length='5, 100'))
+            self.assertEqual(list(Path(td).iterdir()), [])
 
     @staticmethod
     def make_zip(member='sample.txt'):
