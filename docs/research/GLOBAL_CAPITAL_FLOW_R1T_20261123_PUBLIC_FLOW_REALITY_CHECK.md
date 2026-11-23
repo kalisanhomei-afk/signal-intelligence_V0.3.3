@@ -51,3 +51,27 @@
 - **Time-aligned public-only observation already performed** for the week ending 2026-11-11 using the two ICI releases: equity combined funds +US$37.020bn, MMF assets -US$35.72bn. This is a *potential rotation hypothesis*, not a verified path of funds. A future release could independently check persistence but is **not required to close R1t**. Gold WGC October remains monthly and cannot be aligned to November weekly without a true report.
 - **Stop condition:** If two reported series disagree because of dates/coverage/wrapper, classify `INCOMPARABLE` rather than fix by inventing capital rotation. A snapshot improves narrative calibration only, not prediction accuracy.
 - No paid data, outgoing supplier email, public redistribution of source datasets, source API, new external AI agent, deployment, trading, main merge, or modification of K4/K5. Existing Draft PR #29 remains the sole R1 work branch. Owner need not operate anything for this report.
+
+## 5. R1w Fed H.4.1 資金帳本交叉查核（2026-11-23）
+本節是新的**央行負債／準備金帳本**對照，不是把 H.4.1 當成美股/ETF 資金交易源。資料週截至 **2026-11-18**，官方 H.4.1 **發布日 2026-11-19**。Fed 官方規則「通常週四美東約 16:30 發布」，但不是對這一份歷史原始位元組的分秒 PIT 認證；對固定 **16:00 ET** 訊號截點，**絕不能**把 11/18 週資料視作 11/18 已知；保守最早下個確證月/日訊號截點。
+
+| H.4.1 聯準會指標（週平均） | 截至 11/11（USD billion） | 截至 11/18（USD billion） | 一週變化（USD billion） |
+|---|---:|---:|---:|
+| 存款機構在聯準會準備金 `WRESBAL` | 2,960.603 | 2,979.656 | **+19.053** |
+| 美國財政部一般帳戶 `WTREGEN` | 914.370 | 916.613 | **+2.243** |
+| 聯準會**所有負債側**逆回購 `WLRRAA` | 336.519 | 324.423 | **-12.096** |
+
+11/18 逆回購負債下鑽：**外國官方及國際帳戶** `WREPOFOR` = **USD 324.124bn**，占總量約 **99.91%**；**Others** `WREPODEL` = **USD 0.298bn**。兩者相加 **324.422bn** 與總量差 **USD 0.001bn**，係公告以百萬美元為單位之四捨五入。**不可將全部 USD 324.423bn 誤稱「美國貨幣市場基金停放在 ON RRP 的現金」**；這個總量近乎全是外國官方帳戶，並非投資者 MMF 結算流量。
+
+**獨立反證：** 週平均準備金**增加** 19.053bn，同時 TGA 增加 2.243bn、Fed RRP 負債減少 12.096bn；同週 ICI MMF 資產則為 **-USD 3.58bn**。這些不同部門和金融工具的存量/存量差與基金估計流量**無共同對帳的封閉母體**，不能從這四條直接推出「3.58bn 從 MMF 流到股票」或「Fed 增印了 19.053bn 進股市」。Fed 週平均準備金的一週差也不等於 Fed 買券交易量；必要時應以 Fed 完整資產負債表因素解釋，不能只把三個選擇性欄位作 accounting identity。
+
+**原始官方來源及定義（核對 2026-11-23 公開報告值；原始 bytes SHA 未取得）：**
+- Fed H.4.1 2026-11-19 週報及其發布說明（2026-11-18 週平均）：https://www.federalreserve.gov/releases/h41/20261119/ ; https://www.federalreserve.gov/releases/h41/about.htm
+- Fed／FRED `WRESBAL`: https://fred.stlouisfed.org/series/WRESBAL
+- Fed／FRED `WTREGEN`: https://fred.stlouisfed.org/series/WTREGEN
+- Fed／FRED `WLRRAA`: https://fred.stlouisfed.org/series/WLRRAA
+- Fed／FRED `WREPOFOR`: https://fred.stlouisfed.org/series/WREPOFOR
+- Fed／FRED `WREPODEL`: https://fred.stlouisfed.org/series/WREPODEL
+- ICI 2026-11-19 weekly MMF 11/18 觀察： https://www.ici.org/research/stats/mmf
+
+**Evidence grade**: `DATED_OFFICIAL_PUBLIC_SOURCE_RECONCILED`; `WEEK_AVERAGE_CONSISTENCY_PASS` (3/3 numerical differences; 1m rounding); `GROSS_RRP_VS_ON_RRP_CONFUSION_REJECTED`; `HISTORICAL_PIT_NOT_CERTIFIED`. Fed original release publication minute / original bytes/hash not captured; public current FRED observations may revise. No M0/M1/M2 formal features admitted or R2 authorization. This review adds one specific counterexample for the global-flow interpretation and should not be followed by building a second liquidity software platform.
