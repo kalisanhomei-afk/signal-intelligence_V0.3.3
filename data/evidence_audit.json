@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.1",
-    "generated_at": "2026-11-24T13:44:37+00:00",
+    "generated_at": "2026-11-25T01:49:42+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "status": "metadata_gap_audit_only",
     "candidate_count": 12,
@@ -82,13 +82,13 @@
       "fingerprint": "8d523b2e3f6c33b243cbfc6f"
     },
     {
-      "id": "rss-7dd88225b4ad6945571af2",
+      "id": "rss-41ee440d15205b02d80cf1",
       "source_id": "eia-energy",
       "publisher_id": "eia",
-      "title": "Oil flows through Middle East chokepoints increased in the third quarter",
+      "title": "How does EIA compare different types of energy?",
       "category": "能源",
-      "published_at": "2026-11-19T14:00:00+00:00",
-      "url": "https://www.eia.gov/todayinenergy/detail.php?id=",
+      "published_at": "2026-11-24T14:00:00+00:00",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68504",
       "source_role": "第一手能源統計機構",
       "evidence_kind": "能源統計與分析機構公開標題元資料",
       "evidence_level": "M0",
@@ -104,16 +104,16 @@
         "有無其他機構或市場資料交叉驗證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "0d02c1540882a045b3851031"
+      "fingerprint": "013cd5c8cb8d83fcbd321d00"
     },
     {
-      "id": "rss-49c6eca10cdbe202905f96",
+      "id": "rss-b427ca7eba574198c22ebc",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Speech by Executive Vice-President Teresa Ribera at College of Europe, Natolin, Poland",
+      "title": "Speech by Commissioner Lahbib on the Humanitarian Situation in Gaza at the European Parliament",
       "category": "政治",
-      "published_at": "2026-11-24T09:42:38+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2570",
+      "published_at": "2026-11-24T17:49:10+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2581",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -129,16 +129,16 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "14d55c7217607837326c7e65"
+      "fingerprint": "d69b3972f8ed384eada8246d"
     },
     {
-      "id": "rss-c0c4ef66e0d9307c0568ef",
+      "id": "rss-ee53adbaa022cb629b983f",
       "source_id": "fed-monetary",
       "publisher_id": "fed",
-      "title": "Minutes of the Federal Open Market Committee, October 27-28, 2026",
+      "title": "Minutes of the Board's discount rate meetings on October 19 and October 28, 2026",
       "category": "財經",
-      "published_at": "2026-11-18T19:00:00+00:00",
-      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261118a.htm",
+      "published_at": "2026-11-24T19:00:00+00:00",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261124a.htm",
       "source_role": "第一手政策機構",
       "evidence_kind": "官方發布元資料",
       "evidence_level": "M0",
@@ -154,16 +154,16 @@
         "是否有獨立報導確認關鍵細節？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "6234d4e58ee1fb676fbe5984"
+      "fingerprint": "7acde2895879aa2a71fb7146"
     },
     {
-      "id": "rss-dfa0b937d567023b2982a3",
+      "id": "rss-d2bb4ee42ef962daed864d",
       "source_id": "mit-research",
       "publisher_id": "mit_news",
-      "title": "Many languages, one common neural code",
+      "title": "3 Questions: Tackling energy challenges in a changing world",
       "category": "科技",
-      "published_at": "2026-11-23T21:15:00+00:00",
-      "url": "https://news.mit.edu/2026/many-languages-one-common-neural-code-1123",
+      "published_at": "2026-11-24T22:25:00+00:00",
+      "url": "https://news.mit.edu/2026/3-questions-tackling-energy-challenges-changing-world-1124",
       "source_role": "研究機構自有新聞編輯室",
       "evidence_kind": "MIT 自有研究報導標題元資料",
       "evidence_level": "M0",
@@ -179,16 +179,16 @@
         "研究結果與商業部署或規模化是否有證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "1546412758bcbc170530e9c0"
+      "fingerprint": "c5237b96bfe1f542facc59b0"
     },
     {
-      "id": "rss-18d2d15197a71813b9b65c",
+      "id": "rss-662dd4090d4d9ea8679e02",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
-      "title": "APOD: 2026 November 23 – The Emergence of Dark Nebula Lynds 1251",
+      "title": "NASA+ Content Coming to Big Screen at Greenbelt, Maryland Cinema",
       "category": "科技",
-      "published_at": "2026-11-23T05:05:00+00:00",
-      "url": "https://science.nasa.gov/image-article/apod-2026-november-23-the-emergence-of-dark-nebula-lynds-1251",
+      "published_at": "2026-11-24T21:14:36+00:00",
+      "url": "https://www.nasa.gov/nasa/nasa-content-coming-to-big-screen-at-greenbelt-maryland-cinema",
       "source_role": "第一手航太科研機構",
       "evidence_kind": "航太與技術機構公開消息標題元資料",
       "evidence_level": "M0",
@@ -204,7 +204,7 @@
         "相關成果有無獨立測試或第三方研究？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "bef5fd03f0dde57dcc0195ab"
+      "fingerprint": "9bb9704fdb86a1c218f6ce0f"
     },
     {
       "id": "rss-fbba2b66cd07b987e3c6d3",
@@ -257,13 +257,13 @@
       "fingerprint": "354605a9401370967db25931"
     },
     {
-      "id": "rss-a4c390e9c48b4825355d9b",
+      "id": "rss-7dd88225b4ad6945571af2",
       "source_id": "eia-energy",
       "publisher_id": "eia",
-      "title": "U.S. natural gas inventories end injection season above normal levels",
+      "title": "Oil flows through Middle East chokepoints increased in the third quarter",
       "category": "能源",
-      "published_at": "2026-11-18T14:00:00+00:00",
-      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68484",
+      "published_at": "2026-11-19T14:00:00+00:00",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=",
       "source_role": "第一手能源統計機構",
       "evidence_kind": "能源統計與分析機構公開標題元資料",
       "evidence_level": "M0",
@@ -279,16 +279,16 @@
         "有無其他機構或市場資料交叉驗證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "b1eecaccd564cbfd0c3797a8"
+      "fingerprint": "0d02c1540882a045b3851031"
     },
     {
-      "id": "rss-96a3d102b8a7a77fc3017a",
+      "id": "rss-cc8b54886f18cda257797f",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Commission imposes provisional import quotas on hybrid passenger vehicles",
+      "title": "Daily News 24/ 11 / 2026",
       "category": "政治",
-      "published_at": "2026-11-23T23:00:00+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_2564",
+      "published_at": "2026-11-24T14:25:28+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/mex_26_2578",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -304,18 +304,18 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "f775ce1e2f36d8e5b60ef7be"
+      "fingerprint": "8a03003582964570d764f782"
     },
     {
-      "id": "rss-9999323999cb508ed8ca31",
-      "source_id": "mit-research",
-      "publisher_id": "mit_news",
-      "title": "J-PAL North America launches Medicaid Learning Lab to help state agencies test, learn, and improve health care delivery",
-      "category": "科技",
-      "published_at": "2026-11-23T20:55:00+00:00",
-      "url": "https://news.mit.edu/2026/j-pal-north-america-launches-medicaid-learning-lab-1123",
-      "source_role": "研究機構自有新聞編輯室",
-      "evidence_kind": "MIT 自有研究報導標題元資料",
+      "id": "rss-c0c4ef66e0d9307c0568ef",
+      "source_id": "fed-monetary",
+      "publisher_id": "fed",
+      "title": "Minutes of the Federal Open Market Committee, October 27-28, 2026",
+      "category": "財經",
+      "published_at": "2026-11-18T19:00:00+00:00",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261118a.htm",
+      "source_role": "第一手政策機構",
+      "evidence_kind": "官方發布元資料",
       "evidence_level": "M0",
       "verification_status": "未查證",
       "reading_scope": "僅公開標題、日期、來源連結",
@@ -324,12 +324,12 @@
       "independent_confirmation_count": 0,
       "importance_assessed": false,
       "questions": [
-        "是否核對研究原始論文、方法、數據與限制？",
-        "是否有同儕審查、外部複現或第三方報導？",
-        "研究結果與商業部署或規模化是否有證據？"
+        "是否核對原始聲明／會議紀錄全文？",
+        "是否區分決策日期、發布時間與市場預期？",
+        "是否有獨立報導確認關鍵細節？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "8c0c1f4bd15dc0cddf22201f"
+      "fingerprint": "6234d4e58ee1fb676fbe5984"
     }
   ]
 }
