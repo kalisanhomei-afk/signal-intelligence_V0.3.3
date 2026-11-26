@@ -18,7 +18,7 @@ EXPECTED_OLD_BLOB = "bacc82f549fb3bba74142139d89bec94e386d88e"
 
 
 def blob_oid(raw):
-    return hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\\0" + raw).hexdigest()
+    return hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\0" + raw).hexdigest()
 
 
 def parsed(raw):
