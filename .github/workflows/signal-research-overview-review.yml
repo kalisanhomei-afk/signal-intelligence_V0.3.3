@@ -1,0 +1,65 @@
+name: SIGNAL research status and hypothesis cards (read only)
+on:
+  pull_request:
+    paths:
+      - "research_overview/**"
+      - ".github/workflows/signal-research-overview-review.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-preview:
+    name: Verify research status contracts, then build offline review
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout without persisted credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test frozen facts, time precedence, PR isolation and no-trading gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m unittest discover -s research_overview/tests -p 'test_*.py' -v
+      - name: Build read-only HTML research preview from validated data
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_overview.build_review --output research_overview/out/review.html
+          test -s research_overview/out/review.html
+          grep -q 'H-CORN-001' research_overview/out/review.html
+          grep -q 'H-NG-001' research_overview/out/review.html
+          grep -q '非即時資料' research_overview/out/review.html
+      - name: Validate market-to-allocation fail-closed bridge (architecture only)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m research_overview.decision_bridge \
+            --output research_overview/out/decision_bridge_audit.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("research_overview/out/decision_bridge_audit.json").read_text(encoding="utf-8"))
+          assert r["stage"]=="ARCHITECTURE_ONLY"
+          assert r["result_count"]==2
+          assert all(len(x["blocking_gates"])==5 for x in r["hypotheses"])
+          assert all(x["status"]=="NO_GO_DESIGN_ONLY" for x in r["hypotheses"])
+          assert not r["trade_eligible"] and not r["auto_order_execution_present"]
+          print("SIGNAL_MARKET_DECISION_BRIDGE_RESEARCH_NO_GO_PASS")
+          PY
+      - name: Upload standalone HTML review, never deploy to Pages
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-research-overview-review
+          path: |
+            research_overview/out/review.html
+            research_overview/out/decision_bridge_audit.json
+          retention-days: 14
+          if-no-files-found: error

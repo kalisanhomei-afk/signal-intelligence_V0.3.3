@@ -1,0 +1,73 @@
+{
+  "schema": "signal-hypothesis-review-card-v1",
+  "hypothesis_id": "H-NG-001",
+  "title": "美國天然氣庫存：11 月 EIA 週報",
+  "scope": "US_LOWER48_WORKING_GAS_WEEKLY_NET_CHANGE",
+  "unit": "Bcf",
+  "research_pr": 23,
+  "research_branch": "codex/k5-natural-gas-scout",
+  "event_id": "EIA-WNGSR-2026-11-19",
+  "target_period": "Week ending 2026-11-13",
+  "release_scheduled_utc": "2026-11-19T15:30:00Z",
+  "forecast": {
+    "model": "PREVIOUS_RELEASE_WEEKLY_NET_CHANGE_UNCHANGED",
+    "value": 61,
+    "frozen_before_event": true,
+    "source_path": "research_core/k5/cases/2026-11-19-eia-frozen-v0-forecast.json",
+    "source_branch": "codex/k5-natural-gas-scout",
+    "frozen_proof": {
+      "type": "git_blob_sha1",
+      "value": "bacc82f549fb3bba74142139d89bec94e386d88e"
+    },
+    "source_commit_ref": "f613719479c9ede0add2e6ff0893c0fa1831c765",
+    "source_git_blob_sha1": "bacc82f549fb3bba74142139d89bec94e386d88e"
+  },
+  "evidence": {
+    "prior_source": "EIA WNGSR 2026-11-13 Lower 48 week ending Nov 6",
+    "prospective_raw_source_available": true,
+    "prospective_raw_source_path": "research_core/k5/evidence/eia/EIA_WNGSR_20261113_6eb6c699b789d713_original.json",
+    "prospective_raw_source_sha256": "6eb6c699b789d7130d3f50dbe5681e835b57bc25dd118380398169dda63fe252",
+    "historical_outcome_labels_years": null,
+    "historical_predictor_pit_verified": false,
+    "prior_source_capture_utc_independently_attested": false,
+    "source_commit_ref": "f613719479c9ede0add2e6ff0893c0fa1831c765",
+    "source_git_blob_sha1": "8fb2ef46421b9a4af513f54e298aef45943a79b5"
+  },
+  "market_consensus": {
+    "status": "NOT_VERIFIED",
+    "value": null,
+    "pre_event_capture_utc": null,
+    "raw_sha256": null,
+    "note": "MetaTrader calendar estimate is not a verified survey consensus."
+  },
+  "indicative_external_forecasts": [
+    {
+      "name": "MetaTrader calendar 2026-11-19 entry",
+      "value": 69,
+      "kind": "INDICATIVE_ONLY",
+      "captured_before_release": true,
+      "source": "research_core/k5/cases/2026-11-19-pre-release-external-forecast-receipts.json"
+    }
+  ],
+  "official_outcome": {
+    "status": "NOT_RELEASED",
+    "value": null,
+    "raw_sha256": null,
+    "capture_utc": null,
+    "evidence_link": null
+  },
+  "score": {
+    "rule": "ABSOLUTE_ERROR_LOWER_BETTER",
+    "v0_absolute_error": null,
+    "consensus_absolute_error": null,
+    "v1_absolute_error": null,
+    "out_of_sample_edge_verified": false
+  },
+  "decision": {
+    "engineering": "PASS_RESEARCH_GATE",
+    "research": "WAITING_OFFICIAL_OUTCOME",
+    "investment": "NO_GO",
+    "trade_eligible": false,
+    "reasoning": "EIA previous-release raw bytes and pre-registered V0 are documented; the event result and independently sourced consensus are not yet available."
+  }
+}

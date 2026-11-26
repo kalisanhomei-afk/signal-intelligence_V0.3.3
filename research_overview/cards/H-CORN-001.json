@@ -1,0 +1,65 @@
+{
+  "schema": "signal-hypothesis-review-card-v1",
+  "hypothesis_id": "H-CORN-001",
+  "title": "美國玉米期末庫存：12 月 WASDE",
+  "scope": "US_CORN_2026_27_ENDING_STOCKS_MBU",
+  "unit": "million_bushels",
+  "research_pr": 22,
+  "research_branch": "codex/k4-corn-hypothesis-mvp",
+  "event_id": "USDA-WASDE-2026-12-10",
+  "target_period": "2026/27 marketing year",
+  "release_scheduled_utc": "2026-12-10T17:00:00Z",
+  "forecast": {
+    "model": "USDA_PREVIOUS_WASDE_PERSISTENCE_V0",
+    "value": 1758,
+    "frozen_before_event": true,
+    "source_path": "research_core/k4/cases/2026-12-10-forward-baseline-forecast.json",
+    "source_branch": "codex/k4-corn-hypothesis-mvp",
+    "frozen_proof": {
+      "type": "sha256_of_frozen_forecast_json",
+      "value": "54d4d7597d457c64307e9a2e1e5670cd5f1ecd52676180eded2a19a8ebcaca48"
+    },
+    "source_commit_ref": "bdc68222f4b9ca7eba07b96205ac510c0d8bf345",
+    "source_git_blob_sha1": "ad00e4c0989d98eae56b31960fc9c24cd76da120"
+  },
+  "evidence": {
+    "prior_source": "USDA WASDE November 2026 as-reported",
+    "prospective_raw_source_available": true,
+    "prospective_raw_source_path": "research_core/k4/evidence/fgis/WA_GR101_20261116_official_raw.txt",
+    "prospective_raw_source_sha256": "4555c478b09d2507d042de55c6d5042e095f37b13d05185fcf889433c52802e5",
+    "historical_outcome_labels_years": 9,
+    "historical_predictor_pit_verified": false,
+    "prior_source_capture_utc_independently_attested": false,
+    "source_commit_ref": "bdc68222f4b9ca7eba07b96205ac510c0d8bf345",
+    "source_git_blob_sha1": "9102c9c4e66dd0239d043a5c2c756ecb678bfffe"
+  },
+  "market_consensus": {
+    "status": "NOT_VERIFIED",
+    "value": null,
+    "pre_event_capture_utc": null,
+    "raw_sha256": null,
+    "note": "December WASDE-specific pre-release analyst consensus not yet certified."
+  },
+  "indicative_external_forecasts": [],
+  "official_outcome": {
+    "status": "NOT_RELEASED",
+    "value": null,
+    "raw_sha256": null,
+    "capture_utc": null,
+    "evidence_link": null
+  },
+  "score": {
+    "rule": "ABSOLUTE_ERROR_LOWER_BETTER",
+    "v0_absolute_error": null,
+    "consensus_absolute_error": null,
+    "v1_absolute_error": null,
+    "out_of_sample_edge_verified": false
+  },
+  "decision": {
+    "engineering": "PASS_RESEARCH_GATE",
+    "research": "WAITING_OFFICIAL_OUTCOME",
+    "investment": "NO_GO",
+    "trade_eligible": false,
+    "reasoning": "Historical official outcome labels and one prospective FGIS raw capture are not a validated forecasting or trading advantage."
+  }
+}
