@@ -1,0 +1,21 @@
+{
+  "schema": "signal-k5-ng-weekly-persistence-input-v1",
+  "hypothesis_id": "H-NG-001",
+  "event_id": "EIA-WNGSR-2026-11-19",
+  "event_scheduled_utc": "2026-11-19T15:30:00Z",
+  "target_week_end": "2026-11-13",
+  "target": "US_LOWER48_WORKING_GAS_WEEKLY_NET_CHANGE",
+  "target_unit": "Bcf",
+  "model_id": "PREVIOUS_RELEASE_WEEKLY_NET_CHANGE_UNCHANGED",
+  "source_url": "https://ir.eia.gov/ngs/wngsr.json",
+  "source_report_release_utc_claim": "2026-11-13T15:30:00Z",
+  "source_report_week_end": "2026-11-06",
+  "source_raw_sha256": null,
+  "source_raw_bytes_verified": false,
+  "prior_lower48_storage_bcf": 3862,
+  "prior_prior_lower48_storage_bcf": 3801,
+  "source_reported_net_change_bcf": 61,
+  "source_five_year_avg_stocks_bcf": 3787,
+  "source_year_ago_stocks_bcf": 3954,
+  "point_forecast_is_trade_signal": false
+}
