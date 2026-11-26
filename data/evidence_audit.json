@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.1",
-    "generated_at": "2026-11-26T01:49:25+00:00",
+    "generated_at": "2026-11-26T13:47:32+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "status": "metadata_gap_audit_only",
     "candidate_count": 12,
@@ -32,13 +32,13 @@
   },
   "items": [
     {
-      "id": "rss-fb2699a7376a0c6dd9a7f2",
-      "source_id": "arxiv-ai",
+      "id": "rss-f2b5dcfa341c43603b5a38",
+      "source_id": "arxiv-robotics",
       "publisher_id": "arxiv",
-      "title": "What People Choose Not to Say: A Multimodal Benchmark for Fine-Grained Information Manipulation in Conversations",
+      "title": "Why Does Sensor Depth Fail Learned Manipulation Policies? Finding the Failure Mode with ACT",
       "category": "知識",
-      "published_at": "2026-11-25T05:00:00+00:00",
-      "url": "https://arxiv.org/abs/2611.31346",
+      "published_at": "2026-11-26T05:00:00+00:00",
+      "url": "https://arxiv.org/abs/2611.33352",
       "source_role": "研究預印本儲存平台",
       "evidence_kind": "未確認同儕審查之預印本元資料",
       "evidence_level": "M0",
@@ -54,7 +54,7 @@
         "有沒有實際部署、效能基準及限制證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "03b2081e2f41f63d44f79802"
+      "fingerprint": "07ca31707f652cf7ef553af6"
     },
     {
       "id": "rss-6830aad901d1c5d7f55124",
@@ -107,13 +107,13 @@
       "fingerprint": "7a8f943566aee74888fa1c59"
     },
     {
-      "id": "rss-53095ad9f7157cd7511b9c",
+      "id": "rss-61d258a192995093279156",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Statement by President von der Leyen with President Costa following the EU-Western Balkans Summit",
+      "title": "Daily News 26/ 11/ 2026",
       "category": "政治",
-      "published_at": "2026-11-25T18:05:05+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2591",
+      "published_at": "2026-11-26T10:51:28+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/mex_26_2595",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -129,7 +129,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "ceb3bff08e66b2438ea6612f"
+      "fingerprint": "ae0f89a164a1a3bdde4114ce"
     },
     {
       "id": "rss-ee53adbaa022cb629b983f",
@@ -182,13 +182,13 @@
       "fingerprint": "034a1773d2e2d2f1cfd0623c"
     },
     {
-      "id": "rss-efad23ef3736ba81b75f81",
+      "id": "rss-5a7b17abdd11c4ca380fa4",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
-      "title": "NASA Enhances Supplier Program, Announces Mentor-Protégé Agreement",
+      "title": "APOD: 2026 November 26 – Eye in the Sky: The Milky Way over Lençóis",
       "category": "科技",
-      "published_at": "2026-11-25T19:06:56+00:00",
-      "url": "https://www.nasa.gov/organizations/osbp/nasa-enhances-supplier-program-announces-mentor-protege-agreement",
+      "published_at": "2026-11-26T05:05:00+00:00",
+      "url": "https://science.nasa.gov/image-article/apod-2026-november-26-eye-in-the-sky-the-milky-way-over-lencois",
       "source_role": "第一手航太科研機構",
       "evidence_kind": "航太與技術機構公開消息標題元資料",
       "evidence_level": "M0",
@@ -204,16 +204,16 @@
         "相關成果有無獨立測試或第三方研究？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "edfd7143043e0532455d94df"
+      "fingerprint": "7552f8aa65f80ff3efed88d6"
     },
     {
-      "id": "rss-f950b9da613f058963422c",
+      "id": "rss-ed0c846243fa6fa64f3db5",
       "source_id": "arxiv-robotics",
       "publisher_id": "arxiv",
-      "title": "Embodied Neuro-symbolic AI: Making Robot Behavior Auditable, Safe, and Scalable",
+      "title": "Greedy Decoding Hides Good Plans: Sample-and-Verify Planning for Vision-Language Driving Models",
       "category": "知識",
-      "published_at": "2026-11-25T05:00:00+00:00",
-      "url": "https://arxiv.org/abs/2611.31488",
+      "published_at": "2026-11-26T05:00:00+00:00",
+      "url": "https://arxiv.org/abs/2611.33621",
       "source_role": "研究預印本儲存平台",
       "evidence_kind": "未確認同儕審查之預印本元資料",
       "evidence_level": "M0",
@@ -229,7 +229,7 @@
         "有沒有實際部署、效能基準及限制證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "7c2fa75292b07c401925a541"
+      "fingerprint": "fb05741afe22644ec1935889"
     },
     {
       "id": "rss-4277ab8b356914d426eefc",
@@ -282,13 +282,13 @@
       "fingerprint": "0d02c1540882a045b3851031"
     },
     {
-      "id": "rss-b96686f97ddb73e25304fc",
+      "id": "rss-ffb1478f4833b613c5ae88",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Speech by Commissioner Lahbib at the European Parliament on Combating Gender-Based Violence in the Age of Digital Technology",
+      "title": "Temu commits to complying with EU consumer protection rules following action by national authorities",
       "category": "政治",
-      "published_at": "2026-11-25T16:18:22+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2590",
+      "published_at": "2026-11-26T10:30:49+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_2594",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -304,7 +304,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "21808272be25d26ae2fa853f"
+      "fingerprint": "27fc7fb398dad41a14795912"
     },
     {
       "id": "rss-c0c4ef66e0d9307c0568ef",
