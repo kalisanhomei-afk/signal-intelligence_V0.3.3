@@ -1,0 +1,100 @@
+{
+  "schema": "signal.global_capital_flow.public_source_gate.v0.1",
+  "reviewed_date_taipei": "2026-11-22",
+  "evidence_level": "OFFICIAL_PUBLIC_METADATA_AND_TERMS_ONLY",
+  "no_fee_subscription_required": true,
+  "purchase_authorized": false,
+  "source_priority": [
+    {
+      "source_id": "BIS_GLI_E2_1_USD_NONBANK_CREDIT",
+      "agency": "Bank for International Settlements",
+      "role": "quarterly foreign-currency credit stock and growth candidate; not money funds moving or investable total return",
+      "frequency": "Q",
+      "seasonal_adjustment": "NSA",
+      "source_landing": "https://data.bis.org/topics/GLI",
+      "source_table": "https://data.bis.org/topics/GLI/tables-and-dashboards/BIS,GLI_E2_1,1.0",
+      "bulk_index": "https://data.bis.org/bulkdownload",
+      "raw_archive_url_from_official_bulk_download": "https://data.bis.org/static/bulk/WS_GLI_csv_flat.zip",
+      "source_terms": "https://data.bis.org/help/legal",
+      "open_data_rights_classification": "CONDITIONAL_USE_PERMITTED_BY_PUBLISHED_BIS_STATISTICS_TERMS",
+      "key_terms": [
+        "attribution to BIS when reproduced",
+        "no false endorsement or affiliation",
+        "translation notice if translating statistics",
+        "in commercial publication or product, inclusion must not result in any additional charge to subscribers or users",
+        "API subject to version/availability/rate and terms changes"
+      ],
+      "last_release_date_from_live_source": "2026-10-29",
+      "next_scheduled_release_date_from_live_source": "2026-12-07",
+      "exact_release_timestamp_utc": null,
+      "reviewed_target_table_semantics": "E2.1 total US dollar-denominated credit to non-bank borrowers; distinguish borrowers outside United States vs other lines",
+      "notes": [
+        "Quarterly; cannot directly represent monthly net portfolio flows",
+        "Revisions occur when input data are revised",
+        "Current bulk ZIP download in ChatGPT runtime failed, no real raw bytes or SHA captured",
+        "Still need series code, units, original raw bytes, release as-of history and raw-reproduction eligibility before research feature",
+        "2026-11-23 Antigravity one-time real ZIP/csv structure externally reported PASS; current revised ZIP is not 2026-10-29 authentic release vintage. For full receipt see R1i JSON. Original ZIP not ingested by ChatGPT."
+      ],
+      "collection_status": "EXTERNAL_CAPTURE_AND_SCHEMA_REPORTED",
+      "raw_sha256": null,
+      "actual_retrieval_utc": null,
+      "historical_pit_verified": false,
+      "accepted_for_model": false,
+      "raw_sha256_reported_externally": "87c8b99cca6043ae7737fb9c15159ad5920d0fdf260e9c9a68d03cec7cb95899",
+      "actual_retrieval_utc_reported_externally": "2026-11-23T00:40:25.162908Z",
+      "inner_csv_sha256_reported_externally": "1bf5aff7ef3903da56ee0e6400a7390cfdb5dee397857625613233d14eaf7cdc",
+      "rows_reported": 24603,
+      "columns_reported": 21,
+      "sample_key": "Q.USD.3P.N.A.I.B.USD",
+      "sample_2026q2_million_usd_reported": 15132723.957,
+      "external_raw_file_retained_outside_chatgpt": true,
+      "current_snapshot_last_modified_utc": "2026-11-18T12:44:16Z"
+    },
+    {
+      "source_id": "FED_H6_DIRECT",
+      "agency": "Board of Governors of the Federal Reserve System",
+      "source_terms": "https://www.federalreserve.gov/disclaimer.htm",
+      "source_landing": "https://www.federalreserve.gov/releases/h6/",
+      "open_data_rights_classification": "BOARD_SITE_GENERAL_PUBLIC_DOMAIN_UNLESS_OTHERWISE_MARKED",
+      "key_terms": [
+        "cite the Board as source",
+        "individually labelled external/third-party material requires separate permission",
+        "do not treat Board model disclaimers as financial data permissions",
+        "verify release-time vintage"
+      ],
+      "collection_status": "EXTERNAL_HISTORIC_HTML_SAMPLE_REPORTED_IN_R1C",
+      "historical_pit_verified": false,
+      "accepted_for_model": false
+    },
+    {
+      "source_id": "WORLDBANK_WDI_SELECTED",
+      "agency": "World Bank",
+      "source_terms": "https://www.worldbank.org/ext/en/legal/terms-conditions/datasets",
+      "source_landing": "https://datacatalog.worldbank.org/infrastructure-data/search/dataset/0037712/world-development-indicators",
+      "open_data_rights_classification": "DATASET_LEVEL_CC_BY_4_WITH_THIRD_PARTY_INDICATOR_EXCEPTIONS",
+      "key_terms": [
+        "WDI catalog states CC BY 4.0",
+        "attribution and no official endorsement",
+        "API allowed with terms",
+        "third-party indicators may carry other license"
+      ],
+      "role": "annual cross-country macro background only; not monthly money-flow signal or investable equity label",
+      "collection_status": "METADATA_ONLY",
+      "historical_pit_verified": false,
+      "accepted_for_model": false
+    },
+    {
+      "source_id": "KEN_FRENCH_MKTRF_RF",
+      "agency": "Dartmouth Kenneth French Data Library; CRSP and ICE inputs",
+      "source_landing": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html",
+      "open_data_rights_classification": "BUSINESS_MODEL_AND_THIRD_PARTY_RIGHTS_NOT_VERIFIED",
+      "role": "optional exploratory stock-minus-cash statistical label; not ETF executable total return",
+      "collection_status": "DEFER_AFTER_REPEATED_RIGHTS_UNCERTAINTY",
+      "historical_pit_verified": false,
+      "accepted_for_model": false
+    }
+  ],
+  "supplier_selection_policy": "OWNER_APPROVED_FREE_FIRST_AND_QUALITY_BEFORE_PRICE; NO_VENDOR_SELECTED",
+  "formal_gate0": "BLOCKED",
+  "next_minimal_action": "One permitted official BIS GLI historical publication/capture sample in a network-enabled research environment: confirm exact official table E2.1 field and metadata, record source rights/attribution, HTTP/request/final URLs, current UTC, SHA256 from actual ZIP bytes and member directory. Do not use the sample as a 2026-10-29 authentic PIT file; do not ingest to M0/M1/M2. If network remains unavailable, mark BLOCKED and do not loop."
+}

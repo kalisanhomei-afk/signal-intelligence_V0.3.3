@@ -1,0 +1,126 @@
+{
+  "schema": "signal.r1i.bis_gli_e21_external_receipt_and_hypothesis.v0.1",
+  "evidence_date_taipei": "2026-11-23",
+  "origin": "USER_SUPPLIED_ANTIGRAVITY_EXECUTION_REPORT",
+  "raw_source_access_by_chatgpt": false,
+  "original_raw_independently_rehashed_by_chatgpt": false,
+  "user_reported_capture": {
+    "source": "Bank for International Settlements GLI bulk WS_GLI_csv_flat",
+    "requested_url": "https://data.bis.org/static/bulk/WS_GLI_csv_flat.zip",
+    "final_url": "https://data.bis.org/static/bulk/WS_GLI_csv_flat.zip",
+    "status": 200,
+    "retrieval_started_utc": "2026-11-23T00:40:24.206101Z",
+    "retrieval_finished_utc": "2026-11-23T00:40:25.162908Z",
+    "last_modified_http_utc": "2026-11-18T12:44:16Z",
+    "last_official_release_date_only": "2026-10-29",
+    "content_type": "application/zip",
+    "content_length_bytes": 259411,
+    "archive_sha256_reported": "87c8b99cca6043ae7737fb9c15159ad5920d0fdf260e9c9a68d03cec7cb95899",
+    "external_receipt_bytes_reported": 2047,
+    "external_receipt_sha256_reported": "5468efc88ebc7f007616fb93a68f00eeffcdae1227d8b175e5393264304bc2d1",
+    "zip_member": {
+      "name": "WS_GLI_csv_flat.csv",
+      "compressed_size_bytes": 259259,
+      "uncompressed_size_bytes": 9490599,
+      "zip_member_timestamp_no_timezone": "2026-10-22 12:23:34",
+      "csv_sha256_reported": "1bf5aff7ef3903da56ee0e6400a7390cfdb5dee397857625613233d14eaf7cdc",
+      "header_columns": 21,
+      "total_data_rows": 24603,
+      "earliest_quarter_all_series": "1977-Q4",
+      "latest_quarter_all_series": "2026-Q2",
+      "unit_multiplier_for_usd": "6: Millions",
+      "observation_status_sample": "A: Normal value",
+      "confidentiality_status_sample": "F: Free"
+    },
+    "locally_retained_by_antigravity_only": true,
+    "downloadable_bytes_committed_to_github": false,
+    "external_hash_crosscheck": "REPORTED_BY_ANTIGRAVITY_SHA256SUM",
+    "http_last_modified_after_official_release": true,
+    "source_rights": "BIS_STATISTICS_CONDITIONAL_PERMITTED_USE",
+    "source_rights_url": "https://data.bis.org/help/legal"
+  },
+  "series": {
+    "dataset": "BIS:WS_GLI(1.0)",
+    "official_table_url": "https://data.bis.org/topics/GLI/tables-and-dashboards/BIS,GLI_E2_1,1.0",
+    "currency": "USD",
+    "borrowers": "nonbank borrowers outside the United States (3P)",
+    "frequency": "quarterly",
+    "nonseasonally_adjusted": true,
+    "sample_quarters_reported": 106,
+    "first_sample": "2000-Q1",
+    "last_sample": "2026-Q2",
+    "sample_missing_observations_reported": 0,
+    "selected_observations": [
+      {
+        "series_id": "Q.USD.3P.N.A.I.B.USD",
+        "metric": "total bank loans plus international debt securities",
+        "quarter": "2026-Q2",
+        "value_millions_usd": 15132723.957,
+        "first_reported_value_2000q1_millions_usd": 2337357.294
+      },
+      {
+        "series_id": "Q.USD.3P.N.A.I.B.771",
+        "metric": "total credit annual growth",
+        "quarter": "2026-Q2",
+        "value_percent": 8.03
+      },
+      {
+        "series_id": "Q.USD.3P.N.B.I.G.USD",
+        "metric": "bank loans",
+        "quarter": "2026-Q2",
+        "value_millions_usd": 6936280.678
+      },
+      {
+        "series_id": "Q.USD.3P.N.B.I.G.771",
+        "metric": "bank loans annual growth",
+        "quarter": "2026-Q2",
+        "value_percent": 9.622
+      },
+      {
+        "series_id": "Q.USD.3P.N.A.I.D.USD",
+        "metric": "international debt securities",
+        "quarter": "2026-Q2",
+        "value_millions_usd": 8196443.279
+      },
+      {
+        "series_id": "Q.USD.3P.N.A.I.D.771",
+        "metric": "international debt securities annual growth",
+        "quarter": "2026-Q2",
+        "value_percent": 6.72
+      }
+    ],
+    "within_quarter_amount_check": {
+      "formula": "6936280.678 + 8196443.279 == 15132723.957",
+      "reported_unit": "USD million",
+      "result": "PASS_ARITHMETIC",
+      "loan_share_pct_derived": 45.8363,
+      "bond_share_pct_derived": 54.1637
+    }
+  },
+  "proof_limitations": [
+    "2026-11-23 HTTP ZIP bytes are a current revised snapshot, not Oct 29 release-vintage bytes",
+    "2026-10-22 ZIP internal date predates Oct 29 website release, not proof of version identity",
+    "2026-11-18 HTTP Last-Modified after published release, cannot infer which values changed",
+    "Quarterly outstanding credit is not gross or net capital flows, is not global M2 and is not investable equity return",
+    "Historical 16:00 ET as-of availability not proven",
+    "SPY/BIL complete licensed total-return labels not yet available"
+  ],
+  "hypothesis": {
+    "id": "H-GCF-USD-CREDIT-01",
+    "question": "Does previously published offshore USD nonbank credit growth/acceleration incrementally forecast next-month US-equity over investable USD cash total return beyond M1, with identical PIT sample and trading assumptions?",
+    "evidence_level": "SINGLE_LATEST_REVISED_OBSERVATION_ONLY",
+    "null_hypothesis": "M2 offers no stable incremental out-of-sample or risk-adjusted economic improvement vs M1",
+    "forecast_or_backtest_status": "NOT_TESTED",
+    "market_alpha_claim": false
+  },
+  "gating": {
+    "format_pilot": "PASS_EXTERNAL_REPORT",
+    "original_bytes_received_by_chatgpt": false,
+    "historical_pit_verified": false,
+    "accepted_for_model": false,
+    "gate0": "BLOCKED",
+    "paid_subscription_used": false,
+    "research_model_executed": false,
+    "next": "Read-only derive limited last-four-quarters, non-reconstructive metadata from already retained Antigravity BIS local raw; date correctly as latest revised, no re-download or formal PIT pass."
+  }
+}
