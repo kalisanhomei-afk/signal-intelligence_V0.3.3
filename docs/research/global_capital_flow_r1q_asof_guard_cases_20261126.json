@@ -1,0 +1,60 @@
+{
+  "schema": "signal.r1q.source_asof_date_guard.v0.1",
+  "created_date": "2026-11-26",
+  "classification": "DESCRIPTIVE_SOURCE_CHRONOLOGY_ONLY_NO_MODEL_ADMISSION",
+  "criterion": "release_day_after_cutoff => REJECT; published day on/before cutoff alone cannot grant PIT or license",
+  "raw_eia_or_market_prices_included": false,
+  "source_raw_sha256_verified_in_this_turn": false,
+  "records": [
+    {
+      "source_id": "UST_TIC_2020_03_16",
+      "observation_period": "2020-01",
+      "claimed_release_day": "2020-03-16",
+      "source_url": "https://home.treasury.gov/news/press-releases/sm943",
+      "observed_value_usd_billion": 122.9,
+      "cutoff_local": "2020-02-28T16:00:00",
+      "cutoff_tz": "America/New_York",
+      "release_before_cutoff": false,
+      "eligibility": "REJECT_NOT_YET_PUBLISHED",
+      "historical_raw_first_public_verified": false
+    },
+    {
+      "source_id": "UST_TIC_2020_03_16",
+      "observation_period": "2020-01",
+      "claimed_release_day": "2020-03-16",
+      "source_url": "https://home.treasury.gov/news/press-releases/sm943",
+      "observed_value_usd_billion": 122.9,
+      "cutoff_local": "2020-03-31T16:00:00",
+      "cutoff_tz": "America/New_York",
+      "release_before_cutoff": true,
+      "eligibility": "HOLD_HISTORICAL_PIT_AND_RIGHTS",
+      "historical_raw_first_public_verified": false
+    },
+    {
+      "source_id": "UST_TIC_2026_11_18",
+      "observation_period": "2026-09",
+      "claimed_release_day": "2026-11-18",
+      "source_url": "https://home.treasury.gov/news/press-releases/sb0693",
+      "observed_value_usd_billion": 261,
+      "cutoff_local": "2026-10-30T16:00:00",
+      "cutoff_tz": "America/New_York",
+      "release_before_cutoff": false,
+      "eligibility": "REJECT_NOT_YET_PUBLISHED",
+      "historical_raw_first_public_verified": false
+    },
+    {
+      "source_id": "BIS_GLI_2026_10_29",
+      "observation_period": "2026-Q2",
+      "claimed_release_day": "2026-10-29",
+      "source_url": "https://data.bis.org/topics/GLI",
+      "observed_value_usd_billion": null,
+      "cutoff_local": "2026-10-30T16:00:00",
+      "cutoff_tz": "America/New_York",
+      "release_before_cutoff": true,
+      "eligibility": "HOLD_EXACT_RELEASE_TIME_AND_CSV_VINTAGE",
+      "historical_raw_first_public_verified": false
+    }
+  ],
+  "model_eligible_count": 0,
+  "trade_eligible": false
+}
