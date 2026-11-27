@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.1",
-    "generated_at": "2026-11-26T13:47:32+00:00",
+    "generated_at": "2026-11-27T01:50:21+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "status": "metadata_gap_audit_only",
     "candidate_count": 12,
@@ -107,13 +107,13 @@
       "fingerprint": "7a8f943566aee74888fa1c59"
     },
     {
-      "id": "rss-61d258a192995093279156",
+      "id": "rss-0f71c4ae5e9d18770b27cd",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Daily News 26/ 11/ 2026",
+      "title": "Statement by President von der Leyen with President Costa following the Special European Council meeting of November 2026",
       "category": "政治",
-      "published_at": "2026-11-26T10:51:28+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/mex_26_2595",
+      "published_at": "2026-11-26T23:00:00+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2603",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -129,7 +129,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "ae0f89a164a1a3bdde4114ce"
+      "fingerprint": "671406ef512d01b94fe8b38d"
     },
     {
       "id": "rss-ee53adbaa022cb629b983f",
@@ -282,13 +282,13 @@
       "fingerprint": "0d02c1540882a045b3851031"
     },
     {
-      "id": "rss-ffb1478f4833b613c5ae88",
+      "id": "rss-3745e400acad6408f2158a",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Temu commits to complying with EU consumer protection rules following action by national authorities",
+      "title": "Speech by Commissioner Marta Kos at the Albanian National Council for European Integration",
       "category": "政治",
-      "published_at": "2026-11-26T10:30:49+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_2594",
+      "published_at": "2026-11-26T14:26:12+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2602",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -304,7 +304,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "27fc7fb398dad41a14795912"
+      "fingerprint": "dc6b1c1febe0533eee2a7326"
     },
     {
       "id": "rss-c0c4ef66e0d9307c0568ef",
