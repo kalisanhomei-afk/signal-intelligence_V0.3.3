@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.1",
-    "generated_at": "2026-11-27T01:50:21+00:00",
+    "generated_at": "2026-11-27T13:45:11+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "status": "metadata_gap_audit_only",
     "candidate_count": 12,
@@ -32,13 +32,13 @@
   },
   "items": [
     {
-      "id": "rss-f2b5dcfa341c43603b5a38",
-      "source_id": "arxiv-robotics",
+      "id": "rss-dee6b374d67d70808c3eed",
+      "source_id": "arxiv-ai",
       "publisher_id": "arxiv",
-      "title": "Why Does Sensor Depth Fail Learned Manipulation Policies? Finding the Failure Mode with ACT",
+      "title": "The Platonic Representation Hypothesis in Jacobian-Space: Language and Vision Models Agree Approximately Up to a Rotation",
       "category": "知識",
-      "published_at": "2026-11-26T05:00:00+00:00",
-      "url": "https://arxiv.org/abs/2611.33352",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "url": "https://arxiv.org/abs/2611.33304",
       "source_role": "研究預印本儲存平台",
       "evidence_kind": "未確認同儕審查之預印本元資料",
       "evidence_level": "M0",
@@ -54,7 +54,7 @@
         "有沒有實際部署、效能基準及限制證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "07ca31707f652cf7ef553af6"
+      "fingerprint": "91a2029071e69d58b89c50a6"
     },
     {
       "id": "rss-6830aad901d1c5d7f55124",
@@ -107,13 +107,13 @@
       "fingerprint": "7a8f943566aee74888fa1c59"
     },
     {
-      "id": "rss-0f71c4ae5e9d18770b27cd",
+      "id": "rss-1a373660326a8393d400c5",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Statement by President von der Leyen with President Costa following the Special European Council meeting of November 2026",
+      "title": "Keynote speech by Commissioner Albuquerque at the Training Day' of the 10th Anniversary of the ECB Simulation Conference for University Students",
       "category": "政治",
-      "published_at": "2026-11-26T23:00:00+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2603",
+      "published_at": "2026-11-27T12:48:42+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2613",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -129,7 +129,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "671406ef512d01b94fe8b38d"
+      "fingerprint": "b6f111f60ad68952c57683fe"
     },
     {
       "id": "rss-ee53adbaa022cb629b983f",
@@ -157,13 +157,13 @@
       "fingerprint": "7acde2895879aa2a71fb7146"
     },
     {
-      "id": "rss-8113c742e28e60ef7ec0f7",
+      "id": "rss-25669981f291d995bd7ca1",
       "source_id": "mit-research",
       "publisher_id": "mit_news",
-      "title": "Draining peatlands leaves a long legacy of warming",
+      "title": "Engineering antibiotics could expand the pool of new drug candidates",
       "category": "科技",
-      "published_at": "2026-11-25T16:00:00+00:00",
-      "url": "https://news.mit.edu/2026/draining-peatlands-leaves-long-warming-legacy-1125",
+      "published_at": "2026-11-27T10:00:00+00:00",
+      "url": "https://news.mit.edu/2026/engineering-antibiotics-could-expand-new-drug-candidates-pool-1127",
       "source_role": "研究機構自有新聞編輯室",
       "evidence_kind": "MIT 自有研究報導標題元資料",
       "evidence_level": "M0",
@@ -179,16 +179,16 @@
         "研究結果與商業部署或規模化是否有證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "034a1773d2e2d2f1cfd0623c"
+      "fingerprint": "c23f2e4d3ed43a4c36e83d73"
     },
     {
-      "id": "rss-5a7b17abdd11c4ca380fa4",
+      "id": "rss-ae1170a006ae83d9ea2817",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
-      "title": "APOD: 2026 November 26 – Eye in the Sky: The Milky Way over Lençóis",
+      "title": "APOD: 2026 November 27 – The Moon Watchers",
       "category": "科技",
-      "published_at": "2026-11-26T05:05:00+00:00",
-      "url": "https://science.nasa.gov/image-article/apod-2026-november-26-eye-in-the-sky-the-milky-way-over-lencois",
+      "published_at": "2026-11-27T05:05:00+00:00",
+      "url": "https://science.nasa.gov/image-article/apod-2026-november-27-the-moon-watchers",
       "source_role": "第一手航太科研機構",
       "evidence_kind": "航太與技術機構公開消息標題元資料",
       "evidence_level": "M0",
@@ -204,16 +204,16 @@
         "相關成果有無獨立測試或第三方研究？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "7552f8aa65f80ff3efed88d6"
+      "fingerprint": "06e79fd24d88e4c33cea0dc1"
     },
     {
-      "id": "rss-ed0c846243fa6fa64f3db5",
-      "source_id": "arxiv-robotics",
+      "id": "rss-bb9da84a9c3c24b4f74859",
+      "source_id": "arxiv-ai",
       "publisher_id": "arxiv",
-      "title": "Greedy Decoding Hides Good Plans: Sample-and-Verify Planning for Vision-Language Driving Models",
+      "title": "Context Scaling: A New Frontier of AI Scaling",
       "category": "知識",
-      "published_at": "2026-11-26T05:00:00+00:00",
-      "url": "https://arxiv.org/abs/2611.33621",
+      "published_at": "2026-11-27T05:00:00+00:00",
+      "url": "https://arxiv.org/abs/2611.33160",
       "source_role": "研究預印本儲存平台",
       "evidence_kind": "未確認同儕審查之預印本元資料",
       "evidence_level": "M0",
@@ -229,7 +229,7 @@
         "有沒有實際部署、效能基準及限制證據？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "fb05741afe22644ec1935889"
+      "fingerprint": "f0b0fdce72f629aa3467b3f1"
     },
     {
       "id": "rss-4277ab8b356914d426eefc",
@@ -282,13 +282,13 @@
       "fingerprint": "0d02c1540882a045b3851031"
     },
     {
-      "id": "rss-3745e400acad6408f2158a",
+      "id": "rss-16531d09a8a353015f292a",
       "source_id": "eu-press",
       "publisher_id": "eu_commission",
-      "title": "Speech by Commissioner Marta Kos at the Albanian National Council for European Integration",
+      "title": "Daily News 27 / 11 / 2026",
       "category": "政治",
-      "published_at": "2026-11-26T14:26:12+00:00",
-      "url": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_2602",
+      "published_at": "2026-11-27T10:27:23+00:00",
+      "url": "https://ec.europa.eu/commission/presscorner/detail/en/mex_26_2609",
       "source_role": "第一手歐盟政策公告機構",
       "evidence_kind": "歐盟政策官方發布標題元資料",
       "evidence_level": "M0",
@@ -304,7 +304,7 @@
         "是否有真正獨立的國際媒體或研究佐證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "dc6b1c1febe0533eee2a7326"
+      "fingerprint": "31dafed4542dc1bd180efbf3"
     },
     {
       "id": "rss-c0c4ef66e0d9307c0568ef",
