@@ -2,7 +2,7 @@
   "meta": {
     "version": "0.5.1",
     "status": "human_reviewed_reference_benchmark_only",
-    "generated_at": "2026-11-27T13:45:16+00:00",
+    "generated_at": "2026-11-28T01:47:07+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "global_news_recall": null,
     "overall_news_importance_accuracy": null,
@@ -188,7 +188,7 @@
       "review_status": "pending",
       "matching_status": "待人工審閱",
       "benchmark_approved": false,
-      "in_45_day_history_window": true,
+      "in_45_day_history_window": false,
       "reviewed_match": false,
       "suggestions_not_verified": []
     },
@@ -204,7 +204,7 @@
       "review_status": "pending",
       "matching_status": "待人工審閱",
       "benchmark_approved": false,
-      "in_45_day_history_window": true,
+      "in_45_day_history_window": false,
       "reviewed_match": false,
       "suggestions_not_verified": []
     },
@@ -316,7 +316,7 @@
       "review_status": "pending",
       "matching_status": "待人工審閱",
       "benchmark_approved": false,
-      "in_45_day_history_window": true,
+      "in_45_day_history_window": false,
       "reviewed_match": false,
       "suggestions_not_verified": []
     },

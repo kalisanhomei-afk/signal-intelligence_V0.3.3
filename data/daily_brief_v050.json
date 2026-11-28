@@ -1,18 +1,18 @@
 {
   "meta": {
     "version": "0.5.0",
-    "generated_at": "2026-11-27T13:45:16+00:00",
+    "generated_at": "2026-11-28T01:47:07+00:00",
     "type": "daily_review_candidates_not_a_news_brief",
     "rights_scope": "descriptive_public_metadata_only",
     "input_mode": "official_metadata",
-    "source_last_success_at": "2026-11-27T13:45:00+00:00",
+    "source_last_success_at": "2026-11-28T01:46:56+00:00",
     "source_age_hours": 0.0,
     "stale_source": false,
     "review_window_hours": 72,
     "reference_window_days": 7,
     "max_daily_candidates": 8,
     "daily_candidate_count": 8,
-    "seven_day_source_titles": 220,
+    "seven_day_source_titles": 211,
     "daily_publishers": 5,
     "active_configured_publishers": 7,
     "uncovered_domains_in_source_audit": 5,
@@ -27,6 +27,54 @@
     "notice": "這是近72小時可溯源元資料的「選讀候選」，非查證新聞、非全球重大事件排行、非投資建議；來源缺口與時效限制不可由 AI 補寫。"
   },
   "items": [
+    {
+      "id": "rss-1380af4ce3b5ec939865d5",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "title": "Artemis III Astronaut Andre Douglas Visits VAB",
+      "url": "https://www.nasa.gov/image-article/artemis-iii-astronaut-andre-douglas-visits-vab",
+      "published_at": "2026-11-27T15:01:00+00:00",
+      "category": "科技",
+      "source_kind": "official",
+      "evidence_level": "M0",
+      "verification_status": "未查證",
+      "importance_assessed": false,
+      "independent_confirmation": false,
+      "review_prompt": "查核公告範圍、生效時間及是否存在後續修訂；官方發布不等於獨立驗證。"
+    },
+    {
+      "id": "rss-606ac8fb55254a3b156a68",
+      "source_id": "nasa-news",
+      "publisher_id": "nasa",
+      "source": "NASA｜News & Technology",
+      "title": "NASA’s NG-25 Mission to Launch Pioneering Space Crops Research",
+      "url": "https://science.nasa.gov/science-research/biological-physical-sciences/nasas-ng-25-mission-to-launch-pioneering-space-crops-research",
+      "published_at": "2026-11-27T14:22:00+00:00",
+      "category": "科技",
+      "source_kind": "official",
+      "evidence_level": "M0",
+      "verification_status": "未查證",
+      "importance_assessed": false,
+      "independent_confirmation": false,
+      "review_prompt": "查核公告範圍、生效時間及是否存在後續修訂；官方發布不等於獨立驗證。"
+    },
+    {
+      "id": "rss-741fb6ced11a18eb26726e",
+      "source_id": "eia-energy",
+      "publisher_id": "eia",
+      "source": "EIA｜Today in Energy",
+      "title": "Global electricity generation more than doubled from 2000 to 2025",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68525",
+      "published_at": "2026-11-27T14:00:00+00:00",
+      "category": "能源",
+      "source_kind": "official",
+      "evidence_level": "M0",
+      "verification_status": "未查證",
+      "importance_assessed": false,
+      "independent_confirmation": false,
+      "review_prompt": "查核公告範圍、生效時間及是否存在後續修訂；官方發布不等於獨立驗證。"
+    },
     {
       "id": "rss-1a373660326a8393d400c5",
       "source_id": "eu-press",
@@ -76,38 +124,6 @@
       "review_prompt": "查核原始研究或產品文件，區分機構宣傳、客觀證據與商業化程度。"
     },
     {
-      "id": "rss-ae1170a006ae83d9ea2817",
-      "source_id": "nasa-news",
-      "publisher_id": "nasa",
-      "source": "NASA｜News & Technology",
-      "title": "APOD: 2026 November 27 – The Moon Watchers",
-      "url": "https://science.nasa.gov/image-article/apod-2026-november-27-the-moon-watchers",
-      "published_at": "2026-11-27T05:05:00+00:00",
-      "category": "科技",
-      "source_kind": "official",
-      "evidence_level": "M0",
-      "verification_status": "未查證",
-      "importance_assessed": false,
-      "independent_confirmation": false,
-      "review_prompt": "查核公告範圍、生效時間及是否存在後續修訂；官方發布不等於獨立驗證。"
-    },
-    {
-      "id": "rss-ed5da8b90db0cf931c9c63",
-      "source_id": "nasa-news",
-      "publisher_id": "nasa",
-      "source": "NASA｜News & Technology",
-      "title": "Shivelyuch Socked In",
-      "url": "https://science.nasa.gov/earth/earth-observatory/shivelyuch-socked-in",
-      "published_at": "2026-11-27T05:01:00+00:00",
-      "category": "科技",
-      "source_kind": "official",
-      "evidence_level": "M0",
-      "verification_status": "未查證",
-      "importance_assessed": false,
-      "independent_confirmation": false,
-      "review_prompt": "查核公告範圍、生效時間及是否存在後續修訂；官方發布不等於獨立驗證。"
-    },
-    {
       "id": "rss-dee6b374d67d70808c3eed",
       "source_id": "arxiv-ai",
       "publisher_id": "arxiv",
@@ -138,22 +154,6 @@
       "importance_assessed": false,
       "independent_confirmation": false,
       "review_prompt": "查核研究方法、實驗限制、是否通過同儕審查，以及可否獨立重現。"
-    },
-    {
-      "id": "rss-41ee440d15205b02d80cf1",
-      "source_id": "eia-energy",
-      "publisher_id": "eia",
-      "source": "EIA｜Today in Energy",
-      "title": "Almost 60% of primary energy used for electricity is lost to conversion and transmission",
-      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68504",
-      "published_at": "2026-11-25T14:00:00+00:00",
-      "category": "能源",
-      "source_kind": "official",
-      "evidence_level": "M0",
-      "verification_status": "未查證",
-      "importance_assessed": false,
-      "independent_confirmation": false,
-      "review_prompt": "查核公告範圍、生效時間及是否存在後續修訂；官方發布不等於獨立驗證。"
     }
   ]
 }

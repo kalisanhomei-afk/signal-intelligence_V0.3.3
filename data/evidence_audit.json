@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.1",
-    "generated_at": "2026-11-27T13:45:11+00:00",
+    "generated_at": "2026-11-28T01:47:02+00:00",
     "rights_scope": "descriptive_public_metadata_only",
     "status": "metadata_gap_audit_only",
     "candidate_count": 12,
@@ -82,13 +82,13 @@
       "fingerprint": "5ea395781b12da6a3db0d15c"
     },
     {
-      "id": "rss-41ee440d15205b02d80cf1",
+      "id": "rss-741fb6ced11a18eb26726e",
       "source_id": "eia-energy",
       "publisher_id": "eia",
-      "title": "Almost 60% of primary energy used for electricity is lost to conversion and transmission",
+      "title": "Global electricity generation more than doubled from 2000 to 2025",
       "category": "能源",
-      "published_at": "2026-11-25T14:00:00+00:00",
-      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68504",
+      "published_at": "2026-11-27T14:00:00+00:00",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68525",
       "source_role": "第一手能源統計機構",
       "evidence_kind": "能源統計與分析機構公開標題元資料",
       "evidence_level": "M0",
@@ -104,7 +104,7 @@
         "有無其他機構或市場資料交叉驗證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "7a8f943566aee74888fa1c59"
+      "fingerprint": "65d968283e16be8ee4849840"
     },
     {
       "id": "rss-1a373660326a8393d400c5",
@@ -182,13 +182,13 @@
       "fingerprint": "c23f2e4d3ed43a4c36e83d73"
     },
     {
-      "id": "rss-ae1170a006ae83d9ea2817",
+      "id": "rss-1380af4ce3b5ec939865d5",
       "source_id": "nasa-news",
       "publisher_id": "nasa",
-      "title": "APOD: 2026 November 27 – The Moon Watchers",
+      "title": "Artemis III Astronaut Andre Douglas Visits VAB",
       "category": "科技",
-      "published_at": "2026-11-27T05:05:00+00:00",
-      "url": "https://science.nasa.gov/image-article/apod-2026-november-27-the-moon-watchers",
+      "published_at": "2026-11-27T15:01:00+00:00",
+      "url": "https://www.nasa.gov/image-article/artemis-iii-astronaut-andre-douglas-visits-vab",
       "source_role": "第一手航太科研機構",
       "evidence_kind": "航太與技術機構公開消息標題元資料",
       "evidence_level": "M0",
@@ -204,7 +204,7 @@
         "相關成果有無獨立測試或第三方研究？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "06e79fd24d88e4c33cea0dc1"
+      "fingerprint": "bb9f4d932821f665002a6ab0"
     },
     {
       "id": "rss-bb9da84a9c3c24b4f74859",
@@ -257,13 +257,13 @@
       "fingerprint": "e489e7d558294bd3010c598c"
     },
     {
-      "id": "rss-7dd88225b4ad6945571af2",
+      "id": "rss-41ee440d15205b02d80cf1",
       "source_id": "eia-energy",
       "publisher_id": "eia",
-      "title": "Oil flows through Middle East chokepoints increased in the third quarter",
+      "title": "Almost 60% of primary energy used for electricity is lost to conversion and transmission",
       "category": "能源",
-      "published_at": "2026-11-19T14:00:00+00:00",
-      "url": "https://www.eia.gov/todayinenergy/detail.php?id=",
+      "published_at": "2026-11-25T14:00:00+00:00",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=68504",
       "source_role": "第一手能源統計機構",
       "evidence_kind": "能源統計與分析機構公開標題元資料",
       "evidence_level": "M0",
@@ -279,7 +279,7 @@
         "有無其他機構或市場資料交叉驗證？"
       ],
       "finding": "可以確認採集器收到該來源的公開標題元資料；主張內容與後續影響尚未驗證。",
-      "fingerprint": "0d02c1540882a045b3851031"
+      "fingerprint": "7a8f943566aee74888fa1c59"
     },
     {
       "id": "rss-16531d09a8a353015f292a",
