@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "0.4.3",
-    "generated_at": "2026-11-28T01:47:07+00:00",
+    "generated_at": "2026-11-28T13:30:02+00:00",
     "status": "input_coverage_diagnostic_only",
     "rights_scope": "descriptive_public_metadata_only",
     "observed_items": 420,
@@ -17,7 +17,7 @@
       "mit_news",
       "nasa"
     ],
-    "last_collection_success_at": "2026-11-28T01:46:56+00:00",
+    "last_collection_success_at": "2026-11-28T13:29:52+00:00",
     "collection_last_success_age_hours": 0.0,
     "domains_no_observed_publisher": 5,
     "domains_single_publisher": 3,
@@ -134,44 +134,44 @@
   "publisher_activity": [
     {
       "publisher_id": "arxiv",
-      "item_count": 230,
+      "item_count": 228,
       "last_item_published_at": "2026-11-27T05:00:00+00:00",
-      "age_days_of_newest_item": 0.9
+      "age_days_of_newest_item": 1.4
     },
     {
       "publisher_id": "bea",
       "item_count": 4,
       "last_item_published_at": "2026-11-25T13:30:00+00:00",
-      "age_days_of_newest_item": 2.5
+      "age_days_of_newest_item": 3.0
     },
     {
       "publisher_id": "eia",
       "item_count": 6,
       "last_item_published_at": "2026-11-27T14:00:00+00:00",
-      "age_days_of_newest_item": 0.5
+      "age_days_of_newest_item": 1.0
     },
     {
       "publisher_id": "eu_commission",
-      "item_count": 101,
-      "last_item_published_at": "2026-11-27T12:48:42+00:00",
-      "age_days_of_newest_item": 0.5
+      "item_count": 102,
+      "last_item_published_at": "2026-11-27T23:00:00+00:00",
+      "age_days_of_newest_item": 0.6
     },
     {
       "publisher_id": "fed",
       "item_count": 2,
       "last_item_published_at": "2026-11-24T19:00:00+00:00",
-      "age_days_of_newest_item": 3.3
+      "age_days_of_newest_item": 3.8
     },
     {
       "publisher_id": "mit_news",
       "item_count": 19,
       "last_item_published_at": "2026-11-27T10:00:00+00:00",
-      "age_days_of_newest_item": 0.7
+      "age_days_of_newest_item": 1.1
     },
     {
       "publisher_id": "nasa",
-      "item_count": 58,
-      "last_item_published_at": "2026-11-27T15:01:00+00:00",
+      "item_count": 59,
+      "last_item_published_at": "2026-11-28T05:05:00+00:00",
       "age_days_of_newest_item": 0.4
     }
   ],
